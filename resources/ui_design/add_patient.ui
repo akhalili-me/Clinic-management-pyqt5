@@ -1,0 +1,681 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>addPatient_form</class>
+ <widget class="QWidget" name="addPatient_form">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>478</width>
+    <height>546</height>
+   </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>0</width>
+    <height>0</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>700</width>
+    <height>700</height>
+   </size>
+  </property>
+  <property name="windowTitle">
+   <string>اضافه کردن بیمار</string>
+  </property>
+  <widget class="QLabel" name="label_4">
+   <property name="geometry">
+    <rect>
+     <x>120</x>
+     <y>20</y>
+     <width>191</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>B Titr</family>
+     <pointsize>15</pointsize>
+    </font>
+   </property>
+   <property name="layoutDirection">
+    <enum>Qt::RightToLeft</enum>
+   </property>
+   <property name="frameShape">
+    <enum>QFrame::NoFrame</enum>
+   </property>
+   <property name="text">
+    <string>اضافه کردن بیمار</string>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="firstName_txtbox">
+   <property name="geometry">
+    <rect>
+     <x>50</x>
+     <y>80</y>
+     <width>331</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Vazirmatn,sans-serif</family>
+     <pointsize>-1</pointsize>
+    </font>
+   </property>
+   <property name="layoutDirection">
+    <enum>Qt::LeftToRight</enum>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">/* Basic LineEdit styling */
+QLineEdit {
+    background-color: #ffffff; /* White background */
+    border: 1px solid #dee2e6; /* Light grey border */
+    border-radius: 5px; /* Rounded corners */
+    font-family: 'Vazirmatn', sans-serif; /* Font family */
+    font-size: 16px; /* Font size */
+    color: #343a40; /* Dark grey text color */
+    outline: none; /* Remove default outline */
+}
+
+/* Hover effect */
+QLineEdit:hover {
+    border: 1px solid #007bff; /* Blue border on hover */
+}
+
+/* Focus effect */
+QLineEdit:focus {
+    border: 1px solid #007bff; /* Blue border on focus */
+}
+
+/* Disabled state */
+QLineEdit:disabled {
+    background-color: #e9ecef; /* Light grey background when disabled */
+    color: #6c757d; /* Grey text color when disabled */
+}
+
+</string>
+   </property>
+   <property name="locale">
+    <locale language="Persian" country="Iran"/>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_5">
+   <property name="geometry">
+    <rect>
+     <x>387</x>
+     <y>90</y>
+     <width>47</width>
+     <height>13</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Vazirmatn Black</family>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>نام بیمار: </string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_6">
+   <property name="geometry">
+    <rect>
+     <x>387</x>
+     <y>130</y>
+     <width>71</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Vazirmatn Black</family>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>نام خانوادگی: </string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_7">
+   <property name="geometry">
+    <rect>
+     <x>377</x>
+     <y>250</y>
+     <width>71</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Vazirmatn Black</family>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>شماره تلفن: </string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_8">
+   <property name="geometry">
+    <rect>
+     <x>387</x>
+     <y>210</y>
+     <width>47</width>
+     <height>13</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Vazirmatn Black</family>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>جنسیت:</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_9">
+   <property name="geometry">
+    <rect>
+     <x>340</x>
+     <y>290</y>
+     <width>71</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Vazirmatn Black</family>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>سن:</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_10">
+   <property name="geometry">
+    <rect>
+     <x>380</x>
+     <y>380</y>
+     <width>41</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Vazirmatn Black</family>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>آدرس:</string>
+   </property>
+  </widget>
+  <widget class="QComboBox" name="gender_cmbox">
+   <property name="enabled">
+    <bool>true</bool>
+   </property>
+   <property name="geometry">
+    <rect>
+     <x>50</x>
+     <y>200</y>
+     <width>331</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Vazirmatn Black</family>
+     <pointsize>11</pointsize>
+    </font>
+   </property>
+   <property name="acceptDrops">
+    <bool>false</bool>
+   </property>
+   <property name="layoutDirection">
+    <enum>Qt::RightToLeft</enum>
+   </property>
+   <property name="styleSheet">
+    <string notr="true"/>
+   </property>
+   <property name="editable">
+    <bool>false</bool>
+   </property>
+   <property name="currentText">
+    <string>مرد</string>
+   </property>
+   <property name="maxVisibleItems">
+    <number>3</number>
+   </property>
+   <property name="duplicatesEnabled">
+    <bool>false</bool>
+   </property>
+   <item>
+    <property name="text">
+     <string>مرد</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>زن</string>
+    </property>
+   </item>
+  </widget>
+  <widget class="QLineEdit" name="lastName_txtbox">
+   <property name="geometry">
+    <rect>
+     <x>50</x>
+     <y>120</y>
+     <width>331</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Vazirmatn,sans-serif</family>
+     <pointsize>-1</pointsize>
+    </font>
+   </property>
+   <property name="layoutDirection">
+    <enum>Qt::RightToLeft</enum>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">/* Basic LineEdit styling */
+QLineEdit {
+    background-color: #ffffff; /* White background */
+    border: 1px solid #dee2e6; /* Light grey border */
+    border-radius: 5px; /* Rounded corners */
+    font-family: 'Vazirmatn', sans-serif; /* Font family */
+    font-size: 16px; /* Font size */
+    color: #343a40; /* Dark grey text color */
+    outline: none; /* Remove default outline */
+}
+
+/* Hover effect */
+QLineEdit:hover {
+    border: 1px solid #007bff; /* Blue border on hover */
+}
+
+/* Focus effect */
+QLineEdit:focus {
+    border: 1px solid #007bff; /* Blue border on focus */
+}
+
+/* Disabled state */
+QLineEdit:disabled {
+    background-color: #e9ecef; /* Light grey background when disabled */
+    color: #6c757d; /* Grey text color when disabled */
+}
+
+</string>
+   </property>
+   <property name="locale">
+    <locale language="Persian" country="Iran"/>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="phoneNumber_txtbox">
+   <property name="geometry">
+    <rect>
+     <x>50</x>
+     <y>240</y>
+     <width>331</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Vazirmatn,sans-serif</family>
+     <pointsize>-1</pointsize>
+    </font>
+   </property>
+   <property name="layoutDirection">
+    <enum>Qt::RightToLeft</enum>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">/* Basic LineEdit styling */
+QLineEdit {
+    background-color: #ffffff; /* White background */
+    border: 1px solid #dee2e6; /* Light grey border */
+    border-radius: 5px; /* Rounded corners */
+    font-family: 'Vazirmatn', sans-serif; /* Font family */
+    font-size: 16px; /* Font size */
+    color: #343a40; /* Dark grey text color */
+    outline: none; /* Remove default outline */
+}
+
+/* Hover effect */
+QLineEdit:hover {
+    border: 1px solid #007bff; /* Blue border on hover */
+}
+
+/* Focus effect */
+QLineEdit:focus {
+    border: 1px solid #007bff; /* Blue border on focus */
+}
+
+/* Disabled state */
+QLineEdit:disabled {
+    background-color: #e9ecef; /* Light grey background when disabled */
+    color: #6c757d; /* Grey text color when disabled */
+}
+
+</string>
+   </property>
+   <property name="locale">
+    <locale language="Persian" country="Iran"/>
+   </property>
+  </widget>
+  <widget class="QTextEdit" name="address_txtbox">
+   <property name="geometry">
+    <rect>
+     <x>50</x>
+     <y>380</y>
+     <width>331</width>
+     <height>101</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Vazirmatn,sans-serif</family>
+     <pointsize>-1</pointsize>
+    </font>
+   </property>
+   <property name="layoutDirection">
+    <enum>Qt::RightToLeft</enum>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">/* Basic LineEdit styling */
+QTextEdit {
+    background-color: #ffffff; /* White background */
+    border: 1px solid #dee2e6; /* Light grey border */
+    border-radius: 5px; /* Rounded corners */
+    font-family: 'Vazirmatn', sans-serif; /* Font family */
+    font-size: 16px; /* Font size */
+    color: #343a40; /* Dark grey text color */
+    outline: none; /* Remove default outline */
+}
+
+/* Hover effect */
+QTextEdit:hover {
+    border: 1px solid #007bff; /* Blue border on hover */
+}
+
+/* Focus effect */
+QTextEdit:focus {
+    border: 1px solid #007bff; /* Blue border on focus */
+}
+
+/* Disabled state */
+QTextEdit:disabled {
+    background-color: #e9ecef; /* Light grey background when disabled */
+    color: #6c757d; /* Grey text color when disabled */
+}
+
+</string>
+   </property>
+  </widget>
+  <widget class="QSpinBox" name="age_txtbox">
+   <property name="geometry">
+    <rect>
+     <x>50</x>
+     <y>280</y>
+     <width>331</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>11</pointsize>
+    </font>
+   </property>
+   <property name="minimum">
+    <number>1</number>
+   </property>
+   <property name="maximum">
+    <number>100</number>
+   </property>
+  </widget>
+  <widget class="QTextEdit" name="extraInfo_txtbox">
+   <property name="geometry">
+    <rect>
+     <x>50</x>
+     <y>320</y>
+     <width>331</width>
+     <height>51</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Vazirmatn,sans-serif</family>
+     <pointsize>-1</pointsize>
+    </font>
+   </property>
+   <property name="layoutDirection">
+    <enum>Qt::RightToLeft</enum>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">/* Basic LineEdit styling */
+QTextEdit {
+    background-color: #ffffff; /* White background */
+    border: 1px solid #dee2e6; /* Light grey border */
+    border-radius: 5px; /* Rounded corners */
+    font-family: 'Vazirmatn', sans-serif; /* Font family */
+    font-size: 16px; /* Font size */
+    color: #343a40; /* Dark grey text color */
+    outline: none; /* Remove default outline */
+}
+
+/* Hover effect */
+QTextEdit:hover {
+    border: 1px solid #007bff; /* Blue border on hover */
+}
+
+/* Focus effect */
+QTextEdit:focus {
+    border: 1px solid #007bff; /* Blue border on focus */
+}
+
+/* Disabled state */
+QTextEdit:disabled {
+    background-color: #e9ecef; /* Light grey background when disabled */
+    color: #6c757d; /* Grey text color when disabled */
+}
+
+</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_11">
+   <property name="geometry">
+    <rect>
+     <x>380</x>
+     <y>330</y>
+     <width>91</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Vazirmatn Black</family>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>اطلاعات اضافه:</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_12">
+   <property name="geometry">
+    <rect>
+     <x>380</x>
+     <y>170</y>
+     <width>47</width>
+     <height>13</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Vazirmatn Black</family>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>کد ملی:</string>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="identityCode_txtbox">
+   <property name="geometry">
+    <rect>
+     <x>50</x>
+     <y>160</y>
+     <width>331</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Vazirmatn,sans-serif</family>
+     <pointsize>-1</pointsize>
+    </font>
+   </property>
+   <property name="layoutDirection">
+    <enum>Qt::RightToLeft</enum>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">/* Basic LineEdit styling */
+QLineEdit {
+    background-color: #ffffff; /* White background */
+    border: 1px solid #dee2e6; /* Light grey border */
+    border-radius: 5px; /* Rounded corners */
+    font-family: 'Vazirmatn', sans-serif; /* Font family */
+    font-size: 16px; /* Font size */
+    color: #343a40; /* Dark grey text color */
+    outline: none; /* Remove default outline */
+}
+
+/* Hover effect */
+QLineEdit:hover {
+    border: 1px solid #007bff; /* Blue border on hover */
+}
+
+/* Focus effect */
+QLineEdit:focus {
+    border: 1px solid #007bff; /* Blue border on focus */
+}
+
+/* Disabled state */
+QLineEdit:disabled {
+    background-color: #e9ecef; /* Light grey background when disabled */
+    color: #6c757d; /* Grey text color when disabled */
+}
+
+</string>
+   </property>
+   <property name="locale">
+    <locale language="Persian" country="Iran"/>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="cancel_btn">
+   <property name="geometry">
+    <rect>
+     <x>310</x>
+     <y>500</y>
+     <width>75</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Vazirmatn,sans-serif</family>
+     <pointsize>-1</pointsize>
+     <weight>75</weight>
+     <bold>true</bold>
+     <underline>false</underline>
+     <strikeout>false</strikeout>
+    </font>
+   </property>
+   <property name="focusPolicy">
+    <enum>Qt::StrongFocus</enum>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton {
+    background-color: #cccccc; /* Light grey */
+    color: #212529; /* Dark text */
+    border: none;
+    border-radius: 5px; /* Rounded corners */
+    font-size: 16px; /* Font size */
+    font-weight: bold; /* Bold text */
+    text-align: center;
+    text-decoration: none;
+    font-family: 'Vazirmatn', sans-serif; /* Font family */
+}
+
+QPushButton:hover {
+    background-color: #b3b3b3; /* Darker grey on hover */
+}
+
+QPushButton:pressed {
+    background-color: #999999; /* Even darker grey on press */
+}
+</string>
+   </property>
+   <property name="text">
+    <string>لغو</string>
+   </property>
+   <property name="checkable">
+    <bool>false</bool>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="save_btn">
+   <property name="geometry">
+    <rect>
+     <x>210</x>
+     <y>500</y>
+     <width>91</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Vazirmatn,sans-serif</family>
+     <pointsize>-1</pointsize>
+     <weight>75</weight>
+     <bold>true</bold>
+     <underline>false</underline>
+     <strikeout>false</strikeout>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton {
+    background-color: #28a745; /* Bootstrap success green */
+    color: white; /* White text */
+    border: none;
+    border-radius: 5px; /* Rounded corners */
+    font-size: 16px; /* Font size */
+    font-weight: bold; /* Bold text */
+    text-align: center;
+    text-decoration: none;
+    font-family: 'Vazirmatn', sans-serif; /* Font family */
+}
+
+QPushButton:hover {
+    background-color: #218838; /* Darker green on hover */
+}
+
+QPushButton:pressed {
+    background-color: #1e7e34; /* Even darker green on press */
+}
+</string>
+   </property>
+   <property name="text">
+    <string>ثبت</string>
+   </property>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
