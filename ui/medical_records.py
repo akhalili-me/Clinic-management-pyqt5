@@ -14,11 +14,11 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_medicalRecordsInfo_form(object):
     def setupUi(self, medicalRecordsInfo_form):
         medicalRecordsInfo_form.setObjectName("medicalRecordsInfo_form")
-        medicalRecordsInfo_form.resize(1144, 722)
-        medicalRecordsInfo_form.setMinimumSize(QtCore.QSize(1144, 722))
-        medicalRecordsInfo_form.setMaximumSize(QtCore.QSize(1144, 722))
+        medicalRecordsInfo_form.resize(1636, 719)
+        medicalRecordsInfo_form.setMinimumSize(QtCore.QSize(1636, 719))
+        medicalRecordsInfo_form.setMaximumSize(QtCore.QSize(1636, 719))
         self.addNewMedicalRecord_btn = QtWidgets.QPushButton(medicalRecordsInfo_form)
-        self.addNewMedicalRecord_btn.setGeometry(QtCore.QRect(560, 660, 241, 41))
+        self.addNewMedicalRecord_btn.setGeometry(QtCore.QRect(1120, 660, 211, 41))
         font = QtGui.QFont()
         font.setFamily("Vazirmatn,sans-serif")
         font.setPointSize(12)
@@ -33,7 +33,6 @@ class Ui_medicalRecordsInfo_form(object):
 "    color: white; /* White text */\n"
 "    border: none;\n"
 "    border-radius: 5px; /* Rounded corners */\n"
-"    padding: 10px 20px; /* Padding */\n"
 "    font-weight: bold; /* Bold text */\n"
 "    text-align: center;\n"
 "    text-decoration: none;\n"
@@ -50,10 +49,10 @@ class Ui_medicalRecordsInfo_form(object):
 "")
         self.addNewMedicalRecord_btn.setObjectName("addNewMedicalRecord_btn")
         self.medicalRecords_lst = QtWidgets.QListWidget(medicalRecordsInfo_form)
-        self.medicalRecords_lst.setGeometry(QtCore.QRect(10, 50, 501, 661))
+        self.medicalRecords_lst.setGeometry(QtCore.QRect(490, 50, 501, 661))
         font = QtGui.QFont()
         font.setFamily("Vazirmatn,sans-serif")
-        font.setPointSize(13)
+        font.setPointSize(12)
         self.medicalRecords_lst.setFont(font)
         self.medicalRecords_lst.setLayoutDirection(QtCore.Qt.RightToLeft)
         self.medicalRecords_lst.setStyleSheet("/* Basic ListWidget styling */\n"
@@ -68,7 +67,7 @@ class Ui_medicalRecordsInfo_form(object):
 "\n"
 "/* Item styling */\n"
 "QListWidget::item {\n"
-"    padding: 10px 15px; /* Padding for each item */\n"
+"    padding: 10px 5px; /* Padding for each item */\n"
 "    margin: 5px 0; /* Margin between items */\n"
 "    background-color: #ffffff; /* White background for items */\n"
 "    border-radius: 5px; /* Rounded corners for items */\n"
@@ -119,19 +118,19 @@ class Ui_medicalRecordsInfo_form(object):
         item = QtWidgets.QListWidgetItem()
         self.medicalRecords_lst.addItem(item)
         self.label_39 = QtWidgets.QLabel(medicalRecordsInfo_form)
-        self.label_39.setGeometry(QtCore.QRect(760, 10, 121, 31))
+        self.label_39.setGeometry(QtCore.QRect(1240, 10, 121, 31))
         font = QtGui.QFont()
         font.setFamily("B Titr")
         font.setPointSize(16)
         self.label_39.setFont(font)
         self.label_39.setObjectName("label_39")
         self.line = QtWidgets.QFrame(medicalRecordsInfo_form)
-        self.line.setGeometry(QtCore.QRect(517, 110, 621, 20))
+        self.line.setGeometry(QtCore.QRect(997, 110, 621, 20))
         self.line.setFrameShape(QtWidgets.QFrame.HLine)
         self.line.setFrameShadow(QtWidgets.QFrame.Sunken)
         self.line.setObjectName("line")
         self.firstName_lbl = QtWidgets.QLabel(medicalRecordsInfo_form)
-        self.firstName_lbl.setGeometry(QtCore.QRect(520, 60, 501, 51))
+        self.firstName_lbl.setGeometry(QtCore.QRect(1000, 60, 501, 51))
         font = QtGui.QFont()
         font.setFamily("Vazirmatn")
         font.setPointSize(14)
@@ -139,7 +138,7 @@ class Ui_medicalRecordsInfo_form(object):
         self.firstName_lbl.setAlignment(QtCore.Qt.AlignCenter)
         self.firstName_lbl.setObjectName("firstName_lbl")
         self.label_35 = QtWidgets.QLabel(medicalRecordsInfo_form)
-        self.label_35.setGeometry(QtCore.QRect(1030, 60, 101, 62))
+        self.label_35.setGeometry(QtCore.QRect(1510, 60, 101, 62))
         font = QtGui.QFont()
         font.setFamily("Vazirmatn ExtraBold")
         font.setPointSize(17)
@@ -147,12 +146,12 @@ class Ui_medicalRecordsInfo_form(object):
         self.label_35.setAlignment(QtCore.Qt.AlignCenter)
         self.label_35.setObjectName("label_35")
         self.line_2 = QtWidgets.QFrame(medicalRecordsInfo_form)
-        self.line_2.setGeometry(QtCore.QRect(520, 190, 611, 20))
+        self.line_2.setGeometry(QtCore.QRect(1000, 190, 611, 20))
         self.line_2.setFrameShape(QtWidgets.QFrame.HLine)
         self.line_2.setFrameShadow(QtWidgets.QFrame.Sunken)
         self.line_2.setObjectName("line_2")
         self.lastName_lbl = QtWidgets.QLabel(medicalRecordsInfo_form)
-        self.lastName_lbl.setGeometry(QtCore.QRect(526, 130, 491, 62))
+        self.lastName_lbl.setGeometry(QtCore.QRect(1006, 130, 491, 62))
         font = QtGui.QFont()
         font.setFamily("Vazirmatn")
         font.setPointSize(14)
@@ -160,7 +159,7 @@ class Ui_medicalRecordsInfo_form(object):
         self.lastName_lbl.setAlignment(QtCore.Qt.AlignCenter)
         self.lastName_lbl.setObjectName("lastName_lbl")
         self.label_38 = QtWidgets.QLabel(medicalRecordsInfo_form)
-        self.label_38.setGeometry(QtCore.QRect(1030, 130, 101, 62))
+        self.label_38.setGeometry(QtCore.QRect(1510, 130, 101, 62))
         font = QtGui.QFont()
         font.setFamily("Vazirmatn ExtraBold")
         font.setPointSize(13)
@@ -168,7 +167,7 @@ class Ui_medicalRecordsInfo_form(object):
         self.label_38.setAlignment(QtCore.Qt.AlignCenter)
         self.label_38.setObjectName("label_38")
         self.gender_lbl = QtWidgets.QLabel(medicalRecordsInfo_form)
-        self.gender_lbl.setGeometry(QtCore.QRect(515, 210, 501, 62))
+        self.gender_lbl.setGeometry(QtCore.QRect(995, 210, 501, 62))
         font = QtGui.QFont()
         font.setFamily("Vazirmatn")
         font.setPointSize(14)
@@ -176,7 +175,7 @@ class Ui_medicalRecordsInfo_form(object):
         self.gender_lbl.setAlignment(QtCore.Qt.AlignCenter)
         self.gender_lbl.setObjectName("gender_lbl")
         self.label_41 = QtWidgets.QLabel(medicalRecordsInfo_form)
-        self.label_41.setGeometry(QtCore.QRect(1030, 210, 101, 62))
+        self.label_41.setGeometry(QtCore.QRect(1510, 210, 101, 62))
         font = QtGui.QFont()
         font.setFamily("Vazirmatn ExtraBold")
         font.setPointSize(16)
@@ -184,7 +183,7 @@ class Ui_medicalRecordsInfo_form(object):
         self.label_41.setAlignment(QtCore.Qt.AlignCenter)
         self.label_41.setObjectName("label_41")
         self.age_lbl = QtWidgets.QLabel(medicalRecordsInfo_form)
-        self.age_lbl.setGeometry(QtCore.QRect(525, 290, 491, 61))
+        self.age_lbl.setGeometry(QtCore.QRect(1005, 290, 491, 61))
         font = QtGui.QFont()
         font.setFamily("Vazirmatn")
         font.setPointSize(14)
@@ -192,7 +191,7 @@ class Ui_medicalRecordsInfo_form(object):
         self.age_lbl.setAlignment(QtCore.Qt.AlignCenter)
         self.age_lbl.setObjectName("age_lbl")
         self.label_43 = QtWidgets.QLabel(medicalRecordsInfo_form)
-        self.label_43.setGeometry(QtCore.QRect(1030, 290, 101, 62))
+        self.label_43.setGeometry(QtCore.QRect(1510, 290, 101, 62))
         font = QtGui.QFont()
         font.setFamily("Vazirmatn ExtraBold")
         font.setPointSize(17)
@@ -200,7 +199,7 @@ class Ui_medicalRecordsInfo_form(object):
         self.label_43.setAlignment(QtCore.Qt.AlignCenter)
         self.label_43.setObjectName("label_43")
         self.identityCode_lbl = QtWidgets.QLabel(medicalRecordsInfo_form)
-        self.identityCode_lbl.setGeometry(QtCore.QRect(525, 371, 491, 51))
+        self.identityCode_lbl.setGeometry(QtCore.QRect(1005, 371, 491, 51))
         font = QtGui.QFont()
         font.setFamily("Vazirmatn")
         font.setPointSize(14)
@@ -208,7 +207,7 @@ class Ui_medicalRecordsInfo_form(object):
         self.identityCode_lbl.setAlignment(QtCore.Qt.AlignCenter)
         self.identityCode_lbl.setObjectName("identityCode_lbl")
         self.label_45 = QtWidgets.QLabel(medicalRecordsInfo_form)
-        self.label_45.setGeometry(QtCore.QRect(1030, 360, 101, 62))
+        self.label_45.setGeometry(QtCore.QRect(1510, 360, 101, 62))
         font = QtGui.QFont()
         font.setFamily("Vazirmatn ExtraBold")
         font.setPointSize(16)
@@ -216,7 +215,7 @@ class Ui_medicalRecordsInfo_form(object):
         self.label_45.setAlignment(QtCore.Qt.AlignCenter)
         self.label_45.setObjectName("label_45")
         self.phoneNumber_lbl = QtWidgets.QLabel(medicalRecordsInfo_form)
-        self.phoneNumber_lbl.setGeometry(QtCore.QRect(525, 441, 481, 51))
+        self.phoneNumber_lbl.setGeometry(QtCore.QRect(1005, 441, 481, 51))
         font = QtGui.QFont()
         font.setFamily("Vazirmatn")
         font.setPointSize(14)
@@ -224,7 +223,7 @@ class Ui_medicalRecordsInfo_form(object):
         self.phoneNumber_lbl.setAlignment(QtCore.Qt.AlignCenter)
         self.phoneNumber_lbl.setObjectName("phoneNumber_lbl")
         self.label_47 = QtWidgets.QLabel(medicalRecordsInfo_form)
-        self.label_47.setGeometry(QtCore.QRect(1030, 430, 101, 62))
+        self.label_47.setGeometry(QtCore.QRect(1510, 430, 101, 62))
         font = QtGui.QFont()
         font.setFamily("Vazirmatn ExtraBold")
         font.setPointSize(13)
@@ -232,7 +231,7 @@ class Ui_medicalRecordsInfo_form(object):
         self.label_47.setAlignment(QtCore.Qt.AlignCenter)
         self.label_47.setObjectName("label_47")
         self.extraInfo_lbl = QtWidgets.QLabel(medicalRecordsInfo_form)
-        self.extraInfo_lbl.setGeometry(QtCore.QRect(521, 511, 491, 51))
+        self.extraInfo_lbl.setGeometry(QtCore.QRect(1001, 511, 491, 51))
         font = QtGui.QFont()
         font.setFamily("Vazirmatn")
         font.setPointSize(12)
@@ -240,7 +239,7 @@ class Ui_medicalRecordsInfo_form(object):
         self.extraInfo_lbl.setAlignment(QtCore.Qt.AlignCenter)
         self.extraInfo_lbl.setObjectName("extraInfo_lbl")
         self.a = QtWidgets.QLabel(medicalRecordsInfo_form)
-        self.a.setGeometry(QtCore.QRect(1030, 510, 101, 51))
+        self.a.setGeometry(QtCore.QRect(1510, 510, 101, 51))
         font = QtGui.QFont()
         font.setFamily("Vazirmatn ExtraBold")
         font.setPointSize(11)
@@ -248,32 +247,32 @@ class Ui_medicalRecordsInfo_form(object):
         self.a.setAlignment(QtCore.Qt.AlignCenter)
         self.a.setObjectName("a")
         self.line_3 = QtWidgets.QFrame(medicalRecordsInfo_form)
-        self.line_3.setGeometry(QtCore.QRect(520, 270, 611, 20))
+        self.line_3.setGeometry(QtCore.QRect(1000, 270, 611, 20))
         self.line_3.setFrameShape(QtWidgets.QFrame.HLine)
         self.line_3.setFrameShadow(QtWidgets.QFrame.Sunken)
         self.line_3.setObjectName("line_3")
         self.line_4 = QtWidgets.QFrame(medicalRecordsInfo_form)
-        self.line_4.setGeometry(QtCore.QRect(520, 350, 611, 20))
+        self.line_4.setGeometry(QtCore.QRect(1000, 350, 611, 20))
         self.line_4.setFrameShape(QtWidgets.QFrame.HLine)
         self.line_4.setFrameShadow(QtWidgets.QFrame.Sunken)
         self.line_4.setObjectName("line_4")
         self.line_5 = QtWidgets.QFrame(medicalRecordsInfo_form)
-        self.line_5.setGeometry(QtCore.QRect(520, 420, 611, 20))
+        self.line_5.setGeometry(QtCore.QRect(1000, 420, 611, 20))
         self.line_5.setFrameShape(QtWidgets.QFrame.HLine)
         self.line_5.setFrameShadow(QtWidgets.QFrame.Sunken)
         self.line_5.setObjectName("line_5")
         self.line_6 = QtWidgets.QFrame(medicalRecordsInfo_form)
-        self.line_6.setGeometry(QtCore.QRect(520, 490, 611, 20))
+        self.line_6.setGeometry(QtCore.QRect(1000, 490, 611, 20))
         self.line_6.setFrameShape(QtWidgets.QFrame.HLine)
         self.line_6.setFrameShadow(QtWidgets.QFrame.Sunken)
         self.line_6.setObjectName("line_6")
         self.line_7 = QtWidgets.QFrame(medicalRecordsInfo_form)
-        self.line_7.setGeometry(QtCore.QRect(1010, 80, 20, 561))
+        self.line_7.setGeometry(QtCore.QRect(1490, 80, 20, 561))
         self.line_7.setFrameShape(QtWidgets.QFrame.VLine)
         self.line_7.setFrameShadow(QtWidgets.QFrame.Sunken)
         self.line_7.setObjectName("line_7")
         self.address_lbl = QtWidgets.QLabel(medicalRecordsInfo_form)
-        self.address_lbl.setGeometry(QtCore.QRect(521, 581, 491, 51))
+        self.address_lbl.setGeometry(QtCore.QRect(1001, 581, 491, 51))
         font = QtGui.QFont()
         font.setFamily("Vazirmatn")
         font.setPointSize(12)
@@ -281,7 +280,7 @@ class Ui_medicalRecordsInfo_form(object):
         self.address_lbl.setAlignment(QtCore.Qt.AlignCenter)
         self.address_lbl.setObjectName("address_lbl")
         self.a_2 = QtWidgets.QLabel(medicalRecordsInfo_form)
-        self.a_2.setGeometry(QtCore.QRect(1030, 580, 91, 51))
+        self.a_2.setGeometry(QtCore.QRect(1510, 580, 91, 51))
         font = QtGui.QFont()
         font.setFamily("Vazirmatn ExtraBold")
         font.setPointSize(16)
@@ -289,12 +288,12 @@ class Ui_medicalRecordsInfo_form(object):
         self.a_2.setAlignment(QtCore.Qt.AlignCenter)
         self.a_2.setObjectName("a_2")
         self.line_8 = QtWidgets.QFrame(medicalRecordsInfo_form)
-        self.line_8.setGeometry(QtCore.QRect(520, 560, 611, 20))
+        self.line_8.setGeometry(QtCore.QRect(1000, 560, 611, 20))
         self.line_8.setFrameShape(QtWidgets.QFrame.HLine)
         self.line_8.setFrameShadow(QtWidgets.QFrame.Sunken)
         self.line_8.setObjectName("line_8")
         self.editPatient_btn = QtWidgets.QPushButton(medicalRecordsInfo_form)
-        self.editPatient_btn.setGeometry(QtCore.QRect(810, 660, 221, 41))
+        self.editPatient_btn.setGeometry(QtCore.QRect(1340, 660, 181, 41))
         font = QtGui.QFont()
         font.setFamily("Vazirmatn,sans-serif")
         font.setPointSize(13)
@@ -309,7 +308,6 @@ class Ui_medicalRecordsInfo_form(object):
 "    color: #212529; /* Dark text */\n"
 "    border: none;\n"
 "    border-radius: 5px; /* Rounded corners */\n"
-"    padding: 10px 20px; /* Padding */\n"
 "    font-weight: bold; /* Bold text */\n"
 "    text-align: center;\n"
 "    text-decoration: none;\n"
@@ -326,12 +324,157 @@ class Ui_medicalRecordsInfo_form(object):
 "")
         self.editPatient_btn.setObjectName("editPatient_btn")
         self.label_40 = QtWidgets.QLabel(medicalRecordsInfo_form)
-        self.label_40.setGeometry(QtCore.QRect(130, 10, 211, 31))
+        self.label_40.setGeometry(QtCore.QRect(620, 10, 211, 31))
         font = QtGui.QFont()
         font.setFamily("B Titr")
         font.setPointSize(16)
         self.label_40.setFont(font)
         self.label_40.setObjectName("label_40")
+        self.deletePatient_btn = QtWidgets.QPushButton(medicalRecordsInfo_form)
+        self.deletePatient_btn.setGeometry(QtCore.QRect(1530, 660, 81, 41))
+        font = QtGui.QFont()
+        font.setFamily("Vazirmatn,sans-serif")
+        font.setPointSize(13)
+        font.setBold(True)
+        font.setUnderline(False)
+        font.setWeight(75)
+        font.setStrikeOut(False)
+        self.deletePatient_btn.setFont(font)
+        self.deletePatient_btn.setLayoutDirection(QtCore.Qt.RightToLeft)
+        self.deletePatient_btn.setStyleSheet("QPushButton{\n"
+"    background-color: #dc3545; /* Bootstrap danger red */\n"
+"    color: white; /* White text */\n"
+"    border: none;\n"
+"    border-radius: 5px; /* Rounded corners */\n"
+"    font-weight: bold; /* Bold text */\n"
+"    text-align: center;\n"
+"    text-decoration: none;\n"
+"    font-family: \'Vazirmatn\', sans-serif; /* Font family */\n"
+"}\n"
+"\n"
+"QPushButton:hover {\n"
+"    background-color: #c82333; /* Darker red on hover */\n"
+"}\n"
+"\n"
+"QPushButton:pressed {\n"
+"    background-color: #bd2130; /* Even darker red on press */\n"
+"}\n"
+"")
+        self.deletePatient_btn.setObjectName("deletePatient_btn")
+        self.addAppointment_btn = QtWidgets.QPushButton(medicalRecordsInfo_form)
+        self.addAppointment_btn.setGeometry(QtCore.QRect(1000, 660, 111, 41))
+        font = QtGui.QFont()
+        font.setFamily("Vazirmatn,sans-serif")
+        font.setPointSize(12)
+        font.setBold(True)
+        font.setUnderline(False)
+        font.setWeight(75)
+        font.setStrikeOut(False)
+        self.addAppointment_btn.setFont(font)
+        self.addAppointment_btn.setLayoutDirection(QtCore.Qt.RightToLeft)
+        self.addAppointment_btn.setStyleSheet("QPushButton {\n"
+"    background-color: #17a2b8; /* Bootstrap info blue */\n"
+"    color: white; /* White text */\n"
+"    border: none;\n"
+"    border-radius: 5px; /* Rounded corners */\n"
+"    font-weight: bold; /* Bold text */\n"
+"    text-align: center;\n"
+"    text-decoration: none;\n"
+"    font-family: \'Vazirmatn\', sans-serif; /* Font family */\n"
+"}\n"
+"\n"
+"QPushButton:hover {\n"
+"    background-color: #138496; /* Darker blue on hover */\n"
+"}\n"
+"\n"
+"QPushButton:pressed {\n"
+"    background-color: #117a8b; /* Even darker blue on press */\n"
+"}\n"
+"")
+        self.addAppointment_btn.setObjectName("addAppointment_btn")
+        self.label_42 = QtWidgets.QLabel(medicalRecordsInfo_form)
+        self.label_42.setGeometry(QtCore.QRect(60, 10, 211, 31))
+        font = QtGui.QFont()
+        font.setFamily("B Titr")
+        font.setPointSize(16)
+        self.label_42.setFont(font)
+        self.label_42.setObjectName("label_42")
+        self.appointments_lst = QtWidgets.QListWidget(medicalRecordsInfo_form)
+        self.appointments_lst.setGeometry(QtCore.QRect(10, 50, 461, 661))
+        font = QtGui.QFont()
+        font.setFamily("Vazirmatn,sans-serif")
+        font.setPointSize(12)
+        self.appointments_lst.setFont(font)
+        self.appointments_lst.setLayoutDirection(QtCore.Qt.RightToLeft)
+        self.appointments_lst.setStyleSheet("/* Basic ListWidget styling */\n"
+"QListWidget {\n"
+"    background-color: #f8f9fa; /* Light grey background */\n"
+"    border: 1px solid #dee2e6; /* Border color */\n"
+"    border-radius: 5px; /* Rounded corners */\n"
+"    padding: 5px; /* Padding inside the list */\n"
+"    font-family: \'Vazirmatn\', sans-serif; /* Font family */\n"
+"    outline: 0; /* Remove focus indicator */\n"
+"}\n"
+"\n"
+"/* Item styling */\n"
+"QListWidget::item {\n"
+"    padding: 10px 5px; /* Padding for each item */\n"
+"    margin: 5px 0; /* Margin between items */\n"
+"    background-color: #ffffff; /* White background for items */\n"
+"    border-radius: 5px; /* Rounded corners for items */\n"
+"    color: #343a40; /* Dark grey text color */\n"
+"    outline: 0; /* Remove focus indicator */\n"
+"}\n"
+"\n"
+"/* Hover effect for items */\n"
+"QListWidget::item:hover {\n"
+"    background-color: #e9ecef; /* Light grey background on hover */\n"
+"}\n"
+"\n"
+"/* Selected item styling */\n"
+"QListWidget::item:selected {\n"
+"    background-color: #0050a5;\n"
+"    color: white;\n"
+"}\n"
+"\n"
+"/* Scroll bar styling */\n"
+"QScrollBar:vertical {\n"
+"    background: #f8f9fa; /* Light grey background for the scroll bar */\n"
+"    width: 12px; /* Width of the vertical scroll bar */\n"
+"    margin: 22px 0 22px 0; /* Margin to fit the top and bottom arrows */\n"
+"    border: 1px solid #dee2e6; /* Border color */\n"
+"    border-radius: 5px; /* Rounded corners */\n"
+"}\n"
+"\n"
+"QScrollBar::handle:vertical {\n"
+"    background: #ced4da; /* Medium grey handle */\n"
+"    min-height: 20px; /* Minimum height of the handle */\n"
+"    border-radius: 5px; /* Rounded corners */\n"
+"}\n"
+"\n"
+"QScrollBar::add-line:vertical,\n"
+"QScrollBar::sub-line:vertical {\n"
+"    background: #ced4da; /* Medium grey for arrows */\n"
+"    height: 20px;\n"
+"    subcontrol-origin: margin;\n"
+"    subcontrol-position: top;\n"
+"    border-radius: 5px; /* Rounded corners */\n"
+"}\n"
+"\n"
+"QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical {\n"
+"    background: none;\n"
+"}\n"
+"")
+        self.appointments_lst.setObjectName("appointments_lst")
+        item = QtWidgets.QListWidgetItem()
+        self.appointments_lst.addItem(item)
+        item = QtWidgets.QListWidgetItem()
+        self.appointments_lst.addItem(item)
+        self.line_9 = QtWidgets.QFrame(medicalRecordsInfo_form)
+        self.line_9.setGeometry(QtCore.QRect(470, 50, 20, 661))
+        self.line_9.setFrameShape(QtWidgets.QFrame.VLine)
+        self.line_9.setFrameShadow(QtWidgets.QFrame.Sunken)
+        self.line_9.setObjectName("line_9")
 
         self.retranslateUi(medicalRecordsInfo_form)
         QtCore.QMetaObject.connectSlotsByName(medicalRecordsInfo_form)
@@ -364,6 +507,14 @@ class Ui_medicalRecordsInfo_form(object):
         self.a_2.setText(_translate("medicalRecordsInfo_form", "آدرس:"))
         self.editPatient_btn.setText(_translate("medicalRecordsInfo_form", "ویرایش اطلاعات بیمار"))
         self.label_40.setText(_translate("medicalRecordsInfo_form", "خدمات ارائه شده به بیمار"))
-
-
+        self.deletePatient_btn.setText(_translate("medicalRecordsInfo_form", "حذف "))
+        self.addAppointment_btn.setText(_translate("medicalRecordsInfo_form", "افزودن نوبت"))
+        self.label_42.setText(_translate("medicalRecordsInfo_form", "نوبت‌های بیمار"))
+        __sortingEnabled = self.appointments_lst.isSortingEnabled()
+        self.appointments_lst.setSortingEnabled(False)
+        item = self.appointments_lst.item(0)
+        item.setText(_translate("medicalRecordsInfo_form", "بوتاکس -دکتر احمدی- تاریخ: ۴/۲۳/۱۳۴۵ "))
+        item = self.appointments_lst.item(1)
+        item.setText(_translate("medicalRecordsInfo_form", "sdf"))
+        self.appointments_lst.setSortingEnabled(__sortingEnabled)
 

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>addDoctors_form</class>
- <widget class="QWidget" name="addDoctors_form">
+ <class>addEditDoctor_form</class>
+ <widget class="QWidget" name="addEditDoctor_form">
   <property name="enabled">
    <bool>true</bool>
   </property>

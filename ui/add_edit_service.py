@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'add_service.ui'
+# Form implementation generated from reading ui file 'add_edit_service.ui'
 #
 # Created by: PyQt5 UI code generator 5.15.10
 #
@@ -11,20 +11,20 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 
 
-class Ui_addService_form(object):
-    def setupUi(self, addService_form):
-        addService_form.setObjectName("addService_form")
-        addService_form.resize(427, 219)
-        addService_form.setMinimumSize(QtCore.QSize(427, 219))
-        addService_form.setMaximumSize(QtCore.QSize(427, 219))
-        self.label_5 = QtWidgets.QLabel(addService_form)
+class Ui_addEditService_form(object):
+    def setupUi(self, addEditService_form):
+        addEditService_form.setObjectName("addEditService_form")
+        addEditService_form.resize(427, 219)
+        addEditService_form.setMinimumSize(QtCore.QSize(427, 219))
+        addEditService_form.setMaximumSize(QtCore.QSize(427, 219))
+        self.label_5 = QtWidgets.QLabel(addEditService_form)
         self.label_5.setGeometry(QtCore.QRect(340, 90, 71, 20))
         font = QtGui.QFont()
         font.setFamily("Vazirmatn Black")
         font.setPointSize(10)
         self.label_5.setFont(font)
         self.label_5.setObjectName("label_5")
-        self.serviceName_txtbox = QtWidgets.QLineEdit(addService_form)
+        self.serviceName_txtbox = QtWidgets.QLineEdit(addEditService_form)
         self.serviceName_txtbox.setGeometry(QtCore.QRect(20, 80, 321, 31))
         self.serviceName_txtbox.setMinimumSize(QtCore.QSize(321, 31))
         self.serviceName_txtbox.setMaximumSize(QtCore.QSize(321, 31))
@@ -63,21 +63,21 @@ class Ui_addService_form(object):
 "")
         self.serviceName_txtbox.setLocale(QtCore.QLocale(QtCore.QLocale.Persian, QtCore.QLocale.Iran))
         self.serviceName_txtbox.setObjectName("serviceName_txtbox")
-        self.label_4 = QtWidgets.QLabel(addService_form)
+        self.label_4 = QtWidgets.QLabel(addEditService_form)
         self.label_4.setGeometry(QtCore.QRect(70, 20, 191, 41))
         font = QtGui.QFont()
         font.setFamily("B Titr")
         font.setPointSize(14)
         self.label_4.setFont(font)
         self.label_4.setObjectName("label_4")
-        self.label_6 = QtWidgets.QLabel(addService_form)
+        self.label_6 = QtWidgets.QLabel(addEditService_form)
         self.label_6.setGeometry(QtCore.QRect(340, 130, 41, 20))
         font = QtGui.QFont()
         font.setFamily("Vazirmatn Black")
         font.setPointSize(10)
         self.label_6.setFont(font)
         self.label_6.setObjectName("label_6")
-        self.servicePrice_spnbox = QtWidgets.QSpinBox(addService_form)
+        self.servicePrice_spnbox = QtWidgets.QSpinBox(addEditService_form)
         self.servicePrice_spnbox.setGeometry(QtCore.QRect(20, 120, 321, 31))
         font = QtGui.QFont()
         font.setFamily("Vazirmatn,sans-serif")
@@ -88,7 +88,7 @@ class Ui_addService_form(object):
         self.servicePrice_spnbox.setMinimum(100)
         self.servicePrice_spnbox.setMaximum(1000000000)
         self.servicePrice_spnbox.setObjectName("servicePrice_spnbox")
-        self.save_btn = QtWidgets.QPushButton(addService_form)
+        self.save_btn = QtWidgets.QPushButton(addEditService_form)
         self.save_btn.setGeometry(QtCore.QRect(164, 170, 91, 31))
         font = QtGui.QFont()
         font.setFamily("Vazirmatn,sans-serif")
@@ -119,7 +119,7 @@ class Ui_addService_form(object):
 "}\n"
 "")
         self.save_btn.setObjectName("save_btn")
-        self.cancel_btn = QtWidgets.QPushButton(addService_form)
+        self.cancel_btn = QtWidgets.QPushButton(addEditService_form)
         self.cancel_btn.setGeometry(QtCore.QRect(260, 170, 75, 31))
         font = QtGui.QFont()
         font.setFamily("Vazirmatn,sans-serif")
@@ -153,15 +153,15 @@ class Ui_addService_form(object):
         self.cancel_btn.setCheckable(False)
         self.cancel_btn.setObjectName("cancel_btn")
 
-        self.retranslateUi(addService_form)
-        QtCore.QMetaObject.connectSlotsByName(addService_form)
+        self.retranslateUi(addEditService_form)
+        QtCore.QMetaObject.connectSlotsByName(addEditService_form)
 
-    def retranslateUi(self, addService_form):
+    def retranslateUi(self, addEditService_form):
         _translate = QtCore.QCoreApplication.translate
-        addService_form.setWindowTitle(_translate("addService_form", "افزودن سرویس"))
-        self.label_5.setText(_translate("addService_form", "نام سرویس:"))
-        self.label_4.setText(_translate("addService_form", "اضافه کردن سرویس"))
-        self.label_6.setText(_translate("addService_form", "قیمت:"))
-        self.save_btn.setText(_translate("addService_form", "ثبت"))
-        self.cancel_btn.setText(_translate("addService_form", "لغو"))
+        addEditService_form.setWindowTitle(_translate("addEditService_form", "افزودن سرویس"))
+        self.label_5.setText(_translate("addEditService_form", "نام سرویس:"))
+        self.label_4.setText(_translate("addEditService_form", "اضافه کردن سرویس"))
+        self.label_6.setText(_translate("addEditService_form", "قیمت:"))
+        self.save_btn.setText(_translate("addEditService_form", "ثبت"))
+        self.cancel_btn.setText(_translate("addEditService_form", "لغو"))
 

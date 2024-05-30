@@ -1,6 +1,6 @@
 # controllers/add_patient_controller.py
 from PyQt5.QtWidgets import QDialog
-from ui.add_service import Ui_addService_form
+from ui import Ui_addEditService_form
 from models.db import DatabaseManager
 from PyQt5.QtWidgets import QMessageBox
 from PyQt5.QtCore import pyqtSignal
@@ -38,7 +38,7 @@ class AddServiceController(QDialog):
 
     def __init__(self):
         super(AddServiceController, self).__init__()
-        self.ui = Ui_addService_form()
+        self.ui = Ui_addEditService_form()
         self.ui.setupUi(self)
 
         self.setModal(True)

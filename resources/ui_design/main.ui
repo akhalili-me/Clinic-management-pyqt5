@@ -60,7 +60,7 @@
      <enum>QTabWidget::North</enum>
     </property>
     <property name="currentIndex">
-     <number>0</number>
+     <number>2</number>
     </property>
     <widget class="QWidget" name="main_tab">
      <attribute name="title">
@@ -330,8 +330,8 @@ QPushButton:pressed {
        <rect>
         <x>20</x>
         <y>10</y>
-        <width>731</width>
-        <height>81</height>
+        <width>941</width>
+        <height>71</height>
        </rect>
       </property>
       <property name="font">
@@ -388,7 +388,7 @@ QLabe:hover {
       <property name="font">
        <font>
         <family>Vazirmatn,sans-serif</family>
-        <pointsize>-1</pointsize>
+        <pointsize>13</pointsize>
        </font>
       </property>
       <property name="mouseTracking">
@@ -405,13 +405,12 @@ QListWidget {
     border-radius: 5px; /* Rounded corners */
     padding: 5px; /* Padding inside the list */
     font-family: 'Vazirmatn', sans-serif; /* Font family */
-    font-size: 17px; /* Font size */
     outline: 0; /* Remove focus indicator */
 }
 
 /* Item styling */
 QListWidget::item {
-    padding: 10px 15px; /* Padding for each item */
+    padding: 10px 5px; /* Padding for each item */
     margin: 5px 0; /* Margin between items */
     background-color: #ffffff; /* White background for items */
     border-radius: 5px; /* Rounded corners for items */
@@ -494,9 +493,9 @@ QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical {
       <property name="geometry">
        <rect>
         <x>970</x>
-        <y>30</y>
+        <y>10</y>
         <width>201</width>
-        <height>41</height>
+        <height>71</height>
        </rect>
       </property>
       <property name="font">
@@ -547,7 +546,7 @@ QPushButton:pressed {
         <x>10</x>
         <y>120</y>
         <width>1161</width>
-        <height>531</height>
+        <height>521</height>
        </rect>
       </property>
       <property name="font">
@@ -574,7 +573,7 @@ QPushButton:pressed {
          <x>10</x>
          <y>30</y>
          <width>671</width>
-         <height>491</height>
+         <height>481</height>
         </rect>
        </property>
        <property name="font">
@@ -1002,59 +1001,13 @@ QPushButton:pressed {
        </widget>
       </widget>
      </widget>
-     <widget class="QPushButton" name="addAppointment_btn">
-      <property name="geometry">
-       <rect>
-        <x>980</x>
-        <y>50</y>
-        <width>191</width>
-        <height>41</height>
-       </rect>
-      </property>
-      <property name="font">
-       <font>
-        <family>Vazirmatn,sans-serif</family>
-        <pointsize>-1</pointsize>
-        <weight>75</weight>
-        <bold>true</bold>
-        <underline>false</underline>
-        <strikeout>false</strikeout>
-       </font>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">QPushButton {
-    background-color: #0050a5; /* Bootstrap primary blue */
-    color: white; /* White text */
-    border: none;
-    border-radius: 5px; /* Rounded corners */
-    padding: 10px 20px; /* Padding */
-    font-size: 16px; /* Font size */
-    font-weight: bold; /* Bold text */
-    text-align: center;
-    text-decoration: none;
-    font-family: 'Vazirmatn', sans-serif; /* Font family */
-}
-
-QPushButton:hover {
-    background-color: #0056b3; /* Darker blue on hover */
-}
-
-QPushButton:pressed {
-    background-color: #004085; /* Even darker blue on press */
-}
-</string>
-      </property>
-      <property name="text">
-       <string>اضافه کردن نوبت</string>
-      </property>
-     </widget>
      <widget class="QLabel" name="label_13">
       <property name="geometry">
        <rect>
         <x>10</x>
         <y>20</y>
-        <width>941</width>
-        <height>101</height>
+        <width>1161</width>
+        <height>91</height>
        </rect>
       </property>
       <property name="font">
@@ -1107,9 +1060,9 @@ QLabe:hover {
      <widget class="QListWidget" name="remainderAppointments_lst">
       <property name="geometry">
        <rect>
-        <x>140</x>
+        <x>20</x>
         <y>90</y>
-        <width>571</width>
+        <width>1151</width>
         <height>551</height>
        </rect>
       </property>
@@ -1185,238 +1138,13 @@ QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical {
 </string>
       </property>
      </widget>
-     <widget class="QPushButton" name="oneDaySearch_btn">
-      <property name="geometry">
-       <rect>
-        <x>770</x>
-        <y>160</y>
-        <width>391</width>
-        <height>41</height>
-       </rect>
-      </property>
-      <property name="font">
-       <font>
-        <family>Vazirmatn,sans-serif</family>
-        <pointsize>-1</pointsize>
-        <weight>75</weight>
-        <bold>true</bold>
-        <underline>false</underline>
-        <strikeout>false</strikeout>
-       </font>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">QPushButton {
-    background-color: #0050a5; /* Bootstrap primary blue */
-    color: white; /* White text */
-    border: none;
-    border-radius: 5px; /* Rounded corners */
-    font-size: 15px; /* Font size */
-    font-weight: bold; /* Bold text */
-    text-align: center;
-    text-decoration: none;
-    font-family: 'Vazirmatn', sans-serif; /* Font family */
-}
-
-QPushButton:hover {
-    background-color: #0056b3; /* Darker blue on hover */
-}
-
-QPushButton:pressed {
-    background-color: #004085; /* Even darker blue on press */
-}
-</string>
-      </property>
-      <property name="text">
-       <string>یک روز بعد</string>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="twoDaySearch_btn">
-      <property name="geometry">
-       <rect>
-        <x>770</x>
-        <y>210</y>
-        <width>391</width>
-        <height>41</height>
-       </rect>
-      </property>
-      <property name="font">
-       <font>
-        <family>Vazirmatn,sans-serif</family>
-        <pointsize>-1</pointsize>
-        <weight>75</weight>
-        <bold>true</bold>
-        <underline>false</underline>
-        <strikeout>false</strikeout>
-       </font>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">QPushButton {
-    background-color: #0050a5; /* Bootstrap primary blue */
-    color: white; /* White text */
-    border: none;
-    border-radius: 5px; /* Rounded corners */
-    font-size: 15px; /* Font size */
-    font-weight: bold; /* Bold text */
-    text-align: center;
-    text-decoration: none;
-    font-family: 'Vazirmatn', sans-serif; /* Font family */
-}
-
-QPushButton:hover {
-    background-color: #0056b3; /* Darker blue on hover */
-}
-
-QPushButton:pressed {
-    background-color: #004085; /* Even darker blue on press */
-}
-</string>
-      </property>
-      <property name="text">
-       <string>دو روز بعد</string>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="fiveDaySearch_btn">
-      <property name="geometry">
-       <rect>
-        <x>770</x>
-        <y>360</y>
-        <width>391</width>
-        <height>41</height>
-       </rect>
-      </property>
-      <property name="font">
-       <font>
-        <family>Vazirmatn,sans-serif</family>
-        <pointsize>-1</pointsize>
-        <weight>75</weight>
-        <bold>true</bold>
-        <underline>false</underline>
-        <strikeout>false</strikeout>
-       </font>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">QPushButton {
-    background-color: #0050a5; /* Bootstrap primary blue */
-    color: white; /* White text */
-    border: none;
-    border-radius: 5px; /* Rounded corners */
-    font-size: 15px; /* Font size */
-    font-weight: bold; /* Bold text */
-    text-align: center;
-    text-decoration: none;
-    font-family: 'Vazirmatn', sans-serif; /* Font family */
-}
-
-QPushButton:hover {
-    background-color: #0056b3; /* Darker blue on hover */
-}
-
-QPushButton:pressed {
-    background-color: #004085; /* Even darker blue on press */
-}
-</string>
-      </property>
-      <property name="text">
-       <string>پنچ روز بعد</string>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="threeDaySearch_btn">
-      <property name="geometry">
-       <rect>
-        <x>770</x>
-        <y>260</y>
-        <width>391</width>
-        <height>41</height>
-       </rect>
-      </property>
-      <property name="font">
-       <font>
-        <family>Vazirmatn,sans-serif</family>
-        <pointsize>-1</pointsize>
-        <weight>75</weight>
-        <bold>true</bold>
-        <underline>false</underline>
-        <strikeout>false</strikeout>
-       </font>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">QPushButton {
-    background-color: #0050a5; /* Bootstrap primary blue */
-    color: white; /* White text */
-    border: none;
-    border-radius: 5px; /* Rounded corners */
-    font-size: 15px; /* Font size */
-    font-weight: bold; /* Bold text */
-    text-align: center;
-    text-decoration: none;
-    font-family: 'Vazirmatn', sans-serif; /* Font family */
-}
-
-QPushButton:hover {
-    background-color: #0056b3; /* Darker blue on hover */
-}
-
-QPushButton:pressed {
-    background-color: #004085; /* Even darker blue on press */
-}
-</string>
-      </property>
-      <property name="text">
-       <string>سه روز بعد</string>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="fourDaySearch_btn">
-      <property name="geometry">
-       <rect>
-        <x>770</x>
-        <y>310</y>
-        <width>391</width>
-        <height>41</height>
-       </rect>
-      </property>
-      <property name="font">
-       <font>
-        <family>Vazirmatn,sans-serif</family>
-        <pointsize>-1</pointsize>
-        <weight>75</weight>
-        <bold>true</bold>
-        <underline>false</underline>
-        <strikeout>false</strikeout>
-       </font>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">QPushButton {
-    background-color: #0050a5; /* Bootstrap primary blue */
-    color: white; /* White text */
-    border: none;
-    border-radius: 5px; /* Rounded corners */
-    font-size: 15px; /* Font size */
-    font-weight: bold; /* Bold text */
-    text-align: center;
-    text-decoration: none;
-    font-family: 'Vazirmatn', sans-serif; /* Font family */
-}
-
-QPushButton:hover {
-    background-color: #0056b3; /* Darker blue on hover */
-}
-
-QPushButton:pressed {
-    background-color: #004085; /* Even darker blue on press */
-}
-</string>
-      </property>
-      <property name="text">
-       <string>چهار روز بعد</string>
-      </property>
-     </widget>
      <widget class="QLabel" name="label_9">
       <property name="geometry">
        <rect>
-        <x>140</x>
-        <y>0</y>
-        <width>571</width>
-        <height>81</height>
+        <x>20</x>
+        <y>10</y>
+        <width>651</width>
+        <height>71</height>
        </rect>
       </property>
       <property name="font">
@@ -1461,6 +1189,258 @@ QLabe:hover {
        <set>Qt::AlignCenter</set>
       </property>
      </widget>
+     <widget class="QGroupBox" name="groupBox_7">
+      <property name="geometry">
+       <rect>
+        <x>680</x>
+        <y>0</y>
+        <width>491</width>
+        <height>81</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Vazirmatn Black</family>
+        <pointsize>10</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="layoutDirection">
+       <enum>Qt::LeftToRight</enum>
+      </property>
+      <property name="title">
+       <string>یادآوری‌ها</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+      </property>
+      <widget class="QPushButton" name="oneDaySearch_btn">
+       <property name="geometry">
+        <rect>
+         <x>400</x>
+         <y>30</y>
+         <width>81</width>
+         <height>41</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Vazirmatn,sans-serif</family>
+         <pointsize>-1</pointsize>
+         <weight>75</weight>
+         <bold>true</bold>
+         <underline>false</underline>
+         <strikeout>false</strikeout>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QPushButton {
+    background-color: #0050a5; /* Bootstrap primary blue */
+    color: white; /* White text */
+    border: none;
+    border-radius: 5px; /* Rounded corners */
+    font-size: 15px; /* Font size */
+    font-weight: bold; /* Bold text */
+    text-align: center;
+    text-decoration: none;
+    font-family: 'Vazirmatn', sans-serif; /* Font family */
+}
+
+QPushButton:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+}
+
+QPushButton:pressed {
+    background-color: #004085; /* Even darker blue on press */
+}
+</string>
+       </property>
+       <property name="text">
+        <string>امروز</string>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="fiveDaySearch_btn">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>30</y>
+         <width>91</width>
+         <height>41</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Vazirmatn,sans-serif</family>
+         <pointsize>-1</pointsize>
+         <weight>75</weight>
+         <bold>true</bold>
+         <underline>false</underline>
+         <strikeout>false</strikeout>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QPushButton {
+    background-color: #0050a5; /* Bootstrap primary blue */
+    color: white; /* White text */
+    border: none;
+    border-radius: 5px; /* Rounded corners */
+    font-size: 15px; /* Font size */
+    font-weight: bold; /* Bold text */
+    text-align: center;
+    text-decoration: none;
+    font-family: 'Vazirmatn', sans-serif; /* Font family */
+}
+
+QPushButton:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+}
+
+QPushButton:pressed {
+    background-color: #004085; /* Even darker blue on press */
+}
+</string>
+       </property>
+       <property name="text">
+        <string>چهار روز بعد</string>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="threeDaySearch_btn">
+       <property name="geometry">
+        <rect>
+         <x>210</x>
+         <y>30</y>
+         <width>91</width>
+         <height>41</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Vazirmatn,sans-serif</family>
+         <pointsize>-1</pointsize>
+         <weight>75</weight>
+         <bold>true</bold>
+         <underline>false</underline>
+         <strikeout>false</strikeout>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QPushButton {
+    background-color: #0050a5; /* Bootstrap primary blue */
+    color: white; /* White text */
+    border: none;
+    border-radius: 5px; /* Rounded corners */
+    font-size: 15px; /* Font size */
+    font-weight: bold; /* Bold text */
+    text-align: center;
+    text-decoration: none;
+    font-family: 'Vazirmatn', sans-serif; /* Font family */
+}
+
+QPushButton:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+}
+
+QPushButton:pressed {
+    background-color: #004085; /* Even darker blue on press */
+}
+</string>
+       </property>
+       <property name="text">
+        <string>دو روز بعد</string>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="fourDaySearch_btn">
+       <property name="geometry">
+        <rect>
+         <x>110</x>
+         <y>30</y>
+         <width>91</width>
+         <height>41</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Vazirmatn,sans-serif</family>
+         <pointsize>-1</pointsize>
+         <weight>75</weight>
+         <bold>true</bold>
+         <underline>false</underline>
+         <strikeout>false</strikeout>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QPushButton {
+    background-color: #0050a5; /* Bootstrap primary blue */
+    color: white; /* White text */
+    border: none;
+    border-radius: 5px; /* Rounded corners */
+    font-size: 15px; /* Font size */
+    font-weight: bold; /* Bold text */
+    text-align: center;
+    text-decoration: none;
+    font-family: 'Vazirmatn', sans-serif; /* Font family */
+}
+
+QPushButton:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+}
+
+QPushButton:pressed {
+    background-color: #004085; /* Even darker blue on press */
+}
+</string>
+       </property>
+       <property name="text">
+        <string>سه روز بعد</string>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="twoDaySearch_btn">
+       <property name="geometry">
+        <rect>
+         <x>310</x>
+         <y>30</y>
+         <width>81</width>
+         <height>41</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Vazirmatn,sans-serif</family>
+         <pointsize>-1</pointsize>
+         <weight>75</weight>
+         <bold>true</bold>
+         <underline>false</underline>
+         <strikeout>false</strikeout>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QPushButton {
+    background-color: #0050a5; /* Bootstrap primary blue */
+    color: white; /* White text */
+    border: none;
+    border-radius: 5px; /* Rounded corners */
+    font-size: 15px; /* Font size */
+    font-weight: bold; /* Bold text */
+    text-align: center;
+    text-decoration: none;
+    font-family: 'Vazirmatn', sans-serif; /* Font family */
+}
+
+QPushButton:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+}
+
+QPushButton:pressed {
+    background-color: #004085; /* Even darker blue on press */
+}
+</string>
+       </property>
+       <property name="text">
+        <string>فردا</string>
+       </property>
+      </widget>
+     </widget>
     </widget>
     <widget class="QWidget" name="services_tab">
      <attribute name="title">
@@ -1469,10 +1449,10 @@ QLabe:hover {
      <widget class="QGroupBox" name="groupBox_4">
       <property name="geometry">
        <rect>
-        <x>20</x>
-        <y>110</y>
-        <width>1161</width>
-        <height>531</height>
+        <x>10</x>
+        <y>100</y>
+        <width>1171</width>
+        <height>541</height>
        </rect>
       </property>
       <property name="font">
@@ -1679,9 +1659,9 @@ QLineEdit:disabled {
       <property name="geometry">
        <rect>
         <x>980</x>
-        <y>50</y>
+        <y>20</y>
         <width>191</width>
-        <height>41</height>
+        <height>71</height>
        </rect>
       </property>
       <property name="font">
@@ -1727,7 +1707,7 @@ QPushButton:pressed {
         <x>20</x>
         <y>20</y>
         <width>941</width>
-        <height>101</height>
+        <height>71</height>
        </rect>
       </property>
       <property name="font">
@@ -1780,10 +1760,10 @@ QLabe:hover {
      <widget class="QPushButton" name="addDoctor_btn">
       <property name="geometry">
        <rect>
-        <x>980</x>
-        <y>50</y>
-        <width>191</width>
-        <height>41</height>
+        <x>960</x>
+        <y>20</y>
+        <width>221</width>
+        <height>71</height>
        </rect>
       </property>
       <property name="font">
@@ -1826,10 +1806,10 @@ QPushButton:pressed {
      <widget class="QGroupBox" name="groupBox_5">
       <property name="geometry">
        <rect>
-        <x>20</x>
-        <y>110</y>
-        <width>1161</width>
-        <height>531</height>
+        <x>10</x>
+        <y>100</y>
+        <width>1171</width>
+        <height>541</height>
        </rect>
       </property>
       <property name="font">
@@ -2037,7 +2017,7 @@ QLineEdit:disabled {
         <x>20</x>
         <y>20</y>
         <width>931</width>
-        <height>101</height>
+        <height>71</height>
        </rect>
       </property>
       <property name="font">

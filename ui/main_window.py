@@ -197,7 +197,7 @@ class Ui_MainWindow(object):
 "")
         self.refreshPatientsList_btn.setObjectName("refreshPatientsList_btn")
         self.label_3 = QtWidgets.QLabel(self.main_tab)
-        self.label_3.setGeometry(QtCore.QRect(20, 10, 731, 81))
+        self.label_3.setGeometry(QtCore.QRect(20, 10, 941, 71))
         font = QtGui.QFont()
         font.setFamily("A Rezvan-fat,sans-serif")
         font.setPointSize(-1)
@@ -231,7 +231,7 @@ class Ui_MainWindow(object):
         self.patients_lst.setGeometry(QtCore.QRect(20, 170, 1151, 471))
         font = QtGui.QFont()
         font.setFamily("Vazirmatn,sans-serif")
-        font.setPointSize(-1)
+        font.setPointSize(13)
         self.patients_lst.setFont(font)
         self.patients_lst.setMouseTracking(False)
         self.patients_lst.setAutoFillBackground(False)
@@ -242,13 +242,12 @@ class Ui_MainWindow(object):
 "    border-radius: 5px; /* Rounded corners */\n"
 "    padding: 5px; /* Padding inside the list */\n"
 "    font-family: \'Vazirmatn\', sans-serif; /* Font family */\n"
-"    font-size: 17px; /* Font size */\n"
 "    outline: 0; /* Remove focus indicator */\n"
 "}\n"
 "\n"
 "/* Item styling */\n"
 "QListWidget::item {\n"
-"    padding: 10px 15px; /* Padding for each item */\n"
+"    padding: 10px 5px; /* Padding for each item */\n"
 "    margin: 5px 0; /* Margin between items */\n"
 "    background-color: #ffffff; /* White background for items */\n"
 "    border-radius: 5px; /* Rounded corners for items */\n"
@@ -306,7 +305,7 @@ class Ui_MainWindow(object):
         self.patients_lst.setWordWrap(False)
         self.patients_lst.setObjectName("patients_lst")
         self.addPatient_btn = QtWidgets.QPushButton(self.main_tab)
-        self.addPatient_btn.setGeometry(QtCore.QRect(970, 30, 201, 41))
+        self.addPatient_btn.setGeometry(QtCore.QRect(970, 10, 201, 71))
         font = QtGui.QFont()
         font.setFamily("Vazirmatn,sans-serif")
         font.setPointSize(-1)
@@ -341,7 +340,7 @@ class Ui_MainWindow(object):
         self.appointments_tab = QtWidgets.QWidget()
         self.appointments_tab.setObjectName("appointments_tab")
         self.groupBox_3 = QtWidgets.QGroupBox(self.appointments_tab)
-        self.groupBox_3.setGeometry(QtCore.QRect(10, 120, 1161, 531))
+        self.groupBox_3.setGeometry(QtCore.QRect(10, 120, 1161, 521))
         font = QtGui.QFont()
         font.setFamily("Vazirmatn Black")
         font.setPointSize(11)
@@ -353,7 +352,7 @@ class Ui_MainWindow(object):
         self.groupBox_3.setAlignment(QtCore.Qt.AlignRight|QtCore.Qt.AlignTrailing|QtCore.Qt.AlignVCenter)
         self.groupBox_3.setObjectName("groupBox_3")
         self.appointments_lst = QtWidgets.QListWidget(self.groupBox_3)
-        self.appointments_lst.setGeometry(QtCore.QRect(10, 30, 671, 491))
+        self.appointments_lst.setGeometry(QtCore.QRect(10, 30, 671, 481))
         font = QtGui.QFont()
         font.setFamily("Vazirmatn,sans-serif")
         font.setPointSize(-1)
@@ -595,40 +594,8 @@ class Ui_MainWindow(object):
 "}\n"
 "")
         self.searchByPatientsInfo_btn.setObjectName("searchByPatientsInfo_btn")
-        self.addAppointment_btn = QtWidgets.QPushButton(self.appointments_tab)
-        self.addAppointment_btn.setGeometry(QtCore.QRect(980, 50, 191, 41))
-        font = QtGui.QFont()
-        font.setFamily("Vazirmatn,sans-serif")
-        font.setPointSize(-1)
-        font.setBold(True)
-        font.setUnderline(False)
-        font.setWeight(75)
-        font.setStrikeOut(False)
-        self.addAppointment_btn.setFont(font)
-        self.addAppointment_btn.setStyleSheet("QPushButton {\n"
-"    background-color: #0050a5; /* Bootstrap primary blue */\n"
-"    color: white; /* White text */\n"
-"    border: none;\n"
-"    border-radius: 5px; /* Rounded corners */\n"
-"    padding: 10px 20px; /* Padding */\n"
-"    font-size: 16px; /* Font size */\n"
-"    font-weight: bold; /* Bold text */\n"
-"    text-align: center;\n"
-"    text-decoration: none;\n"
-"    font-family: \'Vazirmatn\', sans-serif; /* Font family */\n"
-"}\n"
-"\n"
-"QPushButton:hover {\n"
-"    background-color: #0056b3; /* Darker blue on hover */\n"
-"}\n"
-"\n"
-"QPushButton:pressed {\n"
-"    background-color: #004085; /* Even darker blue on press */\n"
-"}\n"
-"")
-        self.addAppointment_btn.setObjectName("addAppointment_btn")
         self.label_13 = QtWidgets.QLabel(self.appointments_tab)
-        self.label_13.setGeometry(QtCore.QRect(10, 20, 941, 101))
+        self.label_13.setGeometry(QtCore.QRect(10, 20, 1161, 91))
         font = QtGui.QFont()
         font.setFamily("A Rezvan-fat,sans-serif")
         font.setPointSize(-1)
@@ -919,7 +886,7 @@ class Ui_MainWindow(object):
         self.services_tab = QtWidgets.QWidget()
         self.services_tab.setObjectName("services_tab")
         self.groupBox_4 = QtWidgets.QGroupBox(self.services_tab)
-        self.groupBox_4.setGeometry(QtCore.QRect(20, 110, 1161, 531))
+        self.groupBox_4.setGeometry(QtCore.QRect(10, 100, 1171, 541))
         font = QtGui.QFont()
         font.setFamily("Vazirmatn Black")
         font.setPointSize(11)
@@ -1062,7 +1029,7 @@ class Ui_MainWindow(object):
         self.serviceName_txtbox.setText("")
         self.serviceName_txtbox.setObjectName("serviceName_txtbox")
         self.addServices_btn = QtWidgets.QPushButton(self.services_tab)
-        self.addServices_btn.setGeometry(QtCore.QRect(980, 50, 191, 41))
+        self.addServices_btn.setGeometry(QtCore.QRect(980, 20, 191, 71))
         font = QtGui.QFont()
         font.setFamily("Vazirmatn,sans-serif")
         font.setPointSize(-1)
@@ -1094,7 +1061,7 @@ class Ui_MainWindow(object):
 "")
         self.addServices_btn.setObjectName("addServices_btn")
         self.label_8 = QtWidgets.QLabel(self.services_tab)
-        self.label_8.setGeometry(QtCore.QRect(20, 20, 941, 101))
+        self.label_8.setGeometry(QtCore.QRect(20, 20, 941, 71))
         font = QtGui.QFont()
         font.setFamily("A Rezvan-fat,sans-serif")
         font.setPointSize(-1)
@@ -1128,7 +1095,7 @@ class Ui_MainWindow(object):
         self.medicalRecords_tab = QtWidgets.QWidget()
         self.medicalRecords_tab.setObjectName("medicalRecords_tab")
         self.addDoctor_btn = QtWidgets.QPushButton(self.medicalRecords_tab)
-        self.addDoctor_btn.setGeometry(QtCore.QRect(980, 50, 191, 41))
+        self.addDoctor_btn.setGeometry(QtCore.QRect(960, 20, 221, 71))
         font = QtGui.QFont()
         font.setFamily("Vazirmatn,sans-serif")
         font.setPointSize(-1)
@@ -1160,7 +1127,7 @@ class Ui_MainWindow(object):
 "")
         self.addDoctor_btn.setObjectName("addDoctor_btn")
         self.groupBox_5 = QtWidgets.QGroupBox(self.medicalRecords_tab)
-        self.groupBox_5.setGeometry(QtCore.QRect(20, 110, 1161, 531))
+        self.groupBox_5.setGeometry(QtCore.QRect(10, 100, 1171, 541))
         font = QtGui.QFont()
         font.setFamily("Vazirmatn Black")
         font.setPointSize(11)
@@ -1302,7 +1269,7 @@ class Ui_MainWindow(object):
         self.doctorName_txtbox.setText("")
         self.doctorName_txtbox.setObjectName("doctorName_txtbox")
         self.label_4 = QtWidgets.QLabel(self.medicalRecords_tab)
-        self.label_4.setGeometry(QtCore.QRect(20, 20, 931, 101))
+        self.label_4.setGeometry(QtCore.QRect(20, 20, 931, 71))
         font = QtGui.QFont()
         font.setFamily("A Rezvan-fat,sans-serif")
         font.setPointSize(-1)
@@ -1365,7 +1332,6 @@ class Ui_MainWindow(object):
         self.label_7.setText(_translate("MainWindow", "کد ملی:"))
         self.label_5.setText(_translate("MainWindow", "نام بیمار: "))
         self.searchByPatientsInfo_btn.setText(_translate("MainWindow", "جستجو بر اساس اطلاعات بیمار"))
-        self.addAppointment_btn.setText(_translate("MainWindow", "اضافه کردن نوبت"))
         self.label_13.setText(_translate("MainWindow", "مدیریت نوبت‌ها"))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.appointments_tab), _translate("MainWindow", "نوبت‌ها"))
         self.oneDaySearch_btn.setText(_translate("MainWindow", "یک روز بعد"))
@@ -1387,4 +1353,6 @@ class Ui_MainWindow(object):
         self.label_12.setText(_translate("MainWindow", "نام پزشک:"))
         self.label_4.setText(_translate("MainWindow", "مدیریت پزشک‌ها"))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.medicalRecords_tab), _translate("MainWindow", "پزشک‌ها"))
+
+
 

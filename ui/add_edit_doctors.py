@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'add_doctors.ui'
+# Form implementation generated from reading ui file 'add_edit_doctors.ui'
 #
 # Created by: PyQt5 UI code generator 5.15.10
 #
@@ -11,14 +11,14 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 
 
-class Ui_addDoctors_form(object):
-    def setupUi(self, addDoctors_form):
-        addDoctors_form.setObjectName("addDoctors_form")
-        addDoctors_form.setEnabled(True)
-        addDoctors_form.resize(448, 236)
-        addDoctors_form.setMinimumSize(QtCore.QSize(448, 236))
-        addDoctors_form.setMaximumSize(QtCore.QSize(448, 236))
-        self.cancel_btn = QtWidgets.QPushButton(addDoctors_form)
+class Ui_addEditDoctor_form(object):
+    def setupUi(self, addEditDoctor_form):
+        addEditDoctor_form.setObjectName("addEditDoctor_form")
+        addEditDoctor_form.setEnabled(True)
+        addEditDoctor_form.resize(448, 236)
+        addEditDoctor_form.setMinimumSize(QtCore.QSize(448, 236))
+        addEditDoctor_form.setMaximumSize(QtCore.QSize(448, 236))
+        self.cancel_btn = QtWidgets.QPushButton(addEditDoctor_form)
         self.cancel_btn.setGeometry(QtCore.QRect(280, 190, 75, 31))
         font = QtGui.QFont()
         font.setFamily("Vazirmatn,sans-serif")
@@ -51,21 +51,21 @@ class Ui_addDoctors_form(object):
 "")
         self.cancel_btn.setCheckable(False)
         self.cancel_btn.setObjectName("cancel_btn")
-        self.label_6 = QtWidgets.QLabel(addDoctors_form)
+        self.label_6 = QtWidgets.QLabel(addEditDoctor_form)
         self.label_6.setGeometry(QtCore.QRect(357, 110, 71, 20))
         font = QtGui.QFont()
         font.setFamily("Vazirmatn Black")
         font.setPointSize(10)
         self.label_6.setFont(font)
         self.label_6.setObjectName("label_6")
-        self.label_5 = QtWidgets.QLabel(addDoctors_form)
+        self.label_5 = QtWidgets.QLabel(addEditDoctor_form)
         self.label_5.setGeometry(QtCore.QRect(320, 70, 61, 20))
         font = QtGui.QFont()
         font.setFamily("Vazirmatn Black")
         font.setPointSize(10)
         self.label_5.setFont(font)
         self.label_5.setObjectName("label_5")
-        self.firstName_txtbox = QtWidgets.QLineEdit(addDoctors_form)
+        self.firstName_txtbox = QtWidgets.QLineEdit(addEditDoctor_form)
         self.firstName_txtbox.setGeometry(QtCore.QRect(20, 60, 331, 31))
         font = QtGui.QFont()
         font.setFamily("Vazirmatn,sans-serif")
@@ -102,14 +102,14 @@ class Ui_addDoctors_form(object):
 "")
         self.firstName_txtbox.setLocale(QtCore.QLocale(QtCore.QLocale.Persian, QtCore.QLocale.Iran))
         self.firstName_txtbox.setObjectName("firstName_txtbox")
-        self.label_8 = QtWidgets.QLabel(addDoctors_form)
+        self.label_8 = QtWidgets.QLabel(addEditDoctor_form)
         self.label_8.setGeometry(QtCore.QRect(357, 150, 47, 13))
         font = QtGui.QFont()
         font.setFamily("Vazirmatn Black")
         font.setPointSize(10)
         self.label_8.setFont(font)
         self.label_8.setObjectName("label_8")
-        self.lastName_txtbox = QtWidgets.QLineEdit(addDoctors_form)
+        self.lastName_txtbox = QtWidgets.QLineEdit(addEditDoctor_form)
         self.lastName_txtbox.setGeometry(QtCore.QRect(20, 100, 331, 31))
         font = QtGui.QFont()
         font.setFamily("Vazirmatn,sans-serif")
@@ -146,7 +146,7 @@ class Ui_addDoctors_form(object):
 "")
         self.lastName_txtbox.setLocale(QtCore.QLocale(QtCore.QLocale.Persian, QtCore.QLocale.Iran))
         self.lastName_txtbox.setObjectName("lastName_txtbox")
-        self.save_btn = QtWidgets.QPushButton(addDoctors_form)
+        self.save_btn = QtWidgets.QPushButton(addEditDoctor_form)
         self.save_btn.setGeometry(QtCore.QRect(184, 190, 91, 31))
         font = QtGui.QFont()
         font.setFamily("Vazirmatn,sans-serif")
@@ -177,14 +177,14 @@ class Ui_addDoctors_form(object):
 "}\n"
 "")
         self.save_btn.setObjectName("save_btn")
-        self.label_4 = QtWidgets.QLabel(addDoctors_form)
+        self.label_4 = QtWidgets.QLabel(addEditDoctor_form)
         self.label_4.setGeometry(QtCore.QRect(110, 10, 151, 41))
         font = QtGui.QFont()
         font.setFamily("B Titr")
         font.setPointSize(14)
         self.label_4.setFont(font)
         self.label_4.setObjectName("label_4")
-        self.specialization_txtbox = QtWidgets.QLineEdit(addDoctors_form)
+        self.specialization_txtbox = QtWidgets.QLineEdit(addEditDoctor_form)
         self.specialization_txtbox.setGeometry(QtCore.QRect(20, 140, 331, 31))
         font = QtGui.QFont()
         font.setFamily("Vazirmatn,sans-serif")
@@ -222,18 +222,16 @@ class Ui_addDoctors_form(object):
         self.specialization_txtbox.setLocale(QtCore.QLocale(QtCore.QLocale.Persian, QtCore.QLocale.Iran))
         self.specialization_txtbox.setObjectName("specialization_txtbox")
 
-        self.retranslateUi(addDoctors_form)
-        QtCore.QMetaObject.connectSlotsByName(addDoctors_form)
+        self.retranslateUi(addEditDoctor_form)
+        QtCore.QMetaObject.connectSlotsByName(addEditDoctor_form)
 
-    def retranslateUi(self, addDoctors_form):
+    def retranslateUi(self, addEditDoctor_form):
         _translate = QtCore.QCoreApplication.translate
-        addDoctors_form.setWindowTitle(_translate("addDoctors_form", "اضافه کردن پزشک"))
-        self.cancel_btn.setText(_translate("addDoctors_form", "لغو"))
-        self.label_6.setText(_translate("addDoctors_form", "نام خانوادگی: "))
-        self.label_5.setText(_translate("addDoctors_form", "نام : "))
-        self.label_8.setText(_translate("addDoctors_form", "تخصص:"))
-        self.save_btn.setText(_translate("addDoctors_form", "ثبت"))
-        self.label_4.setText(_translate("addDoctors_form", "اضافه کردن پزشک"))
-
-
+        addEditDoctor_form.setWindowTitle(_translate("addEditDoctor_form", "اضافه کردن پزشک"))
+        self.cancel_btn.setText(_translate("addEditDoctor_form", "لغو"))
+        self.label_6.setText(_translate("addEditDoctor_form", "نام خانوادگی: "))
+        self.label_5.setText(_translate("addEditDoctor_form", "نام : "))
+        self.label_8.setText(_translate("addEditDoctor_form", "تخصص:"))
+        self.save_btn.setText(_translate("addEditDoctor_form", "ثبت"))
+        self.label_4.setText(_translate("addEditDoctor_form", "اضافه کردن پزشک"))
 

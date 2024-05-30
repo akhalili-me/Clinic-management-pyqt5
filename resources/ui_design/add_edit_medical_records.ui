@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>addMedicalRecords_form</class>
- <widget class="QWidget" name="addMedicalRecords_form">
+ <class>addEditMedicalRecords_form</class>
+ <widget class="QWidget" name="addEditMedicalRecords_form">
   <property name="geometry">
    <rect>
     <x>0</x>

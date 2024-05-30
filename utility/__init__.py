@@ -1,4 +1,5 @@
 from PyQt5.QtWidgets import QMessageBox
+import jdatetime
 
 class Messages:
     @staticmethod
@@ -37,3 +38,11 @@ class Numbers:
         english_numbers = '0123456789'
         translation_table = str.maketrans(english_numbers, persian_numbers)
         return input_string.translate(translation_table)
+
+class Dates:
+    @staticmethod
+    def convert_to_jalali_format(date_str):
+        persian_date_format = str(Numbers.english_to_persian_numbers(date_str))
+        return persian_date_format.replace("-","/")
+
+ 

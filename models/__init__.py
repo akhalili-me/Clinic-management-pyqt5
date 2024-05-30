@@ -3,3 +3,4 @@ from .Doctors import *
 from .Patients import *
 from .Services import *
 from .MedicalRecords import *
+from .Appointments import *
