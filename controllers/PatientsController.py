@@ -16,7 +16,7 @@ class PatientsTabController:
         # Connecting buttons
         self.ui.addPatient_btn.clicked.connect(self.open_add_patient)
         self.ui.patients_lst.itemDoubleClicked.connect(
-            self.open_patient_medical_records
+            self.open_patient_file
         )
         self.ui.refreshPatientsList_btn.clicked.connect(self.load_patients_list)
         self.ui.patientsIdentityCodeSearch_btn.clicked.connect(
@@ -56,12 +56,12 @@ class PatientsTabController:
         )
         self.add_patient_controller.show()
 
-    def open_patient_medical_records(self, item):
+    def open_patient_file(self, item):
         patient_id = item.data(1)
-        from controllers.MedicalRecordsController import MedicalRecordsInfoController
-
-        self.medical_record_info_controller = MedicalRecordsInfoController(patient_id)
-        self.medical_record_info_controller.show()
+        from controllers import PatientFileController
+        self.patient_file_controller = PatientFileController(patient_id)
+        self.patient_file_controller.refresh_patients_list.connect(self.load_patients_list)
+        self.patient_file_controller.show()
 
     def load_patients_list(self):
         self.ui.patients_lst.clear()
@@ -83,7 +83,7 @@ class PatientsTabController:
 
 class AddEditPatientController(QDialog):
     refresh_patients_list = pyqtSignal()
-    refresh_patient_md_records_data = pyqtSignal()
+    refresh_patient_file_data = pyqtSignal()
 
     def __init__(self, patient=None):
         super(AddEditPatientController, self).__init__()
@@ -192,7 +192,7 @@ class AddEditPatientController(QDialog):
             Patients.update_patient(db, patient)
             Messages.show_success_msg("بیمار با موفقیت ویرایش شد.")
             self.refresh_patients_list.emit()
-            self.refresh_patient_md_records_data.emit()
+            self.refresh_patient_file_data.emit()
             self.close()
 
 

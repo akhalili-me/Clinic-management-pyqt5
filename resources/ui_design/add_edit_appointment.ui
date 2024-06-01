@@ -525,7 +525,7 @@ QTextEdit:disabled {
     <string>مرد</string>
    </property>
    <property name="maxVisibleItems">
-    <number>3</number>
+    <number>10</number>
    </property>
    <property name="duplicatesEnabled">
     <bool>false</bool>

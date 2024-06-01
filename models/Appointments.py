@@ -2,52 +2,34 @@ from .db import DatabaseManager, DatabaseError
 
 
 class Appointments:
-
-    # @staticmethod
-    # def get_all(db: DatabaseManager):
-    #     query = "SELECT * FROM Patient ORDER BY id DESC"
-    #     try:
-    #         return db.fetchall(query)
-    #     except DatabaseError as e:
-    #         print(f"Database error: {e}")
-    #         return []
-
     @staticmethod
     def get_by_patient_id(db: DatabaseManager, patient_id):
-        query = f"SELECT * FROM Appointment Where patient={patient_id}"
+        query = f"SELECT * FROM Appointment Where patient={patient_id} ORDER BY greg_datetime ASC"
         try:
              return db.fetchall(query)
         except DatabaseError as e:
             print(f"Database error: {e}")
         return []
 
-    # @staticmethod
-    # def get_by_identity_code(db: DatabaseManager, identityCode):
-    #     query = f"SELECT * FROM Patient Where identityCode='{identityCode}'"
-    #     try:
-    #         return db.fetchone(query)
-    #     except DatabaseError as e:
-    #         print(f"Database error: {e}")
-    #         return []
-
-    # @staticmethod
-    # def get_by_last_name(db: DatabaseManager, lastName):
-    #     query = f"SELECT * FROM Patient Where lastName='{lastName}'"
-    #     try:
-    #         return db.fetchall(query)
-    #     except DatabaseError as e:
-    #         print(f"Database error: {e}")
-    #         return []
+    @staticmethod
+    def get_by_date(db: DatabaseManager, date):
+        query = f"SELECT * FROM Appointment Where jalali_date='{date}' ORDER BY greg_datetime ASC"
+        try:
+            return db.fetchall(query)
+        except DatabaseError as e:
+            print(f"Database error: {e}")
+            return []
 
     @staticmethod
     def add_appointment(db: DatabaseManager, appointment):
-        query = """INSERT INTO Appointment(status, date, time, doctor, patient, service, description)
-                VALUES (?,?,?,?,?,?,?)
+        query = """INSERT INTO Appointment(status, jalali_date,greg_datetime, time, doctor, patient, service, description)
+                VALUES (?,?,?,?,?,?,?,?)
                 """
         
         values = (
             appointment["status"],
-            appointment["date"],
+            appointment["jalali_date"],
+            appointment["greg_datetime"],
             appointment["time"],
             appointment["doctor"],
             appointment["patient"],

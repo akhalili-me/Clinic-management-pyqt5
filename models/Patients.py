@@ -91,3 +91,12 @@ class Patients:
         except DatabaseError as e:
             print(f"Database error: {e}")
             return []
+        
+    @staticmethod
+    def delete_patient(db: DatabaseManager, patient_id):
+        query = f"DELETE FROM Patient WHERE id = {patient_id};"
+        try:
+            return db.execute_query(query)
+        except DatabaseError as e:
+            print(f"Database error: {e}")
+            return []

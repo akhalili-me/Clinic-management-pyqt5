@@ -1,5 +1,7 @@
 from PyQt5.QtWidgets import QMessageBox
+from models import DatabaseManager,Doctors,Services
 import jdatetime
+from datetime import timedelta
 
 class Messages:
     @staticmethod
@@ -17,6 +19,20 @@ class Messages:
         msg_box.setText(message)
         msg_box.setWindowTitle("موفقیت")
         msg_box.exec_()
+
+    @staticmethod
+    def show_confirm_delete_msg():
+        msg_box = QMessageBox()
+        msg_box.setWindowTitle('تایید حذف')
+        msg_box.setText('آیا از حذف مطمئن هستید؟')
+        msg_box.setIcon(QMessageBox.Question)
+        yes_button = msg_box.addButton('آره', QMessageBox.YesRole)
+        no_button = msg_box.addButton('خیر', QMessageBox.NoRole)
+        msg_box.setDefaultButton(no_button)
+        msg_box.exec_()  
+        return msg_box, yes_button  
+  
+
 
 class Numbers:
     @staticmethod
@@ -41,8 +57,56 @@ class Numbers:
 
 class Dates:
     @staticmethod
-    def convert_to_jalali_format(date_str):
-        persian_date_format = str(Numbers.english_to_persian_numbers(date_str))
-        return persian_date_format.replace("-","/")
+    def convert_to_jalali_format(date_str: str) -> str:
+        year, month, day = map(int, date_str.split('-'))
+        date_obj = jdatetime.date(year, month, day)
 
- 
+        weekday_number = date_obj.weekday()
+        weekday_persian = Dates.get_persian_weekday(weekday_number)
+
+        persian_date = date_obj.strftime("%Y/%m/%d")
+        persian_date_formatted = Numbers.english_to_persian_numbers(persian_date)
+
+        return f"{weekday_persian} {persian_date_formatted}"
+    
+    @staticmethod
+    def get_future_date(days_ahead) -> str:
+        tomorrow = jdatetime.date.today() + timedelta(days=days_ahead)
+        return tomorrow.strftime("%Y-%m-%d")
+    
+    @staticmethod
+    def get_persian_weekday(weekday_number: int) -> str:
+        weekday_persian_mapping = {
+            0: 'شنبه',
+            1: 'یک‌شنبه',
+            2: 'دوشنبه',
+            3: 'سه‌شنبه',
+            4: 'چهارشنبه',
+            5: 'پنج‌شنبه',
+            6: 'جمعه'
+        }
+        return weekday_persian_mapping[weekday_number]
+
+
+    
+class LoadingValues:
+    @staticmethod
+    def load_doctors_services_combo_boxes(ui):
+        with DatabaseManager() as db:
+            ui.doctor_cmbox.clear()
+            doctors =  Doctors.get_all(db)
+            for doctor in doctors:
+                full_name = f"{doctor["firstName"]} {doctor["lastName"]}"
+                ui.doctor_cmbox.addItem(f"دکتر {full_name}", doctor["id"])
+
+            ui.service_cmbox.clear()
+            services = Services.get_all(db)
+            for service in services:
+                ui.service_cmbox.addItem(service["name"],service["id"])
+        
+    @staticmethod
+    def load_date_spin_box_values(ui):
+        current_date = jdatetime.date.today()
+        ui.year_spnbox.setValue(current_date.year)
+        ui.month_spnbox.setValue(current_date.month)
+        ui.day_spnbox.setValue(current_date.day)

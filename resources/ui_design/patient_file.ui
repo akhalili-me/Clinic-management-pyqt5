@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>medicalRecordsInfo_form</class>
- <widget class="QWidget" name="medicalRecordsInfo_form">
+ <class>patientFile_form</class>
+ <widget class="QWidget" name="patientFile_form">
   <property name="geometry">
    <rect>
     <x>0</x>

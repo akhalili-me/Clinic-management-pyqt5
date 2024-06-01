@@ -337,22 +337,10 @@ class Ui_MainWindow(object):
 "")
         self.addPatient_btn.setObjectName("addPatient_btn")
         self.tabWidget.addTab(self.main_tab, "")
-        self.appointments_tab = QtWidgets.QWidget()
-        self.appointments_tab.setObjectName("appointments_tab")
-        self.groupBox_3 = QtWidgets.QGroupBox(self.appointments_tab)
-        self.groupBox_3.setGeometry(QtCore.QRect(10, 120, 1161, 521))
-        font = QtGui.QFont()
-        font.setFamily("Vazirmatn Black")
-        font.setPointSize(11)
-        font.setBold(False)
-        font.setWeight(50)
-        font.setKerning(True)
-        self.groupBox_3.setFont(font)
-        self.groupBox_3.setLayoutDirection(QtCore.Qt.LeftToRight)
-        self.groupBox_3.setAlignment(QtCore.Qt.AlignRight|QtCore.Qt.AlignTrailing|QtCore.Qt.AlignVCenter)
-        self.groupBox_3.setObjectName("groupBox_3")
-        self.appointments_lst = QtWidgets.QListWidget(self.groupBox_3)
-        self.appointments_lst.setGeometry(QtCore.QRect(10, 30, 671, 481))
+        self.notifications_tab = QtWidgets.QWidget()
+        self.notifications_tab.setObjectName("notifications_tab")
+        self.appointments_lst = QtWidgets.QListWidget(self.notifications_tab)
+        self.appointments_lst.setGeometry(QtCore.QRect(20, 90, 1151, 551))
         font = QtGui.QFont()
         font.setFamily("Vazirmatn,sans-serif")
         font.setPointSize(-1)
@@ -419,440 +407,8 @@ class Ui_MainWindow(object):
 "}\n"
 "")
         self.appointments_lst.setObjectName("appointments_lst")
-        self.groupBox_2 = QtWidgets.QGroupBox(self.groupBox_3)
-        self.groupBox_2.setGeometry(QtCore.QRect(700, 80, 441, 161))
-        font = QtGui.QFont()
-        font.setFamily("Vazirmatn Black")
-        font.setPointSize(10)
-        self.groupBox_2.setFont(font)
-        self.groupBox_2.setLayoutDirection(QtCore.Qt.RightToLeft)
-        self.groupBox_2.setAlignment(QtCore.Qt.AlignLeading|QtCore.Qt.AlignLeft|QtCore.Qt.AlignVCenter)
-        self.groupBox_2.setObjectName("groupBox_2")
-        self.day_spnbox = QtWidgets.QSpinBox(self.groupBox_2)
-        self.day_spnbox.setGeometry(QtCore.QRect(310, 40, 51, 31))
-        self.day_spnbox.setMinimum(1)
-        self.day_spnbox.setMaximum(31)
-        self.day_spnbox.setObjectName("day_spnbox")
-        self.label_38 = QtWidgets.QLabel(self.groupBox_2)
-        self.label_38.setGeometry(QtCore.QRect(350, 40, 71, 41))
-        font = QtGui.QFont()
-        font.setFamily("Vazirmatn ExtraBold")
-        font.setPointSize(12)
-        self.label_38.setFont(font)
-        self.label_38.setAlignment(QtCore.Qt.AlignHCenter|QtCore.Qt.AlignTop)
-        self.label_38.setObjectName("label_38")
-        self.month_spnbox = QtWidgets.QSpinBox(self.groupBox_2)
-        self.month_spnbox.setGeometry(QtCore.QRect(200, 40, 51, 31))
-        self.month_spnbox.setMinimum(1)
-        self.month_spnbox.setMaximum(12)
-        self.month_spnbox.setObjectName("month_spnbox")
-        self.label_39 = QtWidgets.QLabel(self.groupBox_2)
-        self.label_39.setGeometry(QtCore.QRect(239, 40, 71, 41))
-        font = QtGui.QFont()
-        font.setFamily("Vazirmatn ExtraBold")
-        font.setPointSize(12)
-        self.label_39.setFont(font)
-        self.label_39.setAlignment(QtCore.Qt.AlignHCenter|QtCore.Qt.AlignTop)
-        self.label_39.setObjectName("label_39")
-        self.year_spnbox = QtWidgets.QSpinBox(self.groupBox_2)
-        self.year_spnbox.setGeometry(QtCore.QRect(50, 40, 91, 31))
-        self.year_spnbox.setMinimum(1400)
-        self.year_spnbox.setMaximum(1500)
-        self.year_spnbox.setObjectName("year_spnbox")
-        self.label_40 = QtWidgets.QLabel(self.groupBox_2)
-        self.label_40.setGeometry(QtCore.QRect(130, 40, 71, 41))
-        font = QtGui.QFont()
-        font.setFamily("Vazirmatn ExtraBold")
-        font.setPointSize(12)
-        self.label_40.setFont(font)
-        self.label_40.setAlignment(QtCore.Qt.AlignHCenter|QtCore.Qt.AlignTop)
-        self.label_40.setObjectName("label_40")
-        self.searchByDate_btn = QtWidgets.QPushButton(self.groupBox_2)
-        self.searchByDate_btn.setGeometry(QtCore.QRect(80, 110, 291, 41))
-        self.searchByDate_btn.setStyleSheet("QPushButton {\n"
-"    background-color: #0050a5; /* Bootstrap primary blue */\n"
-"    color: white; /* White text */\n"
-"    border: none;\n"
-"    border-radius: 5px; /* Rounded corners */\n"
-"    font-size: 15px; /* Font size */\n"
-"    font-weight: bold; /* Bold text */\n"
-"    text-align: center;\n"
-"    text-decoration: none;\n"
-"    font-family: \'Vazirmatn\', sans-serif; /* Font family */\n"
-"}\n"
-"\n"
-"QPushButton:hover {\n"
-"    background-color: #0056b3; /* Darker blue on hover */\n"
-"}\n"
-"\n"
-"QPushButton:pressed {\n"
-"    background-color: #004085; /* Even darker blue on press */\n"
-"}\n"
-"")
-        self.searchByDate_btn.setObjectName("searchByDate_btn")
-        self.groupBox_6 = QtWidgets.QGroupBox(self.groupBox_3)
-        self.groupBox_6.setGeometry(QtCore.QRect(700, 280, 441, 181))
-        font = QtGui.QFont()
-        font.setFamily("Vazirmatn Black")
-        font.setPointSize(10)
-        self.groupBox_6.setFont(font)
-        self.groupBox_6.setLayoutDirection(QtCore.Qt.RightToLeft)
-        self.groupBox_6.setAlignment(QtCore.Qt.AlignLeading|QtCore.Qt.AlignLeft|QtCore.Qt.AlignVCenter)
-        self.groupBox_6.setObjectName("groupBox_6")
-        self.appointmentSearchPatientIdentityCode_txtbox = QtWidgets.QLineEdit(self.groupBox_6)
-        self.appointmentSearchPatientIdentityCode_txtbox.setGeometry(QtCore.QRect(90, 70, 261, 31))
-        self.appointmentSearchPatientIdentityCode_txtbox.setLayoutDirection(QtCore.Qt.RightToLeft)
-        self.appointmentSearchPatientIdentityCode_txtbox.setStyleSheet("/* Basic LineEdit styling */\n"
-"QLineEdit {\n"
-"    background-color: #ffffff; /* White background */\n"
-"    border: 1px solid #dee2e6; /* Light grey border */\n"
-"    border-radius: 5px; /* Rounded corners */\n"
-"    font-family: \'Vazirmatn\', sans-serif; /* Font family */\n"
-"    font-size: 16px; /* Font size */\n"
-"    color: #343a40; /* Dark grey text color */\n"
-"    outline: none; /* Remove default outline */\n"
-"}\n"
-"\n"
-"/* Hover effect */\n"
-"QLineEdit:hover {\n"
-"    border: 1px solid #007bff; /* Blue border on hover */\n"
-"}\n"
-"\n"
-"/* Focus effect */\n"
-"QLineEdit:focus {\n"
-"    border: 1px solid #007bff; /* Blue border on focus */\n"
-"}\n"
-"\n"
-"/* Disabled state */\n"
-"QLineEdit:disabled {\n"
-"    background-color: #e9ecef; /* Light grey background when disabled */\n"
-"    color: #6c757d; /* Grey text color when disabled */\n"
-"}\n"
-"\n"
-"")
-        self.appointmentSearchPatientIdentityCode_txtbox.setLocale(QtCore.QLocale(QtCore.QLocale.Persian, QtCore.QLocale.Iran))
-        self.appointmentSearchPatientIdentityCode_txtbox.setObjectName("appointmentSearchPatientIdentityCode_txtbox")
-        self.label_7 = QtWidgets.QLabel(self.groupBox_6)
-        self.label_7.setGeometry(QtCore.QRect(330, 80, 71, 20))
-        self.label_7.setObjectName("label_7")
-        self.label_5 = QtWidgets.QLabel(self.groupBox_6)
-        self.label_5.setGeometry(QtCore.QRect(350, 40, 61, 20))
-        self.label_5.setObjectName("label_5")
-        self.appointmentSearchPatientName_txtbox = QtWidgets.QLineEdit(self.groupBox_6)
-        self.appointmentSearchPatientName_txtbox.setGeometry(QtCore.QRect(90, 30, 261, 31))
-        self.appointmentSearchPatientName_txtbox.setLayoutDirection(QtCore.Qt.RightToLeft)
-        self.appointmentSearchPatientName_txtbox.setStyleSheet("/* Basic LineEdit styling */\n"
-"QLineEdit {\n"
-"    background-color: #ffffff; /* White background */\n"
-"    border: 1px solid #dee2e6; /* Light grey border */\n"
-"    border-radius: 5px; /* Rounded corners */\n"
-"    font-family: \'Vazirmatn\', sans-serif; /* Font family */\n"
-"    font-size: 16px; /* Font size */\n"
-"    color: #343a40; /* Dark grey text color */\n"
-"    outline: none; /* Remove default outline */\n"
-"}\n"
-"\n"
-"/* Hover effect */\n"
-"QLineEdit:hover {\n"
-"    border: 1px solid #007bff; /* Blue border on hover */\n"
-"}\n"
-"\n"
-"/* Focus effect */\n"
-"QLineEdit:focus {\n"
-"    border: 1px solid #007bff; /* Blue border on focus */\n"
-"}\n"
-"\n"
-"/* Disabled state */\n"
-"QLineEdit:disabled {\n"
-"    background-color: #e9ecef; /* Light grey background when disabled */\n"
-"    color: #6c757d; /* Grey text color when disabled */\n"
-"}\n"
-"\n"
-"")
-        self.appointmentSearchPatientName_txtbox.setLocale(QtCore.QLocale(QtCore.QLocale.Persian, QtCore.QLocale.Iran))
-        self.appointmentSearchPatientName_txtbox.setObjectName("appointmentSearchPatientName_txtbox")
-        self.searchByPatientsInfo_btn = QtWidgets.QPushButton(self.groupBox_6)
-        self.searchByPatientsInfo_btn.setGeometry(QtCore.QRect(70, 130, 311, 41))
-        self.searchByPatientsInfo_btn.setStyleSheet("QPushButton {\n"
-"    background-color: #0050a5; /* Bootstrap primary blue */\n"
-"    color: white; /* White text */\n"
-"    border: none;\n"
-"    border-radius: 5px; /* Rounded corners */\n"
-"    font-size: 15px; /* Font size */\n"
-"    font-weight: bold; /* Bold text */\n"
-"    text-align: center;\n"
-"    text-decoration: none;\n"
-"    font-family: \'Vazirmatn\', sans-serif; /* Font family */\n"
-"}\n"
-"\n"
-"QPushButton:hover {\n"
-"    background-color: #0056b3; /* Darker blue on hover */\n"
-"}\n"
-"\n"
-"QPushButton:pressed {\n"
-"    background-color: #004085; /* Even darker blue on press */\n"
-"}\n"
-"")
-        self.searchByPatientsInfo_btn.setObjectName("searchByPatientsInfo_btn")
-        self.label_13 = QtWidgets.QLabel(self.appointments_tab)
-        self.label_13.setGeometry(QtCore.QRect(10, 20, 1161, 91))
-        font = QtGui.QFont()
-        font.setFamily("A Rezvan-fat,sans-serif")
-        font.setPointSize(-1)
-        font.setBold(True)
-        font.setWeight(75)
-        self.label_13.setFont(font)
-        self.label_13.setLayoutDirection(QtCore.Qt.RightToLeft)
-        self.label_13.setAutoFillBackground(False)
-        self.label_13.setStyleSheet("/* Basic styling for the company name label */\n"
-"QLabel {\n"
-"    color: #007bff; /* Bootstrap primary blue text color */\n"
-"    font-family: \'A Rezvan-fat\', sans-serif; /* Font family */\n"
-"    font-size: 30px; /* Larger font size for prominence */\n"
-"    font-weight: bold; /* Bold text */\n"
-"    padding: 10px; /* Padding around the text */\n"
-"    border: 2px solid #007bff; /* Optional: Border with the same blue color */\n"
-"    border-radius: 10px; /* Rounded corners */\n"
-"    background-color: #f8f9fa; /* Light grey background to make it stand out */\n"
-"    text-align: center; /* Center-align the text */\n"
-"}\n"
-"\n"
-"/* Hover effect */\n"
-"QLabe:hover {\n"
-"    color: #0056b3; /* Darker blue on hover */\n"
-"    border-color: #0056b3; /* Match border color on hover */\n"
-"}\n"
-"")
-        self.label_13.setAlignment(QtCore.Qt.AlignCenter)
-        self.label_13.setObjectName("label_13")
-        self.tabWidget.addTab(self.appointments_tab, "")
-        self.notifications_tab = QtWidgets.QWidget()
-        self.notifications_tab.setObjectName("notifications_tab")
-        self.remainderAppointments_lst = QtWidgets.QListWidget(self.notifications_tab)
-        self.remainderAppointments_lst.setGeometry(QtCore.QRect(140, 90, 571, 551))
-        font = QtGui.QFont()
-        font.setFamily("Vazirmatn,sans-serif")
-        font.setPointSize(-1)
-        self.remainderAppointments_lst.setFont(font)
-        self.remainderAppointments_lst.setLayoutDirection(QtCore.Qt.RightToLeft)
-        self.remainderAppointments_lst.setStyleSheet("/* Basic ListWidget styling */\n"
-"QListWidget {\n"
-"    background-color: #f8f9fa; /* Light grey background */\n"
-"    border: 1px solid #dee2e6; /* Border color */\n"
-"    border-radius: 5px; /* Rounded corners */\n"
-"    padding: 5px; /* Padding inside the list */\n"
-"    font-family: \'Vazirmatn\', sans-serif; /* Font family */\n"
-"    font-size: 17px; /* Font size */\n"
-"    outline: 0; /* Remove focus indicator */\n"
-"}\n"
-"\n"
-"/* Item styling */\n"
-"QListWidget::item {\n"
-"    padding: 10px 15px; /* Padding for each item */\n"
-"    margin: 5px 0; /* Margin between items */\n"
-"    background-color: #ffffff; /* White background for items */\n"
-"    border-radius: 5px; /* Rounded corners for items */\n"
-"    color: #343a40; /* Dark grey text color */\n"
-"    outline: 0; /* Remove focus indicator */\n"
-"}\n"
-"\n"
-"/* Hover effect for items */\n"
-"QListWidget::item:hover {\n"
-"    background-color: #e9ecef; /* Light grey background on hover */\n"
-"}\n"
-"\n"
-"/* Selected item styling */\n"
-"QListWidget::item:selected {\n"
-"    background-color: #0050a5;\n"
-"    color: white;\n"
-"}\n"
-"\n"
-"/* Scroll bar styling */\n"
-"QScrollBar:vertical {\n"
-"    background: #f8f9fa; /* Light grey background for the scroll bar */\n"
-"    width: 12px; /* Width of the vertical scroll bar */\n"
-"    margin: 22px 0 22px 0; /* Margin to fit the top and bottom arrows */\n"
-"    border: 1px solid #dee2e6; /* Border color */\n"
-"    border-radius: 5px; /* Rounded corners */\n"
-"}\n"
-"\n"
-"QScrollBar::handle:vertical {\n"
-"    background: #ced4da; /* Medium grey handle */\n"
-"    min-height: 20px; /* Minimum height of the handle */\n"
-"    border-radius: 5px; /* Rounded corners */\n"
-"}\n"
-"\n"
-"QScrollBar::add-line:vertical,\n"
-"QScrollBar::sub-line:vertical {\n"
-"    background: #ced4da; /* Medium grey for arrows */\n"
-"    height: 20px;\n"
-"    subcontrol-origin: margin;\n"
-"    subcontrol-position: top;\n"
-"    border-radius: 5px; /* Rounded corners */\n"
-"}\n"
-"\n"
-"QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical {\n"
-"    background: none;\n"
-"}\n"
-"")
-        self.remainderAppointments_lst.setObjectName("remainderAppointments_lst")
-        self.oneDaySearch_btn = QtWidgets.QPushButton(self.notifications_tab)
-        self.oneDaySearch_btn.setGeometry(QtCore.QRect(770, 160, 391, 41))
-        font = QtGui.QFont()
-        font.setFamily("Vazirmatn,sans-serif")
-        font.setPointSize(-1)
-        font.setBold(True)
-        font.setUnderline(False)
-        font.setWeight(75)
-        font.setStrikeOut(False)
-        self.oneDaySearch_btn.setFont(font)
-        self.oneDaySearch_btn.setStyleSheet("QPushButton {\n"
-"    background-color: #0050a5; /* Bootstrap primary blue */\n"
-"    color: white; /* White text */\n"
-"    border: none;\n"
-"    border-radius: 5px; /* Rounded corners */\n"
-"    font-size: 15px; /* Font size */\n"
-"    font-weight: bold; /* Bold text */\n"
-"    text-align: center;\n"
-"    text-decoration: none;\n"
-"    font-family: \'Vazirmatn\', sans-serif; /* Font family */\n"
-"}\n"
-"\n"
-"QPushButton:hover {\n"
-"    background-color: #0056b3; /* Darker blue on hover */\n"
-"}\n"
-"\n"
-"QPushButton:pressed {\n"
-"    background-color: #004085; /* Even darker blue on press */\n"
-"}\n"
-"")
-        self.oneDaySearch_btn.setObjectName("oneDaySearch_btn")
-        self.twoDaySearch_btn = QtWidgets.QPushButton(self.notifications_tab)
-        self.twoDaySearch_btn.setGeometry(QtCore.QRect(770, 210, 391, 41))
-        font = QtGui.QFont()
-        font.setFamily("Vazirmatn,sans-serif")
-        font.setPointSize(-1)
-        font.setBold(True)
-        font.setUnderline(False)
-        font.setWeight(75)
-        font.setStrikeOut(False)
-        self.twoDaySearch_btn.setFont(font)
-        self.twoDaySearch_btn.setStyleSheet("QPushButton {\n"
-"    background-color: #0050a5; /* Bootstrap primary blue */\n"
-"    color: white; /* White text */\n"
-"    border: none;\n"
-"    border-radius: 5px; /* Rounded corners */\n"
-"    font-size: 15px; /* Font size */\n"
-"    font-weight: bold; /* Bold text */\n"
-"    text-align: center;\n"
-"    text-decoration: none;\n"
-"    font-family: \'Vazirmatn\', sans-serif; /* Font family */\n"
-"}\n"
-"\n"
-"QPushButton:hover {\n"
-"    background-color: #0056b3; /* Darker blue on hover */\n"
-"}\n"
-"\n"
-"QPushButton:pressed {\n"
-"    background-color: #004085; /* Even darker blue on press */\n"
-"}\n"
-"")
-        self.twoDaySearch_btn.setObjectName("twoDaySearch_btn")
-        self.fiveDaySearch_btn = QtWidgets.QPushButton(self.notifications_tab)
-        self.fiveDaySearch_btn.setGeometry(QtCore.QRect(770, 360, 391, 41))
-        font = QtGui.QFont()
-        font.setFamily("Vazirmatn,sans-serif")
-        font.setPointSize(-1)
-        font.setBold(True)
-        font.setUnderline(False)
-        font.setWeight(75)
-        font.setStrikeOut(False)
-        self.fiveDaySearch_btn.setFont(font)
-        self.fiveDaySearch_btn.setStyleSheet("QPushButton {\n"
-"    background-color: #0050a5; /* Bootstrap primary blue */\n"
-"    color: white; /* White text */\n"
-"    border: none;\n"
-"    border-radius: 5px; /* Rounded corners */\n"
-"    font-size: 15px; /* Font size */\n"
-"    font-weight: bold; /* Bold text */\n"
-"    text-align: center;\n"
-"    text-decoration: none;\n"
-"    font-family: \'Vazirmatn\', sans-serif; /* Font family */\n"
-"}\n"
-"\n"
-"QPushButton:hover {\n"
-"    background-color: #0056b3; /* Darker blue on hover */\n"
-"}\n"
-"\n"
-"QPushButton:pressed {\n"
-"    background-color: #004085; /* Even darker blue on press */\n"
-"}\n"
-"")
-        self.fiveDaySearch_btn.setObjectName("fiveDaySearch_btn")
-        self.threeDaySearch_btn = QtWidgets.QPushButton(self.notifications_tab)
-        self.threeDaySearch_btn.setGeometry(QtCore.QRect(770, 260, 391, 41))
-        font = QtGui.QFont()
-        font.setFamily("Vazirmatn,sans-serif")
-        font.setPointSize(-1)
-        font.setBold(True)
-        font.setUnderline(False)
-        font.setWeight(75)
-        font.setStrikeOut(False)
-        self.threeDaySearch_btn.setFont(font)
-        self.threeDaySearch_btn.setStyleSheet("QPushButton {\n"
-"    background-color: #0050a5; /* Bootstrap primary blue */\n"
-"    color: white; /* White text */\n"
-"    border: none;\n"
-"    border-radius: 5px; /* Rounded corners */\n"
-"    font-size: 15px; /* Font size */\n"
-"    font-weight: bold; /* Bold text */\n"
-"    text-align: center;\n"
-"    text-decoration: none;\n"
-"    font-family: \'Vazirmatn\', sans-serif; /* Font family */\n"
-"}\n"
-"\n"
-"QPushButton:hover {\n"
-"    background-color: #0056b3; /* Darker blue on hover */\n"
-"}\n"
-"\n"
-"QPushButton:pressed {\n"
-"    background-color: #004085; /* Even darker blue on press */\n"
-"}\n"
-"")
-        self.threeDaySearch_btn.setObjectName("threeDaySearch_btn")
-        self.fourDaySearch_btn = QtWidgets.QPushButton(self.notifications_tab)
-        self.fourDaySearch_btn.setGeometry(QtCore.QRect(770, 310, 391, 41))
-        font = QtGui.QFont()
-        font.setFamily("Vazirmatn,sans-serif")
-        font.setPointSize(-1)
-        font.setBold(True)
-        font.setUnderline(False)
-        font.setWeight(75)
-        font.setStrikeOut(False)
-        self.fourDaySearch_btn.setFont(font)
-        self.fourDaySearch_btn.setStyleSheet("QPushButton {\n"
-"    background-color: #0050a5; /* Bootstrap primary blue */\n"
-"    color: white; /* White text */\n"
-"    border: none;\n"
-"    border-radius: 5px; /* Rounded corners */\n"
-"    font-size: 15px; /* Font size */\n"
-"    font-weight: bold; /* Bold text */\n"
-"    text-align: center;\n"
-"    text-decoration: none;\n"
-"    font-family: \'Vazirmatn\', sans-serif; /* Font family */\n"
-"}\n"
-"\n"
-"QPushButton:hover {\n"
-"    background-color: #0056b3; /* Darker blue on hover */\n"
-"}\n"
-"\n"
-"QPushButton:pressed {\n"
-"    background-color: #004085; /* Even darker blue on press */\n"
-"}\n"
-"")
-        self.fourDaySearch_btn.setObjectName("fourDaySearch_btn")
         self.label_9 = QtWidgets.QLabel(self.notifications_tab)
-        self.label_9.setGeometry(QtCore.QRect(140, 0, 571, 81))
+        self.label_9.setGeometry(QtCore.QRect(20, 10, 211, 71))
         font = QtGui.QFont()
         font.setFamily("A Rezvan-fat,sans-serif")
         font.setPointSize(-1)
@@ -882,6 +438,243 @@ class Ui_MainWindow(object):
 "")
         self.label_9.setAlignment(QtCore.Qt.AlignCenter)
         self.label_9.setObjectName("label_9")
+        self.groupBox_7 = QtWidgets.QGroupBox(self.notifications_tab)
+        self.groupBox_7.setGeometry(QtCore.QRect(680, 0, 491, 81))
+        font = QtGui.QFont()
+        font.setFamily("Vazirmatn Black")
+        font.setPointSize(10)
+        font.setBold(True)
+        font.setWeight(75)
+        self.groupBox_7.setFont(font)
+        self.groupBox_7.setLayoutDirection(QtCore.Qt.LeftToRight)
+        self.groupBox_7.setAlignment(QtCore.Qt.AlignRight|QtCore.Qt.AlignTrailing|QtCore.Qt.AlignVCenter)
+        self.groupBox_7.setObjectName("groupBox_7")
+        self.todayAppointmentSearch_btn = QtWidgets.QPushButton(self.groupBox_7)
+        self.todayAppointmentSearch_btn.setGeometry(QtCore.QRect(400, 30, 81, 41))
+        font = QtGui.QFont()
+        font.setFamily("Vazirmatn,sans-serif")
+        font.setPointSize(-1)
+        font.setBold(True)
+        font.setUnderline(False)
+        font.setWeight(75)
+        font.setStrikeOut(False)
+        self.todayAppointmentSearch_btn.setFont(font)
+        self.todayAppointmentSearch_btn.setStyleSheet("QPushButton {\n"
+"    background-color: #0050a5; /* Bootstrap primary blue */\n"
+"    color: white; /* White text */\n"
+"    border: none;\n"
+"    border-radius: 5px; /* Rounded corners */\n"
+"    font-size: 15px; /* Font size */\n"
+"    font-weight: bold; /* Bold text */\n"
+"    text-align: center;\n"
+"    text-decoration: none;\n"
+"    font-family: \'Vazirmatn\', sans-serif; /* Font family */\n"
+"}\n"
+"\n"
+"QPushButton:hover {\n"
+"    background-color: #0056b3; /* Darker blue on hover */\n"
+"}\n"
+"\n"
+"QPushButton:pressed {\n"
+"    background-color: #004085; /* Even darker blue on press */\n"
+"}\n"
+"")
+        self.todayAppointmentSearch_btn.setObjectName("todayAppointmentSearch_btn")
+        self.fourDayAppointmentSearch_btn = QtWidgets.QPushButton(self.groupBox_7)
+        self.fourDayAppointmentSearch_btn.setGeometry(QtCore.QRect(10, 30, 91, 41))
+        font = QtGui.QFont()
+        font.setFamily("Vazirmatn,sans-serif")
+        font.setPointSize(-1)
+        font.setBold(True)
+        font.setUnderline(False)
+        font.setWeight(75)
+        font.setStrikeOut(False)
+        self.fourDayAppointmentSearch_btn.setFont(font)
+        self.fourDayAppointmentSearch_btn.setStyleSheet("QPushButton {\n"
+"    background-color: #0050a5; /* Bootstrap primary blue */\n"
+"    color: white; /* White text */\n"
+"    border: none;\n"
+"    border-radius: 5px; /* Rounded corners */\n"
+"    font-size: 15px; /* Font size */\n"
+"    font-weight: bold; /* Bold text */\n"
+"    text-align: center;\n"
+"    text-decoration: none;\n"
+"    font-family: \'Vazirmatn\', sans-serif; /* Font family */\n"
+"}\n"
+"\n"
+"QPushButton:hover {\n"
+"    background-color: #0056b3; /* Darker blue on hover */\n"
+"}\n"
+"\n"
+"QPushButton:pressed {\n"
+"    background-color: #004085; /* Even darker blue on press */\n"
+"}\n"
+"")
+        self.fourDayAppointmentSearch_btn.setObjectName("fourDayAppointmentSearch_btn")
+        self.twoDayAppointmentSearch_btn = QtWidgets.QPushButton(self.groupBox_7)
+        self.twoDayAppointmentSearch_btn.setGeometry(QtCore.QRect(210, 30, 91, 41))
+        font = QtGui.QFont()
+        font.setFamily("Vazirmatn,sans-serif")
+        font.setPointSize(-1)
+        font.setBold(True)
+        font.setUnderline(False)
+        font.setWeight(75)
+        font.setStrikeOut(False)
+        self.twoDayAppointmentSearch_btn.setFont(font)
+        self.twoDayAppointmentSearch_btn.setStyleSheet("QPushButton {\n"
+"    background-color: #0050a5; /* Bootstrap primary blue */\n"
+"    color: white; /* White text */\n"
+"    border: none;\n"
+"    border-radius: 5px; /* Rounded corners */\n"
+"    font-size: 15px; /* Font size */\n"
+"    font-weight: bold; /* Bold text */\n"
+"    text-align: center;\n"
+"    text-decoration: none;\n"
+"    font-family: \'Vazirmatn\', sans-serif; /* Font family */\n"
+"}\n"
+"\n"
+"QPushButton:hover {\n"
+"    background-color: #0056b3; /* Darker blue on hover */\n"
+"}\n"
+"\n"
+"QPushButton:pressed {\n"
+"    background-color: #004085; /* Even darker blue on press */\n"
+"}\n"
+"")
+        self.twoDayAppointmentSearch_btn.setObjectName("twoDayAppointmentSearch_btn")
+        self.threeDayAppointmentSearch_btn = QtWidgets.QPushButton(self.groupBox_7)
+        self.threeDayAppointmentSearch_btn.setGeometry(QtCore.QRect(110, 30, 91, 41))
+        font = QtGui.QFont()
+        font.setFamily("Vazirmatn,sans-serif")
+        font.setPointSize(-1)
+        font.setBold(True)
+        font.setUnderline(False)
+        font.setWeight(75)
+        font.setStrikeOut(False)
+        self.threeDayAppointmentSearch_btn.setFont(font)
+        self.threeDayAppointmentSearch_btn.setStyleSheet("QPushButton {\n"
+"    background-color: #0050a5; /* Bootstrap primary blue */\n"
+"    color: white; /* White text */\n"
+"    border: none;\n"
+"    border-radius: 5px; /* Rounded corners */\n"
+"    font-size: 15px; /* Font size */\n"
+"    font-weight: bold; /* Bold text */\n"
+"    text-align: center;\n"
+"    text-decoration: none;\n"
+"    font-family: \'Vazirmatn\', sans-serif; /* Font family */\n"
+"}\n"
+"\n"
+"QPushButton:hover {\n"
+"    background-color: #0056b3; /* Darker blue on hover */\n"
+"}\n"
+"\n"
+"QPushButton:pressed {\n"
+"    background-color: #004085; /* Even darker blue on press */\n"
+"}\n"
+"")
+        self.threeDayAppointmentSearch_btn.setObjectName("threeDayAppointmentSearch_btn")
+        self.tomorrowAppointmentSearch_btn = QtWidgets.QPushButton(self.groupBox_7)
+        self.tomorrowAppointmentSearch_btn.setGeometry(QtCore.QRect(310, 30, 81, 41))
+        font = QtGui.QFont()
+        font.setFamily("Vazirmatn,sans-serif")
+        font.setPointSize(-1)
+        font.setBold(True)
+        font.setUnderline(False)
+        font.setWeight(75)
+        font.setStrikeOut(False)
+        self.tomorrowAppointmentSearch_btn.setFont(font)
+        self.tomorrowAppointmentSearch_btn.setStyleSheet("QPushButton {\n"
+"    background-color: #0050a5; /* Bootstrap primary blue */\n"
+"    color: white; /* White text */\n"
+"    border: none;\n"
+"    border-radius: 5px; /* Rounded corners */\n"
+"    font-size: 15px; /* Font size */\n"
+"    font-weight: bold; /* Bold text */\n"
+"    text-align: center;\n"
+"    text-decoration: none;\n"
+"    font-family: \'Vazirmatn\', sans-serif; /* Font family */\n"
+"}\n"
+"\n"
+"QPushButton:hover {\n"
+"    background-color: #0056b3; /* Darker blue on hover */\n"
+"}\n"
+"\n"
+"QPushButton:pressed {\n"
+"    background-color: #004085; /* Even darker blue on press */\n"
+"}\n"
+"")
+        self.tomorrowAppointmentSearch_btn.setObjectName("tomorrowAppointmentSearch_btn")
+        self.groupBox_8 = QtWidgets.QGroupBox(self.notifications_tab)
+        self.groupBox_8.setGeometry(QtCore.QRect(240, 0, 431, 81))
+        font = QtGui.QFont()
+        font.setFamily("Vazirmatn Black")
+        font.setPointSize(10)
+        self.groupBox_8.setFont(font)
+        self.groupBox_8.setLayoutDirection(QtCore.Qt.RightToLeft)
+        self.groupBox_8.setAlignment(QtCore.Qt.AlignLeading|QtCore.Qt.AlignLeft|QtCore.Qt.AlignVCenter)
+        self.groupBox_8.setObjectName("groupBox_8")
+        self.day_spnbox = QtWidgets.QSpinBox(self.groupBox_8)
+        self.day_spnbox.setGeometry(QtCore.QRect(340, 30, 51, 31))
+        self.day_spnbox.setMinimum(1)
+        self.day_spnbox.setMaximum(31)
+        self.day_spnbox.setObjectName("day_spnbox")
+        self.label_41 = QtWidgets.QLabel(self.groupBox_8)
+        self.label_41.setGeometry(QtCore.QRect(370, 30, 71, 41))
+        font = QtGui.QFont()
+        font.setFamily("Vazirmatn ExtraBold")
+        font.setPointSize(12)
+        self.label_41.setFont(font)
+        self.label_41.setAlignment(QtCore.Qt.AlignHCenter|QtCore.Qt.AlignTop)
+        self.label_41.setObjectName("label_41")
+        self.month_spnbox = QtWidgets.QSpinBox(self.groupBox_8)
+        self.month_spnbox.setGeometry(QtCore.QRect(230, 30, 51, 31))
+        self.month_spnbox.setMinimum(1)
+        self.month_spnbox.setMaximum(12)
+        self.month_spnbox.setObjectName("month_spnbox")
+        self.label_42 = QtWidgets.QLabel(self.groupBox_8)
+        self.label_42.setGeometry(QtCore.QRect(269, 30, 71, 41))
+        font = QtGui.QFont()
+        font.setFamily("Vazirmatn ExtraBold")
+        font.setPointSize(12)
+        self.label_42.setFont(font)
+        self.label_42.setAlignment(QtCore.Qt.AlignHCenter|QtCore.Qt.AlignTop)
+        self.label_42.setObjectName("label_42")
+        self.year_spnbox = QtWidgets.QSpinBox(self.groupBox_8)
+        self.year_spnbox.setGeometry(QtCore.QRect(80, 30, 91, 31))
+        self.year_spnbox.setMinimum(1400)
+        self.year_spnbox.setMaximum(1500)
+        self.year_spnbox.setObjectName("year_spnbox")
+        self.label_43 = QtWidgets.QLabel(self.groupBox_8)
+        self.label_43.setGeometry(QtCore.QRect(160, 30, 71, 41))
+        font = QtGui.QFont()
+        font.setFamily("Vazirmatn ExtraBold")
+        font.setPointSize(12)
+        self.label_43.setFont(font)
+        self.label_43.setAlignment(QtCore.Qt.AlignHCenter|QtCore.Qt.AlignTop)
+        self.label_43.setObjectName("label_43")
+        self.AppointmentSearchByDate_btn = QtWidgets.QPushButton(self.groupBox_8)
+        self.AppointmentSearchByDate_btn.setGeometry(QtCore.QRect(10, 30, 61, 31))
+        self.AppointmentSearchByDate_btn.setStyleSheet("QPushButton {\n"
+"    background-color: #0050a5; /* Bootstrap primary blue */\n"
+"    color: white; /* White text */\n"
+"    border: none;\n"
+"    border-radius: 5px; /* Rounded corners */\n"
+"    font-size: 15px; /* Font size */\n"
+"    font-weight: bold; /* Bold text */\n"
+"    text-align: center;\n"
+"    text-decoration: none;\n"
+"    font-family: \'Vazirmatn\', sans-serif; /* Font family */\n"
+"}\n"
+"\n"
+"QPushButton:hover {\n"
+"    background-color: #0056b3; /* Darker blue on hover */\n"
+"}\n"
+"\n"
+"QPushButton:pressed {\n"
+"    background-color: #004085; /* Even darker blue on press */\n"
+"}\n"
+"")
+        self.AppointmentSearchByDate_btn.setObjectName("AppointmentSearchByDate_btn")
         self.tabWidget.addTab(self.notifications_tab, "")
         self.services_tab = QtWidgets.QWidget()
         self.services_tab.setObjectName("services_tab")
@@ -1306,7 +1099,7 @@ class Ui_MainWindow(object):
         MainWindow.setStatusBar(self.statusbar)
 
         self.retranslateUi(MainWindow)
-        self.tabWidget.setCurrentIndex(0)
+        self.tabWidget.setCurrentIndex(1)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
     def retranslateUi(self, MainWindow):
@@ -1322,25 +1115,19 @@ class Ui_MainWindow(object):
         self.patients_lst.setSortingEnabled(False)
         self.addPatient_btn.setText(_translate("MainWindow", "اضافه کردن بیمار"))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.main_tab), _translate("MainWindow", "صفحه اصلی"))
-        self.groupBox_3.setTitle(_translate("MainWindow", "جستجو نوبت‌ها"))
-        self.groupBox_2.setTitle(_translate("MainWindow", "تاریخ"))
-        self.label_38.setText(_translate("MainWindow", "روز:"))
-        self.label_39.setText(_translate("MainWindow", "ماه:"))
-        self.label_40.setText(_translate("MainWindow", "سال:"))
-        self.searchByDate_btn.setText(_translate("MainWindow", "جستجو بر اساس تاریخ"))
-        self.groupBox_6.setTitle(_translate("MainWindow", "اطلاعات بیمار"))
-        self.label_7.setText(_translate("MainWindow", "کد ملی:"))
-        self.label_5.setText(_translate("MainWindow", "نام بیمار: "))
-        self.searchByPatientsInfo_btn.setText(_translate("MainWindow", "جستجو بر اساس اطلاعات بیمار"))
-        self.label_13.setText(_translate("MainWindow", "مدیریت نوبت‌ها"))
-        self.tabWidget.setTabText(self.tabWidget.indexOf(self.appointments_tab), _translate("MainWindow", "نوبت‌ها"))
-        self.oneDaySearch_btn.setText(_translate("MainWindow", "یک روز بعد"))
-        self.twoDaySearch_btn.setText(_translate("MainWindow", "دو روز بعد"))
-        self.fiveDaySearch_btn.setText(_translate("MainWindow", "پنچ روز بعد"))
-        self.threeDaySearch_btn.setText(_translate("MainWindow", "سه روز بعد"))
-        self.fourDaySearch_btn.setText(_translate("MainWindow", "چهار روز بعد"))
         self.label_9.setText(_translate("MainWindow", "یادآوری نوبت‌ها"))
-        self.tabWidget.setTabText(self.tabWidget.indexOf(self.notifications_tab), _translate("MainWindow", "یادآوری‌ها"))
+        self.groupBox_7.setTitle(_translate("MainWindow", "یادآوری‌ها"))
+        self.todayAppointmentSearch_btn.setText(_translate("MainWindow", "امروز"))
+        self.fourDayAppointmentSearch_btn.setText(_translate("MainWindow", "چهار روز بعد"))
+        self.twoDayAppointmentSearch_btn.setText(_translate("MainWindow", "دو روز بعد"))
+        self.threeDayAppointmentSearch_btn.setText(_translate("MainWindow", "سه روز بعد"))
+        self.tomorrowAppointmentSearch_btn.setText(_translate("MainWindow", "فردا"))
+        self.groupBox_8.setTitle(_translate("MainWindow", "تاریخ"))
+        self.label_41.setText(_translate("MainWindow", "روز:"))
+        self.label_42.setText(_translate("MainWindow", "ماه:"))
+        self.label_43.setText(_translate("MainWindow", "سال:"))
+        self.AppointmentSearchByDate_btn.setText(_translate("MainWindow", "جستجو"))
+        self.tabWidget.setTabText(self.tabWidget.indexOf(self.notifications_tab), _translate("MainWindow", "یادآوری‌ نوبت‌ها"))
         self.groupBox_4.setTitle(_translate("MainWindow", "جستجو سرویس‌ها"))
         self.searchServices_btn.setText(_translate("MainWindow", "جستجو"))
         self.label_11.setText(_translate("MainWindow", "نام سرویس:"))
@@ -1353,6 +1140,5 @@ class Ui_MainWindow(object):
         self.label_12.setText(_translate("MainWindow", "نام پزشک:"))
         self.label_4.setText(_translate("MainWindow", "مدیریت پزشک‌ها"))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.medicalRecords_tab), _translate("MainWindow", "پزشک‌ها"))
-
 
 

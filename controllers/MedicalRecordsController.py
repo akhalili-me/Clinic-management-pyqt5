@@ -1,85 +1,55 @@
-# controllers/add_patient_controller.py
 from PyQt5.QtWidgets import QDialog
-from ui import Ui_medicalRecordsInfo_form
-from models import Patients,DatabaseManager,MedicalRecords,Services,Doctors,Appointments
-from PyQt5.QtWidgets import QListWidgetItem
-from utility import Numbers,Dates
+from ui import Ui_addEditMedicalRecords_form
+from models.db import DatabaseManager
+from PyQt5.QtWidgets import QMessageBox
+from models import MedicalRecords
+import jdatetime
+from PyQt5.QtCore import pyqtSignal
+from utility import LoadingValues
 
+class AddEditMedicalRecordsController(QDialog):
+    refresh_medical_records_list = pyqtSignal()
 
-class MedicalRecordsInfoController(QDialog):
-    def __init__(self,patientId):
-        super(MedicalRecordsInfoController, self).__init__()
-        self.ui = Ui_medicalRecordsInfo_form()
+    def __init__(self,patient_id):
+        super(AddEditMedicalRecordsController, self).__init__()
+        self.ui = Ui_addEditMedicalRecords_form()
         self.ui.setupUi(self)
         self.setModal(True)
 
-        self.db = DatabaseManager()
-        self.patient = Patients.get_by_id(self.db, patientId)
-        medical_records = MedicalRecords.get_by_patient_id(self.db,patientId)
-        
+        self.patient_id = patient_id
 
-        self._load_patient_data(self.patient)
-        self._load_medical_records_list(medical_records)
-        self.load_appointments_list()
+        LoadingValues.load_date_spin_box_values(self.ui)
+        LoadingValues.load_doctors_services_combo_boxes(self.ui)
 
-        # Connecting_buttons
-        self.ui.editPatient_btn.clicked.connect(self.open_edit_patient)
-        self.ui.addAppointment_btn.clicked.connect(self.open_add_appointment)
+        self.ui.save_btn.clicked.connect(self.save_medical_record)
+        self.ui.cancel_btn.clicked.connect(self.close)
 
-        self.db.close()
+    def save_medical_record(self):
+        year = self.ui.year_spnbox.value()
+        month = self.ui.month_spnbox.value()
+        day = self.ui.day_spnbox.value()
+        jalali_date_obj = jdatetime.date(year,month,day)
+        jalali_date_str = jalali_date_obj.strftime("%Y-%m-%d")
+        greg_date = jalali_date_obj.togregorian().strftime('%Y-%m-%d')
 
-    def open_add_appointment(self):
-        from controllers import AddEditAppointmentController
-        self.add_appointment_controller = AddEditAppointmentController(self.patient["id"])
-        self.add_appointment_controller.refresh_appointment_list.connect(self.load_appointments_list)
-        self.add_appointment_controller.show()
+        record = {
+            'jalali_date': jalali_date_str.strip(),
+            'greg_date': greg_date.strip(),
+            "doctor": self.ui.doctor_cmbox.currentData(),
+            "service": self.ui.service_cmbox.currentData(),
+            "description": self.ui.description_txtbox.toPlainText().strip(),
+            "patient": self.patient_id,
+        }
 
-    def open_edit_patient(self):
-        from controllers import AddEditPatientController
-        self.edit_patient_controller = AddEditPatientController(self.patient)
-        self.edit_patient_controller.refresh_patient_md_records_data.connect(self._load_patient_data)
-        self.edit_patient_controller.show()
-
-    def _load_patient_data(self,patient=None):
-
-        if patient==None:
-            with DatabaseManager() as db:
-                patient = Patients.get_by_id(db,self.patient["id"])
-
-        identity_code = Numbers.english_to_persian_numbers(patient["identityCode"])
-        phone_number = Numbers.english_to_persian_numbers(patient["phoneNumber"])
-
-        self.ui.firstName_lbl.setText(patient['firstName'])
-        self.ui.lastName_lbl.setText(patient['lastName'])
-        self.ui.age_lbl.setText(str(patient["age"]))
-        self.ui.address_lbl.setText(patient["address"])
-        self.ui.identityCode_lbl.setText(identity_code)
-        self.ui.gender_lbl.setText(patient["gender"])
-        self.ui.phoneNumber_lbl.setText(phone_number)
-        self.ui.extraInfo_lbl.setText(patient["extraInfo"])
-
-    def _load_medical_records_list(self, medical_records):
-        self.ui.medicalRecords_lst.clear()
-        for record in medical_records:
-            service = Services.get_by_id(self.db,record["service"])
-            doctor = Doctors.get_by_id(self.db, record["doctor"])
-            item = QListWidgetItem(f"{service["name"]}  -  دکتر {doctor["lastName"]}  -  تاریخ: {record["visitDate"]}")
-            item.setData(1,record["id"])
-            self.ui.medicalRecords_lst.addItem(item)
-
-    def load_appointments_list(self):
-        self.ui.appointments_lst.clear()
+        # print(record)
         with DatabaseManager() as db:
-            appointments = Appointments.get_by_patient_id(db,self.patient["id"])
-            for appointment in appointments:
-                service = Services.get_by_id(self.db,appointment["service"])
-                doctor = Doctors.get_by_id(self.db, appointment["doctor"])
-                date = Dates.convert_to_jalali_format(appointment["date"])
-                time = Numbers.english_to_persian_numbers(appointment["time"])
-                item_txt = f"{service["name"]} | دکتر {doctor["lastName"]} | {appointment["status"]} | {date} | {time}"
-                item = QListWidgetItem(item_txt)
-                item.setData(1,appointment["id"])
-                self.ui.appointments_lst.addItem(item)
+            MedicalRecords.add_medical_record(db,record)
+            QMessageBox.information(self, "موفقیت", "خدمات با موفقیت اضافه شد.")
+            self.refresh_medical_records_list.emit()
+            self.close()
+
+
+
 
 
          

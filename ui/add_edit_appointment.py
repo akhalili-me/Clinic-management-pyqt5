@@ -238,7 +238,7 @@ class Ui_addEditAppointment_form(object):
         self.service_cmbox.setLayoutDirection(QtCore.Qt.RightToLeft)
         self.service_cmbox.setStyleSheet("")
         self.service_cmbox.setEditable(False)
-        self.service_cmbox.setMaxVisibleItems(3)
+        self.service_cmbox.setMaxVisibleItems(10)
         self.service_cmbox.setDuplicatesEnabled(False)
         self.service_cmbox.setObjectName("service_cmbox")
         self.service_cmbox.addItem("")
@@ -319,6 +319,4 @@ class Ui_addEditAppointment_form(object):
         self.status_cmbox.setItemText(0, _translate("addEditAppointment_form", "فعال"))
         self.status_cmbox.setItemText(1, _translate("addEditAppointment_form", "غیرفعال"))
         self.label_16.setText(_translate("addEditAppointment_form", "توضیحات:"))
-
-
 
