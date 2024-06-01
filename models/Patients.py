@@ -20,6 +20,15 @@ class Patients:
         except DatabaseError as e:
             print(f"Database error: {e}")
             return []
+        
+    @staticmethod
+    def get_full_name_by_id(db,patient_id):
+        query = f"SELECT firstName, lastName FROM Patient Where id={patient_id}"
+        try:
+            return db.fetchone(query)
+        except DatabaseError as e:
+            print(f"Database error: {e}")
+            return []
 
     @staticmethod
     def get_by_identity_code(db: DatabaseManager, identityCode):

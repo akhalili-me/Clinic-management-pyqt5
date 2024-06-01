@@ -12,8 +12,12 @@ class PatientsTabController:
     def __init__(self, ui: Ui_MainWindow):
         self.ui = ui
         self.load_patients_list()
+        self._connect_buttons()
+        # Validatiors
+        identity_code_validator = QRegExpValidator(QRegExp(r"^\d{10}$"))
+        self.ui.patientsIdentityCodeSearch_txtbox.setValidator(identity_code_validator)
 
-        # Connecting buttons
+    def _connect_buttons(self):
         self.ui.addPatient_btn.clicked.connect(self.open_add_patient)
         self.ui.patients_lst.itemDoubleClicked.connect(
             self.open_patient_file
@@ -25,10 +29,6 @@ class PatientsTabController:
         self.ui.patientsLastNameSearch_btn.clicked.connect(
             self.seach_patient_by_last_name
         )
-
-        # Validatiors
-        identity_code_validator = QRegExpValidator(QRegExp(r"^\d{10}$"))
-        self.ui.patientsIdentityCodeSearch_txtbox.setValidator(identity_code_validator)
 
     def search_patient_by_identity_code(self):
         patient_identity_code = Numbers.persian_to_english_numbers(
@@ -194,5 +194,3 @@ class AddEditPatientController(QDialog):
             self.refresh_patients_list.emit()
             self.refresh_patient_file_data.emit()
             self.close()
-
-

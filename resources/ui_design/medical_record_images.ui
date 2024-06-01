@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Form</class>
+ <widget class="QWidget" name="Form">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>670</width>
+    <height>744</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <widget class="QLabel" name="label">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>90</y>
+     <width>651</width>
+     <height>571</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="pixmap">
+    <pixmap>../../../../../Downloads/blank-profile-picture-973460_1920.png</pixmap>
+   </property>
+   <property name="scaledContents">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_13">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>10</y>
+     <width>651</width>
+     <height>71</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>A Rezvan-fat,sans-serif</family>
+     <pointsize>-1</pointsize>
+     <weight>75</weight>
+     <bold>true</bold>
+    </font>
+   </property>
+   <property name="layoutDirection">
+    <enum>Qt::RightToLeft</enum>
+   </property>
+   <property name="autoFillBackground">
+    <bool>false</bool>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">/* Basic styling for the company name label */
+QLabel {
+    color: #007bff; /* Bootstrap primary blue text color */
+    font-family: 'A Rezvan-fat', sans-serif; /* Font family */
+    font-size: 30px; /* Larger font size for prominence */
+    font-weight: bold; /* Bold text */
+    padding: 10px; /* Padding around the text */
+    border: 2px solid #007bff; /* Optional: Border with the same blue color */
+    border-radius: 10px; /* Rounded corners */
+    background-color: #f8f9fa; /* Light grey background to make it stand out */
+    text-align: center; /* Center-align the text */
+}
+
+/* Hover effect */
+QLabe:hover {
+    color: #0056b3; /* Darker blue on hover */
+    border-color: #0056b3; /* Match border color on hover */
+}
+</string>
+   </property>
+   <property name="text">
+    <string>تصاویر</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="patientsLastNameSearch_btn">
+   <property name="geometry">
+    <rect>
+     <x>220</x>
+     <y>700</y>
+     <width>241</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton {
+    background-color: #0050a5; /* Bootstrap primary blue */
+    color: white; /* White text */
+    border: none;
+    border-radius: 5px; /* Rounded corners */
+    font-size: 15px; /* Font size */
+    font-weight: bold; /* Bold text */
+    text-align: center;
+    text-decoration: none;
+    font-family: 'Vazirmatn', sans-serif; /* Font family */
+}
+
+QPushButton:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+}
+
+QPushButton:pressed {
+    background-color: #004085; /* Even darker blue on press */
+}
+</string>
+   </property>
+   <property name="text">
+    <string>افزودن تصویر</string>
+   </property>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

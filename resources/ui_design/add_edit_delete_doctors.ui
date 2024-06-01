@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>addEditDoctor_form</class>
- <widget class="QWidget" name="addEditDoctor_form">
+ <class>addEditDeleteDoctor_form</class>
+ <widget class="QWidget" name="addEditDeleteDoctor_form">
   <property name="enabled">
    <bool>true</bool>
   </property>
@@ -26,7 +26,7 @@
    </size>
   </property>
   <property name="windowTitle">
-   <string>اضافه کردن پزشک</string>
+   <string> پزشک</string>
   </property>
   <widget class="QPushButton" name="cancel_btn">
    <property name="geometry">
@@ -285,7 +285,7 @@ QPushButton:pressed {
     <string>ثبت</string>
    </property>
   </widget>
-  <widget class="QLabel" name="label_4">
+  <widget class="QLabel" name="title_lbl">
    <property name="geometry">
     <rect>
      <x>110</x>
@@ -354,6 +354,56 @@ QLineEdit:disabled {
    </property>
    <property name="locale">
     <locale language="Persian" country="Iran"/>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="deleteDoctor_btn">
+   <property name="enabled">
+    <bool>true</bool>
+   </property>
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>190</y>
+     <width>91</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Vazirmatn,sans-serif</family>
+     <pointsize>13</pointsize>
+     <weight>75</weight>
+     <bold>true</bold>
+     <underline>false</underline>
+     <strikeout>false</strikeout>
+    </font>
+   </property>
+   <property name="layoutDirection">
+    <enum>Qt::RightToLeft</enum>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton{
+    background-color: #dc3545; /* Bootstrap danger red */
+    color: white; /* White text */
+    border: none;
+    border-radius: 5px; /* Rounded corners */
+    font-weight: bold; /* Bold text */
+    text-align: center;
+    text-decoration: none;
+    font-family: 'Vazirmatn', sans-serif; /* Font family */
+}
+
+QPushButton:hover {
+    background-color: #c82333; /* Darker red on hover */
+}
+
+QPushButton:pressed {
+    background-color: #bd2130; /* Even darker red on press */
+}
+</string>
+   </property>
+   <property name="text">
+    <string>حذف پزشک</string>
    </property>
   </widget>
  </widget>

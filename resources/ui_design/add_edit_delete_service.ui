@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>addEditService_form</class>
- <widget class="QWidget" name="addEditService_form">
+ <class>addEditDeleteService_form</class>
+ <widget class="QWidget" name="addEditDeleteService_form">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -108,7 +108,7 @@ QLineEdit:disabled {
     <locale language="Persian" country="Iran"/>
    </property>
   </widget>
-  <widget class="QLabel" name="label_4">
+  <widget class="QLabel" name="title_lbl">
    <property name="geometry">
     <rect>
      <x>70</x>
@@ -273,7 +273,7 @@ QPushButton:pressed {
     <bool>false</bool>
    </property>
   </widget>
-  <widget class="QPushButton" name="deleteDoctor_btn_2">
+  <widget class="QPushButton" name="deleteService_btn">
    <property name="enabled">
     <bool>true</bool>
    </property>
