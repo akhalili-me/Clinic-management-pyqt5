@@ -8,8 +8,7 @@ class Services:
         try:
             return db.fetchall(query)
         except DatabaseError as e:
-            print(f"Database error: {e}")
-            return []
+            raise e
         
     @staticmethod
     def get_name_by_id(db,service_id):
@@ -17,8 +16,7 @@ class Services:
         try:
             return db.fetchone(query)
         except DatabaseError as e:
-            print(f"Database error: {e}")
-            return []
+            raise e
 
     @staticmethod
     def get_by_id(db: DatabaseManager,service_id):
@@ -26,8 +24,7 @@ class Services:
         try:
             return db.fetchone(query)
         except DatabaseError as e:
-            print(f"Database error: {e}")
-            return []
+            raise e
     
     @staticmethod
     def add_service(db:DatabaseManager, service):
@@ -36,8 +33,7 @@ class Services:
         try:
             return db.execute_query(query, values)
         except DatabaseError as e:
-            print(f"Database error: {e}")
-            return []
+            raise e
 
     @staticmethod
     def update_service(db: DatabaseManager, service):
@@ -54,8 +50,7 @@ class Services:
         try:
             return db.execute_query(query, values)
         except DatabaseError as e:
-            print(f"Database error: {e}")
-            return []
+            raise e
 
     @staticmethod
     def delete_service(db: DatabaseManager, service_id):
@@ -63,7 +58,6 @@ class Services:
         try:
             return db.execute_query(query)
         except DatabaseError as e:
-            print(f"Database error: {e}")
-            return []
+            raise e
 
 

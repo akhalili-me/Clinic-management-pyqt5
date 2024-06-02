@@ -48,14 +48,14 @@ class Ui_patientFile_form(object):
 "}\n"
 "")
         self.addNewMedicalRecord_btn.setObjectName("addNewMedicalRecord_btn")
-        self.medicalRecords_lst = QtWidgets.QListWidget(patientFile_form)
-        self.medicalRecords_lst.setGeometry(QtCore.QRect(10, 50, 461, 661))
+        self.userMedicalRecords_lst = QtWidgets.QListWidget(patientFile_form)
+        self.userMedicalRecords_lst.setGeometry(QtCore.QRect(10, 50, 461, 661))
         font = QtGui.QFont()
         font.setFamily("Vazirmatn,sans-serif")
         font.setPointSize(12)
-        self.medicalRecords_lst.setFont(font)
-        self.medicalRecords_lst.setLayoutDirection(QtCore.Qt.RightToLeft)
-        self.medicalRecords_lst.setStyleSheet("/* Basic ListWidget styling */\n"
+        self.userMedicalRecords_lst.setFont(font)
+        self.userMedicalRecords_lst.setLayoutDirection(QtCore.Qt.RightToLeft)
+        self.userMedicalRecords_lst.setStyleSheet("/* Basic ListWidget styling */\n"
 "QListWidget {\n"
 "    background-color: #f8f9fa; /* Light grey background */\n"
 "    border: 1px solid #dee2e6; /* Border color */\n"
@@ -114,10 +114,10 @@ class Ui_patientFile_form(object):
 "    background: none;\n"
 "}\n"
 "")
-        self.medicalRecords_lst.setDragDropMode(QtWidgets.QAbstractItemView.NoDragDrop)
-        self.medicalRecords_lst.setObjectName("medicalRecords_lst")
+        self.userMedicalRecords_lst.setDragDropMode(QtWidgets.QAbstractItemView.NoDragDrop)
+        self.userMedicalRecords_lst.setObjectName("userMedicalRecords_lst")
         item = QtWidgets.QListWidgetItem()
-        self.medicalRecords_lst.addItem(item)
+        self.userMedicalRecords_lst.addItem(item)
         self.label_39 = QtWidgets.QLabel(patientFile_form)
         self.label_39.setGeometry(QtCore.QRect(1240, 10, 121, 31))
         font = QtGui.QFont()
@@ -400,14 +400,14 @@ class Ui_patientFile_form(object):
         font.setPointSize(16)
         self.label_42.setFont(font)
         self.label_42.setObjectName("label_42")
-        self.appointments_lst = QtWidgets.QListWidget(patientFile_form)
-        self.appointments_lst.setGeometry(QtCore.QRect(490, 50, 501, 661))
+        self.userAppointments_lst = QtWidgets.QListWidget(patientFile_form)
+        self.userAppointments_lst.setGeometry(QtCore.QRect(490, 50, 501, 661))
         font = QtGui.QFont()
         font.setFamily("Vazirmatn,sans-serif")
         font.setPointSize(12)
-        self.appointments_lst.setFont(font)
-        self.appointments_lst.setLayoutDirection(QtCore.Qt.RightToLeft)
-        self.appointments_lst.setStyleSheet("/* Basic ListWidget styling */\n"
+        self.userAppointments_lst.setFont(font)
+        self.userAppointments_lst.setLayoutDirection(QtCore.Qt.RightToLeft)
+        self.userAppointments_lst.setStyleSheet("/* Basic ListWidget styling */\n"
 "QListWidget {\n"
 "    background-color: #f8f9fa; /* Light grey background */\n"
 "    border: 1px solid #dee2e6; /* Border color */\n"
@@ -466,12 +466,12 @@ class Ui_patientFile_form(object):
 "    background: none;\n"
 "}\n"
 "")
-        self.appointments_lst.setDragDropMode(QtWidgets.QAbstractItemView.NoDragDrop)
-        self.appointments_lst.setObjectName("appointments_lst")
+        self.userAppointments_lst.setDragDropMode(QtWidgets.QAbstractItemView.NoDragDrop)
+        self.userAppointments_lst.setObjectName("userAppointments_lst")
         item = QtWidgets.QListWidgetItem()
-        self.appointments_lst.addItem(item)
+        self.userAppointments_lst.addItem(item)
         item = QtWidgets.QListWidgetItem()
-        self.appointments_lst.addItem(item)
+        self.userAppointments_lst.addItem(item)
         self.line_9 = QtWidgets.QFrame(patientFile_form)
         self.line_9.setGeometry(QtCore.QRect(470, 50, 20, 661))
         self.line_9.setFrameShape(QtWidgets.QFrame.VLine)
@@ -485,11 +485,11 @@ class Ui_patientFile_form(object):
         _translate = QtCore.QCoreApplication.translate
         patientFile_form.setWindowTitle(_translate("patientFile_form", "پرونده بیمار"))
         self.addNewMedicalRecord_btn.setText(_translate("patientFile_form", "افزودن خدمات جدید به پرونده"))
-        __sortingEnabled = self.medicalRecords_lst.isSortingEnabled()
-        self.medicalRecords_lst.setSortingEnabled(False)
-        item = self.medicalRecords_lst.item(0)
+        __sortingEnabled = self.userMedicalRecords_lst.isSortingEnabled()
+        self.userMedicalRecords_lst.setSortingEnabled(False)
+        item = self.userMedicalRecords_lst.item(0)
         item.setText(_translate("patientFile_form", "بوتاکس -دکتر احمدی- تاریخ: ۴/۲۳/۱۳۴۵ "))
-        self.medicalRecords_lst.setSortingEnabled(__sortingEnabled)
+        self.userMedicalRecords_lst.setSortingEnabled(__sortingEnabled)
         self.label_39.setText(_translate("patientFile_form", "اطلاعات بیمار"))
         self.firstName_lbl.setText(_translate("patientFile_form", "امیررضا "))
         self.label_35.setText(_translate("patientFile_form", "نام:"))
@@ -512,11 +512,10 @@ class Ui_patientFile_form(object):
         self.deletePatient_btn.setText(_translate("patientFile_form", "حذف "))
         self.addAppointment_btn.setText(_translate("patientFile_form", "افزودن نوبت"))
         self.label_42.setText(_translate("patientFile_form", "نوبت‌های بیمار"))
-        __sortingEnabled = self.appointments_lst.isSortingEnabled()
-        self.appointments_lst.setSortingEnabled(False)
-        item = self.appointments_lst.item(0)
+        __sortingEnabled = self.userAppointments_lst.isSortingEnabled()
+        self.userAppointments_lst.setSortingEnabled(False)
+        item = self.userAppointments_lst.item(0)
         item.setText(_translate("patientFile_form", "بوتاکس -دکتر احمدی- تاریخ: ۴/۲۳/۱۳۴۵ "))
-        item = self.appointments_lst.item(1)
+        item = self.userAppointments_lst.item(1)
         item.setText(_translate("patientFile_form", "sdf"))
-        self.appointments_lst.setSortingEnabled(__sortingEnabled)
-
+        self.userAppointments_lst.setSortingEnabled(__sortingEnabled)

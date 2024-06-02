@@ -9,10 +9,11 @@ from utility import Messages,Numbers
 
 
 class PatientsTabController:
-    def __init__(self, ui: Ui_MainWindow):
+    def __init__(self, ui: Ui_MainWindow,appointment_controller):
         self.ui = ui
         self.load_patients_list()
         self._connect_buttons()
+        self.appointment_controller = appointment_controller
         # Validatiors
         identity_code_validator = QRegExpValidator(QRegExp(r"^\d{10}$"))
         self.ui.patientsIdentityCodeSearch_txtbox.setValidator(identity_code_validator)
@@ -61,6 +62,7 @@ class PatientsTabController:
         from controllers import PatientFileController
         self.patient_file_controller = PatientFileController(patient_id)
         self.patient_file_controller.refresh_patients_list.connect(self.load_patients_list)
+        self.patient_file_controller.load_today_appointments_list.connect(self.appointment_controller.load_today_appointments_list)
         self.patient_file_controller.show()
 
     def load_patients_list(self):

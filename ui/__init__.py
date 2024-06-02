@@ -6,3 +6,4 @@ from .main_window import *
 from .patient_file import *
 from .add_edit_appointment import *
 from .appointment_info import *
+from .medical_record_info import *

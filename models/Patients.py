@@ -9,8 +9,7 @@ class Patients:
         try:
             return db.fetchall(query)
         except DatabaseError as e:
-            print(f"Database error: {e}")
-            return []
+            raise e
 
     @staticmethod
     def get_by_id(db: DatabaseManager, patient_id):
@@ -18,17 +17,15 @@ class Patients:
         try:
             return db.fetchone(query)
         except DatabaseError as e:
-            print(f"Database error: {e}")
-            return []
+            raise e
         
     @staticmethod
-    def get_full_name_by_id(db,patient_id):
-        query = f"SELECT firstName, lastName FROM Patient Where id={patient_id}"
+    def get_full_name_phone_number_by_id(db,patient_id):
+        query = f"SELECT firstName, lastName, phoneNumber FROM Patient Where id={patient_id}"
         try:
             return db.fetchone(query)
         except DatabaseError as e:
-            print(f"Database error: {e}")
-            return []
+            raise e
 
     @staticmethod
     def get_by_identity_code(db: DatabaseManager, identityCode):
@@ -36,17 +33,15 @@ class Patients:
         try:
             return db.fetchone(query)
         except DatabaseError as e:
-            print(f"Database error: {e}")
-            return []
+            raise e
 
     @staticmethod
     def get_by_last_name(db: DatabaseManager, lastName):
-        query = f"SELECT * FROM Patient Where lastName='{lastName}'"
+        query = f"SELECT * FROM Patient Where lastName Like '%{lastName}%'"
         try:
             return db.fetchall(query)
         except DatabaseError as e:
-            print(f"Database error: {e}")
-            return []
+            raise e
 
     @staticmethod
     def add_patient(db: DatabaseManager, patient):
@@ -66,8 +61,7 @@ class Patients:
         try:
             return db.execute_query(query, values)
         except DatabaseError as e:
-            print(f"Database error: {e}")
-            return []
+            raise e
 
     @staticmethod
     def update_patient(db: DatabaseManager, patient):
@@ -98,8 +92,7 @@ class Patients:
         try:
             return db.execute_query(query, values)
         except DatabaseError as e:
-            print(f"Database error: {e}")
-            return []
+            raise e
         
     @staticmethod
     def delete_patient(db: DatabaseManager, patient_id):
@@ -107,5 +100,4 @@ class Patients:
         try:
             return db.execute_query(query)
         except DatabaseError as e:
-            print(f"Database error: {e}")
-            return []
+            raise e

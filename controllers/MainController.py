@@ -15,9 +15,9 @@ class MainController(QMainWindow):
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
 
-
         #Initilize tabs
-        self.doctors_tab_controller = DoctorsTabController(self.ui)
-        self.patients_tab_controller = PatientsTabController(self.ui)
-        self.services_tab_controller = ServicesTabController(self.ui)
         self.appointments_tab_controller = AppointmentsTabController(self.ui)
+        self.doctors_tab_controller = DoctorsTabController(self.ui)
+        self.patients_tab_controller = PatientsTabController(self.ui,self.appointments_tab_controller)
+        self.services_tab_controller = ServicesTabController(self.ui)
+        

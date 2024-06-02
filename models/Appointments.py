@@ -9,8 +9,7 @@ class Appointments:
         try:
              return db.fetchall(query)
         except DatabaseError as e:
-            print(f"Database error: {e}")
-        return []
+            raise e
     
     @staticmethod
     def get_by_id(db: DatabaseManager, appointment_Id):
@@ -18,8 +17,7 @@ class Appointments:
         try:
              return db.fetchone(query)
         except DatabaseError as e:
-            print(f"Database error: {e}")
-        return []
+            raise e
 
     @staticmethod
     def get_by_date(db: DatabaseManager, date):
@@ -27,8 +25,7 @@ class Appointments:
         try:
             return db.fetchall(query)
         except DatabaseError as e:
-            print(f"Database error: {e}")
-            return []
+            raise e
 
     @staticmethod
     def add_appointment(db: DatabaseManager, appointment):
@@ -49,5 +46,43 @@ class Appointments:
         try:
             return db.execute_query(query, values)
         except DatabaseError as e:
-            print(f"Database error: {e}")
-            return []
+            raise e
+
+    
+    @staticmethod
+    def update_appointment(db: DatabaseManager, appointment):
+        query = """UPDATE Appointment
+                    SET status = ?, 
+                        jalali_date = ?, 
+                        greg_datetime = ?, 
+                        time = ?, 
+                        doctor = ?, 
+                        patient = ?, 
+                        service = ?, 
+                        description = ?
+                    WHERE id = ?
+                """
+        
+        values = (
+            appointment["status"],
+            appointment["jalali_date"],
+            appointment["greg_datetime"],
+            appointment["time"],
+            appointment["doctor"],
+            appointment["patient"],
+            appointment["service"],
+            appointment["description"],
+            appointment["id"]
+        )
+        try:
+            return db.execute_query(query, values)
+        except DatabaseError as e:
+            raise e
+        
+    @staticmethod
+    def delete_appointment(db: DatabaseManager, appointment_id):
+        query = f"DELETE FROM Appointment WHERE id = {appointment_id};"
+        try:
+            return db.execute_query(query)
+        except DatabaseError as e:
+            raise e

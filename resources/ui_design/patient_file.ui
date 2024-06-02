@@ -72,7 +72,7 @@ QPushButton:pressed {
     <string>افزودن خدمات جدید به پرونده</string>
    </property>
   </widget>
-  <widget class="QListWidget" name="medicalRecords_lst">
+  <widget class="QListWidget" name="userMedicalRecords_lst">
    <property name="geometry">
     <rect>
      <x>10</x>
@@ -814,7 +814,7 @@ QPushButton:pressed {
     <string>نوبت‌های بیمار</string>
    </property>
   </widget>
-  <widget class="QListWidget" name="appointments_lst">
+  <widget class="QListWidget" name="userAppointments_lst">
    <property name="geometry">
     <rect>
      <x>490</x>

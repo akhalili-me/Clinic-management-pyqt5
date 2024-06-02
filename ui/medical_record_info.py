@@ -263,12 +263,3 @@ class Ui_medicalRecordInfo_form(object):
         self.label_47.setText(_translate("medicalRecordInfo_form", "قیمت:"))
         self.price_lbl.setText(_translate("medicalRecordInfo_form", "۲۵۰,۰۰۰ تومان"))
 
-
-if __name__ == "__main__":
-    import sys
-    app = QtWidgets.QApplication(sys.argv)
-    medicalRecordInfo_form = QtWidgets.QWidget()
-    ui = Ui_medicalRecordInfo_form()
-    ui.setupUi(medicalRecordInfo_form)
-    medicalRecordInfo_form.show()
-    sys.exit(app.exec_())

@@ -541,7 +541,7 @@ QTextEdit:disabled {
     </property>
    </item>
   </widget>
-  <widget class="QLabel" name="label_4">
+  <widget class="QLabel" name="title_lbl">
    <property name="geometry">
     <rect>
      <x>110</x>

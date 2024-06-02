@@ -1,0 +1,516 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>medicalRecordInfo_form</class>
+ <widget class="QWidget" name="medicalRecordInfo_form">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>641</width>
+    <height>361</height>
+   </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>641</width>
+    <height>361</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>641</width>
+    <height>361</height>
+   </size>
+  </property>
+  <property name="windowTitle">
+   <string>اطلاعات خدمات بیمار</string>
+  </property>
+  <widget class="QPushButton" name="editMedicalRecord_btn">
+   <property name="geometry">
+    <rect>
+     <x>330</x>
+     <y>310</y>
+     <width>201</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Vazirmatn,sans-serif</family>
+     <pointsize>12</pointsize>
+     <weight>75</weight>
+     <bold>true</bold>
+     <underline>false</underline>
+     <strikeout>false</strikeout>
+    </font>
+   </property>
+   <property name="layoutDirection">
+    <enum>Qt::RightToLeft</enum>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton {
+    background-color: #ffc107; /* Bootstrap warning yellow */
+    color: #212529; /* Dark text */
+    border: none;
+    border-radius: 5px; /* Rounded corners */
+    font-weight: bold; /* Bold text */
+    text-align: center;
+    text-decoration: none;
+    font-family: 'Vazirmatn', sans-serif; /* Font family */
+}
+
+QPushButton:hover {
+    background-color: #e0a800; /* Darker yellow on hover */
+}
+
+QPushButton:pressed {
+    background-color: #c69500; /* Even darker yellow on press */
+}
+</string>
+   </property>
+   <property name="text">
+    <string>ویرایش </string>
+   </property>
+  </widget>
+  <widget class="Line" name="line_4">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>200</y>
+     <width>621</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="orientation">
+    <enum>Qt::Horizontal</enum>
+   </property>
+  </widget>
+  <widget class="QLabel" name="date_lbl">
+   <property name="geometry">
+    <rect>
+     <x>6</x>
+     <y>70</y>
+     <width>511</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Vazirmatn</family>
+     <pointsize>13</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>سه‌شنبه ۱۴۰۳/۰۱/۰۵ ۱۵:۳۰</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+  </widget>
+  <widget class="Line" name="line_7">
+   <property name="geometry">
+    <rect>
+     <x>510</x>
+     <y>20</y>
+     <width>20</width>
+     <height>281</height>
+    </rect>
+   </property>
+   <property name="orientation">
+    <enum>Qt::Vertical</enum>
+   </property>
+  </widget>
+  <widget class="QLabel" name="patientFullName_lbl">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>20</y>
+     <width>511</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Vazirmatn</family>
+     <pointsize>14</pointsize>
+     <weight>50</weight>
+     <bold>false</bold>
+    </font>
+   </property>
+   <property name="text">
+    <string>امیررضا خلیلی</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+  </widget>
+  <widget class="QLabel" name="serviceName_lbl">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>170</y>
+     <width>501</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Vazirmatn</family>
+     <pointsize>13</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>بوتاکس صورت</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+  </widget>
+  <widget class="Line" name="line">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>50</y>
+     <width>621</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="orientation">
+    <enum>Qt::Horizontal</enum>
+   </property>
+  </widget>
+  <widget class="Line" name="line_2">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>100</y>
+     <width>621</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="orientation">
+    <enum>Qt::Horizontal</enum>
+   </property>
+  </widget>
+  <widget class="QLabel" name="doctorName_lbl">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>120</y>
+     <width>501</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Vazirmatn</family>
+     <pointsize>13</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>دکتر محمدرضا خلیلی</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_35">
+   <property name="geometry">
+    <rect>
+     <x>530</x>
+     <y>20</y>
+     <width>101</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Vazirmatn ExtraBold</family>
+     <pointsize>13</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>نام بیمار:</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_46">
+   <property name="geometry">
+    <rect>
+     <x>530</x>
+     <y>270</y>
+     <width>101</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Vazirmatn ExtraBold</family>
+     <pointsize>13</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>توضیحات:</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_45">
+   <property name="geometry">
+    <rect>
+     <x>530</x>
+     <y>70</y>
+     <width>101</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Vazirmatn ExtraBold</family>
+     <pointsize>13</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>تاریخ:</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="deleteMedicalRecord_btn">
+   <property name="geometry">
+    <rect>
+     <x>540</x>
+     <y>310</y>
+     <width>91</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Vazirmatn,sans-serif</family>
+     <pointsize>13</pointsize>
+     <weight>75</weight>
+     <bold>true</bold>
+     <underline>false</underline>
+     <strikeout>false</strikeout>
+    </font>
+   </property>
+   <property name="layoutDirection">
+    <enum>Qt::RightToLeft</enum>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton{
+    background-color: #dc3545; /* Bootstrap danger red */
+    color: white; /* White text */
+    border: none;
+    border-radius: 5px; /* Rounded corners */
+    font-weight: bold; /* Bold text */
+    text-align: center;
+    text-decoration: none;
+    font-family: 'Vazirmatn', sans-serif; /* Font family */
+}
+
+QPushButton:hover {
+    background-color: #c82333; /* Darker red on hover */
+}
+
+QPushButton:pressed {
+    background-color: #bd2130; /* Even darker red on press */
+}
+</string>
+   </property>
+   <property name="text">
+    <string>حذف </string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_40">
+   <property name="geometry">
+    <rect>
+     <x>530</x>
+     <y>170</y>
+     <width>101</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Vazirmatn ExtraBold</family>
+     <pointsize>13</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>سرویس:</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_39">
+   <property name="geometry">
+    <rect>
+     <x>530</x>
+     <y>120</y>
+     <width>101</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Vazirmatn ExtraBold</family>
+     <pointsize>13</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>دکتر:</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+  </widget>
+  <widget class="QLabel" name="description_lbl">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>270</y>
+     <width>501</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Vazirmatn</family>
+     <pointsize>12</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>جلسه سوم</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+  </widget>
+  <widget class="Line" name="line_3">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>150</y>
+     <width>621</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="orientation">
+    <enum>Qt::Horizontal</enum>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="showPictures_btn">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>310</y>
+     <width>311</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Vazirmatn,sans-serif</family>
+     <pointsize>-1</pointsize>
+     <weight>75</weight>
+     <bold>true</bold>
+     <underline>false</underline>
+     <strikeout>false</strikeout>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton {
+    background-color: #0050a5; /* Bootstrap primary blue */
+    color: white; /* White text */
+    border: none;
+    border-radius: 5px; /* Rounded corners */
+    font-size: 15px; /* Font size */
+    font-weight: bold; /* Bold text */
+    text-align: center;
+    text-decoration: none;
+    font-family: 'Vazirmatn', sans-serif; /* Font family */
+}
+
+QPushButton:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+}
+
+QPushButton:pressed {
+    background-color: #004085; /* Even darker blue on press */
+}
+</string>
+   </property>
+   <property name="text">
+    <string>نمایش تصاویر</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_47">
+   <property name="geometry">
+    <rect>
+     <x>530</x>
+     <y>220</y>
+     <width>101</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Vazirmatn ExtraBold</family>
+     <pointsize>13</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>قیمت:</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+  </widget>
+  <widget class="Line" name="line_5">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>250</y>
+     <width>621</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="orientation">
+    <enum>Qt::Horizontal</enum>
+   </property>
+  </widget>
+  <widget class="QLabel" name="price_lbl">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>220</y>
+     <width>501</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Vazirmatn</family>
+     <pointsize>14</pointsize>
+     <weight>50</weight>
+     <bold>false</bold>
+    </font>
+   </property>
+   <property name="text">
+    <string>۲۵۰,۰۰۰ تومان</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

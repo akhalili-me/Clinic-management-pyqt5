@@ -8,8 +8,7 @@ class Doctors:
         try:
             return db.fetchall(query)
         except DatabaseError as e:
-            print(f"Database error: {e}")
-            return []
+            raise e
         
     @staticmethod
     def get_by_id(db: DatabaseManager, doctor_id):
@@ -17,8 +16,7 @@ class Doctors:
         try:
             return db.fetchone(query)
         except DatabaseError as e:
-            print(f"Database error: {e}")
-            return []
+            raise e
         
     @staticmethod
     def add_doctor(db: DatabaseManager, doctor):
@@ -27,8 +25,7 @@ class Doctors:
         try:
             return db.execute_query(query, values)
         except DatabaseError as e:
-            print(f"Database error: {e}")
-            return []
+            raise e
 
     @staticmethod
     def get_full_name_by_id(db,doctor_id):
@@ -36,8 +33,7 @@ class Doctors:
         try:
             return db.fetchone(query)
         except DatabaseError as e:
-            print(f"Database error: {e}")
-            return []
+            raise e
     
     @staticmethod
     def update_doctor(db: DatabaseManager, doctor):
@@ -57,8 +53,7 @@ class Doctors:
         try:
             return db.execute_query(query, values)
         except DatabaseError as e:
-            print(f"Database error: {e}")
-            return []
+            raise e
 
     @staticmethod
     def delete_doctor(db: DatabaseManager, doctor_id):
@@ -66,8 +61,7 @@ class Doctors:
         try:
             return db.execute_query(query)
         except DatabaseError as e:
-            print(f"Database error: {e}")
-            return []
+            raise e
 
     
 

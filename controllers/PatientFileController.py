@@ -9,6 +9,7 @@ from PyQt5.QtCore import pyqtSignal
 
 class PatientFileController(QDialog):
     refresh_patients_list = pyqtSignal()
+    load_today_appointments_list = pyqtSignal()
 
     def __init__(self, patient_id):
         super(PatientFileController, self).__init__()
@@ -18,10 +19,9 @@ class PatientFileController(QDialog):
         self.patient_id = patient_id
 
         self.load_patient_data()
-        self.load_medical_records_list()
-        self.load_appointments_list()
+        self.load_user_medical_records_list()
+        self.load_user_appointments_list()
 
-        # Connecting buttons
         self._connect_buttons()
 
     def _connect_buttons(self):
@@ -29,6 +29,25 @@ class PatientFileController(QDialog):
         self.ui.addAppointment_btn.clicked.connect(self.open_add_appointment)
         self.ui.addNewMedicalRecord_btn.clicked.connect(self.open_add_medical_record)
         self.ui.deletePatient_btn.clicked.connect(self.open_delete_message_box)
+        self.ui.userAppointments_lst.itemDoubleClicked.connect(self.open_appointment_info)
+        self.ui.userMedicalRecords_lst.itemDoubleClicked.connect(self.open_medical_record_info)
+
+
+    def open_medical_record_info(self,item):
+        medical_record_id = item.data(1)
+        from controllers import MedicalRecordInfoController
+        self.appointment_info_controller = MedicalRecordInfoController(medical_record_id)
+        self.appointment_info_controller.load_user_medical_records_list.connect(self.load_user_medical_records_list)
+        self.appointment_info_controller.show()
+
+    def open_appointment_info(self,item):
+        appointment_id = item.data(1)
+        from controllers import AppointmentInfoController
+        self.appointment_info_controller = AppointmentInfoController(appointment_id)
+        self.appointment_info_controller.load_user_appointment_list.connect(self.load_user_appointments_list)
+        self.appointment_info_controller.load_user_medical_records_list.connect(self.load_user_medical_records_list)
+        self.appointment_info_controller.load_today_appointments_list.connect(self.load_today_appointments_list)
+        self.appointment_info_controller.show()
 
     def open_delete_message_box(self):
         msg_box, yes_button = Messages.show_confirm_delete_msg()
@@ -44,13 +63,14 @@ class PatientFileController(QDialog):
     def open_add_medical_record(self):
         from controllers import AddEditMedicalRecordsController
         self.add_medical_record_controller = AddEditMedicalRecordsController(self.patient_id)
-        self.add_medical_record_controller.refresh_medical_records_list.connect(self.load_medical_records_list)
+        self.add_medical_record_controller.refresh_medical_records_list.connect(self.load_user_medical_records_list)
         self.add_medical_record_controller.show()
 
     def open_add_appointment(self):
         from controllers import AddEditAppointmentController
         self.add_appointment_controller = AddEditAppointmentController(self.patient_id)
-        self.add_appointment_controller.refresh_appointment_list.connect(self.load_appointments_list)
+        self.add_appointment_controller.refresh_user_appointment_list_data.connect(self.load_user_appointments_list)
+        self.add_appointment_controller.load_today_appointments_list.connect(self.load_today_appointments_list)
         self.add_appointment_controller.show()
 
     def open_edit_patient(self):
@@ -75,8 +95,8 @@ class PatientFileController(QDialog):
         self.ui.phoneNumber_lbl.setText(Numbers.english_to_persian_numbers(patient["phoneNumber"]))
         self.ui.extraInfo_lbl.setText(patient["extraInfo"])
 
-    def load_medical_records_list(self):
-        self.ui.medicalRecords_lst.clear()
+    def load_user_medical_records_list(self):
+        self.ui.userMedicalRecords_lst.clear()
         with DatabaseManager() as db:
             medical_records = MedicalRecords.get_by_patient_id(db, self.patient_id)
             for record in medical_records:
@@ -86,10 +106,10 @@ class PatientFileController(QDialog):
                 item_text = f"{service['name']}  |  دکتر {doctor['lastName']}  |  تاریخ: {jalali_date}"
                 item = QListWidgetItem(item_text)
                 item.setData(1, record["id"])
-                self.ui.medicalRecords_lst.addItem(item)
+                self.ui.userMedicalRecords_lst.addItem(item)
 
-    def load_appointments_list(self):
-        self.ui.appointments_lst.clear()
+    def load_user_appointments_list(self):
+        self.ui.userAppointments_lst.clear()
         with DatabaseManager() as db:
             appointments = Appointments.get_by_patient_id(db, self.patient_id)
             for appointment in appointments:
@@ -100,7 +120,7 @@ class PatientFileController(QDialog):
                 item_text = f"{service['name']} | دکتر {doctor['lastName']} | {appointment['status']} | {date} | {time}"
                 item = QListWidgetItem(item_text)
                 item.setData(1, appointment["id"])
-                self.ui.appointments_lst.addItem(item)
+                self.ui.userAppointments_lst.addItem(item)
 
 
 

@@ -7,29 +7,29 @@
     <x>0</x>
     <y>0</y>
     <width>640</width>
-    <height>359</height>
+    <height>410</height>
    </rect>
   </property>
   <property name="minimumSize">
    <size>
     <width>640</width>
-    <height>359</height>
+    <height>410</height>
    </size>
   </property>
   <property name="maximumSize">
    <size>
     <width>640</width>
-    <height>359</height>
+    <height>410</height>
    </size>
   </property>
   <property name="windowTitle">
    <string>اطلاعات نوبت</string>
   </property>
-  <widget class="QPushButton" name="pushButton">
+  <widget class="QPushButton" name="sendReminderSMS_btn">
    <property name="geometry">
     <rect>
      <x>10</x>
-     <y>310</y>
+     <y>360</y>
      <width>181</width>
      <height>41</height>
     </rect>
@@ -74,7 +74,7 @@ QPushButton:pressed {
    <property name="geometry">
     <rect>
      <x>310</x>
-     <y>310</y>
+     <y>360</y>
      <width>221</width>
      <height>41</height>
     </rect>
@@ -118,7 +118,7 @@ QPushButton:pressed {
    <property name="geometry">
     <rect>
      <x>200</x>
-     <y>310</y>
+     <y>360</y>
      <width>101</width>
      <height>41</height>
     </rect>
@@ -165,7 +165,7 @@ QPushButton:pressed {
    <property name="geometry">
     <rect>
      <x>540</x>
-     <y>310</y>
+     <y>360</y>
      <width>91</width>
      <height>41</height>
     </rect>
@@ -271,7 +271,7 @@ QPushButton:pressed {
    <property name="geometry">
     <rect>
      <x>6</x>
-     <y>60</y>
+     <y>110</y>
      <width>511</width>
      <height>31</height>
     </rect>
@@ -295,7 +295,7 @@ QPushButton:pressed {
      <x>510</x>
      <y>10</y>
      <width>20</width>
-     <height>291</height>
+     <height>341</height>
     </rect>
    </property>
    <property name="orientation">
@@ -306,7 +306,7 @@ QPushButton:pressed {
    <property name="geometry">
     <rect>
      <x>10</x>
-     <y>90</y>
+     <y>140</y>
      <width>621</width>
      <height>20</height>
     </rect>
@@ -319,7 +319,7 @@ QPushButton:pressed {
    <property name="geometry">
     <rect>
      <x>530</x>
-     <y>110</y>
+     <y>160</y>
      <width>101</width>
      <height>31</height>
     </rect>
@@ -341,7 +341,7 @@ QPushButton:pressed {
    <property name="geometry">
     <rect>
      <x>10</x>
-     <y>140</y>
+     <y>190</y>
      <width>621</width>
      <height>20</height>
     </rect>
@@ -354,7 +354,7 @@ QPushButton:pressed {
    <property name="geometry">
     <rect>
      <x>530</x>
-     <y>160</y>
+     <y>210</y>
      <width>101</width>
      <height>31</height>
     </rect>
@@ -376,7 +376,7 @@ QPushButton:pressed {
    <property name="geometry">
     <rect>
      <x>10</x>
-     <y>190</y>
+     <y>240</y>
      <width>621</width>
      <height>20</height>
     </rect>
@@ -389,7 +389,7 @@ QPushButton:pressed {
    <property name="geometry">
     <rect>
      <x>530</x>
-     <y>210</y>
+     <y>260</y>
      <width>101</width>
      <height>31</height>
     </rect>
@@ -411,7 +411,7 @@ QPushButton:pressed {
    <property name="geometry">
     <rect>
      <x>530</x>
-     <y>60</y>
+     <y>110</y>
      <width>101</width>
      <height>31</height>
     </rect>
@@ -419,7 +419,7 @@ QPushButton:pressed {
    <property name="font">
     <font>
      <family>Vazirmatn ExtraBold</family>
-     <pointsize>13</pointsize>
+     <pointsize>12</pointsize>
     </font>
    </property>
    <property name="text">
@@ -433,7 +433,7 @@ QPushButton:pressed {
    <property name="geometry">
     <rect>
      <x>10</x>
-     <y>240</y>
+     <y>290</y>
      <width>621</width>
      <height>20</height>
     </rect>
@@ -446,7 +446,7 @@ QPushButton:pressed {
    <property name="geometry">
     <rect>
      <x>530</x>
-     <y>260</y>
+     <y>310</y>
      <width>101</width>
      <height>31</height>
     </rect>
@@ -468,7 +468,7 @@ QPushButton:pressed {
    <property name="geometry">
     <rect>
      <x>10</x>
-     <y>110</y>
+     <y>160</y>
      <width>501</width>
      <height>31</height>
     </rect>
@@ -490,7 +490,7 @@ QPushButton:pressed {
    <property name="geometry">
     <rect>
      <x>10</x>
-     <y>160</y>
+     <y>210</y>
      <width>501</width>
      <height>31</height>
     </rect>
@@ -512,7 +512,7 @@ QPushButton:pressed {
    <property name="geometry">
     <rect>
      <x>10</x>
-     <y>210</y>
+     <y>260</y>
      <width>501</width>
      <height>31</height>
     </rect>
@@ -534,7 +534,7 @@ QPushButton:pressed {
    <property name="geometry">
     <rect>
      <x>10</x>
-     <y>260</y>
+     <y>310</y>
      <width>501</width>
      <height>31</height>
     </rect>
@@ -547,6 +547,63 @@ QPushButton:pressed {
    </property>
    <property name="text">
     <string>جلسه سوم</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+  </widget>
+  <widget class="Line" name="line_6">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>90</y>
+     <width>621</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="orientation">
+    <enum>Qt::Horizontal</enum>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_47">
+   <property name="geometry">
+    <rect>
+     <x>530</x>
+     <y>60</y>
+     <width>101</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Vazirmatn ExtraBold</family>
+     <pointsize>12</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>شماره تلفن:</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+  </widget>
+  <widget class="QLabel" name="phoneNumber_lbl">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>60</y>
+     <width>511</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Vazirmatn</family>
+     <pointsize>13</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>۰۹۰۱۲۷۲۳۵۸۹</string>
    </property>
    <property name="alignment">
     <set>Qt::AlignCenter</set>

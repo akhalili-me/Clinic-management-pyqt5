@@ -31,6 +31,18 @@ class Messages:
         msg_box.setDefaultButton(no_button)
         msg_box.exec_()  
         return msg_box, yes_button  
+    
+    @staticmethod
+    def show_confirm_msg():
+        msg_box = QMessageBox()
+        msg_box.setWindowTitle('تایید عملیات')
+        msg_box.setText('آیا از انجام عملیات مطمئن هستید؟')
+        msg_box.setIcon(QMessageBox.Question)
+        yes_button = msg_box.addButton('آره', QMessageBox.YesRole)
+        no_button = msg_box.addButton('خیر', QMessageBox.NoRole)
+        msg_box.setDefaultButton(no_button)
+        msg_box.exec_()  
+        return msg_box, yes_button  
   
 
 
@@ -105,10 +117,21 @@ class LoadingValues:
                 ui.service_cmbox.addItem(service["name"],service["id"])
         
     @staticmethod
-    def load_date_spin_box_values(ui):
+    def load_current_date_spin_box_values(ui):
         current_date = jdatetime.date.today()
         ui.year_spnbox.setValue(current_date.year)
         ui.month_spnbox.setValue(current_date.month)
         ui.day_spnbox.setValue(current_date.day)
 
+    @staticmethod
+    def load_date_into_date_spinbox(ui,date: str):
+        year, month, day = map(int, date.split('-'))
+        ui.year_spnbox.setValue(year)
+        ui.month_spnbox.setValue(month)
+        ui.day_spnbox.setValue(day)
 
+    @staticmethod
+    def load_time_into_time_spnbox(ui,time: str):
+        hour, minute = map(int, time.split(':'))
+        ui.hour_spnbox.setValue(hour)
+        ui.minute_spnbox.setValue(minute)
