@@ -6,7 +6,8 @@ from controllers import (
     DoctorsTabController,
     PatientsTabController,
     ServicesTabController,
-    AppointmentsTabController
+    AppointmentsTabController,
+    ExpenseTabController
 )
 
 class MainController(QMainWindow):
@@ -20,4 +21,5 @@ class MainController(QMainWindow):
         self.doctors_tab_controller = DoctorsTabController(self.ui)
         self.patients_tab_controller = PatientsTabController(self.ui,self.appointments_tab_controller)
         self.services_tab_controller = ServicesTabController(self.ui)
+        self.expense_tab_controller = ExpenseTabController(self.ui)
         

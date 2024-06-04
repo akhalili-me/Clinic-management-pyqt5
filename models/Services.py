@@ -11,8 +11,8 @@ class Services:
             raise e
         
     @staticmethod
-    def get_name_by_id(db,service_id):
-        query = f"SELECT name FROM Service Where id={service_id}"
+    def get_name_price_by_id(db,service_id):
+        query = f"SELECT name,price FROM Service Where id={service_id}"
         try:
             return db.fetchone(query)
         except DatabaseError as e:

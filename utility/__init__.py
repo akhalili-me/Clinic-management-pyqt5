@@ -2,10 +2,55 @@ from PyQt5.QtWidgets import QMessageBox
 from models import DatabaseManager,Doctors,Services
 import jdatetime
 from datetime import timedelta
+import os
+import uuid
+import shutil
+from pathlib import Path
 
+BASE_DIR = Path(__file__).resolve().parent.parent
+IMAGES_DIR = BASE_DIR / "resources" / "images"
+
+class Images:
+    @staticmethod
+    def create_image_directory_if_not_exist(patient_name):
+        directory = Path.joinpath(IMAGES_DIR,patient_name)
+        os.makedirs(directory, exist_ok=True)
+        return directory
+
+    @staticmethod
+    def save_image_to_new_directory(current_image_path,image_directory):
+            unique_filename = str(uuid.uuid4()) + os.path.splitext(current_image_path)[1]
+            new_image_path = os.path.join(image_directory, unique_filename)
+            shutil.copy(current_image_path, new_image_path)
+            return new_image_path
+   
+    def delete_image(image_path):
+        try:
+            if os.path.exists(image_path):
+                os.remove(image_path)
+            else:
+                raise
+        except Exception:
+            raise
+    
+    @staticmethod
+    def get_default_image_path():
+        return IMAGES_DIR / "default.png"
+
+class Validators:
+    @staticmethod
+    def validate_empty_txt_boxes(txtboxes):
+        for txtbox in txtboxes:
+            name = txtbox["name"]
+            text = txtbox["text"]
+            if len(text.strip()) == 0:
+                Messages.show_error_msg(f"{name} نباید خالی باشد.")
+                return False
+        return True
+        
 class Messages:
     @staticmethod
-    def show_error_msg(message):
+    def show_error_msg(message="عملیات با خطا مواجه شد، مجدداً امتحان کنید."):
         msg_box = QMessageBox()
         msg_box.setIcon(QMessageBox.Critical)
         msg_box.setText(message)
@@ -72,7 +117,7 @@ class Dates:
     def convert_to_jalali_format(date_str: str) -> str:
         year, month, day = map(int, date_str.split('-'))
         date_obj = jdatetime.date(year, month, day)
-
+        
         weekday_number = date_obj.weekday()
         weekday_persian = Dates.get_persian_weekday(weekday_number)
 
@@ -99,6 +144,19 @@ class Dates:
         }
         return weekday_persian_mapping[weekday_number]
 
+    @staticmethod
+    def get_jalali_current_month_interval_based_on_greg():
+        today = jdatetime.date.today()
+        if today.month < 7:
+            last_day = 31
+        elif today.month < 12:
+            last_day = 30
+        else:
+            # Esfand has 29 days in a common year and 30 days in a leap year
+            last_day = 30 if jdatetime.date.isleap(today.year) else 29
+        first_day_of_month = jdatetime.date(today.year, today.month, 1).togregorian()
+        last_day_of_month = jdatetime.date(today.year, today.month, last_day).togregorian()
+        return first_day_of_month, last_day_of_month
 
     
 class LoadingValues:
@@ -117,11 +175,19 @@ class LoadingValues:
                 ui.service_cmbox.addItem(service["name"],service["id"])
         
     @staticmethod
-    def load_current_date_spin_box_values(ui):
+    def load_current_date_spin_box_values(ui, date_spnbox_names=None):
+        if not date_spnbox_names:
+            date_spnbox_names = {
+                "year": "year_spnbox",
+                "month": "month_spnbox",
+                "day": "day_spnbox"
+            }
+
         current_date = jdatetime.date.today()
-        ui.year_spnbox.setValue(current_date.year)
-        ui.month_spnbox.setValue(current_date.month)
-        ui.day_spnbox.setValue(current_date.day)
+        from PyQt5.QtWidgets import QSpinBox
+        ui.findChild(QSpinBox, date_spnbox_names["year"]).setValue(current_date.year)
+        ui.findChild(QSpinBox, date_spnbox_names["month"]).setValue(current_date.month)
+        ui.findChild(QSpinBox, date_spnbox_names["day"]).setValue(current_date.day)
 
     @staticmethod
     def load_date_into_date_spinbox(ui,date: str):

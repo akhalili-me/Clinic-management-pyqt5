@@ -1,5 +1,45 @@
 from .db import DatabaseManager,DatabaseError
 
+class MedicalRecordImages:
+    @staticmethod
+    def get_by_id(db:DatabaseManager,id):
+        query = f"SELECT * FROM MedicalRecordImages Where id={id}"
+        try:
+            return db.fetchone(query)
+        except DatabaseError as e:
+            raise e
+        
+    @staticmethod
+    def get_by_medical_record_id(db:DatabaseManager,medical_record_id):
+        query = f"SELECT * FROM MedicalRecordImages Where medical_record={medical_record_id}"
+        try:
+            return db.fetchall(query)
+        except DatabaseError as e:
+            raise e
+
+    @staticmethod
+    def add_medical_record_image(db:DatabaseManager,medical_record_image):
+        query = """INSERT INTO MedicalRecordImages(path,name,medical_record)
+                VALUES (?,?,?)
+                """
+        values = (
+            medical_record_image["path"],
+            medical_record_image["name"],
+            medical_record_image["medical_record"],
+        )
+        try:
+            return db.execute_query(query, values)
+        except DatabaseError as e:
+            raise e
+
+    @staticmethod
+    def delete_medical_record_image(db: DatabaseManager, image_id):
+        query = f"DELETE FROM MedicalRecordImages WHERE id = {image_id};"
+        try:
+            return db.execute_query(query)
+        except DatabaseError as e:
+            raise e
+        
 class MedicalRecords:
 
     @staticmethod
@@ -47,7 +87,7 @@ class MedicalRecords:
                         patient = ?,
                         service = ?,
                         description = ?,
-                        price = ?,
+                        price = ?
                     WHERE id = ?
                 """
         values = (
@@ -71,5 +111,4 @@ class MedicalRecords:
         try:
             return db.execute_query(query)
         except DatabaseError as e:
-            print(f"Database error: {e}")
             raise e

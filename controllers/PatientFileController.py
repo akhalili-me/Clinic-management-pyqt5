@@ -32,7 +32,6 @@ class PatientFileController(QDialog):
         self.ui.userAppointments_lst.itemDoubleClicked.connect(self.open_appointment_info)
         self.ui.userMedicalRecords_lst.itemDoubleClicked.connect(self.open_medical_record_info)
 
-
     def open_medical_record_info(self,item):
         medical_record_id = item.data(1)
         from controllers import MedicalRecordInfoController
@@ -63,7 +62,7 @@ class PatientFileController(QDialog):
     def open_add_medical_record(self):
         from controllers import AddEditMedicalRecordsController
         self.add_medical_record_controller = AddEditMedicalRecordsController(self.patient_id)
-        self.add_medical_record_controller.refresh_medical_records_list.connect(self.load_user_medical_records_list)
+        self.add_medical_record_controller.refresh_user_medical_records_list.connect(self.load_user_medical_records_list)
         self.add_medical_record_controller.show()
 
     def open_add_appointment(self):

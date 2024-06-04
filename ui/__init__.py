@@ -7,3 +7,6 @@ from .patient_file import *
 from .add_edit_appointment import *
 from .appointment_info import *
 from .medical_record_info import *
+from .medical_record_images import *
+from .add_edit_images import *
+from .add_edit_delete_expense import *

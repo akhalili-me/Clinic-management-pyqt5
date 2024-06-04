@@ -294,13 +294,3 @@ class Ui_addEditDeleteExpense_form(object):
         self.cancel_btn.setText(_translate("addEditDeleteExpense_form", "لغو"))
         self.save_btn.setText(_translate("addEditDeleteExpense_form", "ثبت"))
         self.delete_btn.setText(_translate("addEditDeleteExpense_form", "حذف هزینه"))
-
-
-if __name__ == "__main__":
-    import sys
-    app = QtWidgets.QApplication(sys.argv)
-    addEditDeleteExpense_form = QtWidgets.QWidget()
-    ui = Ui_addEditDeleteExpense_form()
-    ui.setupUi(addEditDeleteExpense_form)
-    addEditDeleteExpense_form.show()
-    sys.exit(app.exec_())

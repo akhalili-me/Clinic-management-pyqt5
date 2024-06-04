@@ -27,7 +27,7 @@ class Ui_MainWindow(object):
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
         self.tabWidget = QtWidgets.QTabWidget(self.centralwidget)
-        self.tabWidget.setGeometry(QtCore.QRect(0, 10, 1191, 711))
+        self.tabWidget.setGeometry(QtCore.QRect(0, 0, 1201, 711))
         font = QtGui.QFont()
         font.setFamily("Vazirmatn SemiBold")
         font.setPointSize(14)
@@ -822,7 +822,7 @@ class Ui_MainWindow(object):
         self.serviceName_txtbox.setText("")
         self.serviceName_txtbox.setObjectName("serviceName_txtbox")
         self.addServices_btn = QtWidgets.QPushButton(self.services_tab)
-        self.addServices_btn.setGeometry(QtCore.QRect(980, 20, 191, 71))
+        self.addServices_btn.setGeometry(QtCore.QRect(980, 20, 201, 71))
         font = QtGui.QFont()
         font.setFamily("Vazirmatn,sans-serif")
         font.setPointSize(-1)
@@ -854,7 +854,7 @@ class Ui_MainWindow(object):
 "")
         self.addServices_btn.setObjectName("addServices_btn")
         self.label_8 = QtWidgets.QLabel(self.services_tab)
-        self.label_8.setGeometry(QtCore.QRect(20, 20, 941, 71))
+        self.label_8.setGeometry(QtCore.QRect(10, 20, 951, 71))
         font = QtGui.QFont()
         font.setFamily("A Rezvan-fat,sans-serif")
         font.setPointSize(-1)
@@ -1062,7 +1062,7 @@ class Ui_MainWindow(object):
         self.doctorName_txtbox.setText("")
         self.doctorName_txtbox.setObjectName("doctorName_txtbox")
         self.label_4 = QtWidgets.QLabel(self.medicalRecords_tab)
-        self.label_4.setGeometry(QtCore.QRect(20, 20, 931, 71))
+        self.label_4.setGeometry(QtCore.QRect(10, 20, 941, 71))
         font = QtGui.QFont()
         font.setFamily("A Rezvan-fat,sans-serif")
         font.setPointSize(-1)
@@ -1093,13 +1093,305 @@ class Ui_MainWindow(object):
         self.label_4.setAlignment(QtCore.Qt.AlignCenter)
         self.label_4.setObjectName("label_4")
         self.tabWidget.addTab(self.medicalRecords_tab, "")
+        self.tab_2 = QtWidgets.QWidget()
+        self.tab_2.setObjectName("tab_2")
+        self.addExpense_btn = QtWidgets.QPushButton(self.tab_2)
+        self.addExpense_btn.setGeometry(QtCore.QRect(980, 10, 201, 61))
+        font = QtGui.QFont()
+        font.setFamily("Vazirmatn,sans-serif")
+        font.setPointSize(-1)
+        font.setBold(True)
+        font.setUnderline(False)
+        font.setWeight(75)
+        font.setStrikeOut(False)
+        self.addExpense_btn.setFont(font)
+        self.addExpense_btn.setStyleSheet("QPushButton {\n"
+"    background-color: #0050a5; /* Bootstrap primary blue */\n"
+"    color: white; /* White text */\n"
+"    border: none;\n"
+"    border-radius: 5px; /* Rounded corners */\n"
+"    padding: 10px 20px; /* Padding */\n"
+"    font-size: 16px; /* Font size */\n"
+"    font-weight: bold; /* Bold text */\n"
+"    text-align: center;\n"
+"    text-decoration: none;\n"
+"    font-family: \'Vazirmatn\', sans-serif; /* Font family */\n"
+"}\n"
+"\n"
+"QPushButton:hover {\n"
+"    background-color: #0056b3; /* Darker blue on hover */\n"
+"}\n"
+"\n"
+"QPushButton:pressed {\n"
+"    background-color: #004085; /* Even darker blue on press */\n"
+"}\n"
+"")
+        self.addExpense_btn.setObjectName("addExpense_btn")
+        self.label_10 = QtWidgets.QLabel(self.tab_2)
+        self.label_10.setGeometry(QtCore.QRect(10, 10, 951, 61))
+        font = QtGui.QFont()
+        font.setFamily("A Rezvan-fat,sans-serif")
+        font.setPointSize(-1)
+        font.setBold(True)
+        font.setWeight(75)
+        self.label_10.setFont(font)
+        self.label_10.setLayoutDirection(QtCore.Qt.RightToLeft)
+        self.label_10.setAutoFillBackground(False)
+        self.label_10.setStyleSheet("/* Basic styling for the company name label */\n"
+"QLabel {\n"
+"    color: #007bff; /* Bootstrap primary blue text color */\n"
+"    font-family: \'A Rezvan-fat\', sans-serif; /* Font family */\n"
+"    font-size: 30px; /* Larger font size for prominence */\n"
+"    font-weight: bold; /* Bold text */\n"
+"    padding: 10px; /* Padding around the text */\n"
+"    border: 2px solid #007bff; /* Optional: Border with the same blue color */\n"
+"    border-radius: 10px; /* Rounded corners */\n"
+"    background-color: #f8f9fa; /* Light grey background to make it stand out */\n"
+"    text-align: center; /* Center-align the text */\n"
+"}\n"
+"\n"
+"/* Hover effect */\n"
+"QLabe:hover {\n"
+"    color: #0056b3; /* Darker blue on hover */\n"
+"    border-color: #0056b3; /* Match border color on hover */\n"
+"}\n"
+"")
+        self.label_10.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_10.setObjectName("label_10")
+        self.groupBox_6 = QtWidgets.QGroupBox(self.tab_2)
+        self.groupBox_6.setGeometry(QtCore.QRect(10, 80, 1171, 571))
+        font = QtGui.QFont()
+        font.setFamily("Vazirmatn Black")
+        font.setPointSize(11)
+        font.setBold(False)
+        font.setWeight(50)
+        font.setKerning(True)
+        self.groupBox_6.setFont(font)
+        self.groupBox_6.setLayoutDirection(QtCore.Qt.LeftToRight)
+        self.groupBox_6.setAlignment(QtCore.Qt.AlignRight|QtCore.Qt.AlignTrailing|QtCore.Qt.AlignVCenter)
+        self.groupBox_6.setObjectName("groupBox_6")
+        self.expense_lst = QtWidgets.QListWidget(self.groupBox_6)
+        self.expense_lst.setGeometry(QtCore.QRect(10, 110, 1151, 451))
+        font = QtGui.QFont()
+        font.setFamily("Vazirmatn,sans-serif")
+        font.setPointSize(-1)
+        self.expense_lst.setFont(font)
+        self.expense_lst.setLayoutDirection(QtCore.Qt.RightToLeft)
+        self.expense_lst.setStyleSheet("/* Basic ListWidget styling */\n"
+"QListWidget {\n"
+"    background-color: #f8f9fa; /* Light grey background */\n"
+"    border: 1px solid #dee2e6; /* Border color */\n"
+"    border-radius: 5px; /* Rounded corners */\n"
+"    padding: 5px; /* Padding inside the list */\n"
+"    font-family: \'Vazirmatn\', sans-serif; /* Font family */\n"
+"    font-size: 17px; /* Font size */\n"
+"    outline: 0; /* Remove focus indicator */\n"
+"}\n"
+"\n"
+"/* Item styling */\n"
+"QListWidget::item {\n"
+"    padding: 10px 15px; /* Padding for each item */\n"
+"    margin: 5px 0; /* Margin between items */\n"
+"    background-color: #ffffff; /* White background for items */\n"
+"    border-radius: 5px; /* Rounded corners for items */\n"
+"    color: #343a40; /* Dark grey text color */\n"
+"    outline: 0; /* Remove focus indicator */\n"
+"}\n"
+"\n"
+"/* Hover effect for items */\n"
+"QListWidget::item:hover {\n"
+"    background-color: #e9ecef; /* Light grey background on hover */\n"
+"}\n"
+"\n"
+"/* Selected item styling */\n"
+"QListWidget::item:selected {\n"
+"    background-color: #0050a5;\n"
+"    color: white;\n"
+"}\n"
+"\n"
+"/* Scroll bar styling */\n"
+"QScrollBar:vertical {\n"
+"    background: #f8f9fa; /* Light grey background for the scroll bar */\n"
+"    width: 12px; /* Width of the vertical scroll bar */\n"
+"    margin: 22px 0 22px 0; /* Margin to fit the top and bottom arrows */\n"
+"    border: 1px solid #dee2e6; /* Border color */\n"
+"    border-radius: 5px; /* Rounded corners */\n"
+"}\n"
+"\n"
+"QScrollBar::handle:vertical {\n"
+"    background: #ced4da; /* Medium grey handle */\n"
+"    min-height: 20px; /* Minimum height of the handle */\n"
+"    border-radius: 5px; /* Rounded corners */\n"
+"}\n"
+"\n"
+"QScrollBar::add-line:vertical,\n"
+"QScrollBar::sub-line:vertical {\n"
+"    background: #ced4da; /* Medium grey for arrows */\n"
+"    height: 20px;\n"
+"    subcontrol-origin: margin;\n"
+"    subcontrol-position: top;\n"
+"    border-radius: 5px; /* Rounded corners */\n"
+"}\n"
+"\n"
+"QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical {\n"
+"    background: none;\n"
+"}\n"
+"")
+        self.expense_lst.setObjectName("expense_lst")
+        self.groupBox_9 = QtWidgets.QGroupBox(self.groupBox_6)
+        self.groupBox_9.setGeometry(QtCore.QRect(10, 20, 651, 81))
+        font = QtGui.QFont()
+        font.setFamily("Vazirmatn Black")
+        font.setPointSize(10)
+        self.groupBox_9.setFont(font)
+        self.groupBox_9.setLayoutDirection(QtCore.Qt.RightToLeft)
+        self.groupBox_9.setAlignment(QtCore.Qt.AlignLeading|QtCore.Qt.AlignLeft|QtCore.Qt.AlignVCenter)
+        self.groupBox_9.setObjectName("groupBox_9")
+        self.fromDay_spnbox = QtWidgets.QSpinBox(self.groupBox_9)
+        self.fromDay_spnbox.setGeometry(QtCore.QRect(530, 30, 51, 31))
+        self.fromDay_spnbox.setMinimum(1)
+        self.fromDay_spnbox.setMaximum(31)
+        self.fromDay_spnbox.setObjectName("fromDay_spnbox")
+        self.fromMonth_spnbox = QtWidgets.QSpinBox(self.groupBox_9)
+        self.fromMonth_spnbox.setGeometry(QtCore.QRect(480, 30, 51, 31))
+        self.fromMonth_spnbox.setMinimum(1)
+        self.fromMonth_spnbox.setMaximum(12)
+        self.fromMonth_spnbox.setObjectName("fromMonth_spnbox")
+        self.fromYear_spnbox = QtWidgets.QSpinBox(self.groupBox_9)
+        self.fromYear_spnbox.setGeometry(QtCore.QRect(410, 30, 71, 31))
+        self.fromYear_spnbox.setMinimum(1400)
+        self.fromYear_spnbox.setMaximum(1500)
+        self.fromYear_spnbox.setObjectName("fromYear_spnbox")
+        self.searchExpenseByDate_btn = QtWidgets.QPushButton(self.groupBox_9)
+        self.searchExpenseByDate_btn.setGeometry(QtCore.QRect(10, 30, 131, 31))
+        self.searchExpenseByDate_btn.setStyleSheet("QPushButton {\n"
+"    background-color: #0050a5; /* Bootstrap primary blue */\n"
+"    color: white; /* White text */\n"
+"    border: none;\n"
+"    border-radius: 5px; /* Rounded corners */\n"
+"    font-size: 15px; /* Font size */\n"
+"    font-weight: bold; /* Bold text */\n"
+"    text-align: center;\n"
+"    text-decoration: none;\n"
+"    font-family: \'Vazirmatn\', sans-serif; /* Font family */\n"
+"}\n"
+"\n"
+"QPushButton:hover {\n"
+"    background-color: #0056b3; /* Darker blue on hover */\n"
+"}\n"
+"\n"
+"QPushButton:pressed {\n"
+"    background-color: #004085; /* Even darker blue on press */\n"
+"}\n"
+"")
+        self.searchExpenseByDate_btn.setObjectName("searchExpenseByDate_btn")
+        self.toYear_spnbox = QtWidgets.QSpinBox(self.groupBox_9)
+        self.toYear_spnbox.setGeometry(QtCore.QRect(160, 30, 71, 31))
+        self.toYear_spnbox.setMinimum(1400)
+        self.toYear_spnbox.setMaximum(1500)
+        self.toYear_spnbox.setObjectName("toYear_spnbox")
+        self.toDay_spnbox = QtWidgets.QSpinBox(self.groupBox_9)
+        self.toDay_spnbox.setGeometry(QtCore.QRect(280, 30, 51, 31))
+        self.toDay_spnbox.setMinimum(1)
+        self.toDay_spnbox.setMaximum(31)
+        self.toDay_spnbox.setObjectName("toDay_spnbox")
+        self.toMonth_spnbox = QtWidgets.QSpinBox(self.groupBox_9)
+        self.toMonth_spnbox.setGeometry(QtCore.QRect(230, 30, 51, 31))
+        self.toMonth_spnbox.setMinimum(1)
+        self.toMonth_spnbox.setMaximum(12)
+        self.toMonth_spnbox.setObjectName("toMonth_spnbox")
+        self.label_14 = QtWidgets.QLabel(self.groupBox_9)
+        self.label_14.setGeometry(QtCore.QRect(570, 30, 81, 31))
+        self.label_14.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_14.setObjectName("label_14")
+        self.label_15 = QtWidgets.QLabel(self.groupBox_9)
+        self.label_15.setGeometry(QtCore.QRect(320, 30, 81, 31))
+        self.label_15.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_15.setObjectName("label_15")
+        self.groupBox_10 = QtWidgets.QGroupBox(self.groupBox_6)
+        self.groupBox_10.setGeometry(QtCore.QRect(670, 20, 491, 81))
+        font = QtGui.QFont()
+        font.setFamily("Vazirmatn Black")
+        font.setPointSize(10)
+        self.groupBox_10.setFont(font)
+        self.groupBox_10.setLayoutDirection(QtCore.Qt.RightToLeft)
+        self.groupBox_10.setAlignment(QtCore.Qt.AlignLeading|QtCore.Qt.AlignLeft|QtCore.Qt.AlignVCenter)
+        self.groupBox_10.setObjectName("groupBox_10")
+        self.label_17 = QtWidgets.QLabel(self.groupBox_10)
+        self.label_17.setGeometry(QtCore.QRect(400, 29, 81, 31))
+        self.label_17.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_17.setObjectName("label_17")
+        self.expenseName_txtbox = QtWidgets.QLineEdit(self.groupBox_10)
+        self.expenseName_txtbox.setGeometry(QtCore.QRect(140, 30, 261, 31))
+        self.expenseName_txtbox.setLayoutDirection(QtCore.Qt.RightToLeft)
+        self.expenseName_txtbox.setStyleSheet("/* Basic LineEdit styling */\n"
+"QLineEdit {\n"
+"    background-color: #ffffff; /* White background */\n"
+"    border: 1px solid #dee2e6; /* Light grey border */\n"
+"    border-radius: 5px; /* Rounded corners */\n"
+"    font-family: \'Vazirmatn\', sans-serif; /* Font family */\n"
+"    font-size: 16px; /* Font size */\n"
+"    color: #343a40; /* Dark grey text color */\n"
+"    outline: none; /* Remove default outline */\n"
+"}\n"
+"\n"
+"/* Hover effect */\n"
+"QLineEdit:hover {\n"
+"    border: 1px solid #007bff; /* Blue border on hover */\n"
+"}\n"
+"\n"
+"/* Focus effect */\n"
+"QLineEdit:focus {\n"
+"    border: 1px solid #007bff; /* Blue border on focus */\n"
+"}\n"
+"\n"
+"/* Disabled state */\n"
+"QLineEdit:disabled {\n"
+"    background-color: #e9ecef; /* Light grey background when disabled */\n"
+"    color: #6c757d; /* Grey text color when disabled */\n"
+"}\n"
+"\n"
+"")
+        self.expenseName_txtbox.setLocale(QtCore.QLocale(QtCore.QLocale.Persian, QtCore.QLocale.Iran))
+        self.expenseName_txtbox.setText("")
+        self.expenseName_txtbox.setObjectName("expenseName_txtbox")
+        self.searchExpenseByName_btn = QtWidgets.QPushButton(self.groupBox_10)
+        self.searchExpenseByName_btn.setGeometry(QtCore.QRect(10, 30, 121, 31))
+        self.searchExpenseByName_btn.setStyleSheet("QPushButton {\n"
+"    background-color: #0050a5; /* Bootstrap primary blue */\n"
+"    color: white; /* White text */\n"
+"    border: none;\n"
+"    border-radius: 5px; /* Rounded corners */\n"
+"    font-size: 15px; /* Font size */\n"
+"    font-weight: bold; /* Bold text */\n"
+"    text-align: center;\n"
+"    text-decoration: none;\n"
+"    box-shadow: 0 4px rgba(0, 0, 0, 0.2); /* Shadow */\n"
+"    font-family: \'Vazirmatn\', sans-serif; /* Font family */\n"
+"}\n"
+"\n"
+"QPushButton:hover {\n"
+"    background-color: #0056b3; /* Darker blue on hover */\n"
+"}\n"
+"\n"
+"QPushButton:pressed {\n"
+"    background-color: #004085; /* Even darker blue on press */\n"
+"    box-shadow: 0 2px rgba(0, 0, 0, 0.2); /* Reduce shadow on press */\n"
+"    transform: translateY(2px); /* Move button down on press */\n"
+"}\n"
+"")
+        self.searchExpenseByName_btn.setObjectName("searchExpenseByName_btn")
+        self.tabWidget.addTab(self.tab_2, "")
+        self.tab = QtWidgets.QWidget()
+        self.tab.setObjectName("tab")
+        self.tabWidget.addTab(self.tab, "")
         MainWindow.setCentralWidget(self.centralwidget)
         self.statusbar = QtWidgets.QStatusBar(MainWindow)
         self.statusbar.setObjectName("statusbar")
         MainWindow.setStatusBar(self.statusbar)
 
         self.retranslateUi(MainWindow)
-        self.tabWidget.setCurrentIndex(1)
+        self.tabWidget.setCurrentIndex(4)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
     def retranslateUi(self, MainWindow):
@@ -1140,5 +1432,16 @@ class Ui_MainWindow(object):
         self.label_12.setText(_translate("MainWindow", "نام پزشک:"))
         self.label_4.setText(_translate("MainWindow", "مدیریت پزشک‌ها"))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.medicalRecords_tab), _translate("MainWindow", "پزشک‌ها"))
-
+        self.addExpense_btn.setText(_translate("MainWindow", "اضافه کردن هزینه"))
+        self.label_10.setText(_translate("MainWindow", "مدیریت هزینه"))
+        self.groupBox_6.setTitle(_translate("MainWindow", "جستجو هزینه‌ها"))
+        self.groupBox_9.setTitle(_translate("MainWindow", "بر اساس تاریخ"))
+        self.searchExpenseByDate_btn.setText(_translate("MainWindow", "جستجو"))
+        self.label_14.setText(_translate("MainWindow", "از تاریخ:"))
+        self.label_15.setText(_translate("MainWindow", "تا تاریخ:"))
+        self.groupBox_10.setTitle(_translate("MainWindow", "بر اساس نام"))
+        self.label_17.setText(_translate("MainWindow", "نام هزینه:"))
+        self.searchExpenseByName_btn.setText(_translate("MainWindow", "جستجو"))
+        self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_2), _translate("MainWindow", "هزینه‌ها"))
+        self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab), _translate("MainWindow", "مدیریت مالی"))
 

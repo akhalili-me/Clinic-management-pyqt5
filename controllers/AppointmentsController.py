@@ -1,8 +1,7 @@
 from PyQt5.QtWidgets import QDialog
 from ui import Ui_MainWindow,Ui_addEditAppointment_form,Ui_appointmentInfo_form
 from models import DatabaseManager,UtilityFetcher
-from PyQt5.QtWidgets import QMessageBox
-from models import Doctors,Services,Appointments,MedicalRecords
+from models import Services,Appointments,MedicalRecords
 from PyQt5.QtCore import pyqtSignal
 from utility import LoadingValues,Dates,Numbers,Messages
 from PyQt5.QtWidgets import QListWidgetItem
@@ -51,7 +50,7 @@ class AppointmentsTabController:
     def _load_data_into_appointment_list(self, db, appointments):
         self.ui.appointments_lst.clear()
         for appointment in appointments:
-            patient, service_name, doctor_full_name = (
+            patient, service, doctor_full_name = (
                 UtilityFetcher.get_patient_service_doctor_names(
                     db,
                     appointment["patient"],
@@ -64,7 +63,7 @@ class AppointmentsTabController:
             phone_number = Numbers.english_to_persian_numbers(patient["phoneNumber"])
 
             description = appointment["description"] or "بدون توضیحات"
-            item_txt = f"{patient["fullName"]} | {phone_number} | {service_name} | دکتر {doctor_full_name} | {appointment['status']} | {date} | {time} | {description}"
+            item_txt = f"{patient["fullName"]} | {phone_number} | {service["name"]} | دکتر {doctor_full_name} | {appointment['status']} | {date} | {time} | {description}"
             item = QListWidgetItem(item_txt)
             item.setData(1, appointment["id"])
             self.ui.appointments_lst.addItem(item)
@@ -157,7 +156,7 @@ class AppointmentInfoController(QDialog):
 
         with DatabaseManager() as db:
             appointment = Appointments.get_by_id(db,appointment_id)
-            patient, service_name, doctor_full_name = (
+            patient, service, doctor_full_name = (
                 UtilityFetcher.get_patient_service_doctor_names(
                     db,
                     appointment["patient"],
@@ -172,7 +171,7 @@ class AppointmentInfoController(QDialog):
 
             self.ui.patientFullName_lbl.setText(patient["fullName"])
             self.ui.phoneNumber_lbl.setText(phone_number)
-            self.ui.serviceName_lbl.setText(service_name)
+            self.ui.serviceName_lbl.setText(service["name"])
             self.ui.doctorName_lbl.setText(f"دکتر {doctor_full_name}")
             self.ui.datetime_lbl.setText(f"{jalali_date} ساعت {time}")
             self.ui.status_lbl.setText(appointment["status"])
@@ -212,12 +211,12 @@ class AddEditAppointmentController(QDialog):
     def load_appointment_data_into_txtboxes(self):
         appointment = self.appointment
         with DatabaseManager() as db:
-            _, service_name, doctor_full_name = UtilityFetcher.get_patient_service_doctor_names(
+            _, service, doctor_full_name = UtilityFetcher.get_patient_service_doctor_names(
                 db, None, appointment["service"], appointment["doctor"]
             )
 
         self.ui.doctor_cmbox.setCurrentText(f"دکتر {doctor_full_name}")
-        self.ui.service_cmbox.setCurrentText(service_name)
+        self.ui.service_cmbox.setCurrentText(service["name"])
         self.ui.status_cmbox.setCurrentText(appointment["status"])
         self.ui.description_txtbox.setText(appointment["description"])
 

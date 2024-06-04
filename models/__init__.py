@@ -4,12 +4,13 @@ from .Patients import *
 from .Services import *
 from .MedicalRecords import *
 from .Appointments import *
+from .Expenses import *
 
 class UtilityFetcher:
     @staticmethod
     def get_patient_service_doctor_names(db, patient_id=None, service_id=None, doctor_id=None):
         patient = {}
-        service_name = None
+        service = {}
         doctor_full_name = None
 
         if patient_id:
@@ -18,11 +19,12 @@ class UtilityFetcher:
             patient["phoneNumber"] = patient_obj["phoneNumber"]
 
         if service_id:
-            service = Services.get_name_by_id(db, service_id)
-            service_name = service["name"]
+            service_obj = Services.get_name_price_by_id(db, service_id)
+            service["name"] = service_obj["name"]
+            service["price"] = service_obj["price"]
 
         if doctor_id:
             doctor = Doctors.get_full_name_by_id(db, doctor_id)
             doctor_full_name = f"{doctor["firstName"]} {doctor["lastName"]}"
 
-        return patient,service_name,doctor_full_name
+        return patient,service,doctor_full_name
