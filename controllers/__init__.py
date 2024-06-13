@@ -1,6 +1,7 @@
 from .PatientsController import *
 from .DoctorsController import *
 from .ServicesController import *
+from .ReportsController import *
 from .AppointmentsController import *
 from .ExpenseController import *
 from .MainController import *

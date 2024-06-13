@@ -181,17 +181,12 @@ class AddEditMedicalRecordsController(QDialog):
         day = self.ui.day_spnbox.value()
         return jdatetime.date(year, month, day).strftime("%Y-%m-%d")
 
-    def _get_time_str(self):
-        hour = self.ui.hour_spnbox.value()
-        minute = self.ui.minute_spnbox.value()
-        return f"{hour}:{minute}"
-
     def _get_gregorian_date(self, jalali_date_str):
         year, month, day = map(int, jalali_date_str.split("-"))
         return (
-            jdatetime.datetime(year, month, day)
+            jdatetime.date(year, month, day)
             .togregorian()
-            .strftime("%Y-%m-%d %H:%M")
+            .strftime("%Y-%m-%d")
         )
 
 

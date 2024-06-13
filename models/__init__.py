@@ -5,6 +5,7 @@ from .Services import *
 from .MedicalRecords import *
 from .Appointments import *
 from .Expenses import *
+from .Reports import *
 
 class UtilityFetcher:
     @staticmethod

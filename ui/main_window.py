@@ -9,7 +9,7 @@
 
 
 from PyQt5 import QtCore, QtGui, QtWidgets
-
+from PyQt5.QtChart import QChartView
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
@@ -1384,6 +1384,606 @@ class Ui_MainWindow(object):
         self.tabWidget.addTab(self.tab_2, "")
         self.tab = QtWidgets.QWidget()
         self.tab.setObjectName("tab")
+        self.report_chart = QChartView(self.tab)
+        self.report_chart.setGeometry(QtCore.QRect(20, 270, 1161, 371))
+        font = QtGui.QFont()
+        font.setFamily("Vazirmatn ExtraBold")
+        font.setPointSize(15)
+        self.report_chart.setFont(font)
+        self.report_chart.setStyleSheet("")
+        self.report_chart.setObjectName("report_chart")
+        self.report_stackedWidget = QtWidgets.QStackedWidget(self.tab)
+        self.report_stackedWidget.setGeometry(QtCore.QRect(10, 10, 1041, 251))
+        self.report_stackedWidget.setFocusPolicy(QtCore.Qt.NoFocus)
+        self.report_stackedWidget.setStyleSheet("QStackedWidget {\n"
+"    background-color:rgb(248, 248, 248);\n"
+"    border-radius: 7px; /* Rounded corners */\n"
+"}\n"
+"\n"
+"")
+        self.report_stackedWidget.setFrameShape(QtWidgets.QFrame.NoFrame)
+        self.report_stackedWidget.setLineWidth(0)
+        self.report_stackedWidget.setMidLineWidth(0)
+        self.report_stackedWidget.setObjectName("report_stackedWidget")
+        self.page = QtWidgets.QWidget()
+        self.page.setObjectName("page")
+        self.line_7 = QtWidgets.QFrame(self.page)
+        self.line_7.setGeometry(QtCore.QRect(490, 10, 20, 231))
+        self.line_7.setFrameShape(QtWidgets.QFrame.VLine)
+        self.line_7.setFrameShadow(QtWidgets.QFrame.Sunken)
+        self.line_7.setObjectName("line_7")
+        self.line = QtWidgets.QFrame(self.page)
+        self.line.setGeometry(QtCore.QRect(540, 30, 231, 20))
+        self.line.setFrameShape(QtWidgets.QFrame.HLine)
+        self.line.setFrameShadow(QtWidgets.QFrame.Sunken)
+        self.line.setObjectName("line")
+        self.label_35 = QtWidgets.QLabel(self.page)
+        self.label_35.setGeometry(QtCore.QRect(320, 10, 151, 21))
+        font = QtGui.QFont()
+        font.setFamily("Vazirmatn ExtraBold")
+        font.setPointSize(11)
+        self.label_35.setFont(font)
+        self.label_35.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_35.setObjectName("label_35")
+        self.line_8 = QtWidgets.QFrame(self.page)
+        self.line_8.setGeometry(QtCore.QRect(280, 10, 20, 231))
+        self.line_8.setFrameShape(QtWidgets.QFrame.VLine)
+        self.line_8.setFrameShadow(QtWidgets.QFrame.Sunken)
+        self.line_8.setObjectName("line_8")
+        self.label_37 = QtWidgets.QLabel(self.page)
+        self.label_37.setGeometry(QtCore.QRect(40, 10, 231, 21))
+        font = QtGui.QFont()
+        font.setFamily("Vazirmatn ExtraBold")
+        font.setPointSize(11)
+        self.label_37.setFont(font)
+        self.label_37.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_37.setObjectName("label_37")
+        self.label_38 = QtWidgets.QLabel(self.page)
+        self.label_38.setGeometry(QtCore.QRect(540, 11, 231, 20))
+        font = QtGui.QFont()
+        font.setFamily("Vazirmatn ExtraBold")
+        font.setPointSize(12)
+        self.label_38.setFont(font)
+        self.label_38.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_38.setObjectName("label_38")
+        self.line_3 = QtWidgets.QFrame(self.page)
+        self.line_3.setGeometry(QtCore.QRect(40, 30, 231, 20))
+        self.line_3.setFrameShape(QtWidgets.QFrame.HLine)
+        self.line_3.setFrameShadow(QtWidgets.QFrame.Sunken)
+        self.line_3.setObjectName("line_3")
+        self.generalTime_cmbox = QtWidgets.QComboBox(self.page)
+        self.generalTime_cmbox.setEnabled(True)
+        self.generalTime_cmbox.setGeometry(QtCore.QRect(800, 170, 221, 31))
+        font = QtGui.QFont()
+        font.setFamily("Vazirmatn Black")
+        font.setPointSize(11)
+        self.generalTime_cmbox.setFont(font)
+        self.generalTime_cmbox.setAcceptDrops(False)
+        self.generalTime_cmbox.setLayoutDirection(QtCore.Qt.RightToLeft)
+        self.generalTime_cmbox.setStyleSheet("")
+        self.generalTime_cmbox.setEditable(False)
+        self.generalTime_cmbox.setMaxVisibleItems(10)
+        self.generalTime_cmbox.setDuplicatesEnabled(False)
+        self.generalTime_cmbox.setObjectName("generalTime_cmbox")
+        self.generalTime_cmbox.addItem("")
+        self.generalTime_cmbox.addItem("")
+        self.generalTime_cmbox.addItem("")
+        self.generalTime_cmbox.addItem("")
+        self.generalTime_cmbox.addItem("")
+        self.line_4 = QtWidgets.QFrame(self.page)
+        self.line_4.setGeometry(QtCore.QRect(320, 30, 151, 20))
+        self.line_4.setFrameShape(QtWidgets.QFrame.HLine)
+        self.line_4.setFrameShadow(QtWidgets.QFrame.Sunken)
+        self.line_4.setObjectName("line_4")
+        self.generalIncome_lbl = QtWidgets.QLabel(self.page)
+        self.generalIncome_lbl.setGeometry(QtCore.QRect(540, 50, 231, 31))
+        font = QtGui.QFont()
+        font.setFamily("Vazirmatn Medium")
+        font.setPointSize(11)
+        self.generalIncome_lbl.setFont(font)
+        self.generalIncome_lbl.setStyleSheet("border: 1px solid;\n"
+"background-color: rgb(233, 236, 239);\n"
+"border-radius: 5px;\n"
+"border-color: rgb(206, 206, 206); ")
+        self.generalIncome_lbl.setAlignment(QtCore.Qt.AlignCenter)
+        self.generalIncome_lbl.setObjectName("generalIncome_lbl")
+        self.label_39 = QtWidgets.QLabel(self.page)
+        self.label_39.setGeometry(QtCore.QRect(540, 90, 231, 20))
+        font = QtGui.QFont()
+        font.setFamily("Vazirmatn ExtraBold")
+        font.setPointSize(12)
+        self.label_39.setFont(font)
+        self.label_39.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_39.setObjectName("label_39")
+        self.line_2 = QtWidgets.QFrame(self.page)
+        self.line_2.setGeometry(QtCore.QRect(540, 109, 231, 20))
+        self.line_2.setFrameShape(QtWidgets.QFrame.HLine)
+        self.line_2.setFrameShadow(QtWidgets.QFrame.Sunken)
+        self.line_2.setObjectName("line_2")
+        self.generalExpense_lbl = QtWidgets.QLabel(self.page)
+        self.generalExpense_lbl.setGeometry(QtCore.QRect(540, 129, 231, 31))
+        font = QtGui.QFont()
+        font.setFamily("Vazirmatn Medium")
+        font.setPointSize(11)
+        self.generalExpense_lbl.setFont(font)
+        self.generalExpense_lbl.setStyleSheet("border: 1px solid;\n"
+"border-color: rgb(232, 232, 232);\n"
+"background-color: rgb(233, 236, 239);\n"
+"border-radius: 5px;\n"
+"border-color: rgb(206, 206, 206); ")
+        self.generalExpense_lbl.setAlignment(QtCore.Qt.AlignCenter)
+        self.generalExpense_lbl.setObjectName("generalExpense_lbl")
+        self.label_44 = QtWidgets.QLabel(self.page)
+        self.label_44.setGeometry(QtCore.QRect(540, 171, 231, 20))
+        font = QtGui.QFont()
+        font.setFamily("Vazirmatn ExtraBold")
+        font.setPointSize(12)
+        self.label_44.setFont(font)
+        self.label_44.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_44.setObjectName("label_44")
+        self.line_5 = QtWidgets.QFrame(self.page)
+        self.line_5.setGeometry(QtCore.QRect(540, 190, 231, 20))
+        self.line_5.setFrameShape(QtWidgets.QFrame.HLine)
+        self.line_5.setFrameShadow(QtWidgets.QFrame.Sunken)
+        self.line_5.setObjectName("line_5")
+        self.generalProfit_lbl = QtWidgets.QLabel(self.page)
+        self.generalProfit_lbl.setGeometry(QtCore.QRect(540, 210, 231, 31))
+        font = QtGui.QFont()
+        font.setFamily("Vazirmatn Medium")
+        font.setPointSize(11)
+        self.generalProfit_lbl.setFont(font)
+        self.generalProfit_lbl.setStyleSheet("border: 1px solid;\n"
+"border-color: rgb(232, 232, 232);\n"
+"background-color: rgb(233, 236, 239);\n"
+"border-radius: 5px;\n"
+"border-color: rgb(206, 206, 206); ")
+        self.generalProfit_lbl.setAlignment(QtCore.Qt.AlignCenter)
+        self.generalProfit_lbl.setObjectName("generalProfit_lbl")
+        self.refreshGeneralReport_btn = QtWidgets.QPushButton(self.page)
+        self.refreshGeneralReport_btn.setGeometry(QtCore.QRect(800, 210, 221, 31))
+        font = QtGui.QFont()
+        font.setFamily("Vazirmatn,sans-serif")
+        font.setPointSize(11)
+        font.setBold(True)
+        font.setUnderline(False)
+        font.setWeight(75)
+        font.setStrikeOut(False)
+        self.refreshGeneralReport_btn.setFont(font)
+        self.refreshGeneralReport_btn.setStyleSheet("QPushButton {\n"
+"    background-color: #17a2b8; /* Bootstrap primary blue */\n"
+"    color: white; /* White text */\n"
+"    border: none;\n"
+"    border-radius: 5px; /* Rounded corners */\n"
+"    font-weight: bold; /* Bold text */\n"
+"    text-align: center;\n"
+"    text-decoration: none;\n"
+"    font-family: \'Vazirmatn\', sans-serif; /* Font family */\n"
+"}\n"
+"\n"
+"QPushButton:hover {\n"
+"    background-color: #0056b3; /* Darker blue on hover */\n"
+"}\n"
+"\n"
+"QPushButton:pressed {\n"
+"    background-color: #004085; /* Even darker blue on press */\n"
+"}\n"
+"")
+        self.refreshGeneralReport_btn.setObjectName("refreshGeneralReport_btn")
+        self.label_13 = QtWidgets.QLabel(self.page)
+        self.label_13.setGeometry(QtCore.QRect(800, 30, 221, 121))
+        font = QtGui.QFont()
+        font.setFamily("A Rezvan-fat,sans-serif")
+        font.setPointSize(-1)
+        font.setBold(True)
+        font.setWeight(75)
+        self.label_13.setFont(font)
+        self.label_13.setLayoutDirection(QtCore.Qt.RightToLeft)
+        self.label_13.setAutoFillBackground(False)
+        self.label_13.setStyleSheet("/* Basic styling for the company name label */\n"
+"QLabel {\n"
+"    color: #007bff; /* Bootstrap primary blue text color */\n"
+"    font-family: \'A Rezvan-fat\', sans-serif; /* Font family */\n"
+"    font-size: 30px; /* Larger font size for prominence */\n"
+"    font-weight: bold; /* Bold text */\n"
+"    padding: 10px; /* Padding around the text */\n"
+"    border: 2px solid #007bff; /* Optional: Border with the same blue color */\n"
+"    border-radius: 10px; /* Rounded corners */\n"
+"    background-color: #f8f9fa; /* Light grey background to make it stand out */\n"
+"    text-align: center; /* Center-align the text */\n"
+"}\n"
+"\n"
+"/* Hover effect */\n"
+"QLabe:hover {\n"
+"    color: #0056b3; /* Darker blue on hover */\n"
+"    border-color: #0056b3; /* Match border color on hover */\n"
+"}\n"
+"")
+        self.label_13.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_13.setObjectName("label_13")
+        self.firstServiceHighSold_lbl = QtWidgets.QLabel(self.page)
+        self.firstServiceHighSold_lbl.setGeometry(QtCore.QRect(300, 50, 191, 41))
+        font = QtGui.QFont()
+        font.setFamily("Vazirmatn Medium")
+        font.setPointSize(11)
+        self.firstServiceHighSold_lbl.setFont(font)
+        self.firstServiceHighSold_lbl.setStyleSheet("border: 1px solid;\n"
+"border-color: rgb(232, 232, 232);\n"
+"background-color: rgb(233, 236, 239);\n"
+"border-radius: 10px;\n"
+"border-color: rgb(206, 206, 206); ")
+        self.firstServiceHighSold_lbl.setAlignment(QtCore.Qt.AlignCenter)
+        self.firstServiceHighSold_lbl.setObjectName("firstServiceHighSold_lbl")
+        self.secondServiceHighSold_lbl = QtWidgets.QLabel(self.page)
+        self.secondServiceHighSold_lbl.setGeometry(QtCore.QRect(300, 100, 191, 41))
+        font = QtGui.QFont()
+        font.setFamily("Vazirmatn Medium")
+        font.setPointSize(11)
+        self.secondServiceHighSold_lbl.setFont(font)
+        self.secondServiceHighSold_lbl.setStyleSheet("border: 1px solid;\n"
+"border-color: rgb(232, 232, 232);\n"
+"background-color: rgb(233, 236, 239);\n"
+"border-radius: 5px;\n"
+"border-color: rgb(206, 206, 206);  border-radius: 10px;")
+        self.secondServiceHighSold_lbl.setAlignment(QtCore.Qt.AlignCenter)
+        self.secondServiceHighSold_lbl.setObjectName("secondServiceHighSold_lbl")
+        self.thirdServiceHighSold_lbl = QtWidgets.QLabel(self.page)
+        self.thirdServiceHighSold_lbl.setGeometry(QtCore.QRect(300, 150, 191, 41))
+        font = QtGui.QFont()
+        font.setFamily("Vazirmatn Medium")
+        font.setPointSize(11)
+        self.thirdServiceHighSold_lbl.setFont(font)
+        self.thirdServiceHighSold_lbl.setStyleSheet("border: 1px solid;\n"
+"border-color: rgb(232, 232, 232);\n"
+"background-color: rgb(233, 236, 239);\n"
+"border-radius: 5px;\n"
+"border-color: rgb(206, 206, 206);  border-radius: 10px;")
+        self.thirdServiceHighSold_lbl.setAlignment(QtCore.Qt.AlignCenter)
+        self.thirdServiceHighSold_lbl.setObjectName("thirdServiceHighSold_lbl")
+        self.fourthServiceHighSold_lbl = QtWidgets.QLabel(self.page)
+        self.fourthServiceHighSold_lbl.setGeometry(QtCore.QRect(300, 200, 191, 41))
+        font = QtGui.QFont()
+        font.setFamily("Vazirmatn Medium")
+        font.setPointSize(11)
+        self.fourthServiceHighSold_lbl.setFont(font)
+        self.fourthServiceHighSold_lbl.setStyleSheet("border: 1px solid;\n"
+"border-color: rgb(232, 232, 232);\n"
+"background-color: rgb(233, 236, 239);\n"
+"border-radius: 5px;\n"
+"border-color: rgb(206, 206, 206);  border-radius: 10px;")
+        self.fourthServiceHighSold_lbl.setAlignment(QtCore.Qt.AlignCenter)
+        self.fourthServiceHighSold_lbl.setObjectName("fourthServiceHighSold_lbl")
+        self.firstHighestExpense_lbl = QtWidgets.QLabel(self.page)
+        self.firstHighestExpense_lbl.setGeometry(QtCore.QRect(20, 50, 261, 41))
+        font = QtGui.QFont()
+        font.setFamily("Vazirmatn Medium")
+        font.setPointSize(10)
+        self.firstHighestExpense_lbl.setFont(font)
+        self.firstHighestExpense_lbl.setStyleSheet("border: 1px solid;\n"
+"border-color: rgb(232, 232, 232);\n"
+"background-color: rgb(233, 236, 239);\n"
+"border-radius: 5px;\n"
+"border-color: rgb(206, 206, 206);  border-radius: 10px;")
+        self.firstHighestExpense_lbl.setAlignment(QtCore.Qt.AlignCenter)
+        self.firstHighestExpense_lbl.setObjectName("firstHighestExpense_lbl")
+        self.secondHighestExpense_lbl = QtWidgets.QLabel(self.page)
+        self.secondHighestExpense_lbl.setGeometry(QtCore.QRect(20, 100, 261, 41))
+        font = QtGui.QFont()
+        font.setFamily("Vazirmatn Medium")
+        font.setPointSize(10)
+        self.secondHighestExpense_lbl.setFont(font)
+        self.secondHighestExpense_lbl.setStyleSheet("border: 1px solid;\n"
+"border-color: rgb(232, 232, 232);\n"
+"background-color: rgb(233, 236, 239);\n"
+"border-radius: 5px;\n"
+"border-color: rgb(206, 206, 206);  border-radius: 10px;")
+        self.secondHighestExpense_lbl.setAlignment(QtCore.Qt.AlignCenter)
+        self.secondHighestExpense_lbl.setObjectName("secondHighestExpense_lbl")
+        self.thirdHighestExpense_lbl = QtWidgets.QLabel(self.page)
+        self.thirdHighestExpense_lbl.setGeometry(QtCore.QRect(20, 150, 261, 41))
+        font = QtGui.QFont()
+        font.setFamily("Vazirmatn Medium")
+        font.setPointSize(10)
+        self.thirdHighestExpense_lbl.setFont(font)
+        self.thirdHighestExpense_lbl.setStyleSheet("border: 1px solid;\n"
+"border-color: rgb(232, 232, 232);\n"
+"background-color: rgb(233, 236, 239);\n"
+"border-radius: 5px;\n"
+"border-color: rgb(206, 206, 206);  border-radius: 10px;")
+        self.thirdHighestExpense_lbl.setAlignment(QtCore.Qt.AlignCenter)
+        self.thirdHighestExpense_lbl.setObjectName("thirdHighestExpense_lbl")
+        self.fourthHighestExpense_lbl = QtWidgets.QLabel(self.page)
+        self.fourthHighestExpense_lbl.setGeometry(QtCore.QRect(20, 200, 261, 41))
+        font = QtGui.QFont()
+        font.setFamily("Vazirmatn Medium")
+        font.setPointSize(10)
+        self.fourthHighestExpense_lbl.setFont(font)
+        self.fourthHighestExpense_lbl.setStyleSheet("border: 1px solid;\n"
+"border-color: rgb(232, 232, 232);\n"
+"background-color: rgb(233, 236, 239);\n"
+"border-radius: 5px;\n"
+"border-color: rgb(206, 206, 206);  border-radius: 10px;")
+        self.fourthHighestExpense_lbl.setAlignment(QtCore.Qt.AlignCenter)
+        self.fourthHighestExpense_lbl.setObjectName("fourthHighestExpense_lbl")
+        self.report_stackedWidget.addWidget(self.page)
+        self.page_2 = QtWidgets.QWidget()
+        self.page_2.setObjectName("page_2")
+        self.refreshServiceReport_btn = QtWidgets.QPushButton(self.page_2)
+        self.refreshServiceReport_btn.setGeometry(QtCore.QRect(790, 180, 241, 31))
+        font = QtGui.QFont()
+        font.setFamily("Vazirmatn,sans-serif")
+        font.setPointSize(11)
+        font.setBold(True)
+        font.setUnderline(False)
+        font.setWeight(75)
+        font.setStrikeOut(False)
+        self.refreshServiceReport_btn.setFont(font)
+        self.refreshServiceReport_btn.setStyleSheet("QPushButton {\n"
+"    background-color: #17a2b8; /* Bootstrap primary blue */\n"
+"    color: white; /* White text */\n"
+"    border: none;\n"
+"    border-radius: 5px; /* Rounded corners */\n"
+"    font-weight: bold; /* Bold text */\n"
+"    text-align: center;\n"
+"    text-decoration: none;\n"
+"    font-family: \'Vazirmatn\', sans-serif; /* Font family */\n"
+"}\n"
+"\n"
+"QPushButton:hover {\n"
+"    background-color: #0056b3; /* Darker blue on hover */\n"
+"}\n"
+"\n"
+"QPushButton:pressed {\n"
+"    background-color: #004085; /* Even darker blue on press */\n"
+"}\n"
+"")
+        self.refreshServiceReport_btn.setObjectName("refreshServiceReport_btn")
+        self.serviceReportTime_cmbox = QtWidgets.QComboBox(self.page_2)
+        self.serviceReportTime_cmbox.setEnabled(True)
+        self.serviceReportTime_cmbox.setGeometry(QtCore.QRect(790, 140, 241, 31))
+        font = QtGui.QFont()
+        font.setFamily("Vazirmatn Black")
+        font.setPointSize(11)
+        self.serviceReportTime_cmbox.setFont(font)
+        self.serviceReportTime_cmbox.setAcceptDrops(False)
+        self.serviceReportTime_cmbox.setLayoutDirection(QtCore.Qt.RightToLeft)
+        self.serviceReportTime_cmbox.setStyleSheet("")
+        self.serviceReportTime_cmbox.setEditable(False)
+        self.serviceReportTime_cmbox.setMaxVisibleItems(10)
+        self.serviceReportTime_cmbox.setDuplicatesEnabled(False)
+        self.serviceReportTime_cmbox.setObjectName("serviceReportTime_cmbox")
+        self.serviceReportTime_cmbox.addItem("")
+        self.serviceReportTime_cmbox.addItem("")
+        self.serviceReportTime_cmbox.addItem("")
+        self.serviceReportTime_cmbox.addItem("")
+        self.serviceReportTime_cmbox.addItem("")
+        self.reportService_cmbox = QtWidgets.QComboBox(self.page_2)
+        self.reportService_cmbox.setEnabled(True)
+        self.reportService_cmbox.setGeometry(QtCore.QRect(790, 100, 241, 31))
+        font = QtGui.QFont()
+        font.setFamily("Vazirmatn Black")
+        font.setPointSize(11)
+        self.reportService_cmbox.setFont(font)
+        self.reportService_cmbox.setAcceptDrops(False)
+        self.reportService_cmbox.setLayoutDirection(QtCore.Qt.RightToLeft)
+        self.reportService_cmbox.setStyleSheet("")
+        self.reportService_cmbox.setEditable(False)
+        self.reportService_cmbox.setMaxVisibleItems(10)
+        self.reportService_cmbox.setDuplicatesEnabled(False)
+        self.reportService_cmbox.setObjectName("reportService_cmbox")
+        self.reportService_cmbox.addItem("")
+        self.n3DayServiceHighSell_lbl = QtWidgets.QLabel(self.page_2)
+        self.n3DayServiceHighSell_lbl.setGeometry(QtCore.QRect(10, 190, 261, 41))
+        font = QtGui.QFont()
+        font.setFamily("Vazirmatn Medium")
+        font.setPointSize(10)
+        self.n3DayServiceHighSell_lbl.setFont(font)
+        self.n3DayServiceHighSell_lbl.setStyleSheet("border: 1px solid;\n"
+"border-color: rgb(232, 232, 232);\n"
+"background-color: rgb(233, 236, 239);\n"
+"border-radius: 5px;\n"
+"border-color: rgb(206, 206, 206);  border-radius: 10px;")
+        self.n3DayServiceHighSell_lbl.setAlignment(QtCore.Qt.AlignCenter)
+        self.n3DayServiceHighSell_lbl.setObjectName("n3DayServiceHighSell_lbl")
+        self.label_50 = QtWidgets.QLabel(self.page_2)
+        self.label_50.setGeometry(QtCore.QRect(30, 0, 221, 21))
+        font = QtGui.QFont()
+        font.setFamily("Vazirmatn ExtraBold")
+        font.setPointSize(11)
+        self.label_50.setFont(font)
+        self.label_50.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_50.setObjectName("label_50")
+        self.n0DayServiceHighSell_lbl = QtWidgets.QLabel(self.page_2)
+        self.n0DayServiceHighSell_lbl.setGeometry(QtCore.QRect(10, 40, 261, 41))
+        font = QtGui.QFont()
+        font.setFamily("Vazirmatn Medium")
+        font.setPointSize(10)
+        self.n0DayServiceHighSell_lbl.setFont(font)
+        self.n0DayServiceHighSell_lbl.setStyleSheet("border: 1px solid;\n"
+"border-color: rgb(232, 232, 232);\n"
+"background-color: rgb(233, 236, 239);\n"
+"border-radius: 5px;\n"
+"border-color: rgb(206, 206, 206);  border-radius: 10px;")
+        self.n0DayServiceHighSell_lbl.setAlignment(QtCore.Qt.AlignCenter)
+        self.n0DayServiceHighSell_lbl.setObjectName("n0DayServiceHighSell_lbl")
+        self.n2DayServiceHighSell_lbl = QtWidgets.QLabel(self.page_2)
+        self.n2DayServiceHighSell_lbl.setGeometry(QtCore.QRect(10, 140, 261, 41))
+        font = QtGui.QFont()
+        font.setFamily("Vazirmatn Medium")
+        font.setPointSize(10)
+        self.n2DayServiceHighSell_lbl.setFont(font)
+        self.n2DayServiceHighSell_lbl.setStyleSheet("border: 1px solid;\n"
+"border-color: rgb(232, 232, 232);\n"
+"background-color: rgb(233, 236, 239);\n"
+"border-radius: 5px;\n"
+"border-color: rgb(206, 206, 206);  border-radius: 10px;")
+        self.n2DayServiceHighSell_lbl.setAlignment(QtCore.Qt.AlignCenter)
+        self.n2DayServiceHighSell_lbl.setObjectName("n2DayServiceHighSell_lbl")
+        self.line_6 = QtWidgets.QFrame(self.page_2)
+        self.line_6.setGeometry(QtCore.QRect(30, 20, 221, 20))
+        self.line_6.setFrameShape(QtWidgets.QFrame.HLine)
+        self.line_6.setFrameShadow(QtWidgets.QFrame.Sunken)
+        self.line_6.setObjectName("line_6")
+        self.n1DayServiceHighSell_lbl = QtWidgets.QLabel(self.page_2)
+        self.n1DayServiceHighSell_lbl.setGeometry(QtCore.QRect(10, 90, 261, 41))
+        font = QtGui.QFont()
+        font.setFamily("Vazirmatn Medium")
+        font.setPointSize(10)
+        self.n1DayServiceHighSell_lbl.setFont(font)
+        self.n1DayServiceHighSell_lbl.setStyleSheet("border: 1px solid;\n"
+"border-color: rgb(232, 232, 232);\n"
+"background-color: rgb(233, 236, 239);\n"
+"border-radius: 5px;\n"
+"border-color: rgb(206, 206, 206);  border-radius: 10px;")
+        self.n1DayServiceHighSell_lbl.setAlignment(QtCore.Qt.AlignCenter)
+        self.n1DayServiceHighSell_lbl.setObjectName("n1DayServiceHighSell_lbl")
+        self.label_51 = QtWidgets.QLabel(self.page_2)
+        self.label_51.setGeometry(QtCore.QRect(320, 140, 231, 20))
+        font = QtGui.QFont()
+        font.setFamily("Vazirmatn ExtraBold")
+        font.setPointSize(12)
+        self.label_51.setFont(font)
+        self.label_51.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_51.setObjectName("label_51")
+        self.line_9 = QtWidgets.QFrame(self.page_2)
+        self.line_9.setGeometry(QtCore.QRect(320, 159, 231, 20))
+        self.line_9.setFrameShape(QtWidgets.QFrame.HLine)
+        self.line_9.setFrameShadow(QtWidgets.QFrame.Sunken)
+        self.line_9.setObjectName("line_9")
+        self.serviceIncome_lbl = QtWidgets.QLabel(self.page_2)
+        self.serviceIncome_lbl.setGeometry(QtCore.QRect(320, 179, 231, 31))
+        font = QtGui.QFont()
+        font.setFamily("Vazirmatn Medium")
+        font.setPointSize(11)
+        self.serviceIncome_lbl.setFont(font)
+        self.serviceIncome_lbl.setStyleSheet("border: 1px solid;\n"
+"background-color: rgb(233, 236, 239);\n"
+"border-radius: 5px;\n"
+"border-color: rgb(206, 206, 206); ")
+        self.serviceIncome_lbl.setAlignment(QtCore.Qt.AlignCenter)
+        self.serviceIncome_lbl.setObjectName("serviceIncome_lbl")
+        self.line_10 = QtWidgets.QFrame(self.page_2)
+        self.line_10.setGeometry(QtCore.QRect(290, 0, 20, 231))
+        self.line_10.setFrameShape(QtWidgets.QFrame.VLine)
+        self.line_10.setFrameShadow(QtWidgets.QFrame.Sunken)
+        self.line_10.setObjectName("line_10")
+        self.label_16 = QtWidgets.QLabel(self.page_2)
+        self.label_16.setGeometry(QtCore.QRect(310, 20, 721, 71))
+        font = QtGui.QFont()
+        font.setFamily("A Rezvan-fat,sans-serif")
+        font.setPointSize(-1)
+        font.setBold(True)
+        font.setWeight(75)
+        self.label_16.setFont(font)
+        self.label_16.setLayoutDirection(QtCore.Qt.RightToLeft)
+        self.label_16.setAutoFillBackground(False)
+        self.label_16.setStyleSheet("/* Basic styling for the company name label */\n"
+"QLabel {\n"
+"    color: #007bff; /* Bootstrap primary blue text color */\n"
+"    font-family: \'A Rezvan-fat\', sans-serif; /* Font family */\n"
+"    font-size: 30px; /* Larger font size for prominence */\n"
+"    font-weight: bold; /* Bold text */\n"
+"    padding: 10px; /* Padding around the text */\n"
+"    border: 2px solid #007bff; /* Optional: Border with the same blue color */\n"
+"    border-radius: 10px; /* Rounded corners */\n"
+"    background-color: #f8f9fa; /* Light grey background to make it stand out */\n"
+"    text-align: center; /* Center-align the text */\n"
+"}\n"
+"\n"
+"/* Hover effect */\n"
+"QLabe:hover {\n"
+"    color: #0056b3; /* Darker blue on hover */\n"
+"    border-color: #0056b3; /* Match border color on hover */\n"
+"}\n"
+"")
+        self.label_16.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_16.setObjectName("label_16")
+        self.label_61 = QtWidgets.QLabel(self.page_2)
+        self.label_61.setGeometry(QtCore.QRect(580, 140, 191, 20))
+        font = QtGui.QFont()
+        font.setFamily("Vazirmatn ExtraBold")
+        font.setPointSize(12)
+        self.label_61.setFont(font)
+        self.label_61.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_61.setObjectName("label_61")
+        self.serviceCount_lbl = QtWidgets.QLabel(self.page_2)
+        self.serviceCount_lbl.setGeometry(QtCore.QRect(580, 179, 191, 31))
+        font = QtGui.QFont()
+        font.setFamily("Vazirmatn Medium")
+        font.setPointSize(11)
+        self.serviceCount_lbl.setFont(font)
+        self.serviceCount_lbl.setStyleSheet("border: 1px solid;\n"
+"background-color: rgb(233, 236, 239);\n"
+"border-radius: 5px;\n"
+"border-color: rgb(206, 206, 206); ")
+        self.serviceCount_lbl.setAlignment(QtCore.Qt.AlignCenter)
+        self.serviceCount_lbl.setObjectName("serviceCount_lbl")
+        self.line_11 = QtWidgets.QFrame(self.page_2)
+        self.line_11.setGeometry(QtCore.QRect(580, 159, 191, 20))
+        self.line_11.setFrameShape(QtWidgets.QFrame.HLine)
+        self.line_11.setFrameShadow(QtWidgets.QFrame.Sunken)
+        self.line_11.setObjectName("line_11")
+        self.report_stackedWidget.addWidget(self.page_2)
+        self.generalReport_btn = QtWidgets.QPushButton(self.tab)
+        self.generalReport_btn.setGeometry(QtCore.QRect(1060, 20, 121, 111))
+        font = QtGui.QFont()
+        font.setFamily("Vazirmatn,sans-serif")
+        font.setPointSize(13)
+        font.setBold(True)
+        font.setUnderline(False)
+        font.setWeight(75)
+        font.setStrikeOut(False)
+        self.generalReport_btn.setFont(font)
+        self.generalReport_btn.setStyleSheet("QPushButton {\n"
+"    background-color: #0050a5; /* Bootstrap primary blue */\n"
+"    color: white; /* White text */\n"
+"    border: none;\n"
+"    border-radius: 5px; /* Rounded corners */\n"
+"    font-weight: bold; /* Bold text */\n"
+"    text-align: center;\n"
+"    text-decoration: none;\n"
+"    font-family: \'Vazirmatn\', sans-serif; /* Font family */\n"
+"}\n"
+"\n"
+"QPushButton:hover {\n"
+"    background-color: #0056b3; /* Darker blue on hover */\n"
+"}\n"
+"\n"
+"QPushButton:pressed {\n"
+"    background-color: #004085; /* Even darker blue on press */\n"
+"}\n"
+"")
+        self.generalReport_btn.setObjectName("generalReport_btn")
+        self.serviceReport_btn = QtWidgets.QPushButton(self.tab)
+        self.serviceReport_btn.setGeometry(QtCore.QRect(1060, 140, 121, 111))
+        font = QtGui.QFont()
+        font.setFamily("Vazirmatn,sans-serif")
+        font.setPointSize(-1)
+        font.setBold(True)
+        font.setUnderline(False)
+        font.setWeight(75)
+        font.setStrikeOut(False)
+        self.serviceReport_btn.setFont(font)
+        self.serviceReport_btn.setStyleSheet("QPushButton {\n"
+"    background-color: #0050a5; /* Bootstrap primary blue */\n"
+"    color: white; /* White text */\n"
+"    border: none;\n"
+"    border-radius: 5px; /* Rounded corners */\n"
+"    font-size: 16px; /* Font size */\n"
+"    font-weight: bold; /* Bold text */\n"
+"    text-align: center;\n"
+"    text-decoration: none;\n"
+"    font-family: \'Vazirmatn\', sans-serif; /* Font family */\n"
+"}\n"
+"\n"
+"QPushButton:hover {\n"
+"    background-color: #0056b3; /* Darker blue on hover */\n"
+"}\n"
+"\n"
+"QPushButton:pressed {\n"
+"    background-color: #004085; /* Even darker blue on press */\n"
+"}\n"
+"")
+        self.serviceReport_btn.setObjectName("serviceReport_btn")
         self.tabWidget.addTab(self.tab, "")
         MainWindow.setCentralWidget(self.centralwidget)
         self.statusbar = QtWidgets.QStatusBar(MainWindow)
@@ -1391,7 +1991,8 @@ class Ui_MainWindow(object):
         MainWindow.setStatusBar(self.statusbar)
 
         self.retranslateUi(MainWindow)
-        self.tabWidget.setCurrentIndex(4)
+        self.tabWidget.setCurrentIndex(5)
+        self.report_stackedWidget.setCurrentIndex(1)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
     def retranslateUi(self, MainWindow):
@@ -1443,5 +2044,49 @@ class Ui_MainWindow(object):
         self.label_17.setText(_translate("MainWindow", "نام هزینه:"))
         self.searchExpenseByName_btn.setText(_translate("MainWindow", "جستجو"))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_2), _translate("MainWindow", "هزینه‌ها"))
-        self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab), _translate("MainWindow", "مدیریت مالی"))
-
+        self.label_35.setText(_translate("MainWindow", "پرفروش‌ترین سرویس‌ها"))
+        self.label_37.setText(_translate("MainWindow", "بیشترین‌ هزینه‌ها"))
+        self.label_38.setText(_translate("MainWindow", "کل درآمد"))
+        self.generalTime_cmbox.setCurrentText(_translate("MainWindow", "شش ماه گذشته"))
+        self.generalTime_cmbox.setItemText(0, _translate("MainWindow", "شش ماه گذشته"))
+        self.generalTime_cmbox.setItemText(1, _translate("MainWindow", "سه ماه گذشته"))
+        self.generalTime_cmbox.setItemText(2, _translate("MainWindow", "ماه جاری"))
+        self.generalTime_cmbox.setItemText(3, _translate("MainWindow", "سال گذشته"))
+        self.generalTime_cmbox.setItemText(4, _translate("MainWindow", "سال جاری"))
+        self.generalIncome_lbl.setText(_translate("MainWindow", "۲۵.۰۰۰.۰۰۰ تومان"))
+        self.label_39.setText(_translate("MainWindow", "کل هزینه‌"))
+        self.generalExpense_lbl.setText(_translate("MainWindow", "۲۵.۰۰۰.۰۰۰ تومان"))
+        self.label_44.setText(_translate("MainWindow", "سود"))
+        self.generalProfit_lbl.setText(_translate("MainWindow", "۲۵.۰۰۰.۰۰۰ تومان"))
+        self.refreshGeneralReport_btn.setText(_translate("MainWindow", "تازه‌سازی گزارش کلی"))
+        self.label_13.setText(_translate("MainWindow", "گزارش کلی"))
+        self.firstServiceHighSold_lbl.setText(_translate("MainWindow", "بوتاکس صورت"))
+        self.secondServiceHighSold_lbl.setText(_translate("MainWindow", "فیلر لب"))
+        self.thirdServiceHighSold_lbl.setText(_translate("MainWindow", "لیزر فول بادی"))
+        self.fourthServiceHighSold_lbl.setText(_translate("MainWindow", "زیگیل"))
+        self.firstHighestExpense_lbl.setText(_translate("MainWindow", "خرید ویال های بوتاکس"))
+        self.secondHighestExpense_lbl.setText(_translate("MainWindow", "حقوق"))
+        self.thirdHighestExpense_lbl.setText(_translate("MainWindow", "خرید شیرینی"))
+        self.fourthHighestExpense_lbl.setText(_translate("MainWindow", "بوتاکس صورت"))
+        self.refreshServiceReport_btn.setText(_translate("MainWindow", "تازه‌سازی گزارش سرویس"))
+        self.serviceReportTime_cmbox.setCurrentText(_translate("MainWindow", "شش ماه گذشته"))
+        self.serviceReportTime_cmbox.setItemText(0, _translate("MainWindow", "شش ماه گذشته"))
+        self.serviceReportTime_cmbox.setItemText(1, _translate("MainWindow", "سه ماه گذشته"))
+        self.serviceReportTime_cmbox.setItemText(2, _translate("MainWindow", "ماه جاری"))
+        self.serviceReportTime_cmbox.setItemText(3, _translate("MainWindow", "سال گذشته"))
+        self.serviceReportTime_cmbox.setItemText(4, _translate("MainWindow", "سال جاری"))
+        self.reportService_cmbox.setCurrentText(_translate("MainWindow", "بوتاکس"))
+        self.reportService_cmbox.setItemText(0, _translate("MainWindow", "بوتاکس"))
+        self.n3DayServiceHighSell_lbl.setText(_translate("MainWindow", "-"))
+        self.label_50.setText(_translate("MainWindow", "پر فروش‌ترین روز‌های سرویس"))
+        self.n0DayServiceHighSell_lbl.setText(_translate("MainWindow", "-"))
+        self.n2DayServiceHighSell_lbl.setText(_translate("MainWindow", "-"))
+        self.n1DayServiceHighSell_lbl.setText(_translate("MainWindow", "-"))
+        self.label_51.setText(_translate("MainWindow", "کل درآمد سرویس"))
+        self.serviceIncome_lbl.setText(_translate("MainWindow", "۲۵.۰۰۰.۰۰۰ تومان"))
+        self.label_16.setText(_translate("MainWindow", "گزارش سرویس"))
+        self.label_61.setText(_translate("MainWindow", "تعداد ارائه شدن سرویس"))
+        self.serviceCount_lbl.setText(_translate("MainWindow", "۴۷"))
+        self.generalReport_btn.setText(_translate("MainWindow", "گزارش کلی"))
+        self.serviceReport_btn.setText(_translate("MainWindow", "گزارش سرویس"))
+        self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab), _translate("MainWindow", "گزارش‌ها"))

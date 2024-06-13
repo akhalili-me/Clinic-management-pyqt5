@@ -21,10 +21,10 @@ class Expenses:
 
     @staticmethod
     def get_by_date(db:DatabaseManager , from_date, to_date):
-        query = f"SELECT * FROM Expense WHERE greg_date BETWEEN ? AND ?"
+        query = f"SELECT * FROM Expense WHERE greg_date BETWEEN '{from_date}' AND '{to_date}' ORDER BY greg_date DESC"
+       
         try:
-            db.execute_query(query, (from_date, to_date))
-            return db.fetchall()
+            return db.fetchall(query)
         except DatabaseError as e:
             raise e
         
@@ -43,7 +43,7 @@ class Expenses:
                         price = ?, 
                         description = ?,
                         jalali_date = ?,
-                        greg_date = ?,
+                        greg_date = ?
                     WHERE id = ?
                 """
         values = (
