@@ -1,6 +1,7 @@
 from ui import Ui_MainWindow
 from models import DatabaseManager,Services,Reports
 from utility import Dates,Numbers,TimeIntervals,ChartManager
+import jdatetime
 
 class ReportsTabController:
     HIGH_SELL_LABEL_COUNT = 4
@@ -58,6 +59,13 @@ class ReportsTabController:
         if selected_time == TimeIntervals.CURRENT_MONTH.value:
             self.chart_manager.current_month_bar_chart(service_id)
 
+        current_year = jdatetime.date.today().year
+        if selected_time == TimeIntervals.CURRENT_YEAR.value:
+            self.chart_manager.year_bar_chart(service_id, current_year)
+
+        if selected_time == TimeIntervals.LAST_YEAR.value:
+            self.chart_manager.year_bar_chart(service_id, current_year-1)
+
     def _update_report_labels(self, report_data, high_sold_service_data):
         total_income = Numbers.int_to_persian_with_separators(report_data["total_income"])
         self.ui.serviceIncome_lbl.setText(f"{total_income} تومان")
@@ -77,14 +85,15 @@ class ReportsTabController:
 
     def _get_selected_date_interval(self):
         selected_time = self.ui.serviceReportTime_cmbox.currentText()
-        time_intervals = {
-            TimeIntervals.LAST_SIX_MONTHS.value: Dates.get_jalali_last_six_month_interval_based_on_greg,
-            TimeIntervals.LAST_THREE_MONTHS.value: Dates.get_jalali_last_three_month_interval_based_on_greg,
+        current_year = jdatetime.date.today().year
+        
+        time_interval_functions = {
             TimeIntervals.CURRENT_MONTH.value: Dates.get_jalali_current_month_interval_based_on_greg,
-            TimeIntervals.LAST_YEAR.value: Dates.get_jalali_last_year_interval_based_on_greg,
-            TimeIntervals.CURRENT_YEAR.value: Dates.get_jalali_current_year_interval_based_on_greg
+            TimeIntervals.CURRENT_YEAR.value: lambda: Dates.get_year_interval(current_year),
+            TimeIntervals.LAST_YEAR.value: lambda: Dates.get_year_interval(current_year - 1)
         }
-        return time_intervals[selected_time]()
+
+        return time_interval_functions[selected_time]()
 
     def _no_report_found(self):
         self.ui.serviceCount_lbl.setText("بدون اطلاعات")

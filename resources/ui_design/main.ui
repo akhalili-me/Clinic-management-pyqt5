@@ -2452,7 +2452,7 @@ QPushButton:pressed {
          <bool>false</bool>
         </property>
         <property name="currentText">
-         <string>شش ماه گذشته</string>
+         <string>ماه جاری</string>
         </property>
         <property name="maxVisibleItems">
          <number>10</number>
@@ -2462,27 +2462,17 @@ QPushButton:pressed {
         </property>
         <item>
          <property name="text">
-          <string>شش ماه گذشته</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>سه ماه گذشته</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
           <string>ماه جاری</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>سال گذشته</string>
+          <string>سال جاری</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>سال جاری</string>
+          <string>سال گذشته</string>
          </property>
         </item>
        </widget>
@@ -2988,9 +2978,9 @@ border-color: rgb(206, 206, 206);  border-radius: 10px;</string>
         <property name="geometry">
          <rect>
           <x>790</x>
-          <y>180</y>
+          <y>190</y>
           <width>241</width>
-          <height>31</height>
+          <height>41</height>
          </rect>
         </property>
         <property name="font">
@@ -3035,7 +3025,7 @@ QPushButton:pressed {
         <property name="geometry">
          <rect>
           <x>790</x>
-          <y>140</y>
+          <y>150</y>
           <width>241</width>
           <height>31</height>
          </rect>
@@ -3059,7 +3049,7 @@ QPushButton:pressed {
          <bool>false</bool>
         </property>
         <property name="currentText">
-         <string>شش ماه گذشته</string>
+         <string>ماه جاری</string>
         </property>
         <property name="maxVisibleItems">
          <number>10</number>
@@ -3069,27 +3059,17 @@ QPushButton:pressed {
         </property>
         <item>
          <property name="text">
-          <string>شش ماه گذشته</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>سه ماه گذشته</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
           <string>ماه جاری</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>سال گذشته</string>
+          <string>سال جاری</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>سال جاری</string>
+          <string>سال گذشته</string>
          </property>
         </item>
        </widget>
@@ -3100,7 +3080,7 @@ QPushButton:pressed {
         <property name="geometry">
          <rect>
           <x>790</x>
-          <y>100</y>
+          <y>110</y>
           <width>241</width>
           <height>31</height>
          </rect>

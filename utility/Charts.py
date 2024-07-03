@@ -17,6 +17,49 @@ class ChartManager:
     def __init__(self, ui):
         self.ui = ui
 
+    def year_bar_chart(self, service_id, year):
+        bar_chart = QChart()
+        bar_chart.setTitle("نمودار میله‌ای نمایش سالانه درآمد سرویس")
+        bar_chart.setAnimationOptions(QChart.SeriesAnimations)
+
+        series = QBarSeries()
+        year_intervals = Dates.get_year_monthly_intervals(year)
+
+        report_data = {}
+
+        for month, date in year_intervals.items():
+            report_data[month] = self._month_service_count_income(
+                service_id, date["start_date"], date["end_date"]
+            )
+
+        barset_income = QBarSet("درآمد سرویس")
+        
+        for month, data in report_data.items():
+            total_income = float(data["total_income"]) if data["total_income"] else 0.0
+            barset_income.append(total_income)
+            
+        series.append(barset_income)
+        bar_chart.addSeries(series)
+
+        axis_x = QBarCategoryAxis()
+        axis_x.append([month for month in report_data.keys()])
+        bar_chart.addAxis(axis_x, Qt.AlignBottom)
+        series.attachAxis(axis_x)
+
+        axis_y = QValueAxis()
+        bar_chart.addAxis(axis_y, Qt.AlignLeft)
+        series.attachAxis(axis_y)
+
+        self._apply_fonts_to_chart(bar_chart, axis_x, axis_y)
+        self.ui.report_chart.setChart(bar_chart)
+        self.ui.report_chart.setRenderHint(QPainter.Antialiasing)
+
+
+    def _month_service_count_income(self,service_id,start_date,end_date):
+        from models import Reports
+        with DatabaseManager() as db:
+            return Reports.get_monthly_service_income(db, service_id,start_date,end_date)
+
     def current_month_bar_chart(self, service_id):
         bar_chart = QChart()
         bar_chart.setTitle("نمودار میله‌ای نمایش درآمد سرویس")
