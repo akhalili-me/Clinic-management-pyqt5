@@ -2300,7 +2300,7 @@ QPushButton:pressed {
        <number>0</number>
       </property>
       <property name="currentIndex">
-       <number>1</number>
+       <number>0</number>
       </property>
       <widget class="QWidget" name="page">
        <widget class="Line" name="line_7">
@@ -2581,7 +2581,7 @@ border-color: rgb(206, 206, 206); </string>
          <set>Qt::AlignCenter</set>
         </property>
        </widget>
-       <widget class="QLabel" name="label_44">
+       <widget class="QLabel" name="profitType_lbl">
         <property name="geometry">
          <rect>
           <x>540</x>
@@ -2597,7 +2597,7 @@ border-color: rgb(206, 206, 206); </string>
          </font>
         </property>
         <property name="text">
-         <string>سود</string>
+         <string>سود / ضرر</string>
         </property>
         <property name="alignment">
          <set>Qt::AlignCenter</set>
@@ -2693,9 +2693,9 @@ QPushButton:pressed {
         <property name="geometry">
          <rect>
           <x>800</x>
-          <y>30</y>
+          <y>10</y>
           <width>221</width>
-          <height>121</height>
+          <height>141</height>
          </rect>
         </property>
         <property name="font">
@@ -2740,7 +2740,7 @@ QLabe:hover {
          <set>Qt::AlignCenter</set>
         </property>
        </widget>
-       <widget class="QLabel" name="firstServiceHighSold_lbl">
+       <widget class="QLabel" name="n0ServiceHighSold_lbl">
         <property name="geometry">
          <rect>
           <x>300</x>
@@ -2769,7 +2769,7 @@ border-color: rgb(206, 206, 206); </string>
          <set>Qt::AlignCenter</set>
         </property>
        </widget>
-       <widget class="QLabel" name="secondServiceHighSold_lbl">
+       <widget class="QLabel" name="n1ServiceHighSold_lbl">
         <property name="geometry">
          <rect>
           <x>300</x>
@@ -2798,7 +2798,7 @@ border-color: rgb(206, 206, 206);  border-radius: 10px;</string>
          <set>Qt::AlignCenter</set>
         </property>
        </widget>
-       <widget class="QLabel" name="thirdServiceHighSold_lbl">
+       <widget class="QLabel" name="n2ServiceHighSold_lbl">
         <property name="geometry">
          <rect>
           <x>300</x>
@@ -2827,7 +2827,7 @@ border-color: rgb(206, 206, 206);  border-radius: 10px;</string>
          <set>Qt::AlignCenter</set>
         </property>
        </widget>
-       <widget class="QLabel" name="fourthServiceHighSold_lbl">
+       <widget class="QLabel" name="n3ServiceHighSold_lbl">
         <property name="geometry">
          <rect>
           <x>300</x>
@@ -2856,7 +2856,7 @@ border-color: rgb(206, 206, 206);  border-radius: 10px;</string>
          <set>Qt::AlignCenter</set>
         </property>
        </widget>
-       <widget class="QLabel" name="firstHighestExpense_lbl">
+       <widget class="QLabel" name="n0HighestExpense_lbl">
         <property name="geometry">
          <rect>
           <x>20</x>
@@ -2885,7 +2885,7 @@ border-color: rgb(206, 206, 206);  border-radius: 10px;</string>
          <set>Qt::AlignCenter</set>
         </property>
        </widget>
-       <widget class="QLabel" name="secondHighestExpense_lbl">
+       <widget class="QLabel" name="n1HighestExpense_lbl">
         <property name="geometry">
          <rect>
           <x>20</x>
@@ -2914,7 +2914,7 @@ border-color: rgb(206, 206, 206);  border-radius: 10px;</string>
          <set>Qt::AlignCenter</set>
         </property>
        </widget>
-       <widget class="QLabel" name="thirdHighestExpense_lbl">
+       <widget class="QLabel" name="n2HighestExpense_lbl">
         <property name="geometry">
          <rect>
           <x>20</x>
@@ -2943,7 +2943,7 @@ border-color: rgb(206, 206, 206);  border-radius: 10px;</string>
          <set>Qt::AlignCenter</set>
         </property>
        </widget>
-       <widget class="QLabel" name="fourthHighestExpense_lbl">
+       <widget class="QLabel" name="n3HighestExpense_lbl">
         <property name="geometry">
          <rect>
           <x>20</x>

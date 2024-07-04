@@ -1511,14 +1511,14 @@ class Ui_MainWindow(object):
 "border-color: rgb(206, 206, 206); ")
         self.generalExpense_lbl.setAlignment(QtCore.Qt.AlignCenter)
         self.generalExpense_lbl.setObjectName("generalExpense_lbl")
-        self.label_44 = QtWidgets.QLabel(self.page)
-        self.label_44.setGeometry(QtCore.QRect(540, 171, 231, 20))
+        self.profitType_lbl = QtWidgets.QLabel(self.page)
+        self.profitType_lbl.setGeometry(QtCore.QRect(540, 171, 231, 20))
         font = QtGui.QFont()
         font.setFamily("Vazirmatn ExtraBold")
         font.setPointSize(12)
-        self.label_44.setFont(font)
-        self.label_44.setAlignment(QtCore.Qt.AlignCenter)
-        self.label_44.setObjectName("label_44")
+        self.profitType_lbl.setFont(font)
+        self.profitType_lbl.setAlignment(QtCore.Qt.AlignCenter)
+        self.profitType_lbl.setObjectName("profitType_lbl")
         self.line_5 = QtWidgets.QFrame(self.page)
         self.line_5.setGeometry(QtCore.QRect(540, 190, 231, 20))
         self.line_5.setFrameShape(QtWidgets.QFrame.HLine)
@@ -1568,7 +1568,7 @@ class Ui_MainWindow(object):
 "")
         self.refreshGeneralReport_btn.setObjectName("refreshGeneralReport_btn")
         self.label_13 = QtWidgets.QLabel(self.page)
-        self.label_13.setGeometry(QtCore.QRect(800, 30, 221, 121))
+        self.label_13.setGeometry(QtCore.QRect(800, 10, 221, 141))
         font = QtGui.QFont()
         font.setFamily("A Rezvan-fat,sans-serif")
         font.setPointSize(-1)
@@ -1598,110 +1598,110 @@ class Ui_MainWindow(object):
 "")
         self.label_13.setAlignment(QtCore.Qt.AlignCenter)
         self.label_13.setObjectName("label_13")
-        self.firstServiceHighSold_lbl = QtWidgets.QLabel(self.page)
-        self.firstServiceHighSold_lbl.setGeometry(QtCore.QRect(300, 50, 191, 41))
+        self.n0ServiceHighSold_lbl = QtWidgets.QLabel(self.page)
+        self.n0ServiceHighSold_lbl.setGeometry(QtCore.QRect(300, 50, 191, 41))
         font = QtGui.QFont()
         font.setFamily("Vazirmatn Medium")
         font.setPointSize(11)
-        self.firstServiceHighSold_lbl.setFont(font)
-        self.firstServiceHighSold_lbl.setStyleSheet("border: 1px solid;\n"
+        self.n0ServiceHighSold_lbl.setFont(font)
+        self.n0ServiceHighSold_lbl.setStyleSheet("border: 1px solid;\n"
 "border-color: rgb(232, 232, 232);\n"
 "background-color: rgb(233, 236, 239);\n"
 "border-radius: 10px;\n"
 "border-color: rgb(206, 206, 206); ")
-        self.firstServiceHighSold_lbl.setAlignment(QtCore.Qt.AlignCenter)
-        self.firstServiceHighSold_lbl.setObjectName("firstServiceHighSold_lbl")
-        self.secondServiceHighSold_lbl = QtWidgets.QLabel(self.page)
-        self.secondServiceHighSold_lbl.setGeometry(QtCore.QRect(300, 100, 191, 41))
+        self.n0ServiceHighSold_lbl.setAlignment(QtCore.Qt.AlignCenter)
+        self.n0ServiceHighSold_lbl.setObjectName("n0ServiceHighSold_lbl")
+        self.n1ServiceHighSold_lbl = QtWidgets.QLabel(self.page)
+        self.n1ServiceHighSold_lbl.setGeometry(QtCore.QRect(300, 100, 191, 41))
         font = QtGui.QFont()
         font.setFamily("Vazirmatn Medium")
         font.setPointSize(11)
-        self.secondServiceHighSold_lbl.setFont(font)
-        self.secondServiceHighSold_lbl.setStyleSheet("border: 1px solid;\n"
+        self.n1ServiceHighSold_lbl.setFont(font)
+        self.n1ServiceHighSold_lbl.setStyleSheet("border: 1px solid;\n"
 "border-color: rgb(232, 232, 232);\n"
 "background-color: rgb(233, 236, 239);\n"
 "border-radius: 5px;\n"
 "border-color: rgb(206, 206, 206);  border-radius: 10px;")
-        self.secondServiceHighSold_lbl.setAlignment(QtCore.Qt.AlignCenter)
-        self.secondServiceHighSold_lbl.setObjectName("secondServiceHighSold_lbl")
-        self.thirdServiceHighSold_lbl = QtWidgets.QLabel(self.page)
-        self.thirdServiceHighSold_lbl.setGeometry(QtCore.QRect(300, 150, 191, 41))
+        self.n1ServiceHighSold_lbl.setAlignment(QtCore.Qt.AlignCenter)
+        self.n1ServiceHighSold_lbl.setObjectName("n1ServiceHighSold_lbl")
+        self.n2ServiceHighSold_lbl = QtWidgets.QLabel(self.page)
+        self.n2ServiceHighSold_lbl.setGeometry(QtCore.QRect(300, 150, 191, 41))
         font = QtGui.QFont()
         font.setFamily("Vazirmatn Medium")
         font.setPointSize(11)
-        self.thirdServiceHighSold_lbl.setFont(font)
-        self.thirdServiceHighSold_lbl.setStyleSheet("border: 1px solid;\n"
+        self.n2ServiceHighSold_lbl.setFont(font)
+        self.n2ServiceHighSold_lbl.setStyleSheet("border: 1px solid;\n"
 "border-color: rgb(232, 232, 232);\n"
 "background-color: rgb(233, 236, 239);\n"
 "border-radius: 5px;\n"
 "border-color: rgb(206, 206, 206);  border-radius: 10px;")
-        self.thirdServiceHighSold_lbl.setAlignment(QtCore.Qt.AlignCenter)
-        self.thirdServiceHighSold_lbl.setObjectName("thirdServiceHighSold_lbl")
-        self.fourthServiceHighSold_lbl = QtWidgets.QLabel(self.page)
-        self.fourthServiceHighSold_lbl.setGeometry(QtCore.QRect(300, 200, 191, 41))
+        self.n2ServiceHighSold_lbl.setAlignment(QtCore.Qt.AlignCenter)
+        self.n2ServiceHighSold_lbl.setObjectName("n2ServiceHighSold_lbl")
+        self.n3ServiceHighSold_lbl = QtWidgets.QLabel(self.page)
+        self.n3ServiceHighSold_lbl.setGeometry(QtCore.QRect(300, 200, 191, 41))
         font = QtGui.QFont()
         font.setFamily("Vazirmatn Medium")
         font.setPointSize(11)
-        self.fourthServiceHighSold_lbl.setFont(font)
-        self.fourthServiceHighSold_lbl.setStyleSheet("border: 1px solid;\n"
+        self.n3ServiceHighSold_lbl.setFont(font)
+        self.n3ServiceHighSold_lbl.setStyleSheet("border: 1px solid;\n"
 "border-color: rgb(232, 232, 232);\n"
 "background-color: rgb(233, 236, 239);\n"
 "border-radius: 5px;\n"
 "border-color: rgb(206, 206, 206);  border-radius: 10px;")
-        self.fourthServiceHighSold_lbl.setAlignment(QtCore.Qt.AlignCenter)
-        self.fourthServiceHighSold_lbl.setObjectName("fourthServiceHighSold_lbl")
-        self.firstHighestExpense_lbl = QtWidgets.QLabel(self.page)
-        self.firstHighestExpense_lbl.setGeometry(QtCore.QRect(20, 50, 261, 41))
+        self.n3ServiceHighSold_lbl.setAlignment(QtCore.Qt.AlignCenter)
+        self.n3ServiceHighSold_lbl.setObjectName("n3ServiceHighSold_lbl")
+        self.n0HighestExpense_lbl = QtWidgets.QLabel(self.page)
+        self.n0HighestExpense_lbl.setGeometry(QtCore.QRect(20, 50, 261, 41))
         font = QtGui.QFont()
         font.setFamily("Vazirmatn Medium")
         font.setPointSize(10)
-        self.firstHighestExpense_lbl.setFont(font)
-        self.firstHighestExpense_lbl.setStyleSheet("border: 1px solid;\n"
+        self.n0HighestExpense_lbl.setFont(font)
+        self.n0HighestExpense_lbl.setStyleSheet("border: 1px solid;\n"
 "border-color: rgb(232, 232, 232);\n"
 "background-color: rgb(233, 236, 239);\n"
 "border-radius: 5px;\n"
 "border-color: rgb(206, 206, 206);  border-radius: 10px;")
-        self.firstHighestExpense_lbl.setAlignment(QtCore.Qt.AlignCenter)
-        self.firstHighestExpense_lbl.setObjectName("firstHighestExpense_lbl")
-        self.secondHighestExpense_lbl = QtWidgets.QLabel(self.page)
-        self.secondHighestExpense_lbl.setGeometry(QtCore.QRect(20, 100, 261, 41))
+        self.n0HighestExpense_lbl.setAlignment(QtCore.Qt.AlignCenter)
+        self.n0HighestExpense_lbl.setObjectName("n0HighestExpense_lbl")
+        self.n1HighestExpense_lbl = QtWidgets.QLabel(self.page)
+        self.n1HighestExpense_lbl.setGeometry(QtCore.QRect(20, 100, 261, 41))
         font = QtGui.QFont()
         font.setFamily("Vazirmatn Medium")
         font.setPointSize(10)
-        self.secondHighestExpense_lbl.setFont(font)
-        self.secondHighestExpense_lbl.setStyleSheet("border: 1px solid;\n"
+        self.n1HighestExpense_lbl.setFont(font)
+        self.n1HighestExpense_lbl.setStyleSheet("border: 1px solid;\n"
 "border-color: rgb(232, 232, 232);\n"
 "background-color: rgb(233, 236, 239);\n"
 "border-radius: 5px;\n"
 "border-color: rgb(206, 206, 206);  border-radius: 10px;")
-        self.secondHighestExpense_lbl.setAlignment(QtCore.Qt.AlignCenter)
-        self.secondHighestExpense_lbl.setObjectName("secondHighestExpense_lbl")
-        self.thirdHighestExpense_lbl = QtWidgets.QLabel(self.page)
-        self.thirdHighestExpense_lbl.setGeometry(QtCore.QRect(20, 150, 261, 41))
+        self.n1HighestExpense_lbl.setAlignment(QtCore.Qt.AlignCenter)
+        self.n1HighestExpense_lbl.setObjectName("n1HighestExpense_lbl")
+        self.n2HighestExpense_lbl = QtWidgets.QLabel(self.page)
+        self.n2HighestExpense_lbl.setGeometry(QtCore.QRect(20, 150, 261, 41))
         font = QtGui.QFont()
         font.setFamily("Vazirmatn Medium")
         font.setPointSize(10)
-        self.thirdHighestExpense_lbl.setFont(font)
-        self.thirdHighestExpense_lbl.setStyleSheet("border: 1px solid;\n"
+        self.n2HighestExpense_lbl.setFont(font)
+        self.n2HighestExpense_lbl.setStyleSheet("border: 1px solid;\n"
 "border-color: rgb(232, 232, 232);\n"
 "background-color: rgb(233, 236, 239);\n"
 "border-radius: 5px;\n"
 "border-color: rgb(206, 206, 206);  border-radius: 10px;")
-        self.thirdHighestExpense_lbl.setAlignment(QtCore.Qt.AlignCenter)
-        self.thirdHighestExpense_lbl.setObjectName("thirdHighestExpense_lbl")
-        self.fourthHighestExpense_lbl = QtWidgets.QLabel(self.page)
-        self.fourthHighestExpense_lbl.setGeometry(QtCore.QRect(20, 200, 261, 41))
+        self.n2HighestExpense_lbl.setAlignment(QtCore.Qt.AlignCenter)
+        self.n2HighestExpense_lbl.setObjectName("n2HighestExpense_lbl")
+        self.n3HighestExpense_lbl = QtWidgets.QLabel(self.page)
+        self.n3HighestExpense_lbl.setGeometry(QtCore.QRect(20, 200, 261, 41))
         font = QtGui.QFont()
         font.setFamily("Vazirmatn Medium")
         font.setPointSize(10)
-        self.fourthHighestExpense_lbl.setFont(font)
-        self.fourthHighestExpense_lbl.setStyleSheet("border: 1px solid;\n"
+        self.n3HighestExpense_lbl.setFont(font)
+        self.n3HighestExpense_lbl.setStyleSheet("border: 1px solid;\n"
 "border-color: rgb(232, 232, 232);\n"
 "background-color: rgb(233, 236, 239);\n"
 "border-radius: 5px;\n"
 "border-color: rgb(206, 206, 206);  border-radius: 10px;")
-        self.fourthHighestExpense_lbl.setAlignment(QtCore.Qt.AlignCenter)
-        self.fourthHighestExpense_lbl.setObjectName("fourthHighestExpense_lbl")
+        self.n3HighestExpense_lbl.setAlignment(QtCore.Qt.AlignCenter)
+        self.n3HighestExpense_lbl.setObjectName("n3HighestExpense_lbl")
         self.report_stackedWidget.addWidget(self.page)
         self.page_2 = QtWidgets.QWidget()
         self.page_2.setObjectName("page_2")
@@ -1988,7 +1988,7 @@ class Ui_MainWindow(object):
 
         self.retranslateUi(MainWindow)
         self.tabWidget.setCurrentIndex(5)
-        self.report_stackedWidget.setCurrentIndex(1)
+        self.report_stackedWidget.setCurrentIndex(0)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
     def retranslateUi(self, MainWindow):
@@ -2050,18 +2050,18 @@ class Ui_MainWindow(object):
         self.generalIncome_lbl.setText(_translate("MainWindow", "۲۵.۰۰۰.۰۰۰ تومان"))
         self.label_39.setText(_translate("MainWindow", "کل هزینه‌"))
         self.generalExpense_lbl.setText(_translate("MainWindow", "۲۵.۰۰۰.۰۰۰ تومان"))
-        self.label_44.setText(_translate("MainWindow", "سود"))
+        self.profitType_lbl.setText(_translate("MainWindow", "سود / ضرر"))
         self.generalProfit_lbl.setText(_translate("MainWindow", "۲۵.۰۰۰.۰۰۰ تومان"))
         self.refreshGeneralReport_btn.setText(_translate("MainWindow", "تازه‌سازی گزارش کلی"))
         self.label_13.setText(_translate("MainWindow", "گزارش کلی"))
-        self.firstServiceHighSold_lbl.setText(_translate("MainWindow", "بوتاکس صورت"))
-        self.secondServiceHighSold_lbl.setText(_translate("MainWindow", "فیلر لب"))
-        self.thirdServiceHighSold_lbl.setText(_translate("MainWindow", "لیزر فول بادی"))
-        self.fourthServiceHighSold_lbl.setText(_translate("MainWindow", "زیگیل"))
-        self.firstHighestExpense_lbl.setText(_translate("MainWindow", "خرید ویال های بوتاکس"))
-        self.secondHighestExpense_lbl.setText(_translate("MainWindow", "حقوق"))
-        self.thirdHighestExpense_lbl.setText(_translate("MainWindow", "خرید شیرینی"))
-        self.fourthHighestExpense_lbl.setText(_translate("MainWindow", "بوتاکس صورت"))
+        self.n0ServiceHighSold_lbl.setText(_translate("MainWindow", "بوتاکس صورت"))
+        self.n1ServiceHighSold_lbl.setText(_translate("MainWindow", "فیلر لب"))
+        self.n2ServiceHighSold_lbl.setText(_translate("MainWindow", "لیزر فول بادی"))
+        self.n3ServiceHighSold_lbl.setText(_translate("MainWindow", "زیگیل"))
+        self.n0HighestExpense_lbl.setText(_translate("MainWindow", "خرید ویال های بوتاکس"))
+        self.n1HighestExpense_lbl.setText(_translate("MainWindow", "حقوق"))
+        self.n2HighestExpense_lbl.setText(_translate("MainWindow", "خرید شیرینی"))
+        self.n3HighestExpense_lbl.setText(_translate("MainWindow", "بوتاکس صورت"))
         self.refreshServiceReport_btn.setText(_translate("MainWindow", "تازه‌سازی گزارش سرویس"))
         self.serviceReportTime_cmbox.setCurrentText(_translate("MainWindow", "ماه جاری"))
         self.serviceReportTime_cmbox.setItemText(0, _translate("MainWindow", "ماه جاری"))
