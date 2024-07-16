@@ -173,7 +173,7 @@ class AddEditDeleteExpenses(QDialog):
     def _get_gregorian_date(self, jalali_date_str):
         year, month, day = map(int, jalali_date_str.split("-"))
         return (
-            jdatetime.datetime(year, month, day)
+            jdatetime.date(year, month, day)
             .togregorian()
-            .strftime("%Y-%m-%d %H:%M")
+            .strftime("%Y-%m-%d")
         )

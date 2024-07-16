@@ -11,6 +11,8 @@ class ReportsTabController:
         self.chart_manager = ChartManager(ui)
         self._connect_buttons()
         self._load_services()
+        self._no_general_report_found()
+        self._no_service_report_found()
 
     def _connect_buttons(self):
         button_connections = {
@@ -41,9 +43,14 @@ class ReportsTabController:
     def refresh_general_report(self):
         start_date, end_date = self._get_selected_date_interval(self.ui.generalTime_cmbox.currentText())
         general_report_data, service_usage_expense_data = self._fetch_general_report_data(start_date, end_date)
-
+        
+        if general_report_data["total_income"] == 0 and general_report_data["total_expense"] == 0:
+            self._no_general_report_found()
+            return
+        
         highest_services, highest_expenses = self._separate_services_from_expenses(service_usage_expense_data)
         self._update_general_report_labels(general_report_data, highest_services, highest_expenses)
+        self._update_general_report_chart(self.ui.generalTime_cmbox.currentText())
 
     def _fetch_general_report_data(self, start_date, end_date):
         with DatabaseManager() as db:
@@ -74,6 +81,14 @@ class ReportsTabController:
         self._set_highest_labels('ServiceHighSold', highest_services, 'name')
         self._set_highest_labels('HighestExpense', highest_expenses, 'name')
 
+    def _update_general_report_chart(self, selected_time):
+        current_year = jdatetime.date.today().year
+        if selected_time == TimeIntervals.CURRENT_MONTH.value:
+            self.chart_manager.general_current_month_bar_chart()
+        elif selected_time in [TimeIntervals.CURRENT_YEAR.value, TimeIntervals.LAST_YEAR.value]:
+            year = current_year if selected_time == TimeIntervals.CURRENT_YEAR.value else current_year - 1
+            self.chart_manager.general_year_bar_chart(year)
+
     def refresh_service_report(self):
         service_id = self.ui.reportService_cmbox.currentData()
         start_date, end_date = self._get_selected_date_interval(self.ui.serviceReportTime_cmbox.currentText())
@@ -95,10 +110,10 @@ class ReportsTabController:
     def _update_service_chart(self, service_id, selected_time):
         current_year = jdatetime.date.today().year
         if selected_time == TimeIntervals.CURRENT_MONTH.value:
-            self.chart_manager.current_month_bar_chart(service_id)
+            self.chart_manager.service_current_month_bar_chart(service_id)
         elif selected_time in [TimeIntervals.CURRENT_YEAR.value, TimeIntervals.LAST_YEAR.value]:
             year = current_year if selected_time == TimeIntervals.CURRENT_YEAR.value else current_year - 1
-            self.chart_manager.year_bar_chart(service_id, year)
+            self.chart_manager.service_year_bar_chart(service_id, year)
 
     def _update_service_report_labels(self, report_data, high_sold_service_data):
         total_income = Numbers.int_to_persian_with_separators(report_data["total_income"])
@@ -136,3 +151,11 @@ class ReportsTabController:
         for i, item in enumerate(items):
             label = getattr(self.ui, f"n{i}{label_prefix}_lbl")
             label.setText(item[item_key])
+
+    def _no_general_report_found(self):
+        self.ui.generalIncome_lbl.setText("بدون اطلاعات")
+        self.ui.generalExpense_lbl.setText("بدون اطلاعات")
+        self.ui.generalProfit_lbl.setText("بدون اطلاعات")
+        self._clear_highest_labels('ServiceHighSold')
+        self._clear_highest_labels('HighestExpense')
+        self.chart_manager.clear_chart_view()

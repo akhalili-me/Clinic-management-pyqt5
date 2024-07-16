@@ -1,6 +1,7 @@
 from PyQt5.QtWidgets import QMainWindow
 from ui import Ui_MainWindow
-
+from utility import DatabaseUtils,Messages,restart_app,copy_file_to_directory
+from PyQt5.QtWidgets import QFileDialog
 
 from controllers import (
     DoctorsTabController,
@@ -16,6 +17,7 @@ class MainController(QMainWindow):
         super(MainController, self).__init__()
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
+        self._connect_buttons()
 
         #Initilize tabs
         self.appointments_tab_controller = AppointmentsTabController(self.ui)
@@ -24,4 +26,33 @@ class MainController(QMainWindow):
         self.services_tab_controller = ServicesTabController(self.ui)
         self.expense_tab_controller = ExpenseTabController(self.ui)
         self.report_controller = ReportsTabController(self.ui)
+
+
+    def _connect_buttons(self):
+        self.ui.save_backup.triggered.connect(self.save_database_backup)
+        self.ui.import_backup.triggered.connect(self.import_database)
+
+    def save_database_backup(self):
+        db_path = DatabaseUtils.get_database_path()
+
+        dir_dialog = QFileDialog(self)
+        selected_dir_path = dir_dialog.getExistingDirectory()
+
+        if selected_dir_path:
+            copy_file_to_directory(db_path,selected_dir_path)
+            Messages.show_success_msg("پایگاه داده با موفقیت ذخیره شد.")
+
+
+    def import_database(self):
+        new_db_path = DatabaseUtils.import_database()
+        if not DatabaseUtils.validate_database(new_db_path):
+            Messages.show_error_msg("پایگاه داده انتخابی معتبر نمی‌باشد.")
+            return
+        DatabaseUtils.save_new_path(new_db_path)
+        restart_app()
+
         
+
+        
+
+

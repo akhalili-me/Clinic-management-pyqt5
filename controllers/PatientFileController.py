@@ -1,9 +1,9 @@
 # controllers/add_patient_controller.py
 from PyQt5.QtWidgets import QDialog
 from ui import Ui_patientFile_form
-from models import Patients,DatabaseManager,MedicalRecords,Services,Doctors,Appointments
+from models import Patients,DatabaseManager,MedicalRecords,Services,Doctors,Appointments,MedicalRecordImages
 from PyQt5.QtWidgets import QListWidgetItem
-from utility import Numbers,Dates,Messages
+from utility import Numbers,Dates,Messages,Images
 from PyQt5.QtWidgets import QDialog
 from PyQt5.QtCore import pyqtSignal
 
@@ -52,6 +52,13 @@ class PatientFileController(QDialog):
         msg_box, yes_button = Messages.show_confirm_delete_msg()
         if msg_box.clickedButton() == yes_button:
             with DatabaseManager() as db:
+                # Delete medical image files before deleting patient file
+                patient_medical_records = MedicalRecords.get_by_patient_id(db,self.patient_id)
+                for medical_record in patient_medical_records:
+                    record_images = MedicalRecordImages.get_by_medical_record_id(db,medical_record["id"])
+                    for image in record_images:
+                        Images.delete_image(image["path"])
+
                 Patients.delete_patient(db, self.patient_id)
                 Messages.show_success_msg("پرونده بیمار با موفقیت حذف شد.")
                 self.close()
@@ -81,18 +88,20 @@ class PatientFileController(QDialog):
         self.edit_patient_controller.refresh_patients_list.connect(self.refresh_patients_list)
         self.edit_patient_controller.show()
 
+   
     def load_patient_data(self):
         with DatabaseManager() as db:
             patient = Patients.get_by_id(db, self.patient_id)
 
-        self.ui.firstName_lbl.setText(patient['firstName'])
-        self.ui.lastName_lbl.setText(patient['lastName'])
-        self.ui.age_lbl.setText(str(patient["age"]))
-        self.ui.address_lbl.setText(patient["address"])
-        self.ui.identityCode_lbl.setText(Numbers.english_to_persian_numbers(patient["identityCode"]))
-        self.ui.gender_lbl.setText(patient["gender"])
-        self.ui.phoneNumber_lbl.setText(Numbers.english_to_persian_numbers(patient["phoneNumber"]))
-        self.ui.extraInfo_lbl.setText(patient["extraInfo"])
+        if patient:
+            self.ui.firstName_lbl.setText(patient['firstName'])
+            self.ui.lastName_lbl.setText(patient['lastName'])
+            self.ui.age_lbl.setText(str(patient["age"]))
+            self.ui.address_lbl.setText(patient["address"])
+            self.ui.identityCode_lbl.setText(Numbers.english_to_persian_numbers(patient["identityCode"]))
+            self.ui.gender_lbl.setText(patient["gender"])
+            self.ui.phoneNumber_lbl.setText(Numbers.english_to_persian_numbers(patient["phoneNumber"]))
+            self.ui.extraInfo_lbl.setText(patient["extraInfo"])
 
     def load_user_medical_records_list(self):
         self.ui.userMedicalRecords_lst.clear()

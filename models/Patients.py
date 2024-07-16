@@ -13,7 +13,7 @@ class Patients:
 
     @staticmethod
     def get_by_id(db: DatabaseManager, patient_id):
-        query = f"SELECT * FROM Patient Where id={patient_id}"
+        query = f"SELECT * FROM Patient WHERE id={patient_id}"
         try:
             return db.fetchone(query)
         except DatabaseError as e:
@@ -40,6 +40,13 @@ class Patients:
         query = f"SELECT * FROM Patient Where lastName Like '%{lastName}%'"
         try:
             return db.fetchall(query)
+        except DatabaseError as e:
+            raise e
+
+    def patient_exist_identity_code(db: DatabaseManager, identityCode):
+        query = f"SELECT 1 FROM Patient WHERE identityCode = '{identityCode}' LIMIT 1"
+        try:
+            return db.fetchone(query)
         except DatabaseError as e:
             raise e
 

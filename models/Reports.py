@@ -82,8 +82,30 @@ class Reports:
             return db.fetchone(query)
         except DatabaseError as e:
             raise e
-        
-        
+
+    def get_financial_summary_by_days(db: DatabaseManager, start_date, end_date):
+        query = f"""
+                SELECT 
+                    dates.jalali_date,
+                    COALESCE(SUM(MedicalRecords.price), 0) AS total_income,
+                    COALESCE((SELECT SUM(price) FROM Expense WHERE greg_date = dates.greg_date), 0) AS total_expense,
+                    COALESCE(SUM(MedicalRecords.price), 0) - 
+                    COALESCE((SELECT SUM(price) FROM Expense WHERE greg_date = dates.greg_date), 0) AS profit
+                FROM 
+                    (SELECT jalali_date, greg_date FROM MedicalRecords
+                    UNION
+                    SELECT jalali_date, greg_date FROM Expense) as dates
+                LEFT JOIN MedicalRecords ON MedicalRecords.greg_date = dates.greg_date
+                WHERE dates.greg_date BETWEEN '{start_date}' AND '{end_date}'
+                GROUP BY dates.greg_date
+                ORDER BY dates.greg_date DESC
+                """
+        try:
+            return db.fetchall(query)
+        except DatabaseError as e:
+            raise e
+
+    @staticmethod    
     def get_service_usage_and_expenses_summary(db: DatabaseManager, start_date, end_date):
         query = f"""
                 SELECT * FROM (

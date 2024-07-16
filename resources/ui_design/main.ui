@@ -44,7 +44,7 @@
       <x>0</x>
       <y>0</y>
       <width>1201</width>
-      <height>711</height>
+      <height>671</height>
      </rect>
     </property>
     <property name="font">
@@ -60,7 +60,7 @@
      <enum>QTabWidget::North</enum>
     </property>
     <property name="currentIndex">
-     <number>5</number>
+     <number>0</number>
     </property>
     <widget class="QWidget" name="main_tab">
      <attribute name="title">
@@ -95,7 +95,7 @@
       <widget class="QLineEdit" name="patientsIdentityCodeSearch_txtbox">
        <property name="geometry">
         <rect>
-         <x>210</x>
+         <x>200</x>
          <y>30</y>
          <width>201</width>
          <height>31</height>
@@ -138,7 +138,7 @@ QLineEdit:disabled {
       <widget class="QLabel" name="label_2">
        <property name="geometry">
         <rect>
-         <x>410</x>
+         <x>400</x>
          <y>40</y>
          <width>47</width>
          <height>13</height>
@@ -151,7 +151,7 @@ QLineEdit:disabled {
       <widget class="QPushButton" name="patientsLastNameSearch_btn">
        <property name="geometry">
         <rect>
-         <x>490</x>
+         <x>480</x>
          <y>30</y>
          <width>71</width>
          <height>31</height>
@@ -186,7 +186,7 @@ QPushButton:pressed {
       <widget class="QLineEdit" name="patientsLastNameSearch_txtbox">
        <property name="geometry">
         <rect>
-         <x>570</x>
+         <x>560</x>
          <y>30</y>
          <width>221</width>
          <height>31</height>
@@ -235,7 +235,7 @@ QLineEdit:disabled {
       <widget class="QPushButton" name="patientsIdentityCodeSearch_btn">
        <property name="geometry">
         <rect>
-         <x>130</x>
+         <x>120</x>
          <y>30</y>
          <width>71</width>
          <height>31</height>
@@ -270,7 +270,7 @@ QPushButton:pressed {
       <widget class="QLabel" name="label_6">
        <property name="geometry">
         <rect>
-         <x>770</x>
+         <x>760</x>
          <y>30</y>
          <width>101</width>
          <height>31</height>
@@ -283,7 +283,7 @@ QPushButton:pressed {
       <widget class="QPushButton" name="refreshPatientsList_btn">
        <property name="geometry">
         <rect>
-         <x>950</x>
+         <x>940</x>
          <y>30</y>
          <width>191</width>
          <height>31</height>
@@ -382,7 +382,7 @@ QLabe:hover {
         <x>20</x>
         <y>170</y>
         <width>1151</width>
-        <height>471</height>
+        <height>451</height>
        </rect>
       </property>
       <property name="font">
@@ -546,7 +546,7 @@ QPushButton:pressed {
         <x>20</x>
         <y>90</y>
         <width>1151</width>
-        <height>551</height>
+        <height>521</height>
        </rect>
       </property>
       <property name="font">
@@ -1171,10 +1171,10 @@ QPushButton:pressed {
       <widget class="QListWidget" name="services_lst">
        <property name="geometry">
         <rect>
-         <x>10</x>
+         <x>20</x>
          <y>90</y>
-         <width>1141</width>
-         <height>431</height>
+         <width>1131</width>
+         <height>421</height>
         </rect>
        </property>
        <property name="font">
@@ -1525,10 +1525,10 @@ QPushButton:pressed {
       <widget class="QListWidget" name="doctors_lst">
        <property name="geometry">
         <rect>
-         <x>10</x>
+         <x>20</x>
          <y>90</y>
-         <width>1141</width>
-         <height>431</height>
+         <width>1131</width>
+         <height>421</height>
         </rect>
        </property>
        <property name="font">
@@ -1854,7 +1854,7 @@ QLabe:hover {
          <x>10</x>
          <y>110</y>
          <width>1151</width>
-         <height>451</height>
+         <height>421</height>
         </rect>
        </property>
        <property name="font">
@@ -2254,10 +2254,10 @@ QPushButton:pressed {
      <widget class="QChartView" name="report_chart">
       <property name="geometry">
        <rect>
-        <x>20</x>
+        <x>10</x>
         <y>270</y>
-        <width>1161</width>
-        <height>371</height>
+        <width>1171</width>
+        <height>351</height>
        </rect>
       </property>
       <property name="font">
@@ -3554,6 +3554,54 @@ QPushButton:pressed {
    </widget>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
+  <widget class="QMenuBar" name="menuBar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>1196</width>
+     <height>28</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Vazirmatn</family>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
+   <widget class="QMenu" name="menu">
+    <property name="title">
+     <string>پشتیبان</string>
+    </property>
+    <addaction name="save_backup"/>
+    <addaction name="import_backup"/>
+   </widget>
+   <addaction name="menu"/>
+  </widget>
+  <action name="save_backup">
+   <property name="text">
+    <string>ذخیره فایل پشتیبان داده </string>
+   </property>
+   <property name="font">
+    <font>
+     <family>Vazirmatn</family>
+     <pointsize>10</pointsize>
+     <weight>50</weight>
+     <bold>false</bold>
+    </font>
+   </property>
+  </action>
+  <action name="import_backup">
+   <property name="text">
+    <string>وارد کردن فایل پشتیبان</string>
+   </property>
+   <property name="font">
+    <font>
+     <family>Vazirmatn</family>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
+  </action>
  </widget>
  <customwidgets>
   <customwidget>

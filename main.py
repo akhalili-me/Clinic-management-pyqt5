@@ -11,11 +11,13 @@
 # main.py
 import sys
 from PyQt5.QtWidgets import QApplication
+from utility import DatabaseUtils
 from controllers import MainController
+
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)
+    DatabaseUtils.check_database()
     main_window = MainController()
     main_window.show()
     sys.exit(app.exec_())
-

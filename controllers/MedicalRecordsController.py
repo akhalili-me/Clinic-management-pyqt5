@@ -35,6 +35,10 @@ class MedicalRecordInfoController(QDialog):
         if msg_box.clickedButton() == yes_button:
             with DatabaseManager() as db:
                 try:
+                    record_images = MedicalRecordImages.get_by_medical_record_id(db,self.medical_record_id)
+                    for image in record_images:
+                        Images.delete_image(image["path"])
+
                     MedicalRecords.delete_medical_record(db, self.medical_record_id)
                 except:
                     Messages.show_error_msg()

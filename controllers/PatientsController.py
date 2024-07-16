@@ -148,15 +148,17 @@ class AddEditPatientController(QDialog):
             Messages.show_error_msg("شماره تلفن باید ۱۱ رقم باشد.")
             return
 
-        if self.patient:
-            self.update_patient()
-        else:
-            self.save_patient()
+        self.save_patient()
 
     def save_patient(self):
         identity_code = Numbers.persian_to_english_numbers(self.ui.identityCode_txtbox.text())
         phone_number = Numbers.persian_to_english_numbers(self.ui.phoneNumber_txtbox.text())
 
+        is_exist = self._check_if_patient_exist(identity_code)
+        if is_exist and getattr(self.patient, "identityCode", None) != identity_code:
+            Messages.show_error_msg("یک بیمار قبلا با این شماره ملی ثبت شده است.")
+            return
+        
         patient = {
             "firstName": self.ui.firstName_txtbox.text().strip(),
             "lastName": self.ui.lastName_txtbox.text().strip(),
@@ -169,30 +171,21 @@ class AddEditPatientController(QDialog):
         }
 
         with DatabaseManager() as db:
-            Patients.add_patient(db, patient)
-            Messages.show_success_msg("بیمار با موفقیت اضافه شد.")
-            self.refresh_patients_list.emit()
-            self.close()
-
-    def update_patient(self):
-        identity_code = Numbers.persian_to_english_numbers(self.ui.identityCode_txtbox.text())
-        phone_number = Numbers.persian_to_english_numbers(self.ui.phoneNumber_txtbox.text())
-
-        patient = {
-            "id": self.patient["id"],
-            "firstName": self.ui.firstName_txtbox.text().strip(),
-            "lastName": self.ui.lastName_txtbox.text().strip(),
-            "gender": self.ui.gender_cmbox.currentText().strip(),
-            "age": self.ui.age_txtbox.value(),
-            "phoneNumber": phone_number.strip(),
-            "address": self.ui.address_txtbox.toPlainText().strip(),
-            "identityCode": identity_code.strip(),
-            "extraInfo": self.ui.extraInfo_txtbox.toPlainText().strip(),
-        }
-
-        with DatabaseManager() as db:
-            Patients.update_patient(db, patient)
-            Messages.show_success_msg("بیمار با موفقیت ویرایش شد.")
+            if self.patient:
+                patient["id"] = self.patient["id"]
+                Patients.update_patient(db, patient)
+                success_msg = "بیمار با موفقیت ویرایش شد."
+            else:
+                Patients.add_patient(db, patient)
+                success_msg = "بیمار با موفقیت اضافه شد."
+            
+            Messages.show_success_msg(success_msg)
             self.refresh_patients_list.emit()
             self.refresh_patient_file_data.emit()
             self.close()
+
+    def _check_if_patient_exist(self,identityCode):
+        with DatabaseManager() as db:
+            is_patient_exist = Patients.patient_exist_identity_code(db,identityCode)
+   
+        return is_patient_exist is not None

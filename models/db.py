@@ -1,8 +1,10 @@
 from PyQt5.QtSql import QSqlDatabase, QSqlQuery
-from pathlib import Path
 
-BASE_DIR = Path(__file__).resolve().parent.parent
-DB_DIR = BASE_DIR / "resources" / "ClinicDB.db"
+
+# BASE_DIR = Path(__file__).resolve().parent.parent
+# DB_DIR = BASE_DIR / "resources" / "ClinicDB.db"
+
+
 
 class DatabaseError(Exception):
     """Custom exception for database errors."""
@@ -15,6 +17,9 @@ class DatabaseManager:
         else:
             self.db = QSqlDatabase.addDatabase('QSQLITE')
 
+        from utility import DatabaseUtils
+        DB_DIR = DatabaseUtils.get_database_path()
+        
         self.db.setDatabaseName(str(DB_DIR))
 
         if not self.db.open():
