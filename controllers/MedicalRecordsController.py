@@ -346,7 +346,11 @@ class AddMedicalRecordImage(QDialog):
         }
         
         with DatabaseManager() as db:
-            MedicalRecordImages.add_medical_record_image(db,image_info)
+            try:
+                MedicalRecordImages.add_medical_record_image(db,image_info)
+            except:
+                Messages.show_error_msg()
+                return
 
         Messages.show_success_msg("تصویر با موفقیت اضافه شد")
         self.refresh_medical_record_images.emit()

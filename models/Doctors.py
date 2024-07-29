@@ -7,16 +7,18 @@ class Doctors:
         query = "SELECT * FROM Doctor ORDER BY id DESC"
         try:
             return db.fetchall(query)
-        except DatabaseError as e:
-            raise e
+        except Exception:
+            error_msg = "واکشی اطلاعات پزشک‌ها با خطا مواجه شده است."
+            raise DatabaseError(error_msg)
         
     @staticmethod
     def get_by_id(db: DatabaseManager, doctor_id):
         query = f"SELECT * FROM Doctor Where id={doctor_id}"
         try:
             return db.fetchone(query)
-        except DatabaseError as e:
-            raise e
+        except Exception:
+            error_msg = "واکشی اطلاعات پزشک‌ با خطا مواجه شده است."
+            raise DatabaseError(error_msg)
         
     @staticmethod
     def add_doctor(db: DatabaseManager, doctor):
@@ -24,16 +26,18 @@ class Doctors:
         values = (doctor["firstName"],doctor["lastName"],doctor["specialization"])
         try:
             return db.execute_query(query, values)
-        except DatabaseError as e:
-            raise e
+        except Exception:
+            error_msg = "اضافه کردن پزشک‌ با خطا مواجه شده است."
+            raise DatabaseError(error_msg)
 
     @staticmethod
     def get_full_name_by_id(db,doctor_id):
         query = f"SELECT firstName,lastName FROM Doctor Where id={doctor_id}"
         try:
             return db.fetchone(query)
-        except DatabaseError as e:
-            raise e
+        except Exception:
+            error_msg = "واکشی نام و نام خانوادگی پزشک‌ با خطا مواجه شده است."
+            raise DatabaseError(error_msg)
     
     @staticmethod
     def update_doctor(db: DatabaseManager, doctor):
@@ -52,16 +56,18 @@ class Doctors:
 
         try:
             return db.execute_query(query, values)
-        except DatabaseError as e:
-            raise e
+        except Exception:
+            error_msg = "ذخیره کردن تغییرات پزشک‌ با خطا مواجه شده است."
+            raise DatabaseError(error_msg)
 
     @staticmethod
     def delete_doctor(db: DatabaseManager, doctor_id):
         query = f"DELETE FROM Doctor WHERE id = {doctor_id};"
         try:
             return db.execute_query(query)
-        except DatabaseError as e:
-            raise e
+        except Exception:
+            error_msg = "حذف پزشک‌ با خطا مواجه شده است."
+            raise DatabaseError(error_msg)
 
     
 

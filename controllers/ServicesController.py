@@ -13,16 +13,18 @@ class ServicesTabController:
         self.load_services_list()
         self._connect_buttons()
 
-
     def _connect_buttons(self):
         self.ui.addServices_btn.clicked.connect(self.open_add_service)
         self.ui.services_lst.itemDoubleClicked.connect(self.open_edit_delete_service)
-        
 
     def open_edit_delete_service(self, item):
         service_id = item.data(1)
         with DatabaseManager() as db:
-            service = Services.get_by_id(db,service_id)
+            try:
+                service = Services.get_by_id(db,service_id)
+            except Exception as e:
+                Messages.show_error_msg(str(e))
+                return
         self.open_delete_edit_service_controller = AddEditDeleteServiceController(service)
         self.open_delete_edit_service_controller.refresh_services_list.connect(self.load_services_list)
         self.open_delete_edit_service_controller.show()
@@ -35,7 +37,13 @@ class ServicesTabController:
     def load_services_list(self):
         self.ui.services_lst.clear()
         with DatabaseManager() as db:
-            all_services = Services.get_all(db)
+
+            try: 
+                all_services = Services.get_all(db)
+            except Exception as e:
+                Messages.show_error_msg(str(e))
+                return
+            
             for service in all_services:
                 persian_price = Numbers.int_to_persian_with_separators(service["price"])
                 item_txt = f"{service['name']} | قیمت: {persian_price} تومان"
@@ -80,10 +88,19 @@ class AddEditDeleteServiceController(QDialog):
         with DatabaseManager() as db:
             if self.service:
                 service_data['id'] = self.service["id"]
-                Services.update_service(db, service_data)
+                try:
+                    Services.update_service(db, service_data)
+                except Exception as e:
+                    Messages.show_error_msg(str(e))
+                    return
                 success_message = "سرویس با موفقیت ویرایش شد."
             else:
-                Services.add_service(db,service_data)
+                try:
+                    Services.add_service(db,service_data)
+                except Exception as e:
+                    Messages.show_error_msg(str(e))
+                    return
+                
                 success_message = "سرویس با موفقیت اضافه شد."
 
             QMessageBox.information(self, "موفقیت", success_message)
@@ -94,7 +111,11 @@ class AddEditDeleteServiceController(QDialog):
         msg_box, yes_button = Messages.show_confirm_delete_msg()
         if msg_box.clickedButton() == yes_button:
             with DatabaseManager() as db:
-                Services.delete_service(db,self.service["id"])
+                try:
+                    Services.delete_service(db,self.service["id"])
+                except Exception as e:
+                    Messages.show_error_msg(e)
+                    return
                 Messages.show_success_msg("سرویس با موفقیت حذف شد.")
                 self.close()
                 self.refresh_services_list.emit()

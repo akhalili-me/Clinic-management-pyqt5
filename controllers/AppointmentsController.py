@@ -168,6 +168,7 @@ class AppointmentInfoController(QDialog):
             time = Numbers.english_to_persian_numbers(appointment["time"])
             description = appointment["description"] or "بدون توضیحات"
             phone_number = Numbers.english_to_persian_numbers(patient["phoneNumber"])
+            sms_count = Numbers.english_to_persian_numbers(appointment["sms"])
 
             self.ui.patientFullName_lbl.setText(patient["fullName"])
             self.ui.phoneNumber_lbl.setText(phone_number)
@@ -176,6 +177,8 @@ class AppointmentInfoController(QDialog):
             self.ui.datetime_lbl.setText(f"{jalali_date} ساعت {time}")
             self.ui.status_lbl.setText(appointment["status"])
             self.ui.description_lbl.setText(description)
+            self.ui.smsCount_lbl.setText(f"{sms_count} پیامک یادآوری برای بیمار ارسال شده است ")
+
 
 
 class AddEditAppointmentController(QDialog):

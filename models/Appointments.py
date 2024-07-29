@@ -8,24 +8,27 @@ class Appointments:
         query = f"SELECT * FROM Appointment Where patient={patient_id} ORDER BY greg_datetime ASC"
         try:
              return db.fetchall(query)
-        except DatabaseError as e:
-            raise e
+        except Exception:
+            error_msg = "واکشی نوبت‌های بیمار با خطا مواجه شده است."
+            raise DatabaseError(error_msg)
     
     @staticmethod
     def get_by_id(db: DatabaseManager, appointment_Id):
         query = f"SELECT * FROM Appointment Where id={appointment_Id}"
         try:
              return db.fetchone(query)
-        except DatabaseError as e:
-            raise e
+        except Exception:
+            error_msg = "واکشی نوبت با خطا مواجه شده است."
+            raise DatabaseError(error_msg)
 
     @staticmethod
     def get_by_date(db: DatabaseManager, date):
         query = f"SELECT * FROM Appointment Where jalali_date='{date}' ORDER BY greg_datetime ASC"
         try:
             return db.fetchall(query)
-        except DatabaseError as e:
-            raise e
+        except Exception:
+            error_msg = "واکشی نوبت‌ها با خطا مواجه شده است."
+            raise DatabaseError(error_msg)
 
     @staticmethod
     def add_appointment(db: DatabaseManager, appointment):
@@ -45,8 +48,9 @@ class Appointments:
         )
         try:
             return db.execute_query(query, values)
-        except DatabaseError as e:
-            raise e
+        except Exception:
+            error_msg = "اضافه کردن نوبت با خطا مواجه شده است."
+            raise DatabaseError(error_msg)
 
     
     @staticmethod
@@ -76,13 +80,15 @@ class Appointments:
         )
         try:
             return db.execute_query(query, values)
-        except DatabaseError as e:
-            raise e
+        except Exception:
+            error_msg = "ذخیره کردن نوبت با خطا مواجه شده است."
+            raise DatabaseError(error_msg)
         
     @staticmethod
     def delete_appointment(db: DatabaseManager, appointment_id):
         query = f"DELETE FROM Appointment WHERE id = {appointment_id};"
         try:
             return db.execute_query(query)
-        except DatabaseError as e:
-            raise e
+        except Exception:
+            error_msg = "حذف نوبت با خطا مواجه شده است."
+            raise DatabaseError(error_msg)

@@ -1,6 +1,6 @@
 from ui import Ui_MainWindow
 from models import DatabaseManager,Services,Reports
-from utility import Dates,Numbers,TimeIntervals,ChartManager
+from utility import Dates,Numbers,TimeIntervals,ChartManager,Messages
 import jdatetime
 
 class ReportsTabController:
@@ -35,7 +35,12 @@ class ReportsTabController:
 
     def _load_services(self):
         with DatabaseManager() as db:
-            services = Services.get_all(db)
+            try:
+                services = Services.get_all(db)
+            except Exception as e:
+                Messages.show_error_msg(e)
+                return
+            
             self.ui.reportService_cmbox.clear()
             for service in services:
                 self.ui.reportService_cmbox.addItem(service["name"], service["id"])

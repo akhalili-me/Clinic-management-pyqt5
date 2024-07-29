@@ -24,7 +24,7 @@ def restart_app():
     QApplication.quit()
     QProcess.startDetached(sys.executable, sys.argv)
 
-def copy_file_to_directory(file_path, directory):
+def copy_file_to_directory(file_path, directory, new_file_name):
 
     try:
         if not os.path.isfile(file_path):
@@ -33,8 +33,9 @@ def copy_file_to_directory(file_path, directory):
         if not os.path.isdir(directory):
             raise ValueError(f"The specified directory does not exist: {directory}")
 
-        shutil.copy(file_path, directory)
-        print(f"File '{file_path}' successfully copied to '{directory}'")
+        new_file_path = os.path.join(directory, new_file_name)
+        shutil.copy(file_path, new_file_path)
+        print(f"File '{file_path}' successfully copied to '{new_file_path}'")
     except Exception as e:
         print(f"An error occurred: {e}")
 

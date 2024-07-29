@@ -16,8 +16,10 @@ class Reports:
                 """
         try:
             return db.fetchone(query)
-        except DatabaseError as e:
-            raise e
+        except Exception:
+            error_msg = "واکشی اطلاعات گزارش قیمت و تعداد سرویس با خطا مواجه شده است."
+            raise DatabaseError(error_msg)
+
         
     @staticmethod
     def get_most_sold_service_dates(db:DatabaseManager,service_id,start_date,end_date):
@@ -33,8 +35,10 @@ class Reports:
 
         try:
             return db.fetchall(query)
-        except DatabaseError as e:
-            raise e
+        except Exception:
+            error_msg = "واکشی پرفروش‌‌ترین سرویس‌ها با خطا مواجه شده است."
+            raise DatabaseError(error_msg)
+
         
     @staticmethod
     def get_current_month_service_income_by_days(db:DatabaseManager,service_id):
@@ -51,8 +55,9 @@ class Reports:
 
         try:
             return db.fetchall(query)
-        except DatabaseError as e:
-            raise e
+        except Exception:
+            error_msg = "واکشی درآمد ماه جاری سرویس‌ با خطا مواجه شده است."
+            raise DatabaseError(error_msg)
 
     def get_monthly_service_income(db: DatabaseManager, service_id, start_date,end_date):
         query = f"""
@@ -67,8 +72,9 @@ class Reports:
                 """
         try:
             return db.fetchone(query)
-        except DatabaseError as e:
-            raise e
+        except Exception:
+            error_msg = "واکشی درآمد ماهانه سرویس‌ با خطا مواجه شده است."
+            raise DatabaseError(error_msg)
 
     def get_financial_summary(db: DatabaseManager, start_date, end_date):
         query = f"""
@@ -80,8 +86,9 @@ class Reports:
                 """
         try:
             return db.fetchone(query)
-        except DatabaseError as e:
-            raise e
+        except Exception:
+            error_msg = "واکشی اطلاعات مالی با خطا مواجه شده است."
+            raise DatabaseError(error_msg)
 
     def get_financial_summary_by_days(db: DatabaseManager, start_date, end_date):
         query = f"""
@@ -102,8 +109,9 @@ class Reports:
                 """
         try:
             return db.fetchall(query)
-        except DatabaseError as e:
-            raise e
+        except Exception:
+            error_msg = "واکشی اطلاعات مالی روزهای ماه با خطا مواجه شده است."
+            raise DatabaseError(error_msg)
 
     @staticmethod    
     def get_service_usage_and_expenses_summary(db: DatabaseManager, start_date, end_date):
@@ -142,5 +150,6 @@ class Reports:
                 """
         try:
             return db.fetchall(query)
-        except DatabaseError as e:
-            raise e
+        except Exception:
+            error_msg = "واکشی پرفروش‌ترین خدمات و بالاترین‌ هزینه‌ها با خطا مواجه شده است."
+            raise DatabaseError(error_msg)

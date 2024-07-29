@@ -6,16 +6,18 @@ class MedicalRecordImages:
         query = f"SELECT * FROM MedicalRecordImages Where id={id}"
         try:
             return db.fetchone(query)
-        except DatabaseError as e:
-            raise e
+        except Exception:
+            error_msg = "واکشی تصویر خدمات با خطا مواجه شده است."
+            raise DatabaseError(error_msg)
         
     @staticmethod
     def get_by_medical_record_id(db:DatabaseManager,medical_record_id):
         query = f"SELECT * FROM MedicalRecordImages Where medical_record={medical_record_id}"
         try:
             return db.fetchall(query)
-        except DatabaseError as e:
-            raise e
+        except Exception:
+            error_msg = "واکشی تصاویر خدمات با خطا مواجه شده است."
+            raise DatabaseError(error_msg)
 
     @staticmethod
     def add_medical_record_image(db:DatabaseManager,medical_record_image):
@@ -29,16 +31,18 @@ class MedicalRecordImages:
         )
         try:
             return db.execute_query(query, values)
-        except DatabaseError as e:
-            raise e
-
+        except Exception:
+            error_msg = "اضافه کردن تصویر خدمات با خطا مواجه شده است."
+            raise DatabaseError(error_msg)
+        
     @staticmethod
     def delete_medical_record_image(db: DatabaseManager, image_id):
         query = f"DELETE FROM MedicalRecordImages WHERE id = {image_id};"
         try:
             return db.execute_query(query)
-        except DatabaseError as e:
-            raise e
+        except Exception:
+            error_msg = "حذف تصویر خدمات با خطا مواجه شده است."
+            raise DatabaseError(error_msg)
         
 class MedicalRecords:
 
@@ -47,16 +51,18 @@ class MedicalRecords:
         query = f"SELECT * FROM MedicalRecords Where id={id}"
         try:
             return db.fetchone(query)
-        except DatabaseError as e:
-            raise e
-        
+        except Exception:
+            error_msg = "واکشی خدمات با خطا مواجه شده است."
+            raise DatabaseError(error_msg)
+
     @staticmethod
     def get_by_patient_id(db: DatabaseManager, patient_id):
         query = f"SELECT * FROM MedicalRecords Where patient={patient_id} ORDER BY greg_date DESC"
         try:
             return db.fetchall(query)
-        except DatabaseError as e:
-            raise e 
+        except Exception:
+            error_msg = "واکشی خدمات با خطا مواجه شده است."
+            raise DatabaseError(error_msg)
 
     @staticmethod
     def add_medical_record(db:DatabaseManager,record):
@@ -75,8 +81,9 @@ class MedicalRecords:
         )
         try:
             return db.execute_query(query, values)
-        except DatabaseError as e:
-            raise e
+        except Exception:
+            error_msg = "اضافه کردن خدمات با خطا مواجه شده است."
+            raise DatabaseError(error_msg)
         
     @staticmethod
     def update_medical_record(db: DatabaseManager, record):
@@ -102,13 +109,15 @@ class MedicalRecords:
         )
         try:
             return db.execute_query(query, values)
-        except DatabaseError as e:
-            raise e
+        except Exception:
+            error_msg = "ذخیره تغییرات خدمات با خطا مواجه شده است."
+            raise DatabaseError(error_msg)
 
     @staticmethod
     def delete_medical_record(db: DatabaseManager, record_id):
         query = f"DELETE FROM MedicalRecords WHERE id = {record_id};"
         try:
             return db.execute_query(query)
-        except DatabaseError as e:
-            raise e
+        except Exception:
+            error_msg = "حذف خدمات با خطا مواجه شده است."
+            raise DatabaseError(error_msg)

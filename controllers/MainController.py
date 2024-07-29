@@ -2,6 +2,7 @@ from PyQt5.QtWidgets import QMainWindow
 from ui import Ui_MainWindow
 from utility import DatabaseUtils,Messages,restart_app,copy_file_to_directory
 from PyQt5.QtWidgets import QFileDialog
+import jdatetime
 
 from controllers import (
     DoctorsTabController,
@@ -39,12 +40,15 @@ class MainController(QMainWindow):
         selected_dir_path = dir_dialog.getExistingDirectory()
 
         if selected_dir_path:
-            copy_file_to_directory(db_path,selected_dir_path)
-            Messages.show_success_msg("پایگاه داده با موفقیت ذخیره شد.")
+            current_time = jdatetime.datetime.now().strftime('%Y-%m-%d %H-%M')
+            file_name = "backup " + current_time
+            copy_file_to_directory(db_path,selected_dir_path,file_name)
+            Messages.show_success_msg("پشتیبان پایگاه داده با موفقیت ذخیره شد.")
 
 
     def import_database(self):
         new_db_path = DatabaseUtils.import_database()
+        
         if not DatabaseUtils.validate_database(new_db_path):
             Messages.show_error_msg("پایگاه داده انتخابی معتبر نمی‌باشد.")
             return

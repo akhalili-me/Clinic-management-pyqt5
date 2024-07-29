@@ -1,10 +1,6 @@
 from PyQt5.QtSql import QSqlDatabase, QSqlQuery
 
 
-# BASE_DIR = Path(__file__).resolve().parent.parent
-# DB_DIR = BASE_DIR / "resources" / "ClinicDB.db"
-
-
 
 class DatabaseError(Exception):
     """Custom exception for database errors."""

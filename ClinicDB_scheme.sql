@@ -12,21 +12,6 @@ CREATE TABLE IF NOT EXISTS "Service" (
 	"price"	INTEGER NOT NULL,
 	PRIMARY KEY("id" AUTOINCREMENT)
 );
-CREATE TABLE IF NOT EXISTS "Appointment" (
-	"id"	INTEGER NOT NULL,
-	"status"	TEXT NOT NULL,
-	"jalali_date"	TEXT NOT NULL,
-	"doctor"	INTEGER NOT NULL,
-	"patient"	INTEGER NOT NULL,
-	"service"	INTEGER,
-	"description"	TEXT,
-	"greg_datetime"	TEXT NOT NULL,
-	"time"	TEXT NOT NULL,
-	PRIMARY KEY("id" AUTOINCREMENT),
-	FOREIGN KEY("patient") REFERENCES "Patient"("id") ON DELETE CASCADE,
-	FOREIGN KEY("service") REFERENCES "Service"("id") ON DELETE CASCADE,
-	FOREIGN KEY("doctor") REFERENCES "Doctor"("id") ON DELETE CASCADE
-);
 CREATE TABLE IF NOT EXISTS "MedicalRecordImages" (
 	"id"	INTEGER NOT NULL,
 	"path"	TEXT NOT NULL,
@@ -45,9 +30,9 @@ CREATE TABLE IF NOT EXISTS "MedicalRecords" (
 	"greg_date"	TEXT NOT NULL,
 	"price"	INTEGER NOT NULL,
 	PRIMARY KEY("id" AUTOINCREMENT),
+	FOREIGN KEY("doctor") REFERENCES "Doctor"("id") ON DELETE CASCADE,
 	FOREIGN KEY("patient") REFERENCES "Patient"("id") ON DELETE CASCADE,
-	FOREIGN KEY("service") REFERENCES "Service"("id") ON DELETE CASCADE,
-	FOREIGN KEY("doctor") REFERENCES "Doctor"("id") ON DELETE CASCADE
+	FOREIGN KEY("service") REFERENCES "Service"("id") ON DELETE CASCADE
 );
 CREATE TABLE IF NOT EXISTS "Expense" (
 	"id"	INTEGER NOT NULL,
@@ -69,5 +54,21 @@ CREATE TABLE IF NOT EXISTS "Patient" (
 	"identityCode"	TEXT UNIQUE,
 	"extraInfo"	TEXT,
 	PRIMARY KEY("id" AUTOINCREMENT)
+);
+CREATE TABLE IF NOT EXISTS "Appointment" (
+	"id"	INTEGER NOT NULL,
+	"status"	TEXT NOT NULL,
+	"jalali_date"	TEXT NOT NULL,
+	"doctor"	INTEGER NOT NULL,
+	"patient"	INTEGER NOT NULL,
+	"service"	INTEGER,
+	"description"	TEXT,
+	"greg_datetime"	TEXT NOT NULL,
+	"time"	TEXT NOT NULL,
+	"sms"	INTEGER NOT NULL DEFAULT 0,
+	PRIMARY KEY("id" AUTOINCREMENT),
+	FOREIGN KEY("service") REFERENCES "Service"("id") ON DELETE CASCADE,
+	FOREIGN KEY("patient") REFERENCES "Patient"("id") ON DELETE CASCADE,
+	FOREIGN KEY("doctor") REFERENCES "Doctor"("id") ON DELETE CASCADE
 );
 COMMIT;

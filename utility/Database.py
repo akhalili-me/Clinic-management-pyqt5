@@ -109,5 +109,5 @@ class DatabaseUtils:
                     return False
 
             return True
-        except sqlite3.Error as e:
+        except:
             return False
