@@ -5,8 +5,10 @@ import sys
 import sqlite3
 import re
 from utility import Messages
+from pathlib import Path
 
 CONFIG_FILE = 'config.json'
+BASE_DIR = Path(__file__).resolve().parent.parent
 
 class DatabaseUtils:
     def load_or_create_config():
@@ -86,7 +88,8 @@ class DatabaseUtils:
         return config['database_path']
 
     def get_default_sql_scheme():
-        with open('ClinicDB_scheme.sql', 'r') as f:
+        db_scheme_path = Path.joinpath(BASE_DIR,'ClinicDB_scheme.sql')
+        with open(db_scheme_path, 'r') as f:
             schema = f.read()
         return schema
 

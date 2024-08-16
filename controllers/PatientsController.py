@@ -36,7 +36,12 @@ class PatientsTabController:
             self.ui.patientsIdentityCodeSearch_txtbox.text()
         )
         with DatabaseManager() as db:
-            patient = Patients.get_by_identity_code(db, patient_identity_code)
+            try:
+                patient = Patients.get_by_identity_code(db, patient_identity_code)
+            except Exception as e:
+                Messages.show_error_msg(str(e))
+                return
+
             self.ui.patients_lst.clear()
             if patient:
                 self.add_to_patients_list(patient)
@@ -44,7 +49,12 @@ class PatientsTabController:
     def seach_patient_by_last_name(self):
         patient_last_name = self.ui.patientsLastNameSearch_txtbox.text()
         with DatabaseManager() as db:
-            patients = Patients.get_by_last_name(db, patient_last_name)
+            try:
+                patients = Patients.get_by_last_name(db, patient_last_name)
+            except Exception as e:
+                Messages.show_error_msg(str(e))
+                return
+
             self.ui.patients_lst.clear()
             if patients:
                 for patient in patients:
@@ -68,7 +78,12 @@ class PatientsTabController:
     def load_patients_list(self):
         self.ui.patients_lst.clear()
         with DatabaseManager() as db:
-            all_patients = Patients.get_all(db)
+            try:
+                all_patients = Patients.get_all(db)
+            except Exception as e:
+                Messages.show_error_msg(str(e))
+                return
+
             for patient in all_patients:
                 self.add_to_patients_list(patient)
 
@@ -173,10 +188,18 @@ class AddEditPatientController(QDialog):
         with DatabaseManager() as db:
             if self.patient:
                 patient["id"] = self.patient["id"]
-                Patients.update_patient(db, patient)
+                try:
+                    Patients.update_patient(db, patient)
+                except Exception as e:
+                    Messages.show_error_msg(str(e))
+                    return    
                 success_msg = "بیمار با موفقیت ویرایش شد."
             else:
-                Patients.add_patient(db, patient)
+                try:
+                    Patients.add_patient(db, patient)
+                except Exception as e:
+                    Messages.show_error_msg(str(e))
+                    return
                 success_msg = "بیمار با موفقیت اضافه شد."
             
             Messages.show_success_msg(success_msg)

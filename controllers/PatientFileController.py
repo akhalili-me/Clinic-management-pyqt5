@@ -50,21 +50,31 @@ class PatientFileController(QDialog):
 
     def open_delete_message_box(self):
         msg_box, yes_button = Messages.show_confirm_delete_msg()
-        if msg_box.clickedButton() == yes_button:
-            with DatabaseManager() as db:
-                # Delete medical image files before deleting patient file
-                patient_medical_records = MedicalRecords.get_by_patient_id(db,self.patient_id)
+        if msg_box.clickedButton() != yes_button:
+            msg_box.close()
+            return
+
+        with DatabaseManager() as db:
+            try:
+                # Fetch patient medical records
+                patient_medical_records = MedicalRecords.get_by_patient_id(db, self.patient_id)
+                
+                # Delete medical images
                 for medical_record in patient_medical_records:
-                    record_images = MedicalRecordImages.get_by_medical_record_id(db,medical_record["id"])
+                    record_images = MedicalRecordImages.get_by_medical_record_id(db, medical_record["id"])
                     for image in record_images:
                         Images.delete_image(image["path"])
-
+                
+                # Delete patient record
                 Patients.delete_patient(db, self.patient_id)
-                Messages.show_success_msg("پرونده بیمار با موفقیت حذف شد.")
-                self.close()
-                self.refresh_patients_list.emit()
-        else:
-            msg_box.close()
+                
+            except Exception as e:
+                Messages.show_error_msg(str(e))
+                return
+
+        Messages.show_success_msg("پرونده بیمار با موفقیت حذف شد.")
+        self.close()
+        self.refresh_patients_list.emit()
 
     def open_add_medical_record(self):
         from controllers import AddEditMedicalRecordsController
@@ -82,7 +92,11 @@ class PatientFileController(QDialog):
     def open_edit_patient(self):
         from controllers import AddEditPatientController
         with DatabaseManager() as db:
-            patient = Patients.get_by_id(db, self.patient_id)
+            try:
+                patient = Patients.get_by_id(db, self.patient_id)
+            except Exception as e:
+                Messages.show_error_msg(str(e))
+                return
         self.edit_patient_controller = AddEditPatientController(patient)
         self.edit_patient_controller.refresh_patient_file_data.connect(self.load_patient_data)
         self.edit_patient_controller.refresh_patients_list.connect(self.refresh_patients_list)
@@ -91,8 +105,12 @@ class PatientFileController(QDialog):
    
     def load_patient_data(self):
         with DatabaseManager() as db:
-            patient = Patients.get_by_id(db, self.patient_id)
-
+            try:
+                patient = Patients.get_by_id(db, self.patient_id)
+            except Exception as e:
+                Messages.show_error_msg(str(e))
+                return
+            
         if patient:
             self.ui.firstName_lbl.setText(patient['firstName'])
             self.ui.lastName_lbl.setText(patient['lastName'])
@@ -106,20 +124,29 @@ class PatientFileController(QDialog):
     def load_user_medical_records_list(self):
         self.ui.userMedicalRecords_lst.clear()
         with DatabaseManager() as db:
-            medical_records = MedicalRecords.get_by_patient_id(db, self.patient_id)
-            for record in medical_records:
-                service = Services.get_by_id(db, record["service"])
-                doctor = Doctors.get_by_id(db, record["doctor"])
-                jalali_date = Dates.convert_to_jalali_format(record["jalali_date"])
-                item_text = f"{service['name']}  |  دکتر {doctor['lastName']}  |  تاریخ: {jalali_date}"
-                item = QListWidgetItem(item_text)
-                item.setData(1, record["id"])
-                self.ui.userMedicalRecords_lst.addItem(item)
-
+            try:
+                medical_records = MedicalRecords.get_by_patient_id(db, self.patient_id)
+                for record in medical_records:
+                    service = Services.get_by_id(db, record["service"])
+                    doctor = Doctors.get_by_id(db, record["doctor"])
+                    jalali_date = Dates.convert_to_jalali_format(record["jalali_date"])
+                    item_text = f"{service['name']}  |  دکتر {doctor['lastName']}  |  تاریخ: {jalali_date}"
+                    item = QListWidgetItem(item_text)
+                    item.setData(1, record["id"])
+                    self.ui.userMedicalRecords_lst.addItem(item)
+            except Exception as e:
+                Messages.show_error_msg(str(e))
+                return
+            
     def load_user_appointments_list(self):
         self.ui.userAppointments_lst.clear()
         with DatabaseManager() as db:
-            appointments = Appointments.get_by_patient_id(db, self.patient_id)
+            try:
+                appointments = Appointments.get_by_patient_id(db, self.patient_id)
+            except Exception as e:
+                Messages.show_error_msg(str(e))
+                return
+            
             for appointment in appointments:
                 service = Services.get_by_id(db, appointment["service"])
                 doctor = Doctors.get_by_id(db, appointment["doctor"])

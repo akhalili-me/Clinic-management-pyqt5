@@ -114,7 +114,7 @@ class AddEditDeleteServiceController(QDialog):
                 try:
                     Services.delete_service(db,self.service["id"])
                 except Exception as e:
-                    Messages.show_error_msg(e)
+                    Messages.show_error_msg(str(e))
                     return
                 Messages.show_success_msg("سرویس با موفقیت حذف شد.")
                 self.close()
