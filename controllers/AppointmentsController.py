@@ -44,13 +44,19 @@ class AppointmentsTabController:
 
     def _load_appointments_by_date(self, date):
         with DatabaseManager() as db:
-            appointments = Appointments.get_by_date(db, date)
+            try:
+                appointments = Appointments.get_by_date(db, date)
+            except Exception as e:
+                Messages.show_error_msg(str(e))
+                return
+            
             self._load_data_into_appointment_list(db, appointments)
 
     def _load_data_into_appointment_list(self, db, appointments):
         self.ui.appointments_lst.clear()
         for appointment in appointments:
-            patient, service, doctor_full_name = (
+            try:
+                patient, service, doctor_full_name = (
                 UtilityFetcher.get_patient_service_doctor_names(
                     db,
                     appointment["patient"],
@@ -58,6 +64,10 @@ class AppointmentsTabController:
                     appointment["doctor"],
                 )
             )
+            except Exception as e:
+                Messages.show_error_msg(str(e))
+                return
+     
             date = Dates.convert_to_jalali_format(appointment["jalali_date"])
             time = Numbers.english_to_persian_numbers(appointment["time"])
             phone_number = Numbers.english_to_persian_numbers(patient["phoneNumber"])
@@ -93,8 +103,13 @@ class AppointmentInfoController(QDialog):
         msg_box, yes_button = Messages.show_confirm_msg()
         if msg_box.clickedButton() == yes_button:
             with DatabaseManager() as db:
-                appointment = Appointments.get_by_id(db,self.appointment_id)
-                service_price = Services.get_by_id(db,appointment["service"])["price"]
+                try:
+                    appointment = Appointments.get_by_id(db,self.appointment_id)
+                    service_price = Services.get_by_id(db,appointment["service"])["price"]
+                except Exception as e:
+                    Messages.show_error_msg(str(e))
+                    return
+                
                 greg_date = appointment["greg_datetime"].split(" ")[0]
                 
                 medical_record_data = {
@@ -128,7 +143,12 @@ class AppointmentInfoController(QDialog):
         msg_box, yes_button = Messages.show_confirm_delete_msg()
         if msg_box.clickedButton() == yes_button:
             with DatabaseManager() as db:
-                Appointments.delete_appointment(db,self.appointment_id)
+                try:
+                    Appointments.delete_appointment(db,self.appointment_id)
+                except Exception as e:
+                    Messages.show_error_msg(str(e))
+                    return
+                
                 Messages.show_success_msg("نوبت با موفقیت حذف شد.")
                 self.close()
                 self.load_today_appointments_list.emit()
@@ -137,8 +157,14 @@ class AppointmentInfoController(QDialog):
             msg_box.close()
 
     def open_edit_appointment(self):
+
         with DatabaseManager() as db:
-            appointment = Appointments.get_by_id(db,self.appointment_id)
+            try:
+                 appointment = Appointments.get_by_id(db,self.appointment_id)
+            except Exception as e:
+                Messages.show_error_msg(str(e))
+                return
+
         self.edit_appointment_controller = AddEditAppointmentController(appointment=appointment)
         self.edit_appointment_controller.refresh_appointment_info_data.connect(
             self.load_appointment_data
@@ -154,30 +180,37 @@ class AppointmentInfoController(QDialog):
     def load_appointment_data(self):
         appointment_id = self.appointment_id
 
-        with DatabaseManager() as db:
-            appointment = Appointments.get_by_id(db,appointment_id)
-            patient, service, doctor_full_name = (
-                UtilityFetcher.get_patient_service_doctor_names(
-                    db,
-                    appointment["patient"],
-                    appointment["service"],
-                    appointment["doctor"],
-                )
-            )
-            jalali_date = Dates.convert_to_jalali_format(appointment["jalali_date"])
-            time = Numbers.english_to_persian_numbers(appointment["time"])
-            description = appointment["description"] or "بدون توضیحات"
-            phone_number = Numbers.english_to_persian_numbers(patient["phoneNumber"])
-            sms_count = Numbers.english_to_persian_numbers(appointment["sms"])
 
-            self.ui.patientFullName_lbl.setText(patient["fullName"])
-            self.ui.phoneNumber_lbl.setText(phone_number)
-            self.ui.serviceName_lbl.setText(service["name"])
-            self.ui.doctorName_lbl.setText(f"دکتر {doctor_full_name}")
-            self.ui.datetime_lbl.setText(f"{jalali_date} ساعت {time}")
-            self.ui.status_lbl.setText(appointment["status"])
-            self.ui.description_lbl.setText(description)
-            self.ui.smsCount_lbl.setText(f"{sms_count} پیامک یادآوری برای بیمار ارسال شده است ")
+        with DatabaseManager() as db:
+            try:
+                appointment = Appointments.get_by_id(db,appointment_id)
+                patient, service, doctor_full_name = (
+                    UtilityFetcher.get_patient_service_doctor_names(
+                        db,
+                        appointment["patient"],
+                        appointment["service"],
+                        appointment["doctor"],
+                    )
+                )
+            except Exception as e:
+                Messages.show_error_msg(str(e))
+                return
+
+
+        jalali_date = Dates.convert_to_jalali_format(appointment["jalali_date"])
+        time = Numbers.english_to_persian_numbers(appointment["time"])
+        description = appointment["description"] or "بدون توضیحات"
+        phone_number = Numbers.english_to_persian_numbers(patient["phoneNumber"])
+        sms_count = Numbers.english_to_persian_numbers(appointment["sms"])
+
+        self.ui.patientFullName_lbl.setText(patient["fullName"])
+        self.ui.phoneNumber_lbl.setText(phone_number)
+        self.ui.serviceName_lbl.setText(service["name"])
+        self.ui.doctorName_lbl.setText(f"دکتر {doctor_full_name}")
+        self.ui.datetime_lbl.setText(f"{jalali_date} ساعت {time}")
+        self.ui.status_lbl.setText(appointment["status"])
+        self.ui.description_lbl.setText(description)
+        self.ui.smsCount_lbl.setText(f"{sms_count} پیامک یادآوری برای بیمار ارسال شده است ")
 
 
 
@@ -214,9 +247,14 @@ class AddEditAppointmentController(QDialog):
     def load_appointment_data_into_txtboxes(self):
         appointment = self.appointment
         with DatabaseManager() as db:
-            _, service, doctor_full_name = UtilityFetcher.get_patient_service_doctor_names(
-                db, None, appointment["service"], appointment["doctor"]
-            )
+            try:
+                _, service, doctor_full_name = UtilityFetcher.get_patient_service_doctor_names(
+                    db, None, appointment["service"], appointment["doctor"]
+                )
+            except Exception as e:
+                Messages.show_error_msg(str(e))
+                return
+       
 
         self.ui.doctor_cmbox.setCurrentText(f"دکتر {doctor_full_name}")
         self.ui.service_cmbox.setCurrentText(service["name"])
@@ -245,11 +283,23 @@ class AddEditAppointmentController(QDialog):
         with DatabaseManager() as db:
             if self.appointment:
                 appointment_data["id"] = self.appointment["id"]
-                Appointments.update_appointment(db, appointment_data)
+
+                try:
+                    Appointments.update_appointment(db, appointment_data)
+                except Exception as e:
+                    Messages.show_error_msg(str(e))
+                    return
+                
                 success_msg = "نوبت با موفقیت ویرایش شد."
                 self.refresh_appointment_info_data.emit()
             else:
-                Appointments.add_appointment(db, appointment_data)
+                
+                try:
+                    Appointments.add_appointment(db, appointment_data)
+                except Exception as e:
+                    Messages.show_error_msg(str(e))
+                    return
+                
                 success_msg = "نوبت با موفقیت اضافه شد."
 
             Messages.show_success_msg(success_msg)

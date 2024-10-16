@@ -40,8 +40,8 @@ class MedicalRecordInfoController(QDialog):
                         Images.delete_image(image["path"])
 
                     MedicalRecords.delete_medical_record(db, self.medical_record_id)
-                except:
-                    Messages.show_error_msg()
+                except Exception as e:
+                    Messages.show_error_msg(str(e))
                     return self.close()
                 Messages.show_success_msg("خدمات با موفقیت حذف شد.")
                 self.close()
@@ -51,7 +51,12 @@ class MedicalRecordInfoController(QDialog):
 
     def open_edit_medical_record(self):
         with DatabaseManager() as db:
-            medical_record = MedicalRecords.get_by_id(db, self.medical_record_id)
+            try:
+                medical_record = MedicalRecords.get_by_id(db, self.medical_record_id)
+            except Exception as e:
+                Messages.show_error_msg(str(e))
+                return
+            
         self.edit_medical_record_controller = AddEditMedicalRecordsController(
             medical_record=medical_record
         )
@@ -65,8 +70,13 @@ class MedicalRecordInfoController(QDialog):
 
     def show_medical_record_images(self):
         with DatabaseManager() as db:
-            medical_record = MedicalRecords.get_by_id(db,self.medical_record_id)
-            patient = Patients.get_by_id(db,medical_record["patient"])
+            try:
+                medical_record = MedicalRecords.get_by_id(db,self.medical_record_id)
+                patient = Patients.get_by_id(db,medical_record["patient"])
+            except Exception as e:
+                Messages.show_error_msg(str(e))
+                return
+
     
         patient_full_name = f"{patient["firstName"]} {patient["lastName"]}"
         self.medical_record_images_controller = MedicalRecordImagesInfoController(patient_full_name,self.medical_record_id)
@@ -76,16 +86,20 @@ class MedicalRecordInfoController(QDialog):
         medical_record_id = self.medical_record_id
 
         with DatabaseManager() as db:
-            medical_record = MedicalRecords.get_by_id(db, medical_record_id)
-            patient, service, doctor_full_name = (
-                UtilityFetcher.get_patient_service_doctor_names(
-                    db,
-                    medical_record["patient"],
-                    medical_record["service"],
-                    medical_record["doctor"],
+            try:
+                medical_record = MedicalRecords.get_by_id(db, medical_record_id)
+                patient, service, doctor_full_name = (
+                    UtilityFetcher.get_patient_service_doctor_names(
+                        db,
+                        medical_record["patient"],
+                        medical_record["service"],
+                        medical_record["doctor"],
+                    )
                 )
-            )
-
+            except Exception as e:
+                Messages.show_error_msg(str(e))
+                return
+     
         jalali_date = Dates.convert_to_jalali_format(medical_record["jalali_date"])
         description = medical_record["description"] or "بدون توضیحات"
         price = Numbers.int_to_persian_with_separators(medical_record["price"])
@@ -130,11 +144,16 @@ class AddEditMedicalRecordsController(QDialog):
     def load_record_data_into_txtboxes(self):
         medical_record = self.medical_record
         with DatabaseManager() as db:
-            _, service, doctor_full_name = (
+            try:
+                _, service, doctor_full_name = (
                 UtilityFetcher.get_patient_service_doctor_names(
                     db, None, medical_record["service"], medical_record["doctor"]
                 )
-            )
+                )
+            except Exception as e:
+                Messages.show_error_msg(str(e))
+                return
+           
 
         self.ui.doctor_cmbox.setCurrentText(f"دکتر {doctor_full_name}")
         self.ui.service_cmbox.setCurrentText(service["name"])
@@ -175,8 +194,8 @@ class AddEditMedicalRecordsController(QDialog):
                 self.refresh_user_medical_records_list.emit()
                 self.refresh_medical_record_info.emit()
                 self.close()
-            except:
-                Messages.show_error_msg()
+            except Exception as e:
+                Messages.show_error_msg(str(e))
                 return self.close()
 
     def _get_jalali_date(self):
@@ -262,7 +281,13 @@ class MedicalRecordImagesInfoController(QDialog):
 
     def _fetch_medical_record_images(self):
         with DatabaseManager() as db:
-            return MedicalRecordImages.get_by_medical_record_id(db, self.medical_record_id)
+            try:
+                return MedicalRecordImages.get_by_medical_record_id(db, self.medical_record_id)
+            except Exception as e:
+                Messages.show_error_msg(str(e))
+                return
+                
+            
 
     def _load_image_data_into_label(self, image):
         image_pix_map = QPixmap(image["path"])
@@ -331,10 +356,10 @@ class AddMedicalRecordImage(QDialog):
         try:
             image_directory = Images.create_image_directory_if_not_exist(self.patient_name)
             self.saved_image_path = Images.save_image_to_new_directory(self.selected_image_path,image_directory)
-        except:
-            Messages.show_error_msg()
-            self.close()
-            return
+        except Exception as e:
+            Messages.show_error_msg(str(e))
+            return self.close()
+            
         
         self.save_image_into_database()
 
@@ -348,8 +373,8 @@ class AddMedicalRecordImage(QDialog):
         with DatabaseManager() as db:
             try:
                 MedicalRecordImages.add_medical_record_image(db,image_info)
-            except:
-                Messages.show_error_msg()
+            except Exception as e:
+                Messages.show_error_msg(str(e))
                 return
 
         Messages.show_success_msg("تصویر با موفقیت اضافه شد")

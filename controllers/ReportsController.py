@@ -59,6 +59,13 @@ class ReportsTabController:
 
     def _fetch_general_report_data(self, start_date, end_date):
         with DatabaseManager() as db:
+            try:
+                general_report_data = Reports.get_financial_summary(db, start_date, end_date)
+                service_usage_expense_data = Reports.get_service_usage_and_expenses_summary(db, start_date, end_date)
+            except Exception as e:
+                Messages.show_error_msg(str(e))
+                return
+            
             general_report_data = Reports.get_financial_summary(db, start_date, end_date)
             service_usage_expense_data = Reports.get_service_usage_and_expenses_summary(db, start_date, end_date)
         return general_report_data, service_usage_expense_data
@@ -108,8 +115,13 @@ class ReportsTabController:
 
     def _fetch_service_report_data(self, service_id, start_date, end_date):
         with DatabaseManager() as db:
-            service_report_data = Reports.get_service_count_income(db, service_id, start_date, end_date)
-            high_sold_service_data = Reports.get_most_sold_service_dates(db, service_id, start_date, end_date)
+            try:
+                service_report_data = Reports.get_service_count_income(db, service_id, start_date, end_date)
+                high_sold_service_data = Reports.get_most_sold_service_dates(db, service_id, start_date, end_date)
+            except Exception as e:
+                Messages.show_error_msg(str(e))
+                return
+
         return service_report_data, high_sold_service_data
 
     def _update_service_chart(self, service_id, selected_time):

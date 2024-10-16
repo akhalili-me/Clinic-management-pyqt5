@@ -30,7 +30,12 @@ class ExpenseTabController:
     def open_edit_delete_expense(self,item):
         expense_id = item.data(1)
         with DatabaseManager() as db:
-            expense = Expenses.get_by_id(db,expense_id)
+            try:
+                expense = Expenses.get_by_id(db,expense_id)
+            except Exception as e:
+                Messages.show_error_msg(str(e))
+                return
+            
         self.edit_delete_expense_controller = AddEditDeleteExpenses(expense)
         self.edit_delete_expense_controller.refresh_expense_list.connect(self.load_current_month_expense_list)
         self.edit_delete_expense_controller.show()
@@ -42,7 +47,7 @@ class ExpenseTabController:
         self._load_expense_data_expense_list(searched_expenses)
     
     def search_by_date(self):
-        # to do
+        #To-DO
         from_date = ""
         to_date = ""
         with DatabaseManager() as db:
@@ -85,7 +90,12 @@ class ExpenseTabController:
     def _fetch_current_month_expenses(self):
         first_day_month,last_day_month = Dates.get_jalali_current_month_interval_based_on_greg()
         with DatabaseManager() as db:
-            return Expenses.get_by_date(db, first_day_month, last_day_month)
+            try:
+                return Expenses.get_by_date(db, first_day_month, last_day_month)
+            except Exception as e:
+                Messages.show_error_msg(str(e))
+                return
+            
 
 class AddEditDeleteExpenses(QDialog):
     refresh_expense_list = pyqtSignal()
@@ -142,10 +152,20 @@ class AddEditDeleteExpenses(QDialog):
         with DatabaseManager() as db:
             if self.expense:
                 expense_data['id'] = self.expense["id"]
-                Expenses.update_expense(db, expense_data)
+                try:
+                    Expenses.update_expense(db, expense_data)
+                except Exception as e:
+                    Messages.show_error_msg(str(e))
+                    return
+                
                 success_message = "هزینه با موفقیت ویرایش شد."
             else:
-                Expenses.add_expense(db, expense_data)
+                try:
+                    Expenses.add_expense(db, expense_data)
+                except Exception as e:
+                    Messages.show_error_msg(str(e))
+                    return
+                
                 success_message = "هزینه با موفقیت اضافه شد."
 
             QMessageBox.information(self, "موفقیت", success_message)
@@ -157,7 +177,12 @@ class AddEditDeleteExpenses(QDialog):
         msg_box, yes_button = Messages.show_confirm_delete_msg()
         if msg_box.clickedButton() == yes_button:
             with DatabaseManager() as db:
-                Expenses.delete_expense(db,self.expense["id"])
+                try:
+                    Expenses.delete_expense(db,self.expense["id"])
+                except Exception as e:
+                    Messages.show_error_msg(str(e))
+                    return
+                
                 Messages.show_success_msg("هزینه با موفقیت حذف شد.")
                 self.close()
                 self.refresh_expense_list.emit()

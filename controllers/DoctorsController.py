@@ -18,7 +18,12 @@ class DoctorsTabController:
     def open_edit_delete_doctor(self,item):
         doctor_id = item.data(1)
         with DatabaseManager() as db:
-            doctor = Doctors.get_by_id(db,doctor_id)
+            try:
+                doctor = Doctors.get_by_id(db,doctor_id)
+            except Exception as e:
+                Messages.show_error_msg(str(e))
+                return
+            
         self.edit_delete_doctor_controller = AddEditDeleteDoctorController(doctor)
         self.edit_delete_doctor_controller.refresh_doctors_list.connect(self._load_doctors_list)
         self.edit_delete_doctor_controller.show()
@@ -30,14 +35,20 @@ class DoctorsTabController:
 
     def _load_doctors_list(self):
         self.ui.doctors_lst.clear()
+
         with DatabaseManager() as db:
-            all_doctors = Doctors.get_all(db)
-            for doctor in all_doctors:
-                full_name = f"{doctor['firstName']} {doctor['lastName']}"
-                item_txt = f"دکتر {full_name} | {doctor['specialization']}"
-                item = QListWidgetItem(item_txt)
-                item.setData(1, doctor['id'])
-                self.ui.doctors_lst.addItem(item)
+            try:
+                all_doctors = Doctors.get_all(db)
+            except Exception as e:
+                Messages.show_error_msg(str(e))
+                return
+            
+        for doctor in all_doctors:
+            full_name = f"{doctor['firstName']} {doctor['lastName']}"
+            item_txt = f"دکتر {full_name} | {doctor['specialization']}"
+            item = QListWidgetItem(item_txt)
+            item.setData(1, doctor['id'])
+            self.ui.doctors_lst.addItem(item)
 
 
 
@@ -80,10 +91,21 @@ class AddEditDeleteDoctorController(QDialog):
         with DatabaseManager() as db:
             if self.doctor:
                 doctor_data['id'] = self.doctor["id"]
-                Doctors.update_doctor(db, doctor_data)
+
+                try:
+                    Doctors.update_doctor(db, doctor_data)
+                except Exception as e:
+                    Messages.show_error_msg(str(e))
+                    return
+                
                 success_message = "پزشک با موفقیت ویرایش شد."
             else:
-                Doctors.add_doctor(db, doctor_data)
+                try:
+                    Doctors.add_doctor(db, doctor_data)
+                except Exception as e:
+                    Messages.show_error_msg(str(e))
+                    return
+                
                 success_message = "پزشک با موفقیت اضافه شد."
 
             QMessageBox.information(self, "موفقیت", success_message)
@@ -95,7 +117,13 @@ class AddEditDeleteDoctorController(QDialog):
         msg_box, yes_button = Messages.show_confirm_delete_msg()
         if msg_box.clickedButton() == yes_button:
             with DatabaseManager() as db:
-                Doctors.delete_doctor(db,self.doctor["id"])
+
+                try:
+                    Doctors.delete_doctor(db,self.doctor["id"])
+                except Exception as e:
+                    Messages.show_error_msg(str(e))
+                    return
+                
                 Messages.show_success_msg("پزشک با موفقیت حذف شد.")
                 self.close()
                 self.refresh_doctors_list.emit()
