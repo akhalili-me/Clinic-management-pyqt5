@@ -1,5 +1,6 @@
 from .Numbers import *
 from .Dates import *
+from .SMS import *
 from .Charts import *
 from .Images import *
 from .LoadingValues import *
@@ -7,9 +8,17 @@ from .Messages import *
 from .Validators import *
 from .Database import *
 
+
 import shutil
 import os
 from enum import Enum
+
+class SpecialDays(Enum):
+    TODAY = "امروز"
+    TOOMMORROW = "فردا"
+    TWO_DAYS_LATER = "دو روز بعد"
+    THREE_DAYS_LATER = "سه روز بعد"
+    FOUR_DAYS_LATER = "چهار روز بعد"
 
 class TimeIntervals(Enum):
     CURRENT_MONTH = "ماه جاری"

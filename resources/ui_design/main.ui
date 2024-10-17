@@ -69,9 +69,9 @@
      <widget class="QGroupBox" name="groupBox">
       <property name="geometry">
        <rect>
-        <x>20</x>
+        <x>10</x>
         <y>89</y>
-        <width>1151</width>
+        <width>1171</width>
         <height>71</height>
        </rect>
       </property>
@@ -328,9 +328,9 @@ QPushButton:pressed {
      <widget class="QLabel" name="label_3">
       <property name="geometry">
        <rect>
-        <x>20</x>
+        <x>10</x>
         <y>10</y>
-        <width>941</width>
+        <width>951</width>
         <height>71</height>
        </rect>
       </property>
@@ -379,10 +379,10 @@ QLabe:hover {
      <widget class="QListWidget" name="patients_lst">
       <property name="geometry">
        <rect>
-        <x>20</x>
+        <x>10</x>
         <y>170</y>
-        <width>1151</width>
-        <height>451</height>
+        <width>1171</width>
+        <height>441</height>
        </rect>
       </property>
       <property name="font">
@@ -494,7 +494,7 @@ QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical {
        <rect>
         <x>970</x>
         <y>10</y>
-        <width>201</width>
+        <width>211</width>
         <height>71</height>
        </rect>
       </property>
@@ -543,10 +543,10 @@ QPushButton:pressed {
      <widget class="QListWidget" name="appointments_lst">
       <property name="geometry">
        <rect>
-        <x>20</x>
-        <y>90</y>
-        <width>1151</width>
-        <height>521</height>
+        <x>10</x>
+        <y>100</y>
+        <width>1171</width>
+        <height>511</height>
        </rect>
       </property>
       <property name="font">
@@ -624,9 +624,9 @@ QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical {
      <widget class="QLabel" name="label_9">
       <property name="geometry">
        <rect>
-        <x>20</x>
-        <y>10</y>
-        <width>211</width>
+        <x>10</x>
+        <y>20</y>
+        <width>311</width>
         <height>71</height>
        </rect>
       </property>
@@ -666,7 +666,7 @@ QLabe:hover {
 </string>
       </property>
       <property name="text">
-       <string>یادآوری نوبت‌ها</string>
+       <string>نوبت‌ها</string>
       </property>
       <property name="alignment">
        <set>Qt::AlignCenter</set>
@@ -675,9 +675,9 @@ QLabe:hover {
      <widget class="QGroupBox" name="groupBox_7">
       <property name="geometry">
        <rect>
-        <x>680</x>
-        <y>0</y>
-        <width>491</width>
+        <x>960</x>
+        <y>10</y>
+        <width>221</width>
         <height>81</height>
        </rect>
       </property>
@@ -698,58 +698,13 @@ QLabe:hover {
       <property name="alignment">
        <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
       </property>
-      <widget class="QPushButton" name="todayAppointmentSearch_btn">
-       <property name="geometry">
-        <rect>
-         <x>400</x>
-         <y>30</y>
-         <width>81</width>
-         <height>41</height>
-        </rect>
-       </property>
-       <property name="font">
-        <font>
-         <family>Vazirmatn,sans-serif</family>
-         <pointsize>-1</pointsize>
-         <weight>75</weight>
-         <bold>true</bold>
-         <underline>false</underline>
-         <strikeout>false</strikeout>
-        </font>
-       </property>
-       <property name="styleSheet">
-        <string notr="true">QPushButton {
-    background-color: #0050a5; /* Bootstrap primary blue */
-    color: white; /* White text */
-    border: none;
-    border-radius: 5px; /* Rounded corners */
-    font-size: 15px; /* Font size */
-    font-weight: bold; /* Bold text */
-    text-align: center;
-    text-decoration: none;
-    font-family: 'Vazirmatn', sans-serif; /* Font family */
-}
-
-QPushButton:hover {
-    background-color: #0056b3; /* Darker blue on hover */
-}
-
-QPushButton:pressed {
-    background-color: #004085; /* Even darker blue on press */
-}
-</string>
-       </property>
-       <property name="text">
-        <string>امروز</string>
-       </property>
-      </widget>
-      <widget class="QPushButton" name="fourDayAppointmentSearch_btn">
+      <widget class="QPushButton" name="appointmentSearchByDay_btn">
        <property name="geometry">
         <rect>
          <x>10</x>
          <y>30</y>
-         <width>91</width>
-         <height>41</height>
+         <width>71</width>
+         <height>31</height>
         </rect>
        </property>
        <property name="font">
@@ -785,151 +740,81 @@ QPushButton:pressed {
 </string>
        </property>
        <property name="text">
-        <string>چهار روز بعد</string>
+        <string>جستجو</string>
        </property>
       </widget>
-      <widget class="QPushButton" name="twoDayAppointmentSearch_btn">
+      <widget class="QComboBox" name="appointmentSearchDaySelect_cmbox">
+       <property name="enabled">
+        <bool>true</bool>
+       </property>
        <property name="geometry">
         <rect>
-         <x>210</x>
+         <x>90</x>
          <y>30</y>
-         <width>91</width>
-         <height>41</height>
+         <width>121</width>
+         <height>31</height>
         </rect>
        </property>
        <property name="font">
         <font>
-         <family>Vazirmatn,sans-serif</family>
-         <pointsize>-1</pointsize>
-         <weight>75</weight>
-         <bold>true</bold>
-         <underline>false</underline>
-         <strikeout>false</strikeout>
+         <family>Vazirmatn Black</family>
+         <pointsize>11</pointsize>
         </font>
        </property>
-       <property name="styleSheet">
-        <string notr="true">QPushButton {
-    background-color: #0050a5; /* Bootstrap primary blue */
-    color: white; /* White text */
-    border: none;
-    border-radius: 5px; /* Rounded corners */
-    font-size: 15px; /* Font size */
-    font-weight: bold; /* Bold text */
-    text-align: center;
-    text-decoration: none;
-    font-family: 'Vazirmatn', sans-serif; /* Font family */
-}
-
-QPushButton:hover {
-    background-color: #0056b3; /* Darker blue on hover */
-}
-
-QPushButton:pressed {
-    background-color: #004085; /* Even darker blue on press */
-}
-</string>
+       <property name="acceptDrops">
+        <bool>false</bool>
        </property>
-       <property name="text">
-        <string>دو روز بعد</string>
-       </property>
-      </widget>
-      <widget class="QPushButton" name="threeDayAppointmentSearch_btn">
-       <property name="geometry">
-        <rect>
-         <x>110</x>
-         <y>30</y>
-         <width>91</width>
-         <height>41</height>
-        </rect>
-       </property>
-       <property name="font">
-        <font>
-         <family>Vazirmatn,sans-serif</family>
-         <pointsize>-1</pointsize>
-         <weight>75</weight>
-         <bold>true</bold>
-         <underline>false</underline>
-         <strikeout>false</strikeout>
-        </font>
+       <property name="layoutDirection">
+        <enum>Qt::RightToLeft</enum>
        </property>
        <property name="styleSheet">
-        <string notr="true">QPushButton {
-    background-color: #0050a5; /* Bootstrap primary blue */
-    color: white; /* White text */
-    border: none;
-    border-radius: 5px; /* Rounded corners */
-    font-size: 15px; /* Font size */
-    font-weight: bold; /* Bold text */
-    text-align: center;
-    text-decoration: none;
-    font-family: 'Vazirmatn', sans-serif; /* Font family */
-}
-
-QPushButton:hover {
-    background-color: #0056b3; /* Darker blue on hover */
-}
-
-QPushButton:pressed {
-    background-color: #004085; /* Even darker blue on press */
-}
-</string>
+        <string notr="true"/>
        </property>
-       <property name="text">
-        <string>سه روز بعد</string>
+       <property name="editable">
+        <bool>false</bool>
        </property>
-      </widget>
-      <widget class="QPushButton" name="tomorrowAppointmentSearch_btn">
-       <property name="geometry">
-        <rect>
-         <x>310</x>
-         <y>30</y>
-         <width>81</width>
-         <height>41</height>
-        </rect>
+       <property name="currentText">
+        <string>امروز</string>
        </property>
-       <property name="font">
-        <font>
-         <family>Vazirmatn,sans-serif</family>
-         <pointsize>-1</pointsize>
-         <weight>75</weight>
-         <bold>true</bold>
-         <underline>false</underline>
-         <strikeout>false</strikeout>
-        </font>
+       <property name="maxVisibleItems">
+        <number>10</number>
        </property>
-       <property name="styleSheet">
-        <string notr="true">QPushButton {
-    background-color: #0050a5; /* Bootstrap primary blue */
-    color: white; /* White text */
-    border: none;
-    border-radius: 5px; /* Rounded corners */
-    font-size: 15px; /* Font size */
-    font-weight: bold; /* Bold text */
-    text-align: center;
-    text-decoration: none;
-    font-family: 'Vazirmatn', sans-serif; /* Font family */
-}
-
-QPushButton:hover {
-    background-color: #0056b3; /* Darker blue on hover */
-}
-
-QPushButton:pressed {
-    background-color: #004085; /* Even darker blue on press */
-}
-</string>
+       <property name="duplicatesEnabled">
+        <bool>false</bool>
        </property>
-       <property name="text">
-        <string>فردا</string>
-       </property>
+       <item>
+        <property name="text">
+         <string>امروز</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>فردا</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>دو روز بعد</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>سه روز بعد</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>چهار روز بعد</string>
+        </property>
+       </item>
       </widget>
      </widget>
      <widget class="QGroupBox" name="groupBox_8">
       <property name="geometry">
        <rect>
-        <x>240</x>
-        <y>0</y>
-        <width>431</width>
+        <x>690</x>
+        <y>10</y>
+        <width>251</width>
         <height>81</height>
        </rect>
       </property>
@@ -951,7 +836,7 @@ QPushButton:pressed {
       <widget class="QSpinBox" name="day_spnbox">
        <property name="geometry">
         <rect>
-         <x>340</x>
+         <x>190</x>
          <y>30</y>
          <width>51</width>
          <height>31</height>
@@ -964,32 +849,10 @@ QPushButton:pressed {
         <number>31</number>
        </property>
       </widget>
-      <widget class="QLabel" name="label_41">
-       <property name="geometry">
-        <rect>
-         <x>370</x>
-         <y>30</y>
-         <width>71</width>
-         <height>41</height>
-        </rect>
-       </property>
-       <property name="font">
-        <font>
-         <family>Vazirmatn ExtraBold</family>
-         <pointsize>12</pointsize>
-        </font>
-       </property>
-       <property name="text">
-        <string>روز:</string>
-       </property>
-       <property name="alignment">
-        <set>Qt::AlignHCenter|Qt::AlignTop</set>
-       </property>
-      </widget>
       <widget class="QSpinBox" name="month_spnbox">
        <property name="geometry">
         <rect>
-         <x>230</x>
+         <x>140</x>
          <y>30</y>
          <width>51</width>
          <height>31</height>
@@ -1002,34 +865,12 @@ QPushButton:pressed {
         <number>12</number>
        </property>
       </widget>
-      <widget class="QLabel" name="label_42">
-       <property name="geometry">
-        <rect>
-         <x>269</x>
-         <y>30</y>
-         <width>71</width>
-         <height>41</height>
-        </rect>
-       </property>
-       <property name="font">
-        <font>
-         <family>Vazirmatn ExtraBold</family>
-         <pointsize>12</pointsize>
-        </font>
-       </property>
-       <property name="text">
-        <string>ماه:</string>
-       </property>
-       <property name="alignment">
-        <set>Qt::AlignHCenter|Qt::AlignTop</set>
-       </property>
-      </widget>
       <widget class="QSpinBox" name="year_spnbox">
        <property name="geometry">
         <rect>
          <x>80</x>
          <y>30</y>
-         <width>91</width>
+         <width>61</width>
          <height>31</height>
         </rect>
        </property>
@@ -1038,28 +879,6 @@ QPushButton:pressed {
        </property>
        <property name="maximum">
         <number>1500</number>
-       </property>
-      </widget>
-      <widget class="QLabel" name="label_43">
-       <property name="geometry">
-        <rect>
-         <x>160</x>
-         <y>30</y>
-         <width>71</width>
-         <height>41</height>
-        </rect>
-       </property>
-       <property name="font">
-        <font>
-         <family>Vazirmatn ExtraBold</family>
-         <pointsize>12</pointsize>
-        </font>
-       </property>
-       <property name="text">
-        <string>سال:</string>
-       </property>
-       <property name="alignment">
-        <set>Qt::AlignHCenter|Qt::AlignTop</set>
        </property>
       </widget>
       <widget class="QPushButton" name="AppointmentSearchByDate_btn">
@@ -1098,6 +917,142 @@ QPushButton:pressed {
        </property>
       </widget>
      </widget>
+     <widget class="QGroupBox" name="groupBox_11">
+      <property name="geometry">
+       <rect>
+        <x>330</x>
+        <y>10</y>
+        <width>341</width>
+        <height>81</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Vazirmatn Black</family>
+        <pointsize>10</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="layoutDirection">
+       <enum>Qt::LeftToRight</enum>
+      </property>
+      <property name="title">
+       <string>پیامک یادآوری</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+      </property>
+      <widget class="QComboBox" name="sendToAllSMSByDays_cmbox">
+       <property name="enabled">
+        <bool>true</bool>
+       </property>
+       <property name="geometry">
+        <rect>
+         <x>110</x>
+         <y>30</y>
+         <width>221</width>
+         <height>31</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Vazirmatn Black</family>
+         <pointsize>11</pointsize>
+        </font>
+       </property>
+       <property name="acceptDrops">
+        <bool>false</bool>
+       </property>
+       <property name="layoutDirection">
+        <enum>Qt::RightToLeft</enum>
+       </property>
+       <property name="styleSheet">
+        <string notr="true"/>
+       </property>
+       <property name="editable">
+        <bool>false</bool>
+       </property>
+       <property name="currentText">
+        <string>امروز</string>
+       </property>
+       <property name="maxVisibleItems">
+        <number>10</number>
+       </property>
+       <property name="duplicatesEnabled">
+        <bool>false</bool>
+       </property>
+       <item>
+        <property name="text">
+         <string>امروز</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>فردا</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>دو روز بعد</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>سه روز بعد</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>چهار روز بعد</string>
+        </property>
+       </item>
+      </widget>
+      <widget class="QPushButton" name="sendToAllSMSByDays_btn">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>30</y>
+         <width>91</width>
+         <height>31</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Vazirmatn,sans-serif</family>
+         <pointsize>11</pointsize>
+         <weight>75</weight>
+         <bold>true</bold>
+         <underline>false</underline>
+         <strikeout>false</strikeout>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QPushButton {
+    background-color: #17a2b8; /* Bootstrap primary blue */
+    color: white; /* White text */
+    border: none;
+    border-radius: 5px; /* Rounded corners */
+    font-weight: bold; /* Bold text */
+    text-align: center;
+    text-decoration: none;
+    font-family: 'Vazirmatn', sans-serif; /* Font family */
+}
+
+QPushButton:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+}
+
+QPushButton:pressed {
+    background-color: #004085; /* Even darker blue on press */
+}
+</string>
+       </property>
+       <property name="text">
+        <string>ارسال پیامک </string>
+       </property>
+      </widget>
+     </widget>
     </widget>
     <widget class="QWidget" name="services_tab">
      <attribute name="title">
@@ -1109,7 +1064,7 @@ QPushButton:pressed {
         <x>10</x>
         <y>100</y>
         <width>1171</width>
-        <height>541</height>
+        <height>81</height>
        </rect>
       </property>
       <property name="font">
@@ -1133,8 +1088,8 @@ QPushButton:pressed {
       <widget class="QPushButton" name="searchServices_btn">
        <property name="geometry">
         <rect>
-         <x>680</x>
-         <y>40</y>
+         <x>700</x>
+         <y>30</y>
          <width>111</width>
          <height>31</height>
         </rect>
@@ -1168,92 +1123,11 @@ QPushButton:pressed {
         <string>جستجو</string>
        </property>
       </widget>
-      <widget class="QListWidget" name="services_lst">
-       <property name="geometry">
-        <rect>
-         <x>20</x>
-         <y>90</y>
-         <width>1131</width>
-         <height>421</height>
-        </rect>
-       </property>
-       <property name="font">
-        <font>
-         <family>Vazirmatn,sans-serif</family>
-         <pointsize>-1</pointsize>
-        </font>
-       </property>
-       <property name="layoutDirection">
-        <enum>Qt::RightToLeft</enum>
-       </property>
-       <property name="styleSheet">
-        <string notr="true">/* Basic ListWidget styling */
-QListWidget {
-    background-color: #f8f9fa; /* Light grey background */
-    border: 1px solid #dee2e6; /* Border color */
-    border-radius: 5px; /* Rounded corners */
-    padding: 5px; /* Padding inside the list */
-    font-family: 'Vazirmatn', sans-serif; /* Font family */
-    font-size: 17px; /* Font size */
-    outline: 0; /* Remove focus indicator */
-}
-
-/* Item styling */
-QListWidget::item {
-    padding: 10px 15px; /* Padding for each item */
-    margin: 5px 0; /* Margin between items */
-    background-color: #ffffff; /* White background for items */
-    border-radius: 5px; /* Rounded corners for items */
-    color: #343a40; /* Dark grey text color */
-    outline: 0; /* Remove focus indicator */
-}
-
-/* Hover effect for items */
-QListWidget::item:hover {
-    background-color: #e9ecef; /* Light grey background on hover */
-}
-
-/* Selected item styling */
-QListWidget::item:selected {
-    background-color: #0050a5;
-	color: white;
-}
-
-/* Scroll bar styling */
-QScrollBar:vertical {
-    background: #f8f9fa; /* Light grey background for the scroll bar */
-    width: 12px; /* Width of the vertical scroll bar */
-    margin: 22px 0 22px 0; /* Margin to fit the top and bottom arrows */
-    border: 1px solid #dee2e6; /* Border color */
-    border-radius: 5px; /* Rounded corners */
-}
-
-QScrollBar::handle:vertical {
-    background: #ced4da; /* Medium grey handle */
-    min-height: 20px; /* Minimum height of the handle */
-    border-radius: 5px; /* Rounded corners */
-}
-
-QScrollBar::add-line:vertical,
-QScrollBar::sub-line:vertical {
-    background: #ced4da; /* Medium grey for arrows */
-    height: 20px;
-    subcontrol-origin: margin;
-    subcontrol-position: top;
-    border-radius: 5px; /* Rounded corners */
-}
-
-QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical {
-    background: none;
-}
-</string>
-       </property>
-      </widget>
       <widget class="QLabel" name="label_11">
        <property name="geometry">
         <rect>
-         <x>1060</x>
-         <y>50</y>
+         <x>1080</x>
+         <y>40</y>
          <width>81</width>
          <height>20</height>
         </rect>
@@ -1265,8 +1139,8 @@ QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical {
       <widget class="QLineEdit" name="serviceName_txtbox">
        <property name="geometry">
         <rect>
-         <x>800</x>
-         <y>40</y>
+         <x>820</x>
+         <y>30</y>
          <width>261</width>
          <height>31</height>
         </rect>
@@ -1315,9 +1189,9 @@ QLineEdit:disabled {
      <widget class="QPushButton" name="addServices_btn">
       <property name="geometry">
        <rect>
-        <x>980</x>
+        <x>970</x>
         <y>20</y>
-        <width>201</width>
+        <width>211</width>
         <height>71</height>
        </rect>
       </property>
@@ -1409,139 +1283,26 @@ QLabe:hover {
        <set>Qt::AlignCenter</set>
       </property>
      </widget>
-    </widget>
-    <widget class="QWidget" name="medicalRecords_tab">
-     <attribute name="title">
-      <string>پزشک‌ها</string>
-     </attribute>
-     <widget class="QPushButton" name="addDoctor_btn">
+     <widget class="QListWidget" name="services_lst">
       <property name="geometry">
        <rect>
-        <x>960</x>
-        <y>20</y>
-        <width>221</width>
-        <height>71</height>
+        <x>10</x>
+        <y>190</y>
+        <width>1171</width>
+        <height>421</height>
        </rect>
       </property>
       <property name="font">
        <font>
         <family>Vazirmatn,sans-serif</family>
         <pointsize>-1</pointsize>
-        <weight>75</weight>
-        <bold>true</bold>
-        <underline>false</underline>
-        <strikeout>false</strikeout>
-       </font>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">QPushButton {
-    background-color: #0050a5; /* Bootstrap primary blue */
-    color: white; /* White text */
-    border: none;
-    border-radius: 5px; /* Rounded corners */
-    padding: 10px 20px; /* Padding */
-    font-size: 16px; /* Font size */
-    font-weight: bold; /* Bold text */
-    text-align: center;
-    text-decoration: none;
-    font-family: 'Vazirmatn', sans-serif; /* Font family */
-}
-
-QPushButton:hover {
-    background-color: #0056b3; /* Darker blue on hover */
-}
-
-QPushButton:pressed {
-    background-color: #004085; /* Even darker blue on press */
-}
-</string>
-      </property>
-      <property name="text">
-       <string>اضافه کردن پزشک</string>
-      </property>
-     </widget>
-     <widget class="QGroupBox" name="groupBox_5">
-      <property name="geometry">
-       <rect>
-        <x>10</x>
-        <y>100</y>
-        <width>1171</width>
-        <height>541</height>
-       </rect>
-      </property>
-      <property name="font">
-       <font>
-        <family>Vazirmatn Black</family>
-        <pointsize>11</pointsize>
-        <weight>50</weight>
-        <bold>false</bold>
-        <kerning>true</kerning>
        </font>
       </property>
       <property name="layoutDirection">
-       <enum>Qt::LeftToRight</enum>
+       <enum>Qt::RightToLeft</enum>
       </property>
-      <property name="title">
-       <string>جستجو پزشک</string>
-      </property>
-      <property name="alignment">
-       <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-      </property>
-      <widget class="QPushButton" name="searchDoctor_btn">
-       <property name="geometry">
-        <rect>
-         <x>680</x>
-         <y>40</y>
-         <width>111</width>
-         <height>31</height>
-        </rect>
-       </property>
-       <property name="styleSheet">
-        <string notr="true">QPushButton {
-    background-color: #0050a5; /* Bootstrap primary blue */
-    color: white; /* White text */
-    border: none;
-    border-radius: 5px; /* Rounded corners */
-    font-size: 16px; /* Font size */
-    font-weight: bold; /* Bold text */
-    text-align: center;
-    text-decoration: none;
-    font-family: 'Vazirmatn', sans-serif; /* Font family */
-}
-
-QPushButton:hover {
-    background-color: #0056b3; /* Darker blue on hover */
-}
-
-QPushButton:pressed {
-    background-color: #004085; /* Even darker blue on press */
-}
-</string>
-       </property>
-       <property name="text">
-        <string>جستجو</string>
-       </property>
-      </widget>
-      <widget class="QListWidget" name="doctors_lst">
-       <property name="geometry">
-        <rect>
-         <x>20</x>
-         <y>90</y>
-         <width>1131</width>
-         <height>421</height>
-        </rect>
-       </property>
-       <property name="font">
-        <font>
-         <family>Vazirmatn,sans-serif</family>
-         <pointsize>-1</pointsize>
-        </font>
-       </property>
-       <property name="layoutDirection">
-        <enum>Qt::RightToLeft</enum>
-       </property>
-       <property name="styleSheet">
-        <string notr="true">/* Basic ListWidget styling */
+      <property name="styleSheet">
+       <string notr="true">/* Basic ListWidget styling */
 QListWidget {
     background-color: #f8f9fa; /* Light grey background */
     border: 1px solid #dee2e6; /* Border color */
@@ -1601,13 +1362,126 @@ QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical {
     background: none;
 }
 </string>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="medicalRecords_tab">
+     <attribute name="title">
+      <string>پزشک‌ها</string>
+     </attribute>
+     <widget class="QPushButton" name="addDoctor_btn">
+      <property name="geometry">
+       <rect>
+        <x>960</x>
+        <y>20</y>
+        <width>221</width>
+        <height>71</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Vazirmatn,sans-serif</family>
+        <pointsize>-1</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+        <underline>false</underline>
+        <strikeout>false</strikeout>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton {
+    background-color: #0050a5; /* Bootstrap primary blue */
+    color: white; /* White text */
+    border: none;
+    border-radius: 5px; /* Rounded corners */
+    padding: 10px 20px; /* Padding */
+    font-size: 16px; /* Font size */
+    font-weight: bold; /* Bold text */
+    text-align: center;
+    text-decoration: none;
+    font-family: 'Vazirmatn', sans-serif; /* Font family */
+}
+
+QPushButton:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+}
+
+QPushButton:pressed {
+    background-color: #004085; /* Even darker blue on press */
+}
+</string>
+      </property>
+      <property name="text">
+       <string>اضافه کردن پزشک</string>
+      </property>
+     </widget>
+     <widget class="QGroupBox" name="groupBox_5">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>100</y>
+        <width>1171</width>
+        <height>81</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Vazirmatn Black</family>
+        <pointsize>11</pointsize>
+        <weight>50</weight>
+        <bold>false</bold>
+        <kerning>true</kerning>
+       </font>
+      </property>
+      <property name="layoutDirection">
+       <enum>Qt::LeftToRight</enum>
+      </property>
+      <property name="title">
+       <string>جستجو پزشک</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+      </property>
+      <widget class="QPushButton" name="searchDoctor_btn">
+       <property name="geometry">
+        <rect>
+         <x>680</x>
+         <y>30</y>
+         <width>111</width>
+         <height>31</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QPushButton {
+    background-color: #0050a5; /* Bootstrap primary blue */
+    color: white; /* White text */
+    border: none;
+    border-radius: 5px; /* Rounded corners */
+    font-size: 16px; /* Font size */
+    font-weight: bold; /* Bold text */
+    text-align: center;
+    text-decoration: none;
+    font-family: 'Vazirmatn', sans-serif; /* Font family */
+}
+
+QPushButton:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+}
+
+QPushButton:pressed {
+    background-color: #004085; /* Even darker blue on press */
+}
+</string>
+       </property>
+       <property name="text">
+        <string>جستجو</string>
        </property>
       </widget>
       <widget class="QLabel" name="label_12">
        <property name="geometry">
         <rect>
          <x>1070</x>
-         <y>50</y>
+         <y>40</y>
          <width>71</width>
          <height>20</height>
         </rect>
@@ -1620,7 +1494,7 @@ QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical {
        <property name="geometry">
         <rect>
          <x>800</x>
-         <y>40</y>
+         <y>30</y>
          <width>261</width>
          <height>31</height>
         </rect>
@@ -1719,6 +1593,87 @@ QLabe:hover {
        <set>Qt::AlignCenter</set>
       </property>
      </widget>
+     <widget class="QListWidget" name="doctors_lst">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>190</y>
+        <width>1171</width>
+        <height>421</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Vazirmatn,sans-serif</family>
+        <pointsize>-1</pointsize>
+       </font>
+      </property>
+      <property name="layoutDirection">
+       <enum>Qt::RightToLeft</enum>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">/* Basic ListWidget styling */
+QListWidget {
+    background-color: #f8f9fa; /* Light grey background */
+    border: 1px solid #dee2e6; /* Border color */
+    border-radius: 5px; /* Rounded corners */
+    padding: 5px; /* Padding inside the list */
+    font-family: 'Vazirmatn', sans-serif; /* Font family */
+    font-size: 17px; /* Font size */
+    outline: 0; /* Remove focus indicator */
+}
+
+/* Item styling */
+QListWidget::item {
+    padding: 10px 15px; /* Padding for each item */
+    margin: 5px 0; /* Margin between items */
+    background-color: #ffffff; /* White background for items */
+    border-radius: 5px; /* Rounded corners for items */
+    color: #343a40; /* Dark grey text color */
+    outline: 0; /* Remove focus indicator */
+}
+
+/* Hover effect for items */
+QListWidget::item:hover {
+    background-color: #e9ecef; /* Light grey background on hover */
+}
+
+/* Selected item styling */
+QListWidget::item:selected {
+    background-color: #0050a5;
+	color: white;
+}
+
+/* Scroll bar styling */
+QScrollBar:vertical {
+    background: #f8f9fa; /* Light grey background for the scroll bar */
+    width: 12px; /* Width of the vertical scroll bar */
+    margin: 22px 0 22px 0; /* Margin to fit the top and bottom arrows */
+    border: 1px solid #dee2e6; /* Border color */
+    border-radius: 5px; /* Rounded corners */
+}
+
+QScrollBar::handle:vertical {
+    background: #ced4da; /* Medium grey handle */
+    min-height: 20px; /* Minimum height of the handle */
+    border-radius: 5px; /* Rounded corners */
+}
+
+QScrollBar::add-line:vertical,
+QScrollBar::sub-line:vertical {
+    background: #ced4da; /* Medium grey for arrows */
+    height: 20px;
+    subcontrol-origin: margin;
+    subcontrol-position: top;
+    border-radius: 5px; /* Rounded corners */
+}
+
+QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical {
+    background: none;
+}
+</string>
+      </property>
+     </widget>
     </widget>
     <widget class="QWidget" name="tab_2">
      <attribute name="title">
@@ -1727,9 +1682,9 @@ QLabe:hover {
      <widget class="QPushButton" name="addExpense_btn">
       <property name="geometry">
        <rect>
-        <x>980</x>
+        <x>970</x>
         <y>10</y>
-        <width>201</width>
+        <width>211</width>
         <height>61</height>
        </rect>
       </property>
@@ -1821,53 +1776,342 @@ QLabe:hover {
        <set>Qt::AlignCenter</set>
       </property>
      </widget>
-     <widget class="QGroupBox" name="groupBox_6">
+     <widget class="QGroupBox" name="groupBox_10">
       <property name="geometry">
        <rect>
-        <x>10</x>
+        <x>690</x>
         <y>80</y>
-        <width>1171</width>
-        <height>571</height>
+        <width>491</width>
+        <height>81</height>
        </rect>
       </property>
       <property name="font">
        <font>
         <family>Vazirmatn Black</family>
-        <pointsize>11</pointsize>
-        <weight>50</weight>
-        <bold>false</bold>
-        <kerning>true</kerning>
+        <pointsize>10</pointsize>
        </font>
       </property>
       <property name="layoutDirection">
-       <enum>Qt::LeftToRight</enum>
+       <enum>Qt::RightToLeft</enum>
       </property>
       <property name="title">
-       <string>جستجو هزینه‌ها</string>
+       <string>جستجو بر اساس نام</string>
       </property>
       <property name="alignment">
-       <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+       <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
       </property>
-      <widget class="QListWidget" name="expense_lst">
+      <widget class="QLabel" name="label_17">
        <property name="geometry">
         <rect>
-         <x>10</x>
-         <y>110</y>
-         <width>1151</width>
-         <height>421</height>
+         <x>400</x>
+         <y>29</y>
+         <width>81</width>
+         <height>31</height>
         </rect>
        </property>
-       <property name="font">
-        <font>
-         <family>Vazirmatn,sans-serif</family>
-         <pointsize>-1</pointsize>
-        </font>
+       <property name="text">
+        <string>نام هزینه:</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="expenseName_txtbox">
+       <property name="geometry">
+        <rect>
+         <x>140</x>
+         <y>30</y>
+         <width>261</width>
+         <height>31</height>
+        </rect>
        </property>
        <property name="layoutDirection">
         <enum>Qt::RightToLeft</enum>
        </property>
        <property name="styleSheet">
-        <string notr="true">/* Basic ListWidget styling */
+        <string notr="true">/* Basic LineEdit styling */
+QLineEdit {
+    background-color: #ffffff; /* White background */
+    border: 1px solid #dee2e6; /* Light grey border */
+    border-radius: 5px; /* Rounded corners */
+    font-family: 'Vazirmatn', sans-serif; /* Font family */
+    font-size: 16px; /* Font size */
+    color: #343a40; /* Dark grey text color */
+    outline: none; /* Remove default outline */
+}
+
+/* Hover effect */
+QLineEdit:hover {
+    border: 1px solid #007bff; /* Blue border on hover */
+}
+
+/* Focus effect */
+QLineEdit:focus {
+    border: 1px solid #007bff; /* Blue border on focus */
+}
+
+/* Disabled state */
+QLineEdit:disabled {
+    background-color: #e9ecef; /* Light grey background when disabled */
+    color: #6c757d; /* Grey text color when disabled */
+}
+
+</string>
+       </property>
+       <property name="locale">
+        <locale language="Persian" country="Iran"/>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="searchExpenseByName_btn">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>30</y>
+         <width>121</width>
+         <height>31</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QPushButton {
+    background-color: #0050a5; /* Bootstrap primary blue */
+    color: white; /* White text */
+    border: none;
+    border-radius: 5px; /* Rounded corners */
+    font-size: 15px; /* Font size */
+    font-weight: bold; /* Bold text */
+    text-align: center;
+    text-decoration: none;
+    box-shadow: 0 4px rgba(0, 0, 0, 0.2); /* Shadow */
+    font-family: 'Vazirmatn', sans-serif; /* Font family */
+}
+
+QPushButton:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+}
+
+QPushButton:pressed {
+    background-color: #004085; /* Even darker blue on press */
+    box-shadow: 0 2px rgba(0, 0, 0, 0.2); /* Reduce shadow on press */
+    transform: translateY(2px); /* Move button down on press */
+}
+</string>
+       </property>
+       <property name="text">
+        <string>جستجو</string>
+       </property>
+      </widget>
+     </widget>
+     <widget class="QGroupBox" name="groupBox_9">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>80</y>
+        <width>671</width>
+        <height>81</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Vazirmatn Black</family>
+        <pointsize>10</pointsize>
+       </font>
+      </property>
+      <property name="layoutDirection">
+       <enum>Qt::RightToLeft</enum>
+      </property>
+      <property name="title">
+       <string>جستجو بر اساس تاریخ</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+      </property>
+      <widget class="QSpinBox" name="fromDay_spnbox">
+       <property name="geometry">
+        <rect>
+         <x>530</x>
+         <y>30</y>
+         <width>51</width>
+         <height>31</height>
+        </rect>
+       </property>
+       <property name="minimum">
+        <number>1</number>
+       </property>
+       <property name="maximum">
+        <number>31</number>
+       </property>
+      </widget>
+      <widget class="QSpinBox" name="fromMonth_spnbox">
+       <property name="geometry">
+        <rect>
+         <x>480</x>
+         <y>30</y>
+         <width>51</width>
+         <height>31</height>
+        </rect>
+       </property>
+       <property name="minimum">
+        <number>1</number>
+       </property>
+       <property name="maximum">
+        <number>12</number>
+       </property>
+      </widget>
+      <widget class="QSpinBox" name="fromYear_spnbox">
+       <property name="geometry">
+        <rect>
+         <x>410</x>
+         <y>30</y>
+         <width>71</width>
+         <height>31</height>
+        </rect>
+       </property>
+       <property name="minimum">
+        <number>1400</number>
+       </property>
+       <property name="maximum">
+        <number>1500</number>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="searchExpenseByDate_btn">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>30</y>
+         <width>131</width>
+         <height>31</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QPushButton {
+    background-color: #0050a5; /* Bootstrap primary blue */
+    color: white; /* White text */
+    border: none;
+    border-radius: 5px; /* Rounded corners */
+    font-size: 15px; /* Font size */
+    font-weight: bold; /* Bold text */
+    text-align: center;
+    text-decoration: none;
+    font-family: 'Vazirmatn', sans-serif; /* Font family */
+}
+
+QPushButton:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+}
+
+QPushButton:pressed {
+    background-color: #004085; /* Even darker blue on press */
+}
+</string>
+       </property>
+       <property name="text">
+        <string>جستجو</string>
+       </property>
+      </widget>
+      <widget class="QSpinBox" name="toYear_spnbox">
+       <property name="geometry">
+        <rect>
+         <x>160</x>
+         <y>30</y>
+         <width>71</width>
+         <height>31</height>
+        </rect>
+       </property>
+       <property name="minimum">
+        <number>1400</number>
+       </property>
+       <property name="maximum">
+        <number>1500</number>
+       </property>
+      </widget>
+      <widget class="QSpinBox" name="toDay_spnbox">
+       <property name="geometry">
+        <rect>
+         <x>280</x>
+         <y>30</y>
+         <width>51</width>
+         <height>31</height>
+        </rect>
+       </property>
+       <property name="minimum">
+        <number>1</number>
+       </property>
+       <property name="maximum">
+        <number>31</number>
+       </property>
+      </widget>
+      <widget class="QSpinBox" name="toMonth_spnbox">
+       <property name="geometry">
+        <rect>
+         <x>230</x>
+         <y>30</y>
+         <width>51</width>
+         <height>31</height>
+        </rect>
+       </property>
+       <property name="minimum">
+        <number>1</number>
+       </property>
+       <property name="maximum">
+        <number>12</number>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_14">
+       <property name="geometry">
+        <rect>
+         <x>570</x>
+         <y>30</y>
+         <width>81</width>
+         <height>31</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>از تاریخ:</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_15">
+       <property name="geometry">
+        <rect>
+         <x>320</x>
+         <y>30</y>
+         <width>81</width>
+         <height>31</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>تا تاریخ:</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
+       </property>
+      </widget>
+     </widget>
+     <widget class="QListWidget" name="expense_lst">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>170</y>
+        <width>1171</width>
+        <height>441</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Vazirmatn,sans-serif</family>
+        <pointsize>-1</pointsize>
+       </font>
+      </property>
+      <property name="layoutDirection">
+       <enum>Qt::RightToLeft</enum>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">/* Basic ListWidget styling */
 QListWidget {
     background-color: #f8f9fa; /* Light grey background */
     border: 1px solid #dee2e6; /* Border color */
@@ -1927,324 +2171,7 @@ QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical {
     background: none;
 }
 </string>
-       </property>
-      </widget>
-      <widget class="QGroupBox" name="groupBox_9">
-       <property name="geometry">
-        <rect>
-         <x>10</x>
-         <y>20</y>
-         <width>651</width>
-         <height>81</height>
-        </rect>
-       </property>
-       <property name="font">
-        <font>
-         <family>Vazirmatn Black</family>
-         <pointsize>10</pointsize>
-        </font>
-       </property>
-       <property name="layoutDirection">
-        <enum>Qt::RightToLeft</enum>
-       </property>
-       <property name="title">
-        <string>بر اساس تاریخ</string>
-       </property>
-       <property name="alignment">
-        <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-       </property>
-       <widget class="QSpinBox" name="fromDay_spnbox">
-        <property name="geometry">
-         <rect>
-          <x>530</x>
-          <y>30</y>
-          <width>51</width>
-          <height>31</height>
-         </rect>
-        </property>
-        <property name="minimum">
-         <number>1</number>
-        </property>
-        <property name="maximum">
-         <number>31</number>
-        </property>
-       </widget>
-       <widget class="QSpinBox" name="fromMonth_spnbox">
-        <property name="geometry">
-         <rect>
-          <x>480</x>
-          <y>30</y>
-          <width>51</width>
-          <height>31</height>
-         </rect>
-        </property>
-        <property name="minimum">
-         <number>1</number>
-        </property>
-        <property name="maximum">
-         <number>12</number>
-        </property>
-       </widget>
-       <widget class="QSpinBox" name="fromYear_spnbox">
-        <property name="geometry">
-         <rect>
-          <x>410</x>
-          <y>30</y>
-          <width>71</width>
-          <height>31</height>
-         </rect>
-        </property>
-        <property name="minimum">
-         <number>1400</number>
-        </property>
-        <property name="maximum">
-         <number>1500</number>
-        </property>
-       </widget>
-       <widget class="QPushButton" name="searchExpenseByDate_btn">
-        <property name="geometry">
-         <rect>
-          <x>10</x>
-          <y>30</y>
-          <width>131</width>
-          <height>31</height>
-         </rect>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">QPushButton {
-    background-color: #0050a5; /* Bootstrap primary blue */
-    color: white; /* White text */
-    border: none;
-    border-radius: 5px; /* Rounded corners */
-    font-size: 15px; /* Font size */
-    font-weight: bold; /* Bold text */
-    text-align: center;
-    text-decoration: none;
-    font-family: 'Vazirmatn', sans-serif; /* Font family */
-}
-
-QPushButton:hover {
-    background-color: #0056b3; /* Darker blue on hover */
-}
-
-QPushButton:pressed {
-    background-color: #004085; /* Even darker blue on press */
-}
-</string>
-        </property>
-        <property name="text">
-         <string>جستجو</string>
-        </property>
-       </widget>
-       <widget class="QSpinBox" name="toYear_spnbox">
-        <property name="geometry">
-         <rect>
-          <x>160</x>
-          <y>30</y>
-          <width>71</width>
-          <height>31</height>
-         </rect>
-        </property>
-        <property name="minimum">
-         <number>1400</number>
-        </property>
-        <property name="maximum">
-         <number>1500</number>
-        </property>
-       </widget>
-       <widget class="QSpinBox" name="toDay_spnbox">
-        <property name="geometry">
-         <rect>
-          <x>280</x>
-          <y>30</y>
-          <width>51</width>
-          <height>31</height>
-         </rect>
-        </property>
-        <property name="minimum">
-         <number>1</number>
-        </property>
-        <property name="maximum">
-         <number>31</number>
-        </property>
-       </widget>
-       <widget class="QSpinBox" name="toMonth_spnbox">
-        <property name="geometry">
-         <rect>
-          <x>230</x>
-          <y>30</y>
-          <width>51</width>
-          <height>31</height>
-         </rect>
-        </property>
-        <property name="minimum">
-         <number>1</number>
-        </property>
-        <property name="maximum">
-         <number>12</number>
-        </property>
-       </widget>
-       <widget class="QLabel" name="label_14">
-        <property name="geometry">
-         <rect>
-          <x>570</x>
-          <y>30</y>
-          <width>81</width>
-          <height>31</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>از تاریخ:</string>
-        </property>
-        <property name="alignment">
-         <set>Qt::AlignCenter</set>
-        </property>
-       </widget>
-       <widget class="QLabel" name="label_15">
-        <property name="geometry">
-         <rect>
-          <x>320</x>
-          <y>30</y>
-          <width>81</width>
-          <height>31</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>تا تاریخ:</string>
-        </property>
-        <property name="alignment">
-         <set>Qt::AlignCenter</set>
-        </property>
-       </widget>
-      </widget>
-      <widget class="QGroupBox" name="groupBox_10">
-       <property name="geometry">
-        <rect>
-         <x>670</x>
-         <y>20</y>
-         <width>491</width>
-         <height>81</height>
-        </rect>
-       </property>
-       <property name="font">
-        <font>
-         <family>Vazirmatn Black</family>
-         <pointsize>10</pointsize>
-        </font>
-       </property>
-       <property name="layoutDirection">
-        <enum>Qt::RightToLeft</enum>
-       </property>
-       <property name="title">
-        <string>بر اساس نام</string>
-       </property>
-       <property name="alignment">
-        <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-       </property>
-       <widget class="QLabel" name="label_17">
-        <property name="geometry">
-         <rect>
-          <x>400</x>
-          <y>29</y>
-          <width>81</width>
-          <height>31</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>نام هزینه:</string>
-        </property>
-        <property name="alignment">
-         <set>Qt::AlignCenter</set>
-        </property>
-       </widget>
-       <widget class="QLineEdit" name="expenseName_txtbox">
-        <property name="geometry">
-         <rect>
-          <x>140</x>
-          <y>30</y>
-          <width>261</width>
-          <height>31</height>
-         </rect>
-        </property>
-        <property name="layoutDirection">
-         <enum>Qt::RightToLeft</enum>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">/* Basic LineEdit styling */
-QLineEdit {
-    background-color: #ffffff; /* White background */
-    border: 1px solid #dee2e6; /* Light grey border */
-    border-radius: 5px; /* Rounded corners */
-    font-family: 'Vazirmatn', sans-serif; /* Font family */
-    font-size: 16px; /* Font size */
-    color: #343a40; /* Dark grey text color */
-    outline: none; /* Remove default outline */
-}
-
-/* Hover effect */
-QLineEdit:hover {
-    border: 1px solid #007bff; /* Blue border on hover */
-}
-
-/* Focus effect */
-QLineEdit:focus {
-    border: 1px solid #007bff; /* Blue border on focus */
-}
-
-/* Disabled state */
-QLineEdit:disabled {
-    background-color: #e9ecef; /* Light grey background when disabled */
-    color: #6c757d; /* Grey text color when disabled */
-}
-
-</string>
-        </property>
-        <property name="locale">
-         <locale language="Persian" country="Iran"/>
-        </property>
-        <property name="text">
-         <string/>
-        </property>
-       </widget>
-       <widget class="QPushButton" name="searchExpenseByName_btn">
-        <property name="geometry">
-         <rect>
-          <x>10</x>
-          <y>30</y>
-          <width>121</width>
-          <height>31</height>
-         </rect>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">QPushButton {
-    background-color: #0050a5; /* Bootstrap primary blue */
-    color: white; /* White text */
-    border: none;
-    border-radius: 5px; /* Rounded corners */
-    font-size: 15px; /* Font size */
-    font-weight: bold; /* Bold text */
-    text-align: center;
-    text-decoration: none;
-    box-shadow: 0 4px rgba(0, 0, 0, 0.2); /* Shadow */
-    font-family: 'Vazirmatn', sans-serif; /* Font family */
-}
-
-QPushButton:hover {
-    background-color: #0056b3; /* Darker blue on hover */
-}
-
-QPushButton:pressed {
-    background-color: #004085; /* Even darker blue on press */
-    box-shadow: 0 2px rgba(0, 0, 0, 0.2); /* Reduce shadow on press */
-    transform: translateY(2px); /* Move button down on press */
-}
-</string>
-        </property>
-        <property name="text">
-         <string>جستجو</string>
-        </property>
-       </widget>
-      </widget>
+      </property>
      </widget>
     </widget>
     <widget class="QWidget" name="tab">

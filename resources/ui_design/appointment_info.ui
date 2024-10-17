@@ -6,20 +6,20 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>640</width>
-    <height>449</height>
+    <width>678</width>
+    <height>516</height>
    </rect>
   </property>
   <property name="minimumSize">
    <size>
-    <width>640</width>
-    <height>449</height>
+    <width>678</width>
+    <height>516</height>
    </size>
   </property>
   <property name="maximumSize">
    <size>
-    <width>640</width>
-    <height>449</height>
+    <width>678</width>
+    <height>516</height>
    </size>
   </property>
   <property name="windowTitle">
@@ -28,8 +28,8 @@
   <widget class="QPushButton" name="sendReminderSMS_btn">
    <property name="geometry">
     <rect>
-     <x>10</x>
-     <y>400</y>
+     <x>30</x>
+     <y>450</y>
      <width>181</width>
      <height>41</height>
     </rect>
@@ -73,8 +73,8 @@ QPushButton:pressed {
   <widget class="QPushButton" name="addAppointmentToMedicalRecords_btn">
    <property name="geometry">
     <rect>
-     <x>310</x>
-     <y>400</y>
+     <x>220</x>
+     <y>450</y>
      <width>221</width>
      <height>41</height>
     </rect>
@@ -117,8 +117,8 @@ QPushButton:pressed {
   <widget class="QPushButton" name="editAppointment_btn">
    <property name="geometry">
     <rect>
-     <x>200</x>
-     <y>400</y>
+     <x>450</x>
+     <y>450</y>
      <width>101</width>
      <height>41</height>
     </rect>
@@ -164,8 +164,8 @@ QPushButton:pressed {
   <widget class="QPushButton" name="deleteAppointment_btn">
    <property name="geometry">
     <rect>
-     <x>540</x>
-     <y>400</y>
+     <x>560</x>
+     <y>450</y>
      <width>91</width>
      <height>41</height>
     </rect>
@@ -211,8 +211,8 @@ QPushButton:pressed {
   <widget class="QLabel" name="label_35">
    <property name="geometry">
     <rect>
-     <x>530</x>
-     <y>10</y>
+     <x>550</x>
+     <y>40</y>
      <width>101</width>
      <height>31</height>
     </rect>
@@ -233,16 +233,16 @@ QPushButton:pressed {
   <widget class="QLabel" name="patientFullName_lbl">
    <property name="geometry">
     <rect>
-     <x>10</x>
-     <y>10</y>
-     <width>521</width>
+     <x>30</x>
+     <y>40</y>
+     <width>501</width>
      <height>31</height>
     </rect>
    </property>
    <property name="font">
     <font>
      <family>Vazirmatn</family>
-     <pointsize>14</pointsize>
+     <pointsize>13</pointsize>
      <weight>50</weight>
      <bold>false</bold>
     </font>
@@ -257,8 +257,8 @@ QPushButton:pressed {
   <widget class="Line" name="line">
    <property name="geometry">
     <rect>
-     <x>10</x>
-     <y>40</y>
+     <x>30</x>
+     <y>70</y>
      <width>621</width>
      <height>20</height>
     </rect>
@@ -270,8 +270,8 @@ QPushButton:pressed {
   <widget class="QLabel" name="datetime_lbl">
    <property name="geometry">
     <rect>
-     <x>6</x>
-     <y>110</y>
+     <x>26</x>
+     <y>140</y>
      <width>511</width>
      <height>31</height>
     </rect>
@@ -292,10 +292,10 @@ QPushButton:pressed {
   <widget class="Line" name="line_7">
    <property name="geometry">
     <rect>
-     <x>510</x>
-     <y>10</y>
+     <x>530</x>
+     <y>30</y>
      <width>20</width>
-     <height>341</height>
+     <height>351</height>
     </rect>
    </property>
    <property name="orientation">
@@ -305,8 +305,8 @@ QPushButton:pressed {
   <widget class="Line" name="line_2">
    <property name="geometry">
     <rect>
-     <x>10</x>
-     <y>140</y>
+     <x>30</x>
+     <y>170</y>
      <width>621</width>
      <height>20</height>
     </rect>
@@ -318,8 +318,8 @@ QPushButton:pressed {
   <widget class="QLabel" name="label_39">
    <property name="geometry">
     <rect>
-     <x>530</x>
-     <y>160</y>
+     <x>550</x>
+     <y>190</y>
      <width>101</width>
      <height>31</height>
     </rect>
@@ -340,8 +340,8 @@ QPushButton:pressed {
   <widget class="Line" name="line_3">
    <property name="geometry">
     <rect>
-     <x>10</x>
-     <y>190</y>
+     <x>30</x>
+     <y>220</y>
      <width>621</width>
      <height>20</height>
     </rect>
@@ -353,8 +353,8 @@ QPushButton:pressed {
   <widget class="QLabel" name="label_40">
    <property name="geometry">
     <rect>
-     <x>530</x>
-     <y>210</y>
+     <x>550</x>
+     <y>240</y>
      <width>101</width>
      <height>31</height>
     </rect>
@@ -375,8 +375,8 @@ QPushButton:pressed {
   <widget class="Line" name="line_4">
    <property name="geometry">
     <rect>
-     <x>10</x>
-     <y>240</y>
+     <x>30</x>
+     <y>270</y>
      <width>621</width>
      <height>20</height>
     </rect>
@@ -388,8 +388,8 @@ QPushButton:pressed {
   <widget class="QLabel" name="label_44">
    <property name="geometry">
     <rect>
-     <x>530</x>
-     <y>260</y>
+     <x>550</x>
+     <y>290</y>
      <width>101</width>
      <height>31</height>
     </rect>
@@ -410,8 +410,8 @@ QPushButton:pressed {
   <widget class="QLabel" name="label_45">
    <property name="geometry">
     <rect>
-     <x>530</x>
-     <y>110</y>
+     <x>550</x>
+     <y>140</y>
      <width>101</width>
      <height>31</height>
     </rect>
@@ -432,8 +432,8 @@ QPushButton:pressed {
   <widget class="Line" name="line_5">
    <property name="geometry">
     <rect>
-     <x>10</x>
-     <y>290</y>
+     <x>30</x>
+     <y>320</y>
      <width>621</width>
      <height>20</height>
     </rect>
@@ -445,8 +445,8 @@ QPushButton:pressed {
   <widget class="QLabel" name="label_46">
    <property name="geometry">
     <rect>
-     <x>530</x>
-     <y>310</y>
+     <x>550</x>
+     <y>340</y>
      <width>101</width>
      <height>31</height>
     </rect>
@@ -467,8 +467,8 @@ QPushButton:pressed {
   <widget class="QLabel" name="doctorName_lbl">
    <property name="geometry">
     <rect>
-     <x>10</x>
-     <y>160</y>
+     <x>30</x>
+     <y>190</y>
      <width>501</width>
      <height>31</height>
     </rect>
@@ -489,8 +489,8 @@ QPushButton:pressed {
   <widget class="QLabel" name="serviceName_lbl">
    <property name="geometry">
     <rect>
-     <x>10</x>
-     <y>210</y>
+     <x>30</x>
+     <y>240</y>
      <width>501</width>
      <height>31</height>
     </rect>
@@ -511,8 +511,8 @@ QPushButton:pressed {
   <widget class="QLabel" name="status_lbl">
    <property name="geometry">
     <rect>
-     <x>10</x>
-     <y>260</y>
+     <x>30</x>
+     <y>290</y>
      <width>501</width>
      <height>31</height>
     </rect>
@@ -520,7 +520,7 @@ QPushButton:pressed {
    <property name="font">
     <font>
      <family>Vazirmatn</family>
-     <pointsize>14</pointsize>
+     <pointsize>13</pointsize>
     </font>
    </property>
    <property name="text">
@@ -533,8 +533,8 @@ QPushButton:pressed {
   <widget class="QLabel" name="description_lbl">
    <property name="geometry">
     <rect>
-     <x>10</x>
-     <y>310</y>
+     <x>30</x>
+     <y>340</y>
      <width>501</width>
      <height>31</height>
     </rect>
@@ -555,8 +555,8 @@ QPushButton:pressed {
   <widget class="Line" name="line_6">
    <property name="geometry">
     <rect>
-     <x>10</x>
-     <y>90</y>
+     <x>30</x>
+     <y>120</y>
      <width>621</width>
      <height>20</height>
     </rect>
@@ -568,8 +568,8 @@ QPushButton:pressed {
   <widget class="QLabel" name="label_47">
    <property name="geometry">
     <rect>
-     <x>530</x>
-     <y>60</y>
+     <x>550</x>
+     <y>90</y>
      <width>101</width>
      <height>31</height>
     </rect>
@@ -590,8 +590,8 @@ QPushButton:pressed {
   <widget class="QLabel" name="phoneNumber_lbl">
    <property name="geometry">
     <rect>
-     <x>0</x>
-     <y>60</y>
+     <x>20</x>
+     <y>90</y>
      <width>511</width>
      <height>31</height>
     </rect>
@@ -612,8 +612,8 @@ QPushButton:pressed {
   <widget class="Line" name="line_8">
    <property name="geometry">
     <rect>
-     <x>10</x>
-     <y>340</y>
+     <x>30</x>
+     <y>370</y>
      <width>621</width>
      <height>20</height>
     </rect>
@@ -625,8 +625,8 @@ QPushButton:pressed {
   <widget class="QLabel" name="smsCount_lbl">
    <property name="geometry">
     <rect>
-     <x>10</x>
-     <y>360</y>
+     <x>30</x>
+     <y>400</y>
      <width>621</width>
      <height>31</height>
     </rect>

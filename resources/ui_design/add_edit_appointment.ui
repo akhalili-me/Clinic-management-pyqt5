@@ -369,10 +369,10 @@ QPushButton:pressed {
      </rect>
     </property>
     <property name="minimum">
-     <number>1</number>
+     <number>0</number>
     </property>
     <property name="maximum">
-     <number>60</number>
+     <number>59</number>
     </property>
     <property name="value">
      <number>30</number>
@@ -410,7 +410,7 @@ QPushButton:pressed {
      </rect>
     </property>
     <property name="minimum">
-     <number>1</number>
+     <number>0</number>
     </property>
     <property name="maximum">
      <number>24</number>

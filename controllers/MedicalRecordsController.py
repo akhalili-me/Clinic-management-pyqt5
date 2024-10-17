@@ -5,7 +5,7 @@ from ui import (
     Ui_medicalRecordImages_form,
     Ui_addEditImage_form,
 )
-from models import DatabaseManager, UtilityFetcher
+from models import DatabaseManager
 from models import MedicalRecords, Services,Patients,MedicalRecordImages
 import jdatetime
 from PyQt5.QtCore import pyqtSignal

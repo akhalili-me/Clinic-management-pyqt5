@@ -22,7 +22,7 @@ class Services:
 
     @staticmethod
     def get_by_id(db: DatabaseManager,service_id):
-        query = f"SELECT 1* FROM Service Where id={service_id}"
+        query = f"SELECT * FROM Service Where id={service_id}"
         try:
             return db.fetchone(query)
         except Exception:

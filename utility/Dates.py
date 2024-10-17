@@ -1,10 +1,11 @@
 import jdatetime
 from datetime import timedelta
 from utility import Numbers
+
 class Dates:
     @staticmethod
-    def convert_to_jalali_format(date_str: str) -> str:
-        year, month, day = map(int, date_str.split('-'))
+    def convert_to_jalali_format(jalali_date_str: str) -> str:
+        year, month, day = map(int, jalali_date_str.split('-'))
         date_obj = jdatetime.date(year, month, day)
 
         weekday_number = date_obj.weekday()

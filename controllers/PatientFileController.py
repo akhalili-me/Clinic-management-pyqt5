@@ -143,20 +143,21 @@ class PatientFileController(QDialog):
         with DatabaseManager() as db:
             try:
                 appointments = Appointments.get_by_patient_id(db, self.patient_id)
+                for appointment in appointments:
+                    service = Services.get_by_id(db, appointment["service"])
+                    doctor = Doctors.get_by_id(db, appointment["doctor"])
+                    date = Dates.convert_to_jalali_format(appointment["jalali_date"])
+                    time = Numbers.english_to_persian_numbers(appointment["time"])
+                    item_text = f"{service['name']} | دکتر {doctor['lastName']} | {appointment['status']} | {date} | {time}"
+                    item = QListWidgetItem(item_text)
+                    item.setData(1, appointment["id"])
+                    self.ui.userAppointments_lst.addItem(item)
+
             except Exception as e:
                 Messages.show_error_msg(str(e))
-                return
+                return 
             
-            for appointment in appointments:
-                service = Services.get_by_id(db, appointment["service"])
-                doctor = Doctors.get_by_id(db, appointment["doctor"])
-                date = Dates.convert_to_jalali_format(appointment["jalali_date"])
-                time = Numbers.english_to_persian_numbers(appointment["time"])
-                item_text = f"{service['name']} | دکتر {doctor['lastName']} | {appointment['status']} | {date} | {time}"
-                item = QListWidgetItem(item_text)
-                item.setData(1, appointment["id"])
-                self.ui.userAppointments_lst.addItem(item)
-
+       
 
 
          
