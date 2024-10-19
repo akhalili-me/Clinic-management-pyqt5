@@ -1,6 +1,7 @@
 from PyQt5.QtSql import QSqlDatabase, QSqlQuery
-
-
+from PyQt5.QtCore import QThread, pyqtSignal
+from PyQt5.QtCore import QObject, pyqtSignal
+import uuid
 
 class DatabaseError(Exception):
     """Custom exception for database errors."""
@@ -73,3 +74,85 @@ class DatabaseManager:
     def __exit__(self, exc_type, exc_val, exc_tb):
         """Exit the runtime context related to this object."""
         self.close()
+
+class DatabaseManagerForWorker(QObject):
+
+    def __init__(self):
+        super().__init__()
+        from utility import DatabaseUtils
+        self.db_path = DatabaseUtils.get_database_path()
+        self.db = None
+
+    def create_connection(self):
+        connection_name = str(uuid.uuid4())
+        self.db = QSqlDatabase.addDatabase('QSQLITE', connection_name)
+        self.db.setDatabaseName(self.db_path)
+
+        if not self.db.open():
+            raise DatabaseError(f"Unable to open database: {self.db.lastError().text()}")
+        
+        self.enable_foreign_keys()
+        return self.db
+
+    def close(self):
+        if self.db and self.db.isOpen():
+            self.db.close()
+            QSqlDatabase.removeDatabase(self.db.connectionName())
+    
+    def __enter__(self):
+        self.create_connection()
+        return self
+     
+    def __exit__(self, exc_type, exc_value, traceback):
+        self.close
+
+    def execute_query(self, query_str, params=()):
+        query = QSqlQuery(self.db)
+        query.prepare(query_str)
+        for param in params:
+            query.addBindValue(param)
+        if not query.exec_():
+            raise DatabaseError(f"Error executing query: {query.lastError().text()}")
+
+    def fetchall(self, query_str, params=()):
+        query = QSqlQuery(self.db)
+        query.prepare(query_str)
+        for param in params:
+            query.addBindValue(param)
+        if not query.exec_():
+            raise DatabaseError(f"Error executing query: {query.lastError().text()}")
+
+        results = []
+        while query.next():
+            record = query.record()
+            row = {record.fieldName(i): query.value(i) for i in range(record.count())}
+            results.append(row)
+        return results
+
+    def fetchone(self, query_str, params=()):
+        results = self.fetchall(query_str, params)
+        return results[0] if results else None
+    
+    def enable_foreign_keys(self):
+        query = QSqlQuery(self.db)
+        if not query.exec_("PRAGMA foreign_keys = ON;"):
+            raise DatabaseError(f"Error enabling foreign keys: {query.lastError().text()}")
+        
+class DatabaseWorker(QThread):
+    result_signal = pyqtSignal(object)
+    error_signal = pyqtSignal(str)
+    success_signal = pyqtSignal()  
+
+    def __init__(self, operation, *args):
+        super().__init__()
+        self.operation = operation
+        self.args = args
+
+    def run(self):
+        try:
+            with DatabaseManagerForWorker() as db:
+                result = self.operation(db, *self.args)
+                self.result_signal.emit(result)
+                self.success_signal.emit()
+        except Exception as e:
+            self.error_signal.emit(str(e))

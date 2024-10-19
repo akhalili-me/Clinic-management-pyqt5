@@ -5,7 +5,21 @@ class Appointments:
 
     @staticmethod
     def get_by_patient_id(db: DatabaseManager, patient_id):
-        query = f"SELECT * Where patient={patient_id} ORDER BY greg_datetime ASC"
+        # query = f"SELECT * Where patient={patient_id} ORDER BY greg_datetime ASC"
+        query = f"""
+            SELECT 
+                A.id,
+                A.jalali_date,
+                A.status,
+                A.time,
+                S.name AS service_name,
+                D.lastName as doctor_lastname
+            FROM Appointment A
+            JOIN Service S ON A.service = S.id
+            JOIN Doctor D ON A.doctor = D.id
+            Where A.patient={patient_id}
+            ORDER BY greg_datetime ASC
+        """
         try:
              return db.fetchall(query)
         except Exception:

@@ -17,11 +17,11 @@ from controllers import MainController
 
 
 if __name__ == "__main__":
-    try:
+    # try:
         app = QApplication(sys.argv)
         DatabaseUtils.check_database()
         main_window = MainController()
         main_window.show()
         sys.exit(app.exec_())
-    except Exception as e:
-        Messages.show_error_msg(str(e))
+    # except Exception as e:
+    #     Messages.show_error_msg(str(e))

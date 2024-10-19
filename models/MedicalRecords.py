@@ -44,6 +44,24 @@ class MedicalRecordImages:
             error_msg = "حذف تصویر خدمات با خطا مواجه شده است."
             raise DatabaseError(error_msg)
         
+    @staticmethod
+    def get_all_image_paths_by_patient_id(db,patient_id):
+        query = f"""
+            SELECT 
+                mri.path
+            FROM 
+                MedicalRecordImages mri
+                JOIN MedicalRecords mr ON mri.medical_record = mr.id
+            WHERE 
+                mr.patient = {patient_id};
+        """
+        try:
+            return db.fetchall(query)
+        except Exception:
+            error_msg = "حذف تصویر خدمات با خطا مواجه شده است."
+            raise DatabaseError(error_msg)
+        
+        
 class MedicalRecords:
 
     @staticmethod
@@ -57,11 +75,24 @@ class MedicalRecords:
 
     @staticmethod
     def get_by_patient_id(db: DatabaseManager, patient_id):
-        query = f"SELECT * FROM MedicalRecords Where patient={patient_id} ORDER BY greg_date DESC"
+        # query = f"SELECT * FROM MedicalRecords Where patient={patient_id} ORDER BY greg_date DESC"
+
+        query = f"""
+            SELECT 
+                M.id,
+                M.jalali_date,
+                D.lastName AS doctor_lastname,
+                S.name AS service_name
+            From MedicalRecords M
+            JOIN Doctor D ON M.doctor = D.id
+            JOIN Service S ON M.service = S.id
+            WHERE M.patient = {patient_id}
+            ORDER BY greg_date DESC
+        """
         try:
             return db.fetchall(query)
         except Exception:
-            error_msg = "واکشی خدمات با خطا مواجه شده است."
+            error_msg = "واکشی خدمات بیمار با خطا مواجه شده است."
             raise DatabaseError(error_msg)
 
     @staticmethod

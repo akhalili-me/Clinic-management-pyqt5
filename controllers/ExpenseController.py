@@ -47,11 +47,19 @@ class ExpenseTabController:
         self._load_expense_data_expense_list(searched_expenses)
     
     def search_by_date(self):
-        #To-DO
-        from_date = ""
-        to_date = ""
+        from_year, from_month, from_day = self.ui.fromYear_spnbox.value(), self.ui.fromMonth_spnbox.value(), self.ui.fromDay_spnbox.value()
+        to_year, to_month, to_day = self.ui.toYear_spnbox.value(), self.ui.toMonth_spnbox.value(), self.ui.toDay_spnbox.value()
+
+        from_date = jdatetime.date(from_year,from_month,from_day).togregorian().strftime("%Y-%m-%d")
+        to_date = jdatetime.date(to_year,to_month,to_day).togregorian().strftime("%Y-%m-%d")
+
         with DatabaseManager() as db:
-            searched_expenses = Expenses.get_by_date(db,from_date,to_date)
+            try:
+                searched_expenses = Expenses.get_by_date(db,from_date,to_date)
+            except Exception as e:
+                Messages.show_error_msg(str(e))
+                return
+            
         self._load_expense_data_expense_list(searched_expenses)
 
     def load_current_month_expense_list(self):

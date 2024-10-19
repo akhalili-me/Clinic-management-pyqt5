@@ -51,9 +51,6 @@ class AppointmentsTabController:
             #send reminder sms as async
             pass
 
-
-        
-
     def search_appointments_by_day_select(self):
         selected_day = self.ui.appointmentSearchDaySelect_cmbox.currentText().strip()
 
@@ -68,7 +65,6 @@ class AppointmentsTabController:
         selected_function = day_to_function.get(selected_day)
         if selected_function:
             selected_function()
-
 
     def search_appointments_by_date(self):
         year, month, day = self.ui.year_spnbox.value(), self.ui.month_spnbox.value(), self.ui.day_spnbox.value()
@@ -310,7 +306,12 @@ class AddEditAppointmentController(QDialog):
     def _get_time_str(self):
         hour = self.ui.hour_spnbox.value()
         minute = self.ui.minute_spnbox.value()
-        return f"{hour}:{minute}"
+
+        # Pad both hour and minute with zeros 
+        hour_str = str(hour).zfill(2)
+        minute_str = str(minute).zfill(2)
+
+        return f"{hour_str}:{minute_str}"
 
     def _get_gregorian_datetime(self, jalali_date_str, time_str):
         year, month, day = map(int, jalali_date_str.split('-'))
