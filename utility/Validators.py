@@ -10,4 +10,12 @@ class Validators:
                 Messages.show_error_msg(f"{name} نباید خالی باشد.")
                 return False
         return True
+    @staticmethod
+    def limit_text_edit(text_edit):
+        max_length = 150  # Limit to 100 characters
+        if len(text_edit.toPlainText()) > max_length:
+            text_edit.textCursor().deletePreviousChar()
+
+
+
         

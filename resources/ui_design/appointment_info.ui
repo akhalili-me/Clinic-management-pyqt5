@@ -36,8 +36,8 @@
    </property>
    <property name="font">
     <font>
-     <family>Vazirmatn,sans-serif</family>
-     <pointsize>-1</pointsize>
+     <family>Vazirmatn</family>
+     <pointsize>10</pointsize>
      <weight>75</weight>
      <bold>true</bold>
      <underline>false</underline>
@@ -50,11 +50,8 @@
     color: white; /* White text */
     border: none;
     border-radius: 5px; /* Rounded corners */
-    font-size: 15px; /* Font size */
-    font-weight: bold; /* Bold text */
     text-align: center;
     text-decoration: none;
-    font-family: 'Vazirmatn', sans-serif; /* Font family */
 }
 
 QPushButton:hover {
@@ -81,7 +78,7 @@ QPushButton:pressed {
    </property>
    <property name="font">
     <font>
-     <family>Vazirmatn,sans-serif</family>
+     <family>Vazirmatn</family>
      <pointsize>11</pointsize>
      <weight>75</weight>
      <bold>true</bold>
@@ -95,10 +92,8 @@ QPushButton:pressed {
     color: white; /* White text */
     border: none;
     border-radius: 5px; /* Rounded corners */
-    font-weight: bold; /* Bold text */
     text-align: center;
     text-decoration: none;
-    font-family: 'Vazirmatn', sans-serif; /* Font family */
 }
 
 QPushButton:hover {
@@ -125,8 +120,8 @@ QPushButton:pressed {
    </property>
    <property name="font">
     <font>
-     <family>Vazirmatn,sans-serif</family>
-     <pointsize>12</pointsize>
+     <family>Vazirmatn</family>
+     <pointsize>13</pointsize>
      <weight>75</weight>
      <bold>true</bold>
      <underline>false</underline>
@@ -142,10 +137,8 @@ QPushButton:pressed {
     color: #212529; /* Dark text */
     border: none;
     border-radius: 5px; /* Rounded corners */
-    font-weight: bold; /* Bold text */
     text-align: center;
     text-decoration: none;
-    font-family: 'Vazirmatn', sans-serif; /* Font family */
 }
 
 QPushButton:hover {
@@ -172,7 +165,7 @@ QPushButton:pressed {
    </property>
    <property name="font">
     <font>
-     <family>Vazirmatn,sans-serif</family>
+     <family>Vazirmatn</family>
      <pointsize>13</pointsize>
      <weight>75</weight>
      <bold>true</bold>
@@ -189,10 +182,8 @@ QPushButton:pressed {
     color: white; /* White text */
     border: none;
     border-radius: 5px; /* Rounded corners */
-    font-weight: bold; /* Bold text */
     text-align: center;
     text-decoration: none;
-    font-family: 'Vazirmatn', sans-serif; /* Font family */
 }
 
 QPushButton:hover {
@@ -220,7 +211,7 @@ QPushButton:pressed {
    <property name="font">
     <font>
      <family>Vazirmatn Medium</family>
-     <pointsize>11</pointsize>
+     <pointsize>12</pointsize>
     </font>
    </property>
    <property name="styleSheet">
@@ -230,7 +221,7 @@ border-radius: 5px;
 border-color: rgb(206, 206, 206); </string>
    </property>
    <property name="text">
-    <string>۲ پیامک یادآوری برای بیمار ارسال شده است.</string>
+    <string>-</string>
    </property>
    <property name="alignment">
     <set>Qt::AlignCenter</set>
@@ -248,7 +239,7 @@ border-color: rgb(206, 206, 206); </string>
    <property name="font">
     <font>
      <family>Vazirmatn Medium</family>
-     <pointsize>11</pointsize>
+     <pointsize>12</pointsize>
     </font>
    </property>
    <property name="styleSheet">
@@ -259,7 +250,7 @@ border-radius: 10px;
 border-color: rgb(206, 206, 206); </string>
    </property>
    <property name="text">
-    <string>امیررضا خلیلی</string>
+    <string>-</string>
    </property>
    <property name="alignment">
     <set>Qt::AlignCenter</set>
@@ -277,7 +268,7 @@ border-color: rgb(206, 206, 206); </string>
    <property name="font">
     <font>
      <family>Vazirmatn Medium</family>
-     <pointsize>11</pointsize>
+     <pointsize>12</pointsize>
     </font>
    </property>
    <property name="styleSheet">
@@ -288,7 +279,7 @@ border-radius: 10px;
 border-color: rgb(206, 206, 206); </string>
    </property>
    <property name="text">
-    <string>امیررضا خلیلی</string>
+    <string>-</string>
    </property>
    <property name="alignment">
     <set>Qt::AlignCenter</set>
@@ -339,7 +330,7 @@ background-color: rgb(42, 98, 167);
    <property name="font">
     <font>
      <family>Vazirmatn Medium</family>
-     <pointsize>11</pointsize>
+     <pointsize>12</pointsize>
     </font>
    </property>
    <property name="styleSheet">
@@ -350,13 +341,13 @@ border-radius: 10px;
 border-color: rgb(206, 206, 206); </string>
    </property>
    <property name="text">
-    <string>امیررضا خلیلی</string>
+    <string>-</string>
    </property>
    <property name="alignment">
     <set>Qt::AlignCenter</set>
    </property>
   </widget>
-  <widget class="QLabel" name="doctorName">
+  <widget class="QLabel" name="doctorName_lbl">
    <property name="geometry">
     <rect>
      <x>20</x>
@@ -368,7 +359,7 @@ border-color: rgb(206, 206, 206); </string>
    <property name="font">
     <font>
      <family>Vazirmatn Medium</family>
-     <pointsize>11</pointsize>
+     <pointsize>12</pointsize>
     </font>
    </property>
    <property name="styleSheet">
@@ -379,7 +370,7 @@ border-radius: 10px;
 border-color: rgb(206, 206, 206); </string>
    </property>
    <property name="text">
-    <string>امیررضا خلیلی</string>
+    <string>-</string>
    </property>
    <property name="alignment">
     <set>Qt::AlignCenter</set>
@@ -397,7 +388,7 @@ border-color: rgb(206, 206, 206); </string>
    <property name="font">
     <font>
      <family>Vazirmatn Medium</family>
-     <pointsize>11</pointsize>
+     <pointsize>12</pointsize>
     </font>
    </property>
    <property name="styleSheet">
@@ -408,13 +399,13 @@ border-radius: 10px;
 border-color: rgb(206, 206, 206); </string>
    </property>
    <property name="text">
-    <string>امیررضا خلیلی</string>
+    <string>-</string>
    </property>
    <property name="alignment">
     <set>Qt::AlignCenter</set>
    </property>
   </widget>
-  <widget class="QLabel" name="status_lbl_2">
+  <widget class="QLabel" name="status_lbl">
    <property name="geometry">
     <rect>
      <x>20</x>
@@ -426,7 +417,7 @@ border-color: rgb(206, 206, 206); </string>
    <property name="font">
     <font>
      <family>Vazirmatn Medium</family>
-     <pointsize>11</pointsize>
+     <pointsize>12</pointsize>
     </font>
    </property>
    <property name="styleSheet">
@@ -437,36 +428,7 @@ border-radius: 10px;
 border-color: rgb(206, 206, 206); </string>
    </property>
    <property name="text">
-    <string>امیررضا خلیلی</string>
-   </property>
-   <property name="alignment">
-    <set>Qt::AlignCenter</set>
-   </property>
-  </widget>
-  <widget class="QLabel" name="description_lbl">
-   <property name="geometry">
-    <rect>
-     <x>20</x>
-     <y>320</y>
-     <width>501</width>
-     <height>61</height>
-    </rect>
-   </property>
-   <property name="font">
-    <font>
-     <family>Vazirmatn Medium</family>
-     <pointsize>11</pointsize>
-    </font>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">border: 1px solid;
-border-color: rgb(232, 232, 232);
-background-color: rgb(233, 236, 239);
-border-radius: 10px;
-border-color: rgb(206, 206, 206); </string>
-   </property>
-   <property name="text">
-    <string>امیررضا خلیلی</string>
+    <string>-</string>
    </property>
    <property name="alignment">
     <set>Qt::AlignCenter</set>
@@ -668,6 +630,56 @@ background-color: rgb(42, 98, 167);
    </property>
    <property name="alignment">
     <set>Qt::AlignCenter</set>
+   </property>
+  </widget>
+  <widget class="QTextEdit" name="description_lbl">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>320</y>
+     <width>501</width>
+     <height>61</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Vazirmatn</family>
+     <pointsize>12</pointsize>
+     <weight>50</weight>
+     <bold>false</bold>
+    </font>
+   </property>
+   <property name="layoutDirection">
+    <enum>Qt::RightToLeft</enum>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">/* Basic LineEdit styling */
+QTextEdit {
+	background-color: rgb(233, 236, 239);
+  	 border: 1px solid;
+	border-color: rgb(206, 206, 206); 
+    border-radius: 5px; /* Rounded corners */
+    color: #343a40; /* Dark grey text color */
+    outline: none; /* Remove default outline */
+}
+
+/* Disabled state */
+QTextEdit:disabled {
+    background-color: #e9ecef; /* Light grey background when disabled */
+    color: #6c757d; /* Grey text color when disabled */
+}
+
+</string>
+   </property>
+   <property name="readOnly">
+    <bool>true</bool>
+   </property>
+   <property name="html">
+    <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Vazirmatn'; font-size:12pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p dir='rtl' style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Vazirmatn,sans-serif'; font-size:16px;&quot;&gt;-&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
    </property>
   </widget>
  </widget>

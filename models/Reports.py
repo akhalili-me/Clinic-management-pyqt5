@@ -16,8 +16,11 @@ class Reports:
                 """
         try:
             return db.fetchone(query)
-        except Exception:
-            error_msg = "واکشی اطلاعات گزارش قیمت و تعداد سرویس با خطا مواجه شده است."
+        except Exception as e:
+            error_msg = f"""
+                واکشی اطلاعات گزارش قیمت و تعداد سرویس با خطا مواجه شده است.
+                {str(e)}
+            """      
             raise DatabaseError(error_msg)
 
         
@@ -35,8 +38,11 @@ class Reports:
 
         try:
             return db.fetchall(query)
-        except Exception:
-            error_msg = "واکشی پرفروش‌‌ترین سرویس‌ها با خطا مواجه شده است."
+        except Exception as e:
+            error_msg = f"""
+                واکشی پرفروش‌‌ترین سرویس‌ها با خطا مواجه شده است.
+                {str(e)}
+            """      
             raise DatabaseError(error_msg)
 
         
@@ -55,8 +61,11 @@ class Reports:
 
         try:
             return db.fetchall(query)
-        except Exception:
-            error_msg = "واکشی درآمد ماه جاری سرویس‌ با خطا مواجه شده است."
+        except Exception as e:
+            error_msg = f"""
+                واکشی درآمد ماه جاری سرویس‌ با خطا مواجه شده است.
+                {str(e)}
+            """   
             raise DatabaseError(error_msg)
 
     def get_monthly_service_income(db: DatabaseManager, service_id, start_date,end_date):
@@ -72,8 +81,11 @@ class Reports:
                 """
         try:
             return db.fetchone(query)
-        except Exception:
-            error_msg = "واکشی درآمد ماهانه سرویس‌ با خطا مواجه شده است."
+        except Exception as e:
+            error_msg = f"""
+                واکشی درآمد ماهانه سرویس‌ با خطا مواجه شده است.
+                {str(e)}
+            """   
             raise DatabaseError(error_msg)
 
     def get_financial_summary(db: DatabaseManager, start_date, end_date):
@@ -86,8 +98,11 @@ class Reports:
                 """
         try:
             return db.fetchone(query)
-        except Exception:
-            error_msg = "واکشی اطلاعات مالی با خطا مواجه شده است."
+        except Exception as e:
+            error_msg = f"""
+                واکشی اطلاعات مالی با خطا مواجه شده است.
+                {str(e)}
+            """   
             raise DatabaseError(error_msg)
 
     def get_financial_summary_by_days(db: DatabaseManager, start_date, end_date):
@@ -109,8 +124,11 @@ class Reports:
                 """
         try:
             return db.fetchall(query)
-        except Exception:
-            error_msg = "واکشی اطلاعات مالی روزهای ماه با خطا مواجه شده است."
+        except Exception as e:
+            error_msg = f"""
+                واکشی اطلاعات مالی روزهای ماه با خطا مواجه شده است.
+                {str(e)}
+            """   
             raise DatabaseError(error_msg)
 
     @staticmethod    
@@ -150,6 +168,9 @@ class Reports:
                 """
         try:
             return db.fetchall(query)
-        except Exception:
-            error_msg = "واکشی پرفروش‌ترین خدمات و بالاترین‌ هزینه‌ها با خطا مواجه شده است."
+        except Exception as e:
+            error_msg = f"""
+                واکشی پرفروش‌ترین خدمات و بالاترین‌ هزینه‌ها با خطا مواجه شده است.
+                {str(e)}
+            """   
             raise DatabaseError(error_msg)

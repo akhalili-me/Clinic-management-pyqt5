@@ -9,7 +9,7 @@ from models import (
     DatabaseWorker,
 )
 from PyQt5.QtWidgets import QListWidgetItem
-from utility import Numbers, Dates, Messages, Images, BaseController
+from utility import Numbers, Dates, Messages, Images, BaseController,delete_patient_directory
 from PyQt5.QtWidgets import QDialog
 from PyQt5.QtCore import pyqtSignal
 
@@ -80,27 +80,18 @@ class PatientFileController(BaseController, QDialog):
             return
 
         self._start_worker(
-            MedicalRecordImages.get_all_image_paths_by_patient_id,
+            Patients.delete_patient,
             [self.patient_id],
-            self.handle_patient_delete,
+            success_callback=self.handle_patient_delete,
         )
 
-    def handle_patient_delete(self, images):
-        self.delete_all_patients_medical_record_images(images)
-        self.delete_patient(self.patient_id)
+    def handle_patient_delete(self):
+        delete_patient_directory(str(self.patient_id))
+        self.operation_successful("بیمار با موفقیت حذف شد.")
 
     def delete_all_patients_medical_record_images(self, images):
         for image in images:
             Images.delete_image(image["path"])
-
-    def delete_patient(self, patient_id):
-        self._start_worker(
-            Patients.delete_patient,
-            [patient_id],
-            success_callback=lambda: self.operation_successful(
-                "بیمار با موفقیت حذف شد."
-            ),
-        )
 
     def operation_successful(self, success_msg):
         Messages.show_success_msg(success_msg)
@@ -148,19 +139,29 @@ class PatientFileController(BaseController, QDialog):
         )
 
     def display_patient_info(self, patient):
+        self._set_extraItem_default_text()
         if patient:
+            age = Numbers.english_to_persian_numbers(str(patient["age"]))
+            self.ui.fileNumber_lbl.setText(Numbers.english_to_persian_numbers(str(patient["id"])))
             self.ui.firstName_lbl.setText(patient["firstName"])
             self.ui.lastName_lbl.setText(patient["lastName"])
-            self.ui.age_lbl.setText(str(patient["age"]))
+            self.ui.age_lbl.setText(age)
             self.ui.address_lbl.setText(patient["address"])
             self.ui.identityCode_lbl.setText(
                 Numbers.english_to_persian_numbers(patient["identityCode"])
             )
-            self.ui.gender_lbl.setText(patient["gender"])
+            self.ui.job_lbl.setText(patient["job"])
             self.ui.phoneNumber_lbl.setText(
                 Numbers.english_to_persian_numbers(patient["phoneNumber"])
             )
             self.ui.extraInfo_lbl.setText(patient["extraInfo"])
+            self.ui.maritalStatus_lbl.setText(patient["maritalStatus"])
+            self.ui.specialCondition_lbl.setText(patient["specialCondition"])
+            self.ui.pregnant_lbl.setText(patient["pregnant"])
+
+            self._set_patient_allergies(patient["allergy"])
+            self._set_patient_diseases(patient["disease"])
+            self._set_patient_medications(patient["medication"])
 
     def load_patient_medical_records_list(self):
         self._start_worker(
@@ -201,3 +202,38 @@ class PatientFileController(BaseController, QDialog):
             item = QListWidgetItem(item_text)
             item.setData(1, appointment["id"])
             self.ui.userAppointments_lst.addItem(item)
+
+    def _set_patient_allergies(self, allergies):
+        allergy_list = allergies.split("-")
+        for allergy in allergy_list:
+            checkbox_name = f"{allergy}_chkbox"
+            checkbox = getattr(self.ui, checkbox_name, None)
+            if checkbox:
+                checkbox.setChecked(True)
+            else:
+                self.ui.allergyOtherItems_lbl.setText(allergy)
+
+    def _set_patient_diseases(self, diseases):
+        disease_list = diseases.split("-")
+        for disease in disease_list:
+            checkbox_name = f"{disease}_chkbox"
+            checkbox = getattr(self.ui, checkbox_name, None)
+            if checkbox:
+                checkbox.setChecked(True)
+            else:
+                self.ui.diseaseOtherItems_lbl.setText(disease)
+
+    def _set_patient_medications(self, medications):
+        medication_list = medications.split("-")
+        for medication in medication_list:
+            checkbox_name = f"{medication}_chkbox"
+            checkbox = getattr(self.ui, checkbox_name, None)
+            if checkbox:
+                checkbox.setChecked(True)
+            else:
+                self.ui.medicationOtherItems_lbl.setText(medication)
+
+    def _set_extraItem_default_text(self):
+        self.ui.allergyOtherItems_lbl.setText("-")
+        self.ui.diseaseOtherItems_lbl.setText("-")
+        self.ui.medicationOtherItems_lbl.setText("-")

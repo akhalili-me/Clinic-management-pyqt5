@@ -7,8 +7,11 @@ class Doctors:
         query = "SELECT * FROM Doctor ORDER BY id DESC"
         try:
             return db.fetchall(query)
-        except Exception:
-            error_msg = "واکشی اطلاعات پزشک‌ها با خطا مواجه شده است."
+        except Exception as e:
+            error_msg = f"""
+                واکشی اطلاعات پزشک‌ها با خطا مواجه شده است.
+                {str(e)}
+            """
             raise DatabaseError(error_msg)
         
     @staticmethod
@@ -16,8 +19,11 @@ class Doctors:
         query = f"SELECT * FROM Doctor Where id={doctor_id}"
         try:
             return db.fetchone(query)
-        except Exception:
-            error_msg = "واکشی اطلاعات پزشک‌ با خطا مواجه شده است."
+        except Exception as e:
+            error_msg = f"""
+                واکشی اطلاعات پزشک‌ با خطا مواجه شده است.
+                {str(e)}
+            """
             raise DatabaseError(error_msg)
         
     @staticmethod
@@ -26,8 +32,11 @@ class Doctors:
         values = (doctor["firstName"],doctor["lastName"],doctor["specialization"])
         try:
             return db.execute_query(query, values)
-        except Exception:
-            error_msg = "اضافه کردن پزشک‌ با خطا مواجه شده است."
+        except Exception as e:
+            error_msg = f"""
+                اضافه کردن پزشک‌ با خطا مواجه شده است.
+                {str(e)}
+            """
             raise DatabaseError(error_msg)
 
     @staticmethod
@@ -35,8 +44,11 @@ class Doctors:
         query = f"SELECT firstName,lastName FROM Doctor Where id={doctor_id}"
         try:
             return db.fetchone(query)
-        except Exception:
-            error_msg = "واکشی نام و نام خانوادگی پزشک‌ با خطا مواجه شده است."
+        except Exception as e:
+            error_msg = f"""
+                واکشی نام و نام خانوادگی پزشک‌ با خطا مواجه شده است.
+                {str(e)}
+            """
             raise DatabaseError(error_msg)
     
     @staticmethod
@@ -56,8 +68,11 @@ class Doctors:
 
         try:
             return db.execute_query(query, values)
-        except Exception:
-            error_msg = "ذخیره کردن تغییرات پزشک‌ با خطا مواجه شده است."
+        except Exception as e:
+            error_msg = f"""
+                ذخیره کردن تغییرات پزشک‌ با خطا مواجه شده است.
+                {str(e)}
+            """
             raise DatabaseError(error_msg)
 
     @staticmethod
@@ -65,8 +80,11 @@ class Doctors:
         query = f"DELETE FROM Doctor WHERE id = {doctor_id};"
         try:
             return db.execute_query(query)
-        except Exception:
-            error_msg = "حذف پزشک‌ با خطا مواجه شده است."
+        except Exception as e:
+            error_msg = f"""
+                حذف پزشک‌ با خطا مواجه شده است.
+                {str(e)}
+            """
             raise DatabaseError(error_msg)
 
     

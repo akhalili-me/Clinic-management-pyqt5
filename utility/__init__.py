@@ -11,7 +11,11 @@ from models import DatabaseWorker
 
 import shutil
 import os
+import logging
 from enum import Enum
+
+BASE_DIR = Path(__file__).resolve().parent.parent
+MEDIA = BASE_DIR / "media"
 
 class SpecialDays(Enum):
     TODAY = "امروز"
@@ -33,26 +37,22 @@ def restart_app():
     QApplication.quit()
     QProcess.startDetached(sys.executable, sys.argv)
 
-def copy_file_to_directory(file_path, directory, new_file_name):
 
-    try:
-        if not os.path.isfile(file_path):
-            raise ValueError(f"The specified file does not exist: {file_path}")
 
-        if not os.path.isdir(directory):
-            raise ValueError(f"The specified directory does not exist: {directory}")
-
-        new_file_path = os.path.join(directory, new_file_name)
-        shutil.copy(file_path, new_file_path)
-        print(f"File '{file_path}' successfully copied to '{new_file_path}'")
-    except Exception as e:
-        print(f"An error occurred: {e}")
+def configure_logs():
+    logging.basicConfig(
+        filename="app.log",
+        level=logging.ERROR,
+        format="%(asctime)s - %(levelname)s - %(message)s",
+        force=True,
+        encoding='utf-8'
+    )
 
 class BaseController:
 
     def handle_error(self, error_message):
         Messages.show_error_msg(error_message)
-        ## to do log the error
+        logging.error(f"Error occurred: {error_message}")
 
     def _start_worker(self, operation, args=[], result_callback=None, success_callback=None):
         worker = DatabaseWorker(operation, *args)
@@ -64,3 +64,22 @@ class BaseController:
         self.active_workers.append(worker)
         worker.finished.connect(lambda: self.active_workers.remove(worker))
         worker.start()
+
+def create_patient_directory_if_not_exist(patient_file_number):
+    patient_directory = Path.joinpath(MEDIA,patient_file_number)
+    try:
+        os.makedirs(patient_directory, exist_ok=True)
+    except OSError as e:
+        error_msg = f"Error making patient directory: {e.strerror}"
+        logging.error(error_msg)
+        raise e
+    
+def delete_patient_directory(patient_file_number):
+    patient_dir = Path.joinpath(MEDIA,patient_file_number)
+    try:
+        shutil.rmtree(patient_dir)
+    except OSError as e:
+        error_msg = f"Error removing patient directory: {e.strerror}"
+        logging.error(error_msg)
+        raise e
+

@@ -12,23 +12,24 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtChart import QChartView
 
 
+
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(1196, 723)
+        MainWindow.resize(1351, 882)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Preferred)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(MainWindow.sizePolicy().hasHeightForWidth())
         MainWindow.setSizePolicy(sizePolicy)
-        MainWindow.setMinimumSize(QtCore.QSize(1196, 723))
-        MainWindow.setMaximumSize(QtCore.QSize(1196, 723))
+        MainWindow.setMinimumSize(QtCore.QSize(1351, 882))
+        MainWindow.setMaximumSize(QtCore.QSize(1351, 882))
         MainWindow.setLayoutDirection(QtCore.Qt.RightToLeft)
         MainWindow.setTabShape(QtWidgets.QTabWidget.Rounded)
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
         self.tabWidget = QtWidgets.QTabWidget(self.centralwidget)
-        self.tabWidget.setGeometry(QtCore.QRect(0, 0, 1201, 671))
+        self.tabWidget.setGeometry(QtCore.QRect(0, 0, 1361, 841))
         font = QtGui.QFont()
         font.setFamily("Vazirmatn SemiBold")
         font.setPointSize(14)
@@ -39,7 +40,7 @@ class Ui_MainWindow(object):
         self.main_tab = QtWidgets.QWidget()
         self.main_tab.setObjectName("main_tab")
         self.groupBox = QtWidgets.QGroupBox(self.main_tab)
-        self.groupBox.setGeometry(QtCore.QRect(10, 89, 1171, 71))
+        self.groupBox.setGeometry(QtCore.QRect(10, 90, 1331, 81))
         font = QtGui.QFont()
         font.setFamily("Vazirmatn Black")
         font.setPointSize(10)
@@ -50,15 +51,17 @@ class Ui_MainWindow(object):
         self.groupBox.setAlignment(QtCore.Qt.AlignRight|QtCore.Qt.AlignTrailing|QtCore.Qt.AlignVCenter)
         self.groupBox.setObjectName("groupBox")
         self.patientsIdentityCodeSearch_txtbox = QtWidgets.QLineEdit(self.groupBox)
-        self.patientsIdentityCodeSearch_txtbox.setGeometry(QtCore.QRect(200, 30, 201, 31))
+        self.patientsIdentityCodeSearch_txtbox.setGeometry(QtCore.QRect(420, 30, 181, 31))
+        font = QtGui.QFont()
+        font.setFamily("Vazirmatn")
+        font.setPointSize(12)
+        self.patientsIdentityCodeSearch_txtbox.setFont(font)
         self.patientsIdentityCodeSearch_txtbox.setLayoutDirection(QtCore.Qt.RightToLeft)
         self.patientsIdentityCodeSearch_txtbox.setStyleSheet("/* Basic LineEdit styling */\n"
 "QLineEdit {\n"
 "    background-color: #ffffff; /* White background */\n"
 "    border: 1px solid #dee2e6; /* Light grey border */\n"
 "    border-radius: 5px; /* Rounded corners */\n"
-"    font-family: \'Vazirmatn\', sans-serif; /* Font family */\n"
-"    font-size: 16px; /* Font size */\n"
 "    color: #343a40; /* Dark grey text color */\n"
 "    outline: none; /* Remove default outline */\n"
 "}\n"
@@ -82,20 +85,26 @@ class Ui_MainWindow(object):
 "")
         self.patientsIdentityCodeSearch_txtbox.setObjectName("patientsIdentityCodeSearch_txtbox")
         self.label_2 = QtWidgets.QLabel(self.groupBox)
-        self.label_2.setGeometry(QtCore.QRect(400, 40, 47, 13))
+        self.label_2.setGeometry(QtCore.QRect(610, 30, 47, 31))
+        font = QtGui.QFont()
+        font.setPointSize(11)
+        self.label_2.setFont(font)
         self.label_2.setObjectName("label_2")
         self.patientsLastNameSearch_btn = QtWidgets.QPushButton(self.groupBox)
-        self.patientsLastNameSearch_btn.setGeometry(QtCore.QRect(480, 30, 71, 31))
+        self.patientsLastNameSearch_btn.setGeometry(QtCore.QRect(710, 30, 61, 31))
+        font = QtGui.QFont()
+        font.setFamily("Vazirmatn")
+        font.setPointSize(11)
+        font.setBold(True)
+        font.setWeight(75)
+        self.patientsLastNameSearch_btn.setFont(font)
         self.patientsLastNameSearch_btn.setStyleSheet("QPushButton {\n"
 "    background-color: #0050a5; /* Bootstrap primary blue */\n"
 "    color: white; /* White text */\n"
 "    border: none;\n"
 "    border-radius: 5px; /* Rounded corners */\n"
-"    font-size: 15px; /* Font size */\n"
-"    font-weight: bold; /* Bold text */\n"
 "    text-align: center;\n"
 "    text-decoration: none;\n"
-"    font-family: \'Vazirmatn\', sans-serif; /* Font family */\n"
 "}\n"
 "\n"
 "QPushButton:hover {\n"
@@ -108,15 +117,17 @@ class Ui_MainWindow(object):
 "")
         self.patientsLastNameSearch_btn.setObjectName("patientsLastNameSearch_btn")
         self.patientsLastNameSearch_txtbox = QtWidgets.QLineEdit(self.groupBox)
-        self.patientsLastNameSearch_txtbox.setGeometry(QtCore.QRect(560, 30, 221, 31))
+        self.patientsLastNameSearch_txtbox.setGeometry(QtCore.QRect(780, 30, 201, 31))
+        font = QtGui.QFont()
+        font.setFamily("Vazirmatn")
+        font.setPointSize(12)
+        self.patientsLastNameSearch_txtbox.setFont(font)
         self.patientsLastNameSearch_txtbox.setLayoutDirection(QtCore.Qt.LeftToRight)
         self.patientsLastNameSearch_txtbox.setStyleSheet("/* Basic LineEdit styling */\n"
 "QLineEdit {\n"
 "    background-color: #ffffff; /* White background */\n"
 "    border: 1px solid #dee2e6; /* Light grey border */\n"
 "    border-radius: 5px; /* Rounded corners */\n"
-"    font-family: \'Vazirmatn\', sans-serif; /* Font family */\n"
-"    font-size: 16px; /* Font size */\n"
 "    color: #343a40; /* Dark grey text color */\n"
 "    outline: none; /* Remove default outline */\n"
 "}\n"
@@ -142,17 +153,20 @@ class Ui_MainWindow(object):
         self.patientsLastNameSearch_txtbox.setAlignment(QtCore.Qt.AlignLeading|QtCore.Qt.AlignLeft|QtCore.Qt.AlignVCenter)
         self.patientsLastNameSearch_txtbox.setObjectName("patientsLastNameSearch_txtbox")
         self.patientsIdentityCodeSearch_btn = QtWidgets.QPushButton(self.groupBox)
-        self.patientsIdentityCodeSearch_btn.setGeometry(QtCore.QRect(120, 30, 71, 31))
+        self.patientsIdentityCodeSearch_btn.setGeometry(QtCore.QRect(350, 30, 61, 31))
+        font = QtGui.QFont()
+        font.setFamily("Vazirmatn")
+        font.setPointSize(11)
+        font.setBold(True)
+        font.setWeight(75)
+        self.patientsIdentityCodeSearch_btn.setFont(font)
         self.patientsIdentityCodeSearch_btn.setStyleSheet("QPushButton {\n"
 "    background-color: #0050a5; /* Bootstrap primary blue */\n"
 "    color: white; /* White text */\n"
 "    border: none;\n"
 "    border-radius: 5px; /* Rounded corners */\n"
-"    font-size: 15px; /* Font size */\n"
-"    font-weight: bold; /* Bold text */\n"
 "    text-align: center;\n"
 "    text-decoration: none;\n"
-"    font-family: \'Vazirmatn\', sans-serif; /* Font family */\n"
 "}\n"
 "\n"
 "QPushButton:hover {\n"
@@ -165,12 +179,15 @@ class Ui_MainWindow(object):
 "")
         self.patientsIdentityCodeSearch_btn.setObjectName("patientsIdentityCodeSearch_btn")
         self.label_6 = QtWidgets.QLabel(self.groupBox)
-        self.label_6.setGeometry(QtCore.QRect(760, 30, 101, 31))
+        self.label_6.setGeometry(QtCore.QRect(970, 30, 101, 31))
+        font = QtGui.QFont()
+        font.setPointSize(11)
+        self.label_6.setFont(font)
         self.label_6.setObjectName("label_6")
         self.refreshPatientsList_btn = QtWidgets.QPushButton(self.groupBox)
-        self.refreshPatientsList_btn.setGeometry(QtCore.QRect(940, 30, 191, 31))
+        self.refreshPatientsList_btn.setGeometry(QtCore.QRect(1150, 30, 171, 41))
         font = QtGui.QFont()
-        font.setFamily("Vazirmatn,sans-serif")
+        font.setFamily("Vazirmatn")
         font.setPointSize(11)
         font.setBold(True)
         font.setUnderline(False)
@@ -182,10 +199,8 @@ class Ui_MainWindow(object):
 "    color: white; /* White text */\n"
 "    border: none;\n"
 "    border-radius: 5px; /* Rounded corners */\n"
-"    font-weight: bold; /* Bold text */\n"
 "    text-align: center;\n"
 "    text-decoration: none;\n"
-"    font-family: \'Vazirmatn\', sans-serif; /* Font family */\n"
 "}\n"
 "\n"
 "QPushButton:hover {\n"
@@ -197,22 +212,85 @@ class Ui_MainWindow(object):
 "}\n"
 "")
         self.refreshPatientsList_btn.setObjectName("refreshPatientsList_btn")
-        self.label_3 = QtWidgets.QLabel(self.main_tab)
-        self.label_3.setGeometry(QtCore.QRect(10, 10, 951, 71))
+        self.patientSearchFileNumber_txtbox = QtWidgets.QLineEdit(self.groupBox)
+        self.patientSearchFileNumber_txtbox.setGeometry(QtCore.QRect(90, 30, 111, 31))
         font = QtGui.QFont()
-        font.setFamily("A Rezvan-fat,sans-serif")
-        font.setPointSize(-1)
+        font.setFamily("Vazirmatn")
+        font.setPointSize(12)
+        self.patientSearchFileNumber_txtbox.setFont(font)
+        self.patientSearchFileNumber_txtbox.setLayoutDirection(QtCore.Qt.RightToLeft)
+        self.patientSearchFileNumber_txtbox.setStyleSheet("/* Basic LineEdit styling */\n"
+"QLineEdit {\n"
+"    background-color: #ffffff; /* White background */\n"
+"    border: 1px solid #dee2e6; /* Light grey border */\n"
+"    border-radius: 5px; /* Rounded corners */\n"
+"    color: #343a40; /* Dark grey text color */\n"
+"    outline: none; /* Remove default outline */\n"
+"}\n"
+"\n"
+"/* Hover effect */\n"
+"QLineEdit:hover {\n"
+"    border: 1px solid #007bff; /* Blue border on hover */\n"
+"}\n"
+"\n"
+"/* Focus effect */\n"
+"QLineEdit:focus {\n"
+"    border: 1px solid #007bff; /* Blue border on focus */\n"
+"}\n"
+"\n"
+"/* Disabled state */\n"
+"QLineEdit:disabled {\n"
+"    background-color: #e9ecef; /* Light grey background when disabled */\n"
+"    color: #6c757d; /* Grey text color when disabled */\n"
+"}\n"
+"\n"
+"")
+        self.patientSearchFileNumber_txtbox.setObjectName("patientSearchFileNumber_txtbox")
+        self.label_7 = QtWidgets.QLabel(self.groupBox)
+        self.label_7.setGeometry(QtCore.QRect(190, 30, 101, 31))
+        font = QtGui.QFont()
+        font.setPointSize(11)
+        self.label_7.setFont(font)
+        self.label_7.setObjectName("label_7")
+        self.patientSearchByFileNumber_btn = QtWidgets.QPushButton(self.groupBox)
+        self.patientSearchByFileNumber_btn.setGeometry(QtCore.QRect(20, 30, 61, 31))
+        font = QtGui.QFont()
+        font.setFamily("Vazirmatn")
+        font.setPointSize(11)
         font.setBold(True)
         font.setWeight(75)
+        self.patientSearchByFileNumber_btn.setFont(font)
+        self.patientSearchByFileNumber_btn.setStyleSheet("QPushButton {\n"
+"    background-color: #0050a5; /* Bootstrap primary blue */\n"
+"    color: white; /* White text */\n"
+"    border: none;\n"
+"    border-radius: 5px; /* Rounded corners */\n"
+"    text-align: center;\n"
+"    text-decoration: none;\n"
+"}\n"
+"\n"
+"QPushButton:hover {\n"
+"    background-color: #0056b3; /* Darker blue on hover */\n"
+"}\n"
+"\n"
+"QPushButton:pressed {\n"
+"    background-color: #004085; /* Even darker blue on press */\n"
+"}\n"
+"")
+        self.patientSearchByFileNumber_btn.setObjectName("patientSearchByFileNumber_btn")
+        self.label_3 = QtWidgets.QLabel(self.main_tab)
+        self.label_3.setGeometry(QtCore.QRect(10, 10, 1111, 71))
+        font = QtGui.QFont()
+        font.setFamily("A Rezvan-fat")
+        font.setPointSize(26)
+        font.setBold(False)
+        font.setWeight(50)
         self.label_3.setFont(font)
         self.label_3.setLayoutDirection(QtCore.Qt.RightToLeft)
         self.label_3.setAutoFillBackground(False)
         self.label_3.setStyleSheet("/* Basic styling for the company name label */\n"
 "QLabel {\n"
 "    color: #007bff; /* Bootstrap primary blue text color */\n"
-"    font-family: \'A Rezvan-fat\', sans-serif; /* Font family */\n"
-"    font-size: 30px; /* Larger font size for prominence */\n"
-"    font-weight: bold; /* Bold text */\n"
 "    padding: 10px; /* Padding around the text */\n"
 "    border: 2px solid #007bff; /* Optional: Border with the same blue color */\n"
 "    border-radius: 10px; /* Rounded corners */\n"
@@ -229,10 +307,10 @@ class Ui_MainWindow(object):
         self.label_3.setAlignment(QtCore.Qt.AlignCenter)
         self.label_3.setObjectName("label_3")
         self.patients_lst = QtWidgets.QListWidget(self.main_tab)
-        self.patients_lst.setGeometry(QtCore.QRect(10, 170, 1171, 441))
+        self.patients_lst.setGeometry(QtCore.QRect(10, 180, 1331, 601))
         font = QtGui.QFont()
-        font.setFamily("Vazirmatn,sans-serif")
-        font.setPointSize(13)
+        font.setFamily("Vazirmatn")
+        font.setPointSize(14)
         self.patients_lst.setFont(font)
         self.patients_lst.setMouseTracking(False)
         self.patients_lst.setAutoFillBackground(False)
@@ -242,7 +320,6 @@ class Ui_MainWindow(object):
 "    border: 1px solid #dee2e6; /* Border color */\n"
 "    border-radius: 5px; /* Rounded corners */\n"
 "    padding: 5px; /* Padding inside the list */\n"
-"    font-family: \'Vazirmatn\', sans-serif; /* Font family */\n"
 "    outline: 0; /* Remove focus indicator */\n"
 "}\n"
 "\n"
@@ -306,10 +383,10 @@ class Ui_MainWindow(object):
         self.patients_lst.setWordWrap(False)
         self.patients_lst.setObjectName("patients_lst")
         self.addPatient_btn = QtWidgets.QPushButton(self.main_tab)
-        self.addPatient_btn.setGeometry(QtCore.QRect(970, 10, 211, 71))
+        self.addPatient_btn.setGeometry(QtCore.QRect(1130, 10, 211, 71))
         font = QtGui.QFont()
-        font.setFamily("Vazirmatn,sans-serif")
-        font.setPointSize(-1)
+        font.setFamily("Vazirmatn")
+        font.setPointSize(12)
         font.setBold(True)
         font.setUnderline(False)
         font.setWeight(75)
@@ -321,11 +398,8 @@ class Ui_MainWindow(object):
 "    border: none;\n"
 "    border-radius: 5px; /* Rounded corners */\n"
 "    padding: 10px 20px; /* Padding */\n"
-"    font-size: 16px; /* Font size */\n"
-"    font-weight: bold; /* Bold text */\n"
 "    text-align: center;\n"
 "    text-decoration: none;\n"
-"    font-family: \'Vazirmatn\', sans-serif; /* Font family */\n"
 "}\n"
 "\n"
 "QPushButton:hover {\n"
@@ -341,10 +415,10 @@ class Ui_MainWindow(object):
         self.notifications_tab = QtWidgets.QWidget()
         self.notifications_tab.setObjectName("notifications_tab")
         self.appointments_lst = QtWidgets.QListWidget(self.notifications_tab)
-        self.appointments_lst.setGeometry(QtCore.QRect(10, 100, 1171, 511))
+        self.appointments_lst.setGeometry(QtCore.QRect(10, 100, 1331, 681))
         font = QtGui.QFont()
-        font.setFamily("Vazirmatn,sans-serif")
-        font.setPointSize(-1)
+        font.setFamily("Vazirmatn")
+        font.setPointSize(14)
         self.appointments_lst.setFont(font)
         self.appointments_lst.setLayoutDirection(QtCore.Qt.RightToLeft)
         self.appointments_lst.setStyleSheet("/* Basic ListWidget styling */\n"
@@ -353,8 +427,6 @@ class Ui_MainWindow(object):
 "    border: 1px solid #dee2e6; /* Border color */\n"
 "    border-radius: 5px; /* Rounded corners */\n"
 "    padding: 5px; /* Padding inside the list */\n"
-"    font-family: \'Vazirmatn\', sans-serif; /* Font family */\n"
-"    font-size: 17px; /* Font size */\n"
 "    outline: 0; /* Remove focus indicator */\n"
 "}\n"
 "\n"
@@ -409,21 +481,18 @@ class Ui_MainWindow(object):
 "")
         self.appointments_lst.setObjectName("appointments_lst")
         self.label_9 = QtWidgets.QLabel(self.notifications_tab)
-        self.label_9.setGeometry(QtCore.QRect(10, 20, 311, 71))
+        self.label_9.setGeometry(QtCore.QRect(10, 20, 261, 71))
         font = QtGui.QFont()
-        font.setFamily("A Rezvan-fat,sans-serif")
-        font.setPointSize(-1)
-        font.setBold(True)
-        font.setWeight(75)
+        font.setFamily("A Rezvan-fat")
+        font.setPointSize(26)
+        font.setBold(False)
+        font.setWeight(50)
         self.label_9.setFont(font)
         self.label_9.setLayoutDirection(QtCore.Qt.RightToLeft)
         self.label_9.setAutoFillBackground(False)
         self.label_9.setStyleSheet("/* Basic styling for the company name label */\n"
 "QLabel {\n"
 "    color: #007bff; /* Bootstrap primary blue text color */\n"
-"    font-family: \'A Rezvan-fat\', sans-serif; /* Font family */\n"
-"    font-size: 30px; /* Larger font size for prominence */\n"
-"    font-weight: bold; /* Bold text */\n"
 "    padding: 10px; /* Padding around the text */\n"
 "    border: 2px solid #007bff; /* Optional: Border with the same blue color */\n"
 "    border-radius: 10px; /* Rounded corners */\n"
@@ -440,7 +509,7 @@ class Ui_MainWindow(object):
         self.label_9.setAlignment(QtCore.Qt.AlignCenter)
         self.label_9.setObjectName("label_9")
         self.groupBox_7 = QtWidgets.QGroupBox(self.notifications_tab)
-        self.groupBox_7.setGeometry(QtCore.QRect(960, 10, 221, 81))
+        self.groupBox_7.setGeometry(QtCore.QRect(890, 10, 281, 81))
         font = QtGui.QFont()
         font.setFamily("Vazirmatn Black")
         font.setPointSize(10)
@@ -453,8 +522,8 @@ class Ui_MainWindow(object):
         self.appointmentSearchByDay_btn = QtWidgets.QPushButton(self.groupBox_7)
         self.appointmentSearchByDay_btn.setGeometry(QtCore.QRect(10, 30, 71, 31))
         font = QtGui.QFont()
-        font.setFamily("Vazirmatn,sans-serif")
-        font.setPointSize(-1)
+        font.setFamily("Vazirmatn")
+        font.setPointSize(11)
         font.setBold(True)
         font.setUnderline(False)
         font.setWeight(75)
@@ -465,11 +534,8 @@ class Ui_MainWindow(object):
 "    color: white; /* White text */\n"
 "    border: none;\n"
 "    border-radius: 5px; /* Rounded corners */\n"
-"    font-size: 15px; /* Font size */\n"
-"    font-weight: bold; /* Bold text */\n"
 "    text-align: center;\n"
 "    text-decoration: none;\n"
-"    font-family: \'Vazirmatn\', sans-serif; /* Font family */\n"
 "}\n"
 "\n"
 "QPushButton:hover {\n"
@@ -483,7 +549,7 @@ class Ui_MainWindow(object):
         self.appointmentSearchByDay_btn.setObjectName("appointmentSearchByDay_btn")
         self.appointmentSearchDaySelect_cmbox = QtWidgets.QComboBox(self.groupBox_7)
         self.appointmentSearchDaySelect_cmbox.setEnabled(True)
-        self.appointmentSearchDaySelect_cmbox.setGeometry(QtCore.QRect(90, 30, 121, 31))
+        self.appointmentSearchDaySelect_cmbox.setGeometry(QtCore.QRect(90, 30, 181, 31))
         font = QtGui.QFont()
         font.setFamily("Vazirmatn Black")
         font.setPointSize(11)
@@ -501,7 +567,7 @@ class Ui_MainWindow(object):
         self.appointmentSearchDaySelect_cmbox.addItem("")
         self.appointmentSearchDaySelect_cmbox.addItem("")
         self.groupBox_8 = QtWidgets.QGroupBox(self.notifications_tab)
-        self.groupBox_8.setGeometry(QtCore.QRect(690, 10, 251, 81))
+        self.groupBox_8.setGeometry(QtCore.QRect(630, 10, 251, 81))
         font = QtGui.QFont()
         font.setFamily("Vazirmatn Black")
         font.setPointSize(10)
@@ -526,16 +592,19 @@ class Ui_MainWindow(object):
         self.year_spnbox.setObjectName("year_spnbox")
         self.AppointmentSearchByDate_btn = QtWidgets.QPushButton(self.groupBox_8)
         self.AppointmentSearchByDate_btn.setGeometry(QtCore.QRect(10, 30, 61, 31))
+        font = QtGui.QFont()
+        font.setFamily("Vazirmatn")
+        font.setPointSize(11)
+        font.setBold(True)
+        font.setWeight(75)
+        self.AppointmentSearchByDate_btn.setFont(font)
         self.AppointmentSearchByDate_btn.setStyleSheet("QPushButton {\n"
 "    background-color: #0050a5; /* Bootstrap primary blue */\n"
 "    color: white; /* White text */\n"
 "    border: none;\n"
 "    border-radius: 5px; /* Rounded corners */\n"
-"    font-size: 15px; /* Font size */\n"
-"    font-weight: bold; /* Bold text */\n"
 "    text-align: center;\n"
 "    text-decoration: none;\n"
-"    font-family: \'Vazirmatn\', sans-serif; /* Font family */\n"
 "}\n"
 "\n"
 "QPushButton:hover {\n"
@@ -548,7 +617,7 @@ class Ui_MainWindow(object):
 "")
         self.AppointmentSearchByDate_btn.setObjectName("AppointmentSearchByDate_btn")
         self.groupBox_11 = QtWidgets.QGroupBox(self.notifications_tab)
-        self.groupBox_11.setGeometry(QtCore.QRect(330, 10, 341, 81))
+        self.groupBox_11.setGeometry(QtCore.QRect(280, 10, 341, 81))
         font = QtGui.QFont()
         font.setFamily("Vazirmatn Black")
         font.setPointSize(10)
@@ -580,7 +649,7 @@ class Ui_MainWindow(object):
         self.sendToAllSMSByDays_btn = QtWidgets.QPushButton(self.groupBox_11)
         self.sendToAllSMSByDays_btn.setGeometry(QtCore.QRect(10, 30, 91, 31))
         font = QtGui.QFont()
-        font.setFamily("Vazirmatn,sans-serif")
+        font.setFamily("Vazirmatn")
         font.setPointSize(11)
         font.setBold(True)
         font.setUnderline(False)
@@ -592,10 +661,8 @@ class Ui_MainWindow(object):
 "    color: white; /* White text */\n"
 "    border: none;\n"
 "    border-radius: 5px; /* Rounded corners */\n"
-"    font-weight: bold; /* Bold text */\n"
 "    text-align: center;\n"
 "    text-decoration: none;\n"
-"    font-family: \'Vazirmatn\', sans-serif; /* Font family */\n"
 "}\n"
 "\n"
 "QPushButton:hover {\n"
@@ -607,11 +674,40 @@ class Ui_MainWindow(object):
 "}\n"
 "")
         self.sendToAllSMSByDays_btn.setObjectName("sendToAllSMSByDays_btn")
+        self.addAppointment_btn = QtWidgets.QPushButton(self.notifications_tab)
+        self.addAppointment_btn.setGeometry(QtCore.QRect(1180, 20, 161, 71))
+        font = QtGui.QFont()
+        font.setFamily("Vazirmatn")
+        font.setPointSize(12)
+        font.setBold(True)
+        font.setUnderline(False)
+        font.setWeight(75)
+        font.setStrikeOut(False)
+        self.addAppointment_btn.setFont(font)
+        self.addAppointment_btn.setStyleSheet("QPushButton {\n"
+"    background-color: #0050a5; /* Bootstrap primary blue */\n"
+"    color: white; /* White text */\n"
+"    border: none;\n"
+"    border-radius: 5px; /* Rounded corners */\n"
+"    padding: 10px 20px; /* Padding */\n"
+"    text-align: center;\n"
+"    text-decoration: none;\n"
+"}\n"
+"\n"
+"QPushButton:hover {\n"
+"    background-color: #0056b3; /* Darker blue on hover */\n"
+"}\n"
+"\n"
+"QPushButton:pressed {\n"
+"    background-color: #004085; /* Even darker blue on press */\n"
+"}\n"
+"")
+        self.addAppointment_btn.setObjectName("addAppointment_btn")
         self.tabWidget.addTab(self.notifications_tab, "")
         self.services_tab = QtWidgets.QWidget()
         self.services_tab.setObjectName("services_tab")
         self.groupBox_4 = QtWidgets.QGroupBox(self.services_tab)
-        self.groupBox_4.setGeometry(QtCore.QRect(10, 100, 1171, 81))
+        self.groupBox_4.setGeometry(QtCore.QRect(10, 100, 1331, 81))
         font = QtGui.QFont()
         font.setFamily("Vazirmatn Black")
         font.setPointSize(11)
@@ -623,18 +719,20 @@ class Ui_MainWindow(object):
         self.groupBox_4.setAlignment(QtCore.Qt.AlignRight|QtCore.Qt.AlignTrailing|QtCore.Qt.AlignVCenter)
         self.groupBox_4.setObjectName("groupBox_4")
         self.searchServices_btn = QtWidgets.QPushButton(self.groupBox_4)
-        self.searchServices_btn.setGeometry(QtCore.QRect(700, 30, 111, 31))
+        self.searchServices_btn.setGeometry(QtCore.QRect(850, 30, 111, 31))
+        font = QtGui.QFont()
+        font.setFamily("Vazirmatn")
+        font.setPointSize(12)
+        font.setBold(True)
+        font.setWeight(75)
+        self.searchServices_btn.setFont(font)
         self.searchServices_btn.setStyleSheet("QPushButton {\n"
 "    background-color: #0050a5; /* Bootstrap primary blue */\n"
 "    color: white; /* White text */\n"
 "    border: none;\n"
 "    border-radius: 5px; /* Rounded corners */\n"
-"    font-size: 15px; /* Font size */\n"
-"    font-weight: bold; /* Bold text */\n"
 "    text-align: center;\n"
 "    text-decoration: none;\n"
-"    box-shadow: 0 4px rgba(0, 0, 0, 0.2); /* Shadow */\n"
-"    font-family: \'Vazirmatn\', sans-serif; /* Font family */\n"
 "}\n"
 "\n"
 "QPushButton:hover {\n"
@@ -643,24 +741,24 @@ class Ui_MainWindow(object):
 "\n"
 "QPushButton:pressed {\n"
 "    background-color: #004085; /* Even darker blue on press */\n"
-"    box-shadow: 0 2px rgba(0, 0, 0, 0.2); /* Reduce shadow on press */\n"
-"    transform: translateY(2px); /* Move button down on press */\n"
 "}\n"
 "")
         self.searchServices_btn.setObjectName("searchServices_btn")
         self.label_11 = QtWidgets.QLabel(self.groupBox_4)
-        self.label_11.setGeometry(QtCore.QRect(1080, 40, 81, 20))
+        self.label_11.setGeometry(QtCore.QRect(1230, 40, 81, 20))
         self.label_11.setObjectName("label_11")
         self.serviceName_txtbox = QtWidgets.QLineEdit(self.groupBox_4)
-        self.serviceName_txtbox.setGeometry(QtCore.QRect(820, 30, 261, 31))
+        self.serviceName_txtbox.setGeometry(QtCore.QRect(970, 30, 261, 31))
+        font = QtGui.QFont()
+        font.setFamily("Vazirmatn")
+        font.setPointSize(12)
+        self.serviceName_txtbox.setFont(font)
         self.serviceName_txtbox.setLayoutDirection(QtCore.Qt.RightToLeft)
         self.serviceName_txtbox.setStyleSheet("/* Basic LineEdit styling */\n"
 "QLineEdit {\n"
 "    background-color: #ffffff; /* White background */\n"
 "    border: 1px solid #dee2e6; /* Light grey border */\n"
 "    border-radius: 5px; /* Rounded corners */\n"
-"    font-family: \'Vazirmatn\', sans-serif; /* Font family */\n"
-"    font-size: 16px; /* Font size */\n"
 "    color: #343a40; /* Dark grey text color */\n"
 "    outline: none; /* Remove default outline */\n"
 "}\n"
@@ -686,10 +784,10 @@ class Ui_MainWindow(object):
         self.serviceName_txtbox.setText("")
         self.serviceName_txtbox.setObjectName("serviceName_txtbox")
         self.addServices_btn = QtWidgets.QPushButton(self.services_tab)
-        self.addServices_btn.setGeometry(QtCore.QRect(970, 20, 211, 71))
+        self.addServices_btn.setGeometry(QtCore.QRect(1120, 20, 221, 71))
         font = QtGui.QFont()
-        font.setFamily("Vazirmatn,sans-serif")
-        font.setPointSize(-1)
+        font.setFamily("Vazirmatn")
+        font.setPointSize(12)
         font.setBold(True)
         font.setUnderline(False)
         font.setWeight(75)
@@ -701,11 +799,8 @@ class Ui_MainWindow(object):
 "    border: none;\n"
 "    border-radius: 5px; /* Rounded corners */\n"
 "    padding: 10px 20px; /* Padding */\n"
-"    font-size: 16px; /* Font size */\n"
-"    font-weight: bold; /* Bold text */\n"
 "    text-align: center;\n"
 "    text-decoration: none;\n"
-"    font-family: \'Vazirmatn\', sans-serif; /* Font family */\n"
 "}\n"
 "\n"
 "QPushButton:hover {\n"
@@ -718,21 +813,18 @@ class Ui_MainWindow(object):
 "")
         self.addServices_btn.setObjectName("addServices_btn")
         self.label_8 = QtWidgets.QLabel(self.services_tab)
-        self.label_8.setGeometry(QtCore.QRect(10, 20, 951, 71))
+        self.label_8.setGeometry(QtCore.QRect(10, 20, 1101, 71))
         font = QtGui.QFont()
-        font.setFamily("A Rezvan-fat,sans-serif")
-        font.setPointSize(-1)
-        font.setBold(True)
-        font.setWeight(75)
+        font.setFamily("A Rezvan-fat")
+        font.setPointSize(26)
+        font.setBold(False)
+        font.setWeight(50)
         self.label_8.setFont(font)
         self.label_8.setLayoutDirection(QtCore.Qt.RightToLeft)
         self.label_8.setAutoFillBackground(False)
         self.label_8.setStyleSheet("/* Basic styling for the company name label */\n"
 "QLabel {\n"
 "    color: #007bff; /* Bootstrap primary blue text color */\n"
-"    font-family: \'A Rezvan-fat\', sans-serif; /* Font family */\n"
-"    font-size: 30px; /* Larger font size for prominence */\n"
-"    font-weight: bold; /* Bold text */\n"
 "    padding: 10px; /* Padding around the text */\n"
 "    border: 2px solid #007bff; /* Optional: Border with the same blue color */\n"
 "    border-radius: 10px; /* Rounded corners */\n"
@@ -749,10 +841,10 @@ class Ui_MainWindow(object):
         self.label_8.setAlignment(QtCore.Qt.AlignCenter)
         self.label_8.setObjectName("label_8")
         self.services_lst = QtWidgets.QListWidget(self.services_tab)
-        self.services_lst.setGeometry(QtCore.QRect(10, 190, 1171, 421))
+        self.services_lst.setGeometry(QtCore.QRect(10, 190, 1331, 591))
         font = QtGui.QFont()
-        font.setFamily("Vazirmatn,sans-serif")
-        font.setPointSize(-1)
+        font.setFamily("Vazirmatn")
+        font.setPointSize(14)
         self.services_lst.setFont(font)
         self.services_lst.setLayoutDirection(QtCore.Qt.RightToLeft)
         self.services_lst.setStyleSheet("/* Basic ListWidget styling */\n"
@@ -761,8 +853,6 @@ class Ui_MainWindow(object):
 "    border: 1px solid #dee2e6; /* Border color */\n"
 "    border-radius: 5px; /* Rounded corners */\n"
 "    padding: 5px; /* Padding inside the list */\n"
-"    font-family: \'Vazirmatn\', sans-serif; /* Font family */\n"
-"    font-size: 17px; /* Font size */\n"
 "    outline: 0; /* Remove focus indicator */\n"
 "}\n"
 "\n"
@@ -820,10 +910,10 @@ class Ui_MainWindow(object):
         self.medicalRecords_tab = QtWidgets.QWidget()
         self.medicalRecords_tab.setObjectName("medicalRecords_tab")
         self.addDoctor_btn = QtWidgets.QPushButton(self.medicalRecords_tab)
-        self.addDoctor_btn.setGeometry(QtCore.QRect(960, 20, 221, 71))
+        self.addDoctor_btn.setGeometry(QtCore.QRect(1120, 20, 221, 71))
         font = QtGui.QFont()
-        font.setFamily("Vazirmatn,sans-serif")
-        font.setPointSize(-1)
+        font.setFamily("Vazirmatn")
+        font.setPointSize(12)
         font.setBold(True)
         font.setUnderline(False)
         font.setWeight(75)
@@ -835,11 +925,8 @@ class Ui_MainWindow(object):
 "    border: none;\n"
 "    border-radius: 5px; /* Rounded corners */\n"
 "    padding: 10px 20px; /* Padding */\n"
-"    font-size: 16px; /* Font size */\n"
-"    font-weight: bold; /* Bold text */\n"
 "    text-align: center;\n"
 "    text-decoration: none;\n"
-"    font-family: \'Vazirmatn\', sans-serif; /* Font family */\n"
 "}\n"
 "\n"
 "QPushButton:hover {\n"
@@ -852,7 +939,7 @@ class Ui_MainWindow(object):
 "")
         self.addDoctor_btn.setObjectName("addDoctor_btn")
         self.groupBox_5 = QtWidgets.QGroupBox(self.medicalRecords_tab)
-        self.groupBox_5.setGeometry(QtCore.QRect(10, 100, 1171, 81))
+        self.groupBox_5.setGeometry(QtCore.QRect(10, 100, 1331, 81))
         font = QtGui.QFont()
         font.setFamily("Vazirmatn Black")
         font.setPointSize(11)
@@ -864,17 +951,22 @@ class Ui_MainWindow(object):
         self.groupBox_5.setAlignment(QtCore.Qt.AlignRight|QtCore.Qt.AlignTrailing|QtCore.Qt.AlignVCenter)
         self.groupBox_5.setObjectName("groupBox_5")
         self.searchDoctor_btn = QtWidgets.QPushButton(self.groupBox_5)
-        self.searchDoctor_btn.setGeometry(QtCore.QRect(680, 30, 111, 31))
+        self.searchDoctor_btn.setGeometry(QtCore.QRect(860, 30, 111, 31))
+        font = QtGui.QFont()
+        font.setFamily("Vazirmatn")
+        font.setPointSize(12)
+        font.setBold(True)
+        font.setUnderline(False)
+        font.setWeight(75)
+        font.setStrikeOut(False)
+        self.searchDoctor_btn.setFont(font)
         self.searchDoctor_btn.setStyleSheet("QPushButton {\n"
 "    background-color: #0050a5; /* Bootstrap primary blue */\n"
 "    color: white; /* White text */\n"
 "    border: none;\n"
 "    border-radius: 5px; /* Rounded corners */\n"
-"    font-size: 16px; /* Font size */\n"
-"    font-weight: bold; /* Bold text */\n"
 "    text-align: center;\n"
 "    text-decoration: none;\n"
-"    font-family: \'Vazirmatn\', sans-serif; /* Font family */\n"
 "}\n"
 "\n"
 "QPushButton:hover {\n"
@@ -887,21 +979,22 @@ class Ui_MainWindow(object):
 "")
         self.searchDoctor_btn.setObjectName("searchDoctor_btn")
         self.label_12 = QtWidgets.QLabel(self.groupBox_5)
-        self.label_12.setGeometry(QtCore.QRect(1070, 40, 71, 20))
+        self.label_12.setGeometry(QtCore.QRect(1240, 30, 71, 31))
         self.label_12.setObjectName("label_12")
         self.doctorName_txtbox = QtWidgets.QLineEdit(self.groupBox_5)
-        self.doctorName_txtbox.setGeometry(QtCore.QRect(800, 30, 261, 31))
+        self.doctorName_txtbox.setGeometry(QtCore.QRect(980, 30, 261, 31))
+        font = QtGui.QFont()
+        font.setFamily("Vazirmatn")
+        font.setPointSize(12)
+        self.doctorName_txtbox.setFont(font)
         self.doctorName_txtbox.setLayoutDirection(QtCore.Qt.RightToLeft)
         self.doctorName_txtbox.setStyleSheet("/* Basic LineEdit styling */\n"
 "QLineEdit {\n"
 "    background-color: #ffffff; /* White background */\n"
 "    border: 1px solid #dee2e6; /* Light grey border */\n"
 "    border-radius: 5px; /* Rounded corners */\n"
-"    font-family: \'Vazirmatn\', sans-serif; /* Font family */\n"
-"    font-size: 16px; /* Font size */\n"
 "    color: #343a40; /* Dark grey text color */\n"
 "    outline: none; /* Remove default outline */\n"
-"    transition: border-color 0.3s, box-shadow 0.3s; /* Smooth transition */\n"
 "}\n"
 "\n"
 "/* Hover effect */\n"
@@ -912,7 +1005,6 @@ class Ui_MainWindow(object):
 "/* Focus effect */\n"
 "QLineEdit:focus {\n"
 "    border: 1px solid #007bff; /* Blue border on focus */\n"
-"    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* Blue shadow on focus */\n"
 "}\n"
 "\n"
 "/* Disabled state */\n"
@@ -926,21 +1018,18 @@ class Ui_MainWindow(object):
         self.doctorName_txtbox.setText("")
         self.doctorName_txtbox.setObjectName("doctorName_txtbox")
         self.label_4 = QtWidgets.QLabel(self.medicalRecords_tab)
-        self.label_4.setGeometry(QtCore.QRect(10, 20, 941, 71))
+        self.label_4.setGeometry(QtCore.QRect(10, 20, 1101, 71))
         font = QtGui.QFont()
-        font.setFamily("A Rezvan-fat,sans-serif")
-        font.setPointSize(-1)
-        font.setBold(True)
-        font.setWeight(75)
+        font.setFamily("A Rezvan-fat")
+        font.setPointSize(26)
+        font.setBold(False)
+        font.setWeight(50)
         self.label_4.setFont(font)
         self.label_4.setLayoutDirection(QtCore.Qt.RightToLeft)
         self.label_4.setAutoFillBackground(False)
         self.label_4.setStyleSheet("/* Basic styling for the company name label */\n"
 "QLabel {\n"
 "    color: #007bff; /* Bootstrap primary blue text color */\n"
-"    font-family: \'A Rezvan-fat\', sans-serif; /* Font family */\n"
-"    font-size: 30px; /* Larger font size for prominence */\n"
-"    font-weight: bold; /* Bold text */\n"
 "    padding: 10px; /* Padding around the text */\n"
 "    border: 2px solid #007bff; /* Optional: Border with the same blue color */\n"
 "    border-radius: 10px; /* Rounded corners */\n"
@@ -957,10 +1046,10 @@ class Ui_MainWindow(object):
         self.label_4.setAlignment(QtCore.Qt.AlignCenter)
         self.label_4.setObjectName("label_4")
         self.doctors_lst = QtWidgets.QListWidget(self.medicalRecords_tab)
-        self.doctors_lst.setGeometry(QtCore.QRect(10, 190, 1171, 421))
+        self.doctors_lst.setGeometry(QtCore.QRect(10, 190, 1331, 591))
         font = QtGui.QFont()
-        font.setFamily("Vazirmatn,sans-serif")
-        font.setPointSize(-1)
+        font.setFamily("Vazirmatn")
+        font.setPointSize(14)
         self.doctors_lst.setFont(font)
         self.doctors_lst.setLayoutDirection(QtCore.Qt.RightToLeft)
         self.doctors_lst.setStyleSheet("/* Basic ListWidget styling */\n"
@@ -969,8 +1058,6 @@ class Ui_MainWindow(object):
 "    border: 1px solid #dee2e6; /* Border color */\n"
 "    border-radius: 5px; /* Rounded corners */\n"
 "    padding: 5px; /* Padding inside the list */\n"
-"    font-family: \'Vazirmatn\', sans-serif; /* Font family */\n"
-"    font-size: 17px; /* Font size */\n"
 "    outline: 0; /* Remove focus indicator */\n"
 "}\n"
 "\n"
@@ -1028,10 +1115,10 @@ class Ui_MainWindow(object):
         self.tab_2 = QtWidgets.QWidget()
         self.tab_2.setObjectName("tab_2")
         self.addExpense_btn = QtWidgets.QPushButton(self.tab_2)
-        self.addExpense_btn.setGeometry(QtCore.QRect(970, 10, 211, 61))
+        self.addExpense_btn.setGeometry(QtCore.QRect(1130, 20, 211, 71))
         font = QtGui.QFont()
-        font.setFamily("Vazirmatn,sans-serif")
-        font.setPointSize(-1)
+        font.setFamily("Vazirmatn")
+        font.setPointSize(12)
         font.setBold(True)
         font.setUnderline(False)
         font.setWeight(75)
@@ -1043,11 +1130,8 @@ class Ui_MainWindow(object):
 "    border: none;\n"
 "    border-radius: 5px; /* Rounded corners */\n"
 "    padding: 10px 20px; /* Padding */\n"
-"    font-size: 16px; /* Font size */\n"
-"    font-weight: bold; /* Bold text */\n"
 "    text-align: center;\n"
 "    text-decoration: none;\n"
-"    font-family: \'Vazirmatn\', sans-serif; /* Font family */\n"
 "}\n"
 "\n"
 "QPushButton:hover {\n"
@@ -1060,21 +1144,18 @@ class Ui_MainWindow(object):
 "")
         self.addExpense_btn.setObjectName("addExpense_btn")
         self.label_10 = QtWidgets.QLabel(self.tab_2)
-        self.label_10.setGeometry(QtCore.QRect(10, 10, 951, 61))
+        self.label_10.setGeometry(QtCore.QRect(10, 20, 1111, 71))
         font = QtGui.QFont()
-        font.setFamily("A Rezvan-fat,sans-serif")
-        font.setPointSize(-1)
-        font.setBold(True)
-        font.setWeight(75)
+        font.setFamily("A Rezvan-fat")
+        font.setPointSize(26)
+        font.setBold(False)
+        font.setWeight(50)
         self.label_10.setFont(font)
         self.label_10.setLayoutDirection(QtCore.Qt.RightToLeft)
         self.label_10.setAutoFillBackground(False)
         self.label_10.setStyleSheet("/* Basic styling for the company name label */\n"
 "QLabel {\n"
 "    color: #007bff; /* Bootstrap primary blue text color */\n"
-"    font-family: \'A Rezvan-fat\', sans-serif; /* Font family */\n"
-"    font-size: 30px; /* Larger font size for prominence */\n"
-"    font-weight: bold; /* Bold text */\n"
 "    padding: 10px; /* Padding around the text */\n"
 "    border: 2px solid #007bff; /* Optional: Border with the same blue color */\n"
 "    border-radius: 10px; /* Rounded corners */\n"
@@ -1091,7 +1172,7 @@ class Ui_MainWindow(object):
         self.label_10.setAlignment(QtCore.Qt.AlignCenter)
         self.label_10.setObjectName("label_10")
         self.groupBox_10 = QtWidgets.QGroupBox(self.tab_2)
-        self.groupBox_10.setGeometry(QtCore.QRect(690, 80, 491, 81))
+        self.groupBox_10.setGeometry(QtCore.QRect(840, 100, 501, 81))
         font = QtGui.QFont()
         font.setFamily("Vazirmatn Black")
         font.setPointSize(10)
@@ -1100,19 +1181,21 @@ class Ui_MainWindow(object):
         self.groupBox_10.setAlignment(QtCore.Qt.AlignLeading|QtCore.Qt.AlignLeft|QtCore.Qt.AlignVCenter)
         self.groupBox_10.setObjectName("groupBox_10")
         self.label_17 = QtWidgets.QLabel(self.groupBox_10)
-        self.label_17.setGeometry(QtCore.QRect(400, 29, 81, 31))
+        self.label_17.setGeometry(QtCore.QRect(410, 29, 81, 31))
         self.label_17.setAlignment(QtCore.Qt.AlignCenter)
         self.label_17.setObjectName("label_17")
         self.expenseName_txtbox = QtWidgets.QLineEdit(self.groupBox_10)
-        self.expenseName_txtbox.setGeometry(QtCore.QRect(140, 30, 261, 31))
+        self.expenseName_txtbox.setGeometry(QtCore.QRect(160, 30, 261, 31))
+        font = QtGui.QFont()
+        font.setFamily("Vazirmatn")
+        font.setPointSize(12)
+        self.expenseName_txtbox.setFont(font)
         self.expenseName_txtbox.setLayoutDirection(QtCore.Qt.RightToLeft)
         self.expenseName_txtbox.setStyleSheet("/* Basic LineEdit styling */\n"
 "QLineEdit {\n"
 "    background-color: #ffffff; /* White background */\n"
 "    border: 1px solid #dee2e6; /* Light grey border */\n"
 "    border-radius: 5px; /* Rounded corners */\n"
-"    font-family: \'Vazirmatn\', sans-serif; /* Font family */\n"
-"    font-size: 16px; /* Font size */\n"
 "    color: #343a40; /* Dark grey text color */\n"
 "    outline: none; /* Remove default outline */\n"
 "}\n"
@@ -1138,18 +1221,20 @@ class Ui_MainWindow(object):
         self.expenseName_txtbox.setText("")
         self.expenseName_txtbox.setObjectName("expenseName_txtbox")
         self.searchExpenseByName_btn = QtWidgets.QPushButton(self.groupBox_10)
-        self.searchExpenseByName_btn.setGeometry(QtCore.QRect(10, 30, 121, 31))
+        self.searchExpenseByName_btn.setGeometry(QtCore.QRect(10, 30, 141, 31))
+        font = QtGui.QFont()
+        font.setFamily("Vazirmatn")
+        font.setPointSize(12)
+        font.setBold(True)
+        font.setWeight(75)
+        self.searchExpenseByName_btn.setFont(font)
         self.searchExpenseByName_btn.setStyleSheet("QPushButton {\n"
 "    background-color: #0050a5; /* Bootstrap primary blue */\n"
 "    color: white; /* White text */\n"
 "    border: none;\n"
 "    border-radius: 5px; /* Rounded corners */\n"
-"    font-size: 15px; /* Font size */\n"
-"    font-weight: bold; /* Bold text */\n"
 "    text-align: center;\n"
 "    text-decoration: none;\n"
-"    box-shadow: 0 4px rgba(0, 0, 0, 0.2); /* Shadow */\n"
-"    font-family: \'Vazirmatn\', sans-serif; /* Font family */\n"
 "}\n"
 "\n"
 "QPushButton:hover {\n"
@@ -1158,13 +1243,11 @@ class Ui_MainWindow(object):
 "\n"
 "QPushButton:pressed {\n"
 "    background-color: #004085; /* Even darker blue on press */\n"
-"    box-shadow: 0 2px rgba(0, 0, 0, 0.2); /* Reduce shadow on press */\n"
-"    transform: translateY(2px); /* Move button down on press */\n"
 "}\n"
 "")
         self.searchExpenseByName_btn.setObjectName("searchExpenseByName_btn")
         self.groupBox_9 = QtWidgets.QGroupBox(self.tab_2)
-        self.groupBox_9.setGeometry(QtCore.QRect(10, 80, 671, 81))
+        self.groupBox_9.setGeometry(QtCore.QRect(10, 100, 821, 81))
         font = QtGui.QFont()
         font.setFamily("Vazirmatn Black")
         font.setPointSize(10)
@@ -1173,32 +1256,35 @@ class Ui_MainWindow(object):
         self.groupBox_9.setAlignment(QtCore.Qt.AlignLeading|QtCore.Qt.AlignLeft|QtCore.Qt.AlignVCenter)
         self.groupBox_9.setObjectName("groupBox_9")
         self.fromDay_spnbox = QtWidgets.QSpinBox(self.groupBox_9)
-        self.fromDay_spnbox.setGeometry(QtCore.QRect(530, 30, 51, 31))
+        self.fromDay_spnbox.setGeometry(QtCore.QRect(620, 30, 51, 31))
         self.fromDay_spnbox.setMinimum(1)
         self.fromDay_spnbox.setMaximum(31)
         self.fromDay_spnbox.setObjectName("fromDay_spnbox")
         self.fromMonth_spnbox = QtWidgets.QSpinBox(self.groupBox_9)
-        self.fromMonth_spnbox.setGeometry(QtCore.QRect(480, 30, 51, 31))
+        self.fromMonth_spnbox.setGeometry(QtCore.QRect(570, 30, 51, 31))
         self.fromMonth_spnbox.setMinimum(1)
         self.fromMonth_spnbox.setMaximum(12)
         self.fromMonth_spnbox.setObjectName("fromMonth_spnbox")
         self.fromYear_spnbox = QtWidgets.QSpinBox(self.groupBox_9)
-        self.fromYear_spnbox.setGeometry(QtCore.QRect(410, 30, 71, 31))
+        self.fromYear_spnbox.setGeometry(QtCore.QRect(500, 30, 71, 31))
         self.fromYear_spnbox.setMinimum(1400)
         self.fromYear_spnbox.setMaximum(1500)
         self.fromYear_spnbox.setObjectName("fromYear_spnbox")
         self.searchExpenseByDate_btn = QtWidgets.QPushButton(self.groupBox_9)
-        self.searchExpenseByDate_btn.setGeometry(QtCore.QRect(10, 30, 131, 31))
+        self.searchExpenseByDate_btn.setGeometry(QtCore.QRect(20, 30, 121, 31))
+        font = QtGui.QFont()
+        font.setFamily("Vazirmatn")
+        font.setPointSize(12)
+        font.setBold(True)
+        font.setWeight(75)
+        self.searchExpenseByDate_btn.setFont(font)
         self.searchExpenseByDate_btn.setStyleSheet("QPushButton {\n"
 "    background-color: #0050a5; /* Bootstrap primary blue */\n"
 "    color: white; /* White text */\n"
 "    border: none;\n"
 "    border-radius: 5px; /* Rounded corners */\n"
-"    font-size: 15px; /* Font size */\n"
-"    font-weight: bold; /* Bold text */\n"
 "    text-align: center;\n"
 "    text-decoration: none;\n"
-"    font-family: \'Vazirmatn\', sans-serif; /* Font family */\n"
 "}\n"
 "\n"
 "QPushButton:hover {\n"
@@ -1211,33 +1297,33 @@ class Ui_MainWindow(object):
 "")
         self.searchExpenseByDate_btn.setObjectName("searchExpenseByDate_btn")
         self.toYear_spnbox = QtWidgets.QSpinBox(self.groupBox_9)
-        self.toYear_spnbox.setGeometry(QtCore.QRect(160, 30, 71, 31))
+        self.toYear_spnbox.setGeometry(QtCore.QRect(190, 30, 71, 31))
         self.toYear_spnbox.setMinimum(1400)
         self.toYear_spnbox.setMaximum(1500)
         self.toYear_spnbox.setObjectName("toYear_spnbox")
         self.toDay_spnbox = QtWidgets.QSpinBox(self.groupBox_9)
-        self.toDay_spnbox.setGeometry(QtCore.QRect(280, 30, 51, 31))
+        self.toDay_spnbox.setGeometry(QtCore.QRect(310, 30, 51, 31))
         self.toDay_spnbox.setMinimum(1)
         self.toDay_spnbox.setMaximum(31)
         self.toDay_spnbox.setObjectName("toDay_spnbox")
         self.toMonth_spnbox = QtWidgets.QSpinBox(self.groupBox_9)
-        self.toMonth_spnbox.setGeometry(QtCore.QRect(230, 30, 51, 31))
+        self.toMonth_spnbox.setGeometry(QtCore.QRect(260, 30, 51, 31))
         self.toMonth_spnbox.setMinimum(1)
         self.toMonth_spnbox.setMaximum(12)
         self.toMonth_spnbox.setObjectName("toMonth_spnbox")
         self.label_14 = QtWidgets.QLabel(self.groupBox_9)
-        self.label_14.setGeometry(QtCore.QRect(570, 30, 81, 31))
+        self.label_14.setGeometry(QtCore.QRect(660, 30, 81, 31))
         self.label_14.setAlignment(QtCore.Qt.AlignCenter)
         self.label_14.setObjectName("label_14")
         self.label_15 = QtWidgets.QLabel(self.groupBox_9)
-        self.label_15.setGeometry(QtCore.QRect(320, 30, 81, 31))
+        self.label_15.setGeometry(QtCore.QRect(350, 30, 81, 31))
         self.label_15.setAlignment(QtCore.Qt.AlignCenter)
         self.label_15.setObjectName("label_15")
         self.expense_lst = QtWidgets.QListWidget(self.tab_2)
-        self.expense_lst.setGeometry(QtCore.QRect(10, 170, 1171, 441))
+        self.expense_lst.setGeometry(QtCore.QRect(10, 190, 1331, 591))
         font = QtGui.QFont()
-        font.setFamily("Vazirmatn,sans-serif")
-        font.setPointSize(-1)
+        font.setFamily("Vazirmatn")
+        font.setPointSize(14)
         self.expense_lst.setFont(font)
         self.expense_lst.setLayoutDirection(QtCore.Qt.RightToLeft)
         self.expense_lst.setStyleSheet("/* Basic ListWidget styling */\n"
@@ -1246,8 +1332,6 @@ class Ui_MainWindow(object):
 "    border: 1px solid #dee2e6; /* Border color */\n"
 "    border-radius: 5px; /* Rounded corners */\n"
 "    padding: 5px; /* Padding inside the list */\n"
-"    font-family: \'Vazirmatn\', sans-serif; /* Font family */\n"
-"    font-size: 17px; /* Font size */\n"
 "    outline: 0; /* Remove focus indicator */\n"
 "}\n"
 "\n"
@@ -1305,7 +1389,7 @@ class Ui_MainWindow(object):
         self.tab = QtWidgets.QWidget()
         self.tab.setObjectName("tab")
         self.report_chart = QChartView(self.tab)
-        self.report_chart.setGeometry(QtCore.QRect(10, 270, 1171, 351))
+        self.report_chart.setGeometry(QtCore.QRect(10, 270, 1331, 511))
         font = QtGui.QFont()
         font.setFamily("Vazirmatn ExtraBold")
         font.setPointSize(15)
@@ -1313,7 +1397,7 @@ class Ui_MainWindow(object):
         self.report_chart.setStyleSheet("")
         self.report_chart.setObjectName("report_chart")
         self.report_stackedWidget = QtWidgets.QStackedWidget(self.tab)
-        self.report_stackedWidget.setGeometry(QtCore.QRect(10, 10, 1041, 251))
+        self.report_stackedWidget.setGeometry(QtCore.QRect(10, 10, 1201, 251))
         self.report_stackedWidget.setFocusPolicy(QtCore.Qt.NoFocus)
         self.report_stackedWidget.setStyleSheet("QStackedWidget {\n"
 "    background-color:rgb(248, 248, 248);\n"
@@ -1327,29 +1411,19 @@ class Ui_MainWindow(object):
         self.report_stackedWidget.setObjectName("report_stackedWidget")
         self.page = QtWidgets.QWidget()
         self.page.setObjectName("page")
-        self.line_7 = QtWidgets.QFrame(self.page)
-        self.line_7.setGeometry(QtCore.QRect(490, 10, 20, 231))
-        self.line_7.setFrameShape(QtWidgets.QFrame.VLine)
-        self.line_7.setFrameShadow(QtWidgets.QFrame.Sunken)
-        self.line_7.setObjectName("line_7")
         self.line = QtWidgets.QFrame(self.page)
-        self.line.setGeometry(QtCore.QRect(540, 30, 231, 20))
+        self.line.setGeometry(QtCore.QRect(670, 30, 241, 20))
         self.line.setFrameShape(QtWidgets.QFrame.HLine)
         self.line.setFrameShadow(QtWidgets.QFrame.Sunken)
         self.line.setObjectName("line")
         self.label_35 = QtWidgets.QLabel(self.page)
-        self.label_35.setGeometry(QtCore.QRect(320, 10, 151, 21))
+        self.label_35.setGeometry(QtCore.QRect(410, 10, 151, 21))
         font = QtGui.QFont()
         font.setFamily("Vazirmatn ExtraBold")
         font.setPointSize(11)
         self.label_35.setFont(font)
         self.label_35.setAlignment(QtCore.Qt.AlignCenter)
         self.label_35.setObjectName("label_35")
-        self.line_8 = QtWidgets.QFrame(self.page)
-        self.line_8.setGeometry(QtCore.QRect(280, 10, 20, 231))
-        self.line_8.setFrameShape(QtWidgets.QFrame.VLine)
-        self.line_8.setFrameShadow(QtWidgets.QFrame.Sunken)
-        self.line_8.setObjectName("line_8")
         self.label_37 = QtWidgets.QLabel(self.page)
         self.label_37.setGeometry(QtCore.QRect(40, 10, 231, 21))
         font = QtGui.QFont()
@@ -1359,7 +1433,7 @@ class Ui_MainWindow(object):
         self.label_37.setAlignment(QtCore.Qt.AlignCenter)
         self.label_37.setObjectName("label_37")
         self.label_38 = QtWidgets.QLabel(self.page)
-        self.label_38.setGeometry(QtCore.QRect(540, 11, 231, 20))
+        self.label_38.setGeometry(QtCore.QRect(670, 11, 231, 20))
         font = QtGui.QFont()
         font.setFamily("Vazirmatn ExtraBold")
         font.setPointSize(12)
@@ -1367,13 +1441,13 @@ class Ui_MainWindow(object):
         self.label_38.setAlignment(QtCore.Qt.AlignCenter)
         self.label_38.setObjectName("label_38")
         self.line_3 = QtWidgets.QFrame(self.page)
-        self.line_3.setGeometry(QtCore.QRect(40, 30, 231, 20))
+        self.line_3.setGeometry(QtCore.QRect(20, 30, 261, 20))
         self.line_3.setFrameShape(QtWidgets.QFrame.HLine)
         self.line_3.setFrameShadow(QtWidgets.QFrame.Sunken)
         self.line_3.setObjectName("line_3")
         self.generalTime_cmbox = QtWidgets.QComboBox(self.page)
         self.generalTime_cmbox.setEnabled(True)
-        self.generalTime_cmbox.setGeometry(QtCore.QRect(800, 170, 221, 31))
+        self.generalTime_cmbox.setGeometry(QtCore.QRect(960, 170, 221, 31))
         font = QtGui.QFont()
         font.setFamily("Vazirmatn Black")
         font.setPointSize(11)
@@ -1389,12 +1463,12 @@ class Ui_MainWindow(object):
         self.generalTime_cmbox.addItem("")
         self.generalTime_cmbox.addItem("")
         self.line_4 = QtWidgets.QFrame(self.page)
-        self.line_4.setGeometry(QtCore.QRect(320, 30, 151, 20))
+        self.line_4.setGeometry(QtCore.QRect(350, 30, 261, 20))
         self.line_4.setFrameShape(QtWidgets.QFrame.HLine)
         self.line_4.setFrameShadow(QtWidgets.QFrame.Sunken)
         self.line_4.setObjectName("line_4")
         self.generalIncome_lbl = QtWidgets.QLabel(self.page)
-        self.generalIncome_lbl.setGeometry(QtCore.QRect(540, 50, 231, 31))
+        self.generalIncome_lbl.setGeometry(QtCore.QRect(670, 50, 241, 31))
         font = QtGui.QFont()
         font.setFamily("Vazirmatn Medium")
         font.setPointSize(11)
@@ -1406,7 +1480,7 @@ class Ui_MainWindow(object):
         self.generalIncome_lbl.setAlignment(QtCore.Qt.AlignCenter)
         self.generalIncome_lbl.setObjectName("generalIncome_lbl")
         self.label_39 = QtWidgets.QLabel(self.page)
-        self.label_39.setGeometry(QtCore.QRect(540, 90, 231, 20))
+        self.label_39.setGeometry(QtCore.QRect(670, 90, 231, 20))
         font = QtGui.QFont()
         font.setFamily("Vazirmatn ExtraBold")
         font.setPointSize(12)
@@ -1414,12 +1488,12 @@ class Ui_MainWindow(object):
         self.label_39.setAlignment(QtCore.Qt.AlignCenter)
         self.label_39.setObjectName("label_39")
         self.line_2 = QtWidgets.QFrame(self.page)
-        self.line_2.setGeometry(QtCore.QRect(540, 109, 231, 20))
+        self.line_2.setGeometry(QtCore.QRect(670, 109, 241, 20))
         self.line_2.setFrameShape(QtWidgets.QFrame.HLine)
         self.line_2.setFrameShadow(QtWidgets.QFrame.Sunken)
         self.line_2.setObjectName("line_2")
         self.generalExpense_lbl = QtWidgets.QLabel(self.page)
-        self.generalExpense_lbl.setGeometry(QtCore.QRect(540, 129, 231, 31))
+        self.generalExpense_lbl.setGeometry(QtCore.QRect(670, 129, 241, 31))
         font = QtGui.QFont()
         font.setFamily("Vazirmatn Medium")
         font.setPointSize(11)
@@ -1432,7 +1506,7 @@ class Ui_MainWindow(object):
         self.generalExpense_lbl.setAlignment(QtCore.Qt.AlignCenter)
         self.generalExpense_lbl.setObjectName("generalExpense_lbl")
         self.profitType_lbl = QtWidgets.QLabel(self.page)
-        self.profitType_lbl.setGeometry(QtCore.QRect(540, 171, 231, 20))
+        self.profitType_lbl.setGeometry(QtCore.QRect(670, 171, 231, 20))
         font = QtGui.QFont()
         font.setFamily("Vazirmatn ExtraBold")
         font.setPointSize(12)
@@ -1440,12 +1514,12 @@ class Ui_MainWindow(object):
         self.profitType_lbl.setAlignment(QtCore.Qt.AlignCenter)
         self.profitType_lbl.setObjectName("profitType_lbl")
         self.line_5 = QtWidgets.QFrame(self.page)
-        self.line_5.setGeometry(QtCore.QRect(540, 190, 231, 20))
+        self.line_5.setGeometry(QtCore.QRect(670, 190, 241, 20))
         self.line_5.setFrameShape(QtWidgets.QFrame.HLine)
         self.line_5.setFrameShadow(QtWidgets.QFrame.Sunken)
         self.line_5.setObjectName("line_5")
         self.generalProfit_lbl = QtWidgets.QLabel(self.page)
-        self.generalProfit_lbl.setGeometry(QtCore.QRect(540, 210, 231, 31))
+        self.generalProfit_lbl.setGeometry(QtCore.QRect(670, 210, 241, 31))
         font = QtGui.QFont()
         font.setFamily("Vazirmatn Medium")
         font.setPointSize(11)
@@ -1458,10 +1532,10 @@ class Ui_MainWindow(object):
         self.generalProfit_lbl.setAlignment(QtCore.Qt.AlignCenter)
         self.generalProfit_lbl.setObjectName("generalProfit_lbl")
         self.refreshGeneralReport_btn = QtWidgets.QPushButton(self.page)
-        self.refreshGeneralReport_btn.setGeometry(QtCore.QRect(800, 210, 221, 31))
+        self.refreshGeneralReport_btn.setGeometry(QtCore.QRect(960, 210, 221, 31))
         font = QtGui.QFont()
-        font.setFamily("Vazirmatn,sans-serif")
-        font.setPointSize(11)
+        font.setFamily("Vazirmatn")
+        font.setPointSize(12)
         font.setBold(True)
         font.setUnderline(False)
         font.setWeight(75)
@@ -1472,10 +1546,8 @@ class Ui_MainWindow(object):
 "    color: white; /* White text */\n"
 "    border: none;\n"
 "    border-radius: 5px; /* Rounded corners */\n"
-"    font-weight: bold; /* Bold text */\n"
 "    text-align: center;\n"
 "    text-decoration: none;\n"
-"    font-family: \'Vazirmatn\', sans-serif; /* Font family */\n"
 "}\n"
 "\n"
 "QPushButton:hover {\n"
@@ -1488,21 +1560,18 @@ class Ui_MainWindow(object):
 "")
         self.refreshGeneralReport_btn.setObjectName("refreshGeneralReport_btn")
         self.label_13 = QtWidgets.QLabel(self.page)
-        self.label_13.setGeometry(QtCore.QRect(800, 10, 221, 141))
+        self.label_13.setGeometry(QtCore.QRect(960, 10, 231, 141))
         font = QtGui.QFont()
-        font.setFamily("A Rezvan-fat,sans-serif")
-        font.setPointSize(-1)
-        font.setBold(True)
-        font.setWeight(75)
+        font.setFamily("A Rezvan-fat")
+        font.setPointSize(26)
+        font.setBold(False)
+        font.setWeight(50)
         self.label_13.setFont(font)
         self.label_13.setLayoutDirection(QtCore.Qt.RightToLeft)
         self.label_13.setAutoFillBackground(False)
         self.label_13.setStyleSheet("/* Basic styling for the company name label */\n"
 "QLabel {\n"
 "    color: #007bff; /* Bootstrap primary blue text color */\n"
-"    font-family: \'A Rezvan-fat\', sans-serif; /* Font family */\n"
-"    font-size: 30px; /* Larger font size for prominence */\n"
-"    font-weight: bold; /* Bold text */\n"
 "    padding: 10px; /* Padding around the text */\n"
 "    border: 2px solid #007bff; /* Optional: Border with the same blue color */\n"
 "    border-radius: 10px; /* Rounded corners */\n"
@@ -1519,7 +1588,7 @@ class Ui_MainWindow(object):
         self.label_13.setAlignment(QtCore.Qt.AlignCenter)
         self.label_13.setObjectName("label_13")
         self.n0ServiceHighSold_lbl = QtWidgets.QLabel(self.page)
-        self.n0ServiceHighSold_lbl.setGeometry(QtCore.QRect(300, 50, 191, 41))
+        self.n0ServiceHighSold_lbl.setGeometry(QtCore.QRect(350, 50, 261, 41))
         font = QtGui.QFont()
         font.setFamily("Vazirmatn Medium")
         font.setPointSize(11)
@@ -1532,7 +1601,7 @@ class Ui_MainWindow(object):
         self.n0ServiceHighSold_lbl.setAlignment(QtCore.Qt.AlignCenter)
         self.n0ServiceHighSold_lbl.setObjectName("n0ServiceHighSold_lbl")
         self.n1ServiceHighSold_lbl = QtWidgets.QLabel(self.page)
-        self.n1ServiceHighSold_lbl.setGeometry(QtCore.QRect(300, 100, 191, 41))
+        self.n1ServiceHighSold_lbl.setGeometry(QtCore.QRect(350, 100, 261, 41))
         font = QtGui.QFont()
         font.setFamily("Vazirmatn Medium")
         font.setPointSize(11)
@@ -1545,7 +1614,7 @@ class Ui_MainWindow(object):
         self.n1ServiceHighSold_lbl.setAlignment(QtCore.Qt.AlignCenter)
         self.n1ServiceHighSold_lbl.setObjectName("n1ServiceHighSold_lbl")
         self.n2ServiceHighSold_lbl = QtWidgets.QLabel(self.page)
-        self.n2ServiceHighSold_lbl.setGeometry(QtCore.QRect(300, 150, 191, 41))
+        self.n2ServiceHighSold_lbl.setGeometry(QtCore.QRect(350, 150, 261, 41))
         font = QtGui.QFont()
         font.setFamily("Vazirmatn Medium")
         font.setPointSize(11)
@@ -1558,7 +1627,7 @@ class Ui_MainWindow(object):
         self.n2ServiceHighSold_lbl.setAlignment(QtCore.Qt.AlignCenter)
         self.n2ServiceHighSold_lbl.setObjectName("n2ServiceHighSold_lbl")
         self.n3ServiceHighSold_lbl = QtWidgets.QLabel(self.page)
-        self.n3ServiceHighSold_lbl.setGeometry(QtCore.QRect(300, 200, 191, 41))
+        self.n3ServiceHighSold_lbl.setGeometry(QtCore.QRect(350, 200, 261, 41))
         font = QtGui.QFont()
         font.setFamily("Vazirmatn Medium")
         font.setPointSize(11)
@@ -1626,9 +1695,9 @@ class Ui_MainWindow(object):
         self.page_2 = QtWidgets.QWidget()
         self.page_2.setObjectName("page_2")
         self.refreshServiceReport_btn = QtWidgets.QPushButton(self.page_2)
-        self.refreshServiceReport_btn.setGeometry(QtCore.QRect(790, 190, 241, 41))
+        self.refreshServiceReport_btn.setGeometry(QtCore.QRect(940, 190, 241, 41))
         font = QtGui.QFont()
-        font.setFamily("Vazirmatn,sans-serif")
+        font.setFamily("Vazirmatn")
         font.setPointSize(11)
         font.setBold(True)
         font.setUnderline(False)
@@ -1640,10 +1709,8 @@ class Ui_MainWindow(object):
 "    color: white; /* White text */\n"
 "    border: none;\n"
 "    border-radius: 5px; /* Rounded corners */\n"
-"    font-weight: bold; /* Bold text */\n"
 "    text-align: center;\n"
 "    text-decoration: none;\n"
-"    font-family: \'Vazirmatn\', sans-serif; /* Font family */\n"
 "}\n"
 "\n"
 "QPushButton:hover {\n"
@@ -1657,7 +1724,7 @@ class Ui_MainWindow(object):
         self.refreshServiceReport_btn.setObjectName("refreshServiceReport_btn")
         self.serviceReportTime_cmbox = QtWidgets.QComboBox(self.page_2)
         self.serviceReportTime_cmbox.setEnabled(True)
-        self.serviceReportTime_cmbox.setGeometry(QtCore.QRect(790, 150, 241, 31))
+        self.serviceReportTime_cmbox.setGeometry(QtCore.QRect(940, 150, 241, 31))
         font = QtGui.QFont()
         font.setFamily("Vazirmatn Black")
         font.setPointSize(11)
@@ -1674,7 +1741,7 @@ class Ui_MainWindow(object):
         self.serviceReportTime_cmbox.addItem("")
         self.reportService_cmbox = QtWidgets.QComboBox(self.page_2)
         self.reportService_cmbox.setEnabled(True)
-        self.reportService_cmbox.setGeometry(QtCore.QRect(790, 110, 241, 31))
+        self.reportService_cmbox.setGeometry(QtCore.QRect(940, 110, 241, 31))
         font = QtGui.QFont()
         font.setFamily("Vazirmatn Black")
         font.setPointSize(11)
@@ -1783,21 +1850,18 @@ class Ui_MainWindow(object):
         self.line_10.setFrameShadow(QtWidgets.QFrame.Sunken)
         self.line_10.setObjectName("line_10")
         self.label_16 = QtWidgets.QLabel(self.page_2)
-        self.label_16.setGeometry(QtCore.QRect(310, 20, 721, 71))
+        self.label_16.setGeometry(QtCore.QRect(310, 20, 881, 71))
         font = QtGui.QFont()
-        font.setFamily("A Rezvan-fat,sans-serif")
-        font.setPointSize(-1)
-        font.setBold(True)
-        font.setWeight(75)
+        font.setFamily("A Rezvan-fat")
+        font.setPointSize(26)
+        font.setBold(False)
+        font.setWeight(50)
         self.label_16.setFont(font)
         self.label_16.setLayoutDirection(QtCore.Qt.RightToLeft)
         self.label_16.setAutoFillBackground(False)
         self.label_16.setStyleSheet("/* Basic styling for the company name label */\n"
 "QLabel {\n"
 "    color: #007bff; /* Bootstrap primary blue text color */\n"
-"    font-family: \'A Rezvan-fat\', sans-serif; /* Font family */\n"
-"    font-size: 30px; /* Larger font size for prominence */\n"
-"    font-weight: bold; /* Bold text */\n"
 "    padding: 10px; /* Padding around the text */\n"
 "    border: 2px solid #007bff; /* Optional: Border with the same blue color */\n"
 "    border-radius: 10px; /* Rounded corners */\n"
@@ -1840,10 +1904,10 @@ class Ui_MainWindow(object):
         self.line_11.setObjectName("line_11")
         self.report_stackedWidget.addWidget(self.page_2)
         self.generalReport_btn = QtWidgets.QPushButton(self.tab)
-        self.generalReport_btn.setGeometry(QtCore.QRect(1060, 20, 121, 111))
+        self.generalReport_btn.setGeometry(QtCore.QRect(1220, 20, 121, 111))
         font = QtGui.QFont()
-        font.setFamily("Vazirmatn,sans-serif")
-        font.setPointSize(13)
+        font.setFamily("Vazirmatn")
+        font.setPointSize(12)
         font.setBold(True)
         font.setUnderline(False)
         font.setWeight(75)
@@ -1854,10 +1918,8 @@ class Ui_MainWindow(object):
 "    color: white; /* White text */\n"
 "    border: none;\n"
 "    border-radius: 5px; /* Rounded corners */\n"
-"    font-weight: bold; /* Bold text */\n"
 "    text-align: center;\n"
 "    text-decoration: none;\n"
-"    font-family: \'Vazirmatn\', sans-serif; /* Font family */\n"
 "}\n"
 "\n"
 "QPushButton:hover {\n"
@@ -1870,10 +1932,10 @@ class Ui_MainWindow(object):
 "")
         self.generalReport_btn.setObjectName("generalReport_btn")
         self.serviceReport_btn = QtWidgets.QPushButton(self.tab)
-        self.serviceReport_btn.setGeometry(QtCore.QRect(1060, 140, 121, 111))
+        self.serviceReport_btn.setGeometry(QtCore.QRect(1220, 140, 121, 111))
         font = QtGui.QFont()
-        font.setFamily("Vazirmatn,sans-serif")
-        font.setPointSize(-1)
+        font.setFamily("Vazirmatn")
+        font.setPointSize(12)
         font.setBold(True)
         font.setUnderline(False)
         font.setWeight(75)
@@ -1884,11 +1946,8 @@ class Ui_MainWindow(object):
 "    color: white; /* White text */\n"
 "    border: none;\n"
 "    border-radius: 5px; /* Rounded corners */\n"
-"    font-size: 16px; /* Font size */\n"
-"    font-weight: bold; /* Bold text */\n"
 "    text-align: center;\n"
 "    text-decoration: none;\n"
-"    font-family: \'Vazirmatn\', sans-serif; /* Font family */\n"
 "}\n"
 "\n"
 "QPushButton:hover {\n"
@@ -1906,7 +1965,7 @@ class Ui_MainWindow(object):
         self.statusbar.setObjectName("statusbar")
         MainWindow.setStatusBar(self.statusbar)
         self.menuBar = QtWidgets.QMenuBar(MainWindow)
-        self.menuBar.setGeometry(QtCore.QRect(0, 0, 1196, 28))
+        self.menuBar.setGeometry(QtCore.QRect(0, 0, 1351, 28))
         font = QtGui.QFont()
         font.setFamily("Vazirmatn")
         font.setPointSize(10)
@@ -1935,7 +1994,7 @@ class Ui_MainWindow(object):
 
         self.retranslateUi(MainWindow)
         self.tabWidget.setCurrentIndex(0)
-        self.report_stackedWidget.setCurrentIndex(0)
+        self.report_stackedWidget.setCurrentIndex(1)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
     def retranslateUi(self, MainWindow):
@@ -1947,12 +2006,14 @@ class Ui_MainWindow(object):
         self.patientsIdentityCodeSearch_btn.setText(_translate("MainWindow", "جستجو"))
         self.label_6.setText(_translate("MainWindow", "نام خانوادگی:"))
         self.refreshPatientsList_btn.setText(_translate("MainWindow", "تازه‌سازی لیست بیماران"))
+        self.label_7.setText(_translate("MainWindow", "شماره پرونده:"))
+        self.patientSearchByFileNumber_btn.setText(_translate("MainWindow", "جستجو"))
         self.label_3.setText(_translate("MainWindow", "کلینیک زیبایی رویتا "))
         self.patients_lst.setSortingEnabled(False)
         self.addPatient_btn.setText(_translate("MainWindow", "اضافه کردن بیمار"))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.main_tab), _translate("MainWindow", "صفحه اصلی"))
         self.label_9.setText(_translate("MainWindow", "نوبت‌ها"))
-        self.groupBox_7.setTitle(_translate("MainWindow", "یادآوری‌ها"))
+        self.groupBox_7.setTitle(_translate("MainWindow", "روزها"))
         self.appointmentSearchByDay_btn.setText(_translate("MainWindow", "جستجو"))
         self.appointmentSearchDaySelect_cmbox.setCurrentText(_translate("MainWindow", "امروز"))
         self.appointmentSearchDaySelect_cmbox.setItemText(0, _translate("MainWindow", "امروز"))
@@ -1970,7 +2031,8 @@ class Ui_MainWindow(object):
         self.sendToAllSMSByDays_cmbox.setItemText(3, _translate("MainWindow", "سه روز بعد"))
         self.sendToAllSMSByDays_cmbox.setItemText(4, _translate("MainWindow", "چهار روز بعد"))
         self.sendToAllSMSByDays_btn.setText(_translate("MainWindow", "ارسال پیامک "))
-        self.tabWidget.setTabText(self.tabWidget.indexOf(self.notifications_tab), _translate("MainWindow", "یادآوری‌ نوبت‌ها"))
+        self.addAppointment_btn.setText(_translate("MainWindow", "اضافه کردن نوبت"))
+        self.tabWidget.setTabText(self.tabWidget.indexOf(self.notifications_tab), _translate("MainWindow", "نوبت‌ها"))
         self.groupBox_4.setTitle(_translate("MainWindow", "جستجو سرویس‌ها"))
         self.searchServices_btn.setText(_translate("MainWindow", "جستجو"))
         self.label_11.setText(_translate("MainWindow", "نام سرویس:"))

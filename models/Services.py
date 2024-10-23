@@ -7,8 +7,11 @@ class Services:
         query = "SELECT * FROM Service"
         try:
             return db.fetchall(query)
-        except Exception:
-            error_msg = "واکشی اطلاعات سرویس‌‌ها با خطا مواجه شده است."
+        except Exception as e:
+            error_msg = f"""
+                واکشی اطلاعات سرویس‌‌ها با خطا مواجه شده است.
+                {str(e)}
+            """   
             raise DatabaseError(error_msg)
         
     @staticmethod
@@ -16,8 +19,11 @@ class Services:
         query = f"SELECT name,price FROM Service Where id={service_id}"
         try:
             return db.fetchone(query)
-        except Exception:
-            error_msg = "واکشی نام و قیمت سرویس‌‌ با خطا مواجه شده است."
+        except Exception as e:
+            error_msg = f"""
+                واکشی نام و قیمت سرویس‌‌ با خطا مواجه شده است.
+                {str(e)}
+            """   
             raise DatabaseError(error_msg)
 
     @staticmethod
@@ -25,8 +31,11 @@ class Services:
         query = f"SELECT * FROM Service Where id={service_id}"
         try:
             return db.fetchone(query)
-        except Exception:
-            error_msg = "واکشی اطلاعات سرویس‌ با خطا مواجه شده است."
+        except Exception as e:
+            error_msg = f"""
+                واکشی اطلاعات سرویس‌ با خطا مواجه شده است.
+                {str(e)}
+            """   
             raise DatabaseError(error_msg)
    
     
@@ -36,8 +45,11 @@ class Services:
         values = (service["name"], service["price"])
         try:
             return db.execute_query(query, values)
-        except Exception:
-            error_msg = "اضافه کردن سرویس با خطا مواجه شده است."
+        except Exception as e:
+            error_msg = f"""
+                اضافه کردن سرویس با خطا مواجه شده است.
+                {str(e)}
+            """   
             raise DatabaseError(error_msg)
 
     @staticmethod
@@ -54,8 +66,12 @@ class Services:
         )
         try:
             return db.execute_query(query, values)
-        except Exception:
-            error_msg = "ثبت تغییرات با خطا مواجه شده است."
+        except Exception as e:
+            error_msg = f"""
+                ثبت تغییرات با خطا مواجه شده است.
+                {str(e)}
+            """   
+           
             raise DatabaseError(error_msg)
 
     @staticmethod
@@ -63,7 +79,22 @@ class Services:
         query = f"DELETE FROM Service WHERE id = {service_id};"
         try:
             return db.execute_query(query)
-        except Exception:
-            error_msg = "حذف سرویس با خطا مواجه شده است."
+        except Exception as e:
+            error_msg = f"""
+                حذف سرویس با خطا مواجه شده است.
+                {str(e)}
+            """   
+            raise DatabaseError(error_msg)
+        
+    @staticmethod
+    def search_service_by_name(db,service_name):
+        query = f"SELECT * FROM Service Where name Like '%{service_name}%'"
+        try:
+            return db.fetchall(query)
+        except Exception as e:
+            error_msg = f"""
+                جستجو سرویس‌ها با خطا مواجه شده است.
+                {str(e)}
+            """      
             raise DatabaseError(error_msg)
 

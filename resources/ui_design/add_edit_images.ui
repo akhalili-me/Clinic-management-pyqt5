@@ -7,19 +7,19 @@
     <x>0</x>
     <y>0</y>
     <width>424</width>
-    <height>251</height>
+    <height>190</height>
    </rect>
   </property>
   <property name="minimumSize">
    <size>
     <width>424</width>
-    <height>251</height>
+    <height>190</height>
    </size>
   </property>
   <property name="maximumSize">
    <size>
     <width>424</width>
-    <height>251</height>
+    <height>190</height>
    </size>
   </property>
   <property name="windowTitle">
@@ -29,15 +29,15 @@
    <property name="geometry">
     <rect>
      <x>170</x>
-     <y>210</y>
+     <y>150</y>
      <width>91</width>
      <height>31</height>
     </rect>
    </property>
    <property name="font">
     <font>
-     <family>Vazirmatn,sans-serif</family>
-     <pointsize>-1</pointsize>
+     <family>Vazirmatn</family>
+     <pointsize>12</pointsize>
      <weight>75</weight>
      <bold>true</bold>
      <underline>false</underline>
@@ -50,11 +50,8 @@
     color: white; /* White text */
     border: none;
     border-radius: 5px; /* Rounded corners */
-    font-size: 16px; /* Font size */
-    font-weight: bold; /* Bold text */
     text-align: center;
     text-decoration: none;
-    font-family: 'Vazirmatn', sans-serif; /* Font family */
 }
 
 QPushButton:hover {
@@ -74,15 +71,15 @@ QPushButton:pressed {
    <property name="geometry">
     <rect>
      <x>270</x>
-     <y>210</y>
+     <y>150</y>
      <width>75</width>
      <height>31</height>
     </rect>
    </property>
    <property name="font">
     <font>
-     <family>Vazirmatn,sans-serif</family>
-     <pointsize>-1</pointsize>
+     <family>Vazirmatn</family>
+     <pointsize>12</pointsize>
      <weight>75</weight>
      <bold>true</bold>
      <underline>false</underline>
@@ -98,11 +95,8 @@ QPushButton:pressed {
     color: #212529; /* Dark text */
     border: none;
     border-radius: 5px; /* Rounded corners */
-    font-size: 16px; /* Font size */
-    font-weight: bold; /* Bold text */
     text-align: center;
     text-decoration: none;
-    font-family: 'Vazirmatn', sans-serif; /* Font family */
 }
 
 QPushButton:hover {
@@ -125,7 +119,7 @@ QPushButton:pressed {
    <property name="geometry">
     <rect>
      <x>10</x>
-     <y>70</y>
+     <y>10</y>
      <width>331</width>
      <height>31</height>
     </rect>
@@ -145,7 +139,6 @@ QPushButton:pressed {
    <property name="font">
     <font>
      <family>Vazirmatn,sans-serif</family>
-     <pointsize>-1</pointsize>
     </font>
    </property>
    <property name="layoutDirection">
@@ -157,8 +150,6 @@ QLineEdit {
     background-color: #ffffff; /* White background */
     border: 1px solid #dee2e6; /* Light grey border */
     border-radius: 5px; /* Rounded corners */
-    font-family: 'Vazirmatn', sans-serif; /* Font family */
-    font-size: 16px; /* Font size */
     color: #343a40; /* Dark grey text color */
     outline: none; /* Remove default outline */
 }
@@ -189,7 +180,7 @@ QLineEdit:disabled {
    <property name="geometry">
     <rect>
      <x>330</x>
-     <y>80</y>
+     <y>20</y>
      <width>71</width>
      <height>20</height>
     </rect>
@@ -208,14 +199,14 @@ QLineEdit:disabled {
    <property name="geometry">
     <rect>
      <x>220</x>
-     <y>160</y>
+     <y>100</y>
      <width>121</width>
      <height>31</height>
     </rect>
    </property>
    <property name="font">
     <font>
-     <family>Vazirmatn,sans-serif</family>
+     <family>Vazirmatn</family>
      <pointsize>10</pointsize>
      <weight>75</weight>
      <bold>true</bold>
@@ -229,10 +220,8 @@ QLineEdit:disabled {
     color: white; /* White text */
     border: none;
     border-radius: 5px; /* Rounded corners */
-    font-weight: bold; /* Bold text */
     text-align: center;
     text-decoration: none;
-    font-family: 'Vazirmatn', sans-serif; /* Font family */
 }
 
 QPushButton:hover {
@@ -252,7 +241,7 @@ QPushButton:pressed {
    <property name="geometry">
     <rect>
      <x>340</x>
-     <y>120</y>
+     <y>60</y>
      <width>71</width>
      <height>21</height>
     </rect>
@@ -274,7 +263,7 @@ QPushButton:pressed {
    <property name="geometry">
     <rect>
      <x>10</x>
-     <y>110</y>
+     <y>50</y>
      <width>331</width>
      <height>31</height>
     </rect>
@@ -333,25 +322,6 @@ QLineEdit:disabled {
    </property>
    <property name="text">
     <string>picture path</string>
-   </property>
-  </widget>
-  <widget class="QLabel" name="title_lbl">
-   <property name="geometry">
-    <rect>
-     <x>60</x>
-     <y>10</y>
-     <width>191</width>
-     <height>41</height>
-    </rect>
-   </property>
-   <property name="font">
-    <font>
-     <family>B Titr</family>
-     <pointsize>14</pointsize>
-    </font>
-   </property>
-   <property name="text">
-    <string>اضافه کردن تصویر</string>
    </property>
   </widget>
  </widget>

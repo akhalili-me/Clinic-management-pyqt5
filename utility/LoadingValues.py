@@ -1,5 +1,7 @@
 from models import DatabaseManager,Doctors,Services
 import jdatetime
+from PyQt5.QtCore import Qt
+
 class LoadingValues:
     @staticmethod
     def load_doctors_services_combo_boxes(ui):
@@ -14,6 +16,7 @@ class LoadingValues:
             services = Services.get_all(db)
             for service in services:
                 ui.service_cmbox.addItem(service["name"],service["id"])
+                ui.service_cmbox.setItemData(ui.service_cmbox.count() - 1, service["price"], Qt.UserRole + 1)
         
     @staticmethod
     def load_current_date_spin_box_values(ui, date_spnbox_names=None):

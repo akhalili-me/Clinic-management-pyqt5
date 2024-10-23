@@ -113,6 +113,10 @@ class DatabaseManagerForWorker(QObject):
             query.addBindValue(param)
         if not query.exec_():
             raise DatabaseError(f"Error executing query: {query.lastError().text()}")
+        
+        # Return last inserted row ID if this is an INSERT query
+        if query_str.strip().lower().startswith('insert'):
+            return query.lastInsertId()
 
     def fetchall(self, query_str, params=()):
         query = QSqlQuery(self.db)
@@ -137,7 +141,38 @@ class DatabaseManagerForWorker(QObject):
         query = QSqlQuery(self.db)
         if not query.exec_("PRAGMA foreign_keys = ON;"):
             raise DatabaseError(f"Error enabling foreign keys: {query.lastError().text()}")
+    
+    def begin_transaction(self):
+        if not self.db.transaction():
+            raise DatabaseError(f"Failed to start transaction: {self.db.lastError().text()}")
+
+    def commit(self):
+        if not self.db.commit():
+            raise DatabaseError(f"Failed to commit transaction: {self.db.lastError().text()}")
+
+    def rollback(self):
+        if not self.db.rollback():
+            raise DatabaseError(f"Failed to rollback transaction: {self.db.lastError().text()}")
+
+    def execute_transaction(self, queries_with_params):
+        """
+        Executes multiple queries within a single transaction.
         
+        Args:
+            queries_with_params (list of tuples): Each tuple contains a query string and its parameters.
+            
+        Raises:
+            DatabaseError: If any query fails, the transaction is rolled back.
+        """
+        self.begin_transaction()
+        try:
+            for query_str, params in queries_with_params:
+                self.execute_query(query_str, params)
+            self.commit()
+        except Exception as e:
+            self.rollback()
+            raise DatabaseError(f"Transaction failed: {str(e)}")
+
 class DatabaseWorker(QThread):
     result_signal = pyqtSignal(object)
     error_signal = pyqtSignal(str)

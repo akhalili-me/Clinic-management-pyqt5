@@ -1,17 +1,17 @@
 # controllers/add_patient_controller.py
 from PyQt5.QtWidgets import QDialog
 from ui import Ui_MainWindow,Ui_addEditDeleteExpense_form
-from models.db import DatabaseManager
-from PyQt5.QtWidgets import QMessageBox
+from models.db import DatabaseWorker
 from PyQt5.QtCore import pyqtSignal
 from models import Expenses
 from PyQt5.QtWidgets import QListWidgetItem
-from utility import Dates,Numbers,LoadingValues,Validators,Messages
+from utility import Dates,Numbers,LoadingValues,Validators,Messages,BaseController
 import jdatetime
 
-class ExpenseTabController:
+class ExpenseTabController(BaseController):
     def __init__(self, ui:Ui_MainWindow):
         self.ui = ui
+        self.active_workers = []
         self.load_current_month_expense_list()
         self.load_current_date_into_date_spnboxes()
         self._connect_buttons()
@@ -29,23 +29,14 @@ class ExpenseTabController:
 
     def open_edit_delete_expense(self,item):
         expense_id = item.data(1)
-        with DatabaseManager() as db:
-            try:
-                expense = Expenses.get_by_id(db,expense_id)
-            except Exception as e:
-                Messages.show_error_msg(str(e))
-                return
-            
-        self.edit_delete_expense_controller = AddEditDeleteExpenses(expense)
+        self.edit_delete_expense_controller = AddEditDeleteExpenses(expense_id)
         self.edit_delete_expense_controller.refresh_expense_list.connect(self.load_current_month_expense_list)
         self.edit_delete_expense_controller.show()
 
     def search_by_name(self):
         name = self.ui.expenseName_txtbox.text()
-        with DatabaseManager() as db:
-            searched_expenses = Expenses.search_by_name(db,name)
-        self._load_expense_data_expense_list(searched_expenses)
-    
+        self._start_worker(Expenses.search_by_name, [name], self.display_expense_list)
+
     def search_by_date(self):
         from_year, from_month, from_day = self.ui.fromYear_spnbox.value(), self.ui.fromMonth_spnbox.value(), self.ui.fromDay_spnbox.value()
         to_year, to_month, to_day = self.ui.toYear_spnbox.value(), self.ui.toMonth_spnbox.value(), self.ui.toDay_spnbox.value()
@@ -53,22 +44,20 @@ class ExpenseTabController:
         from_date = jdatetime.date(from_year,from_month,from_day).togregorian().strftime("%Y-%m-%d")
         to_date = jdatetime.date(to_year,to_month,to_day).togregorian().strftime("%Y-%m-%d")
 
-        with DatabaseManager() as db:
-            try:
-                searched_expenses = Expenses.get_by_date(db,from_date,to_date)
-            except Exception as e:
-                Messages.show_error_msg(str(e))
-                return
-            
-        self._load_expense_data_expense_list(searched_expenses)
+        self._start_worker(
+            Expenses.get_by_date, [from_date, to_date], self.display_expense_list
+        )
 
     def load_current_month_expense_list(self):
-        current_month_expenses = self._fetch_current_month_expenses()
-        self._load_expense_data_expense_list(current_month_expenses)
-        
-    def _load_expense_data_expense_list(self,expenses):
+        first_day_month,last_day_month = Dates.get_jalali_current_month_interval_based_on_greg()
+        self._start_worker(
+            Expenses.get_by_date,
+            [first_day_month, last_day_month],
+            self.display_expense_list,
+        )
+
+    def display_expense_list(self,expenses):
         self.ui.expense_lst.clear()
-        
         for expense in expenses:
             description = expense["description"] or "بدون توضیحات"
             price = Numbers.int_to_persian_with_separators(expense["price"])
@@ -95,30 +84,20 @@ class ExpenseTabController:
         for date_spnbox in date_spnbox_list:
             LoadingValues.load_current_date_spin_box_values(self.ui,date_spnbox)
 
-    def _fetch_current_month_expenses(self):
-        first_day_month,last_day_month = Dates.get_jalali_current_month_interval_based_on_greg()
-        with DatabaseManager() as db:
-            try:
-                return Expenses.get_by_date(db, first_day_month, last_day_month)
-            except Exception as e:
-                Messages.show_error_msg(str(e))
-                return
-            
 
-class AddEditDeleteExpenses(QDialog):
+class AddEditDeleteExpenses(BaseController,QDialog):
     refresh_expense_list = pyqtSignal()
 
-    def __init__(self, expense=None):
+    def __init__(self, expense_id=None):
         super(AddEditDeleteExpenses, self).__init__()
         self.ui = Ui_addEditDeleteExpense_form()
         self.ui.setupUi(self)
         self.setModal(True)
-
-        #Check if it's a edit window
-        self.expense = expense
-        if expense:
+        self._setup_validators()
+        self.active_workers = []
+        self.expense_id= expense_id
+        if expense_id:
             self.load_expense_data_into_txtboxes()
-            self.ui.title_lbl.setText("ویرایش هزینه")
         else:
             self.ui.delete_btn.hide()
 
@@ -128,8 +107,13 @@ class AddEditDeleteExpenses(QDialog):
     def _connect_buttons(self):
         self.ui.save_btn.clicked.connect(self.validate_form)
         self.ui.cancel_btn.clicked.connect(self.close)
-        self.ui.delete_btn.clicked.connect(self.delete_expense)
+        self.ui.delete_btn.clicked.connect(self.open_delete_expense)
 
+    def _setup_validators(self):
+        self.ui.name_txtbox.setMaxLength(50)
+        self.ui.description_txtbox.textChanged.connect(
+            lambda: Validators.limit_text_edit(self.ui.description_txtbox)
+        )
     def validate_form(self):
         name_text = self.ui.name_txtbox.text()
         txtboxes = [
@@ -140,10 +124,15 @@ class AddEditDeleteExpenses(QDialog):
             self.save_expense()
 
     def load_expense_data_into_txtboxes(self):
-        self.ui.name_txtbox.setText(self.expense["name"])
-        self.ui.price_txtbox.setValue(self.expense["price"])
-        LoadingValues.load_date_into_date_spinbox(self.ui,self.expense["jalali_date"])
-        self.ui.description_txtbox.setPlainText(self.expense["description"])
+        self._start_worker(
+            Expenses.get_by_id, [self.expense_id], self.display_expense_data
+        )
+
+    def display_expense_data(self,expense):
+        self.ui.name_txtbox.setText(expense["name"])
+        self.ui.price_txtbox.setValue(expense["price"])
+        LoadingValues.load_date_into_date_spinbox(self.ui,expense["jalali_date"])
+        self.ui.description_txtbox.setPlainText(expense["description"])
 
     def save_expense(self):
         jalali_date_str = self._get_jalali_date().strip()
@@ -157,45 +146,48 @@ class AddEditDeleteExpenses(QDialog):
             'greg_date': greg_date
         }
 
-        with DatabaseManager() as db:
-            if self.expense:
-                expense_data['id'] = self.expense["id"]
-                try:
-                    Expenses.update_expense(db, expense_data)
-                except Exception as e:
-                    Messages.show_error_msg(str(e))
-                    return
-                
-                success_message = "هزینه با موفقیت ویرایش شد."
-            else:
-                try:
-                    Expenses.add_expense(db, expense_data)
-                except Exception as e:
-                    Messages.show_error_msg(str(e))
-                    return
-                
-                success_message = "هزینه با موفقیت اضافه شد."
-
-            QMessageBox.information(self, "موفقیت", success_message)
-            self.refresh_expense_list.emit()
-            self.close()
-
-
-    def delete_expense(self):
-        msg_box, yes_button = Messages.show_confirm_delete_msg()
-        if msg_box.clickedButton() == yes_button:
-            with DatabaseManager() as db:
-                try:
-                    Expenses.delete_expense(db,self.expense["id"])
-                except Exception as e:
-                    Messages.show_error_msg(str(e))
-                    return
-                
-                Messages.show_success_msg("هزینه با موفقیت حذف شد.")
-                self.close()
-                self.refresh_expense_list.emit()
+        if self.expense_id:
+            expense_data['id'] = self.expense_id
+            self.update_expense(expense_data)
         else:
+            self.add_expense(expense_data)
+
+    def add_expense(self,expense):
+        self._start_worker(
+            Expenses.add_expense,
+            [expense],
+            success_callback=lambda: self.operation_successful(
+                "هزینه با موفقیت اضافه شد."
+            ),
+        )
+
+    def update_expense(self,expense):
+        self._start_worker(
+            Expenses.update_expense,
+            [expense],
+            success_callback=lambda: self.operation_successful(
+                "هزینه با موفقیت ویرایش شد."
+            ),
+        )
+
+    def open_delete_expense(self):
+        msg_box, yes_button = Messages.show_confirm_delete_msg()
+        if msg_box.clickedButton() != yes_button:
             msg_box.close()
+            return
+
+        self._start_worker(
+            Expenses.delete_expense,
+            [self.expense_id],
+            success_callback=lambda: self.operation_successful(
+                "هزینه با موفقیت حذف شد."
+            ),
+        )
+
+    def operation_successful(self,success_msg):
+        Messages.show_success_msg(success_msg)
+        self.refresh_expense_list.emit()
+        self.close()
 
     def _get_jalali_date(self):
         year = self.ui.year_spnbox.value()

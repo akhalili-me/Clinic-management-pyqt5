@@ -5,18 +5,27 @@ from PyQt5.QtCore import pyqtSignal
 from PyQt5.QtWidgets import QListWidgetItem
 from PyQt5.QtGui import QRegExpValidator
 from PyQt5.QtCore import QRegExp
-from utility import Messages, Numbers, BaseController
+from utility import (
+    Messages,
+    Numbers,
+    BaseController,
+    Validators,
+    create_patient_directory_if_not_exist,
+)
 
 class PatientsTabController(BaseController):
     def __init__(self, ui: Ui_MainWindow, appointment_controller):
         self.ui = ui
         self.active_workers = []
         self.load_patients_list()
-        self._connect_buttons()
         self.appointment_controller = appointment_controller
-        # Validatiors
-        identity_code_validator = QRegExpValidator(QRegExp(r"^\d{10}$"))
-        self.ui.patientsIdentityCodeSearch_txtbox.setValidator(identity_code_validator)
+        self._setup_validators()
+        self._connect_buttons()
+
+    def _setup_validators(self):
+        txtbox_only_number = QRegExpValidator(QRegExp(r"^\d{10}$"))
+        self.ui.patientsIdentityCodeSearch_txtbox.setValidator(txtbox_only_number)
+        self.ui.patientSearchFileNumber_txtbox.setValidator(txtbox_only_number)
 
     def _connect_buttons(self):
         self.ui.addPatient_btn.clicked.connect(self.open_add_patient)
@@ -28,6 +37,16 @@ class PatientsTabController(BaseController):
         self.ui.patientsLastNameSearch_btn.clicked.connect(
             self.search_patient_by_last_name
         )
+        self.ui.patientSearchByFileNumber_btn.clicked.connect(self.search_patient_by_file_number)
+
+    def search_patient_by_file_number(self):
+        searched_file_number = Numbers.persian_to_english_numbers(
+            self.ui.patientSearchFileNumber_txtbox.text() or ""
+        )
+        if searched_file_number:
+            self._start_worker(
+                Patients.get_by_id, [searched_file_number], self.display_searched_patient
+            )
 
     def search_patient_by_identity_code(self):
         entered_identity_code = Numbers.persian_to_english_numbers(
@@ -47,7 +66,7 @@ class PatientsTabController(BaseController):
     def search_patient_by_last_name(self):
         entered_last_name = self.ui.patientsLastNameSearch_txtbox.text()
         self._start_worker(
-            Patients.get_by_last_name, entered_last_name, self.display_patients_list
+            Patients.get_by_last_name, [entered_last_name], self.display_patients_list
         )
 
     def open_add_patient(self):
@@ -65,6 +84,7 @@ class PatientsTabController(BaseController):
         self.patient_file_controller.refresh_patients_list.connect(
             self.load_patients_list
         )
+        #TODO
         self.patient_file_controller.load_today_appointments_list.connect(
             self.appointment_controller.load_today_appointments_list
         )
@@ -72,6 +92,12 @@ class PatientsTabController(BaseController):
 
     def load_patients_list(self):
         self._start_worker(Patients.get_all, result_callback=self.display_patients_list)
+        self.clear_search_text_boxes()
+        
+    def clear_search_text_boxes(self):
+        self.ui.patientSearchFileNumber_txtbox.setText("")
+        self.ui.patientsIdentityCodeSearch_txtbox.setText("")
+        self.ui.patientsLastNameSearch_txtbox.setText("")
 
     def display_patients_list(self, patients):
         self.ui.patients_lst.clear()
@@ -83,8 +109,9 @@ class PatientsTabController(BaseController):
         full_name = f"{patient['firstName']} {patient['lastName']}"
         identity_code = Numbers.english_to_persian_numbers(patient["identityCode"])
         phone_number = Numbers.english_to_persian_numbers(patient["phoneNumber"])
+        age = Numbers.english_to_persian_numbers(patient["age"])
         item = QListWidgetItem(
-            f"{full_name} | جنسیت: {patient['gender']} | کد ملی: {identity_code} | شماره تلفن: {phone_number}"
+            f"{full_name} | سن: {age} | کد ملی: {identity_code} | شماره تلفن: {phone_number}"
         )
         item.setData(1, patient["id"])
         self.ui.patients_lst.addItem(item)
@@ -103,8 +130,10 @@ class AddEditPatientController(BaseController, QDialog):
         self.patient_id = patient_id
         self._setup_validators()
         if self.patient_id:
-            self.load_patient_data(self.patient_id)
-            self.ui.title_lbl.setText("ویرایش اطلاعات")
+            self.load_patient_data()
+        self._connect_buttons()
+
+    def _connect_buttons(self):
         self.ui.save_btn.clicked.connect(self.validate_form)
         self.ui.cancel_btn.clicked.connect(self.close)
 
@@ -115,12 +144,24 @@ class AddEditPatientController(BaseController, QDialog):
         phone_number_validator = QRegExpValidator(QRegExp(r"^\d{11}$"))
         self.ui.phoneNumber_txtbox.setValidator(phone_number_validator)
 
-    def load_patient_data(self, patient_id):
-        worker = DatabaseWorker(Patients.get_by_id, patient_id)
-        worker.result_signal.connect(self.display_patient_data)
-        worker.error_signal.connect(self.handle_error)
-        self.active_workers.append(worker)
-        worker.start()
+        self.ui.extraInfo_txtbox.textChanged.connect(
+            lambda: Validators.limit_text_edit(self.ui.extraInfo_txtbox)
+        )
+        self.ui.address_txtbox.textChanged.connect(
+            lambda: Validators.limit_text_edit(self.ui.address_txtbox)
+        )
+
+        self.ui.firstName_txtbox.setMaxLength(50)
+        self.ui.lastName_txtbox.setMaxLength(50)
+        self.ui.job_txtbox.setMaxLength(50)
+        self.ui.allergyOtherItems_txtbox.setMaxLength(50)
+        self.ui.disaseOtherItems_txtbox.setMaxLength(50)
+        self.ui.medicationsOtherItems_txtbox.setMaxLength(50)
+
+    def load_patient_data(self):
+        self._start_worker(
+            Patients.get_by_id, [self.patient_id], self.display_patient_data
+        )
 
     def display_patient_data(self, patient):
         # Convert numbers
@@ -129,12 +170,19 @@ class AddEditPatientController(BaseController, QDialog):
 
         self.ui.firstName_txtbox.setText(patient["firstName"])
         self.ui.lastName_txtbox.setText(patient["lastName"])
-        self.ui.gender_cmbox.setCurrentText(patient["gender"])
+        self.ui.job_txtbox.setText(patient["job"])
         self.ui.age_txtbox.setValue(patient["age"])
         self.ui.phoneNumber_txtbox.setText(phoneNumber)
         self.ui.address_txtbox.setPlainText(patient["address"])
         self.ui.identityCode_txtbox.setText(identity_code)
         self.ui.extraInfo_txtbox.setPlainText(patient["extraInfo"])
+        self.ui.specialCondition.setText(patient["specialCondition"])
+        self.ui.pregnant_cmbox.setCurrentText(patient["pregnant"])
+        self.ui.marialStatus_cmbox.setCurrentText(patient["maritalStatus"])
+
+        self._set_patient_allergies(patient["allergy"])
+        self._set_patient_diseases(patient["disease"])
+        self._set_patient_medications(patient["medication"])
 
     def validate_form(self):
         firstName = self.ui.firstName_txtbox.text().strip()
@@ -161,24 +209,7 @@ class AddEditPatientController(BaseController, QDialog):
         self._check_if_patient_exist(identity_code)
 
     def save_patient(self):
-        identity_code = Numbers.persian_to_english_numbers(
-            self.ui.identityCode_txtbox.text()
-        )
-        phone_number = Numbers.persian_to_english_numbers(
-            self.ui.phoneNumber_txtbox.text()
-        )
-
-        patient = {
-            "firstName": self.ui.firstName_txtbox.text().strip(),
-            "lastName": self.ui.lastName_txtbox.text().strip(),
-            "gender": self.ui.gender_cmbox.currentText().strip(),
-            "age": self.ui.age_txtbox.value(),
-            "phoneNumber": phone_number.strip(),
-            "address": self.ui.address_txtbox.toPlainText().strip(),
-            "identityCode": identity_code.strip(),
-            "extraInfo": self.ui.extraInfo_txtbox.toPlainText().strip(),
-        }
-
+        patient = self._collect_patient_data()
         if self.patient_id:
             patient["id"] = self.patient_id
             self.update_patient(patient)
@@ -189,6 +220,9 @@ class AddEditPatientController(BaseController, QDialog):
         self._start_worker(
             Patients.add_patient,
             [patient],
+            result_callback=lambda patient_id: create_patient_directory_if_not_exist(
+                str(patient_id)
+            ),
             success_callback=lambda: self.operation_successful(
                 "بیمار با موفقیت اضافه شد."
             ),
@@ -222,3 +256,115 @@ class AddEditPatientController(BaseController, QDialog):
             return
 
         self.save_patient()
+
+    def _collect_patient_data(self):
+        identity_code = Numbers.persian_to_english_numbers(
+            self.ui.identityCode_txtbox.text()
+        )
+        phone_number = Numbers.persian_to_english_numbers(
+            self.ui.phoneNumber_txtbox.text()
+        )
+
+        allergy = self._get_patient_allergies()
+        disease = self._get_patient_diseases()
+        medicaitons = self._get_patient_medications()
+
+        patient = {
+            "firstName": self.ui.firstName_txtbox.text().strip(),
+            "lastName": self.ui.lastName_txtbox.text().strip(),
+            "job": self.ui.job_txtbox.text().strip(),
+            "age": self.ui.age_txtbox.value(),
+            "phoneNumber": phone_number.strip(),
+            "maritalStatus": self.ui.marialStatus_cmbox.currentText().strip(),
+            "address": self.ui.address_txtbox.toPlainText().strip(),
+            "identityCode": identity_code.strip(),
+            "extraInfo": self.ui.extraInfo_txtbox.toPlainText().strip(),
+            "specialCondition": self.ui.specialCondition.text().strip(),
+            "pregnant": self.ui.pregnant_cmbox.currentText().strip(),
+            "allergy": allergy,
+            "disease": disease,
+            "medication": medicaitons,
+        }
+
+        return patient
+
+    def _get_patient_allergies(self):
+        allergies = [
+            (
+                "antibioticsAllergy"
+                if self.ui.antibioticsAllergy_chkbox.isChecked()
+                else ""
+            ),
+            "localAnesthetic" if self.ui.localAnesthetic_chkbox.isChecked() else "",
+            "painkiller" if self.ui.painkiller_chkbox.isChecked() else "",
+            "specialFood" if self.ui.specialFood_chkbox.isChecked() else "",
+            self.ui.allergyOtherItems_txtbox.text().strip(),
+        ]
+
+        return "-".join(filter(None, allergies))
+
+    def _get_patient_diseases(self):
+        diseases = [
+            "gastrointestinal" if self.ui.gastrointestinal_chkbox.isChecked() else "",
+            "thyroidDisease" if self.ui.thyroidDisease_chkbox.isChecked() else "",
+            "MS" if self.ui.MS_chkbox.isChecked() else "",
+            "respiratory" if self.ui.respiratory_chkbox.isChecked() else "",
+            "blood" if self.ui.blood_chkbox.isChecked() else "",
+            "herpes" if self.ui.herpes_chkbox.isChecked() else "",
+            "hepatitis" if self.ui.hepatitis_chkbox.isChecked() else "",
+            "cancer" if self.ui.cancer_chkbox.isChecked() else "",
+            "kidney" if self.ui.kidney_chkbox.isChecked() else "",
+            "hormone" if self.ui.hormone_chkbox.isChecked() else "",
+            self.ui.disaseOtherItems_txtbox.text().strip(),
+        ]
+        return "-".join(filter(None, diseases))
+
+    def _get_patient_medications(self):
+        mediciations = [
+            "contraceptive" if self.ui.contraceptive_chkbox.isChecked() else "",
+            "aspirin" if self.ui.aspirin_chkbox.isChecked() else "",
+            "roaccutane" if self.ui.roaccutane_chkbox.isChecked() else "",
+            "sedative" if self.ui.sedative_chkbox.isChecked() else "",
+            "heart" if self.ui.heart_chkbox.isChecked() else "",
+            "anticoagulants" if self.ui.anticoagulants_chkbox.isChecked() else "",
+            "insulin" if self.ui.insulin_chkbox.isChecked() else "",
+            "thyroidMedicine" if self.ui.thyroidMedicine_chkbox.isChecked() else "",
+            (
+                "antibioticsMedicine"
+                if self.ui.antibioticsMedicine_chkbox.isChecked()
+                else ""
+            ),
+            "Minoxidil" if self.ui.Minoxidil_chkbox.isChecked() else "",
+            self.ui.medicationsOtherItems_txtbox.text().strip(),
+        ]
+        return "-".join(filter(None, mediciations))
+
+    def _set_patient_allergies(self, allergies):
+        allergy_list = allergies.split("-")
+        for allergy in allergy_list:
+            checkbox_name = f"{allergy}_chkbox"
+            checkbox = getattr(self.ui, checkbox_name, None)
+            if checkbox:
+                checkbox.setChecked(True)
+            else:
+                self.ui.allergyOtherItems_txtbox.setText(allergy.strip())
+
+    def _set_patient_diseases(self, diseases):
+        disease_list = diseases.split("-")
+        for disease in disease_list:
+            checkbox_name = f"{disease}_chkbox"
+            checkbox = getattr(self.ui, checkbox_name, None)
+            if checkbox:
+                checkbox.setChecked(True)
+            else:
+                self.ui.disaseOtherItems_txtbox.setText(disease.strip())
+
+    def _set_patient_medications(self, medications):
+        medication_list = medications.split("-")
+        for medication in medication_list:
+            checkbox_name = f"{medication}_chkbox"
+            checkbox = getattr(self.ui, checkbox_name, None)
+            if checkbox:
+                checkbox.setChecked(True)
+            else:
+                self.ui.medicationsOtherItems_txtbox.setText(medication.strip())

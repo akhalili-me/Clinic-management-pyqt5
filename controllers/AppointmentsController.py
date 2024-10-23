@@ -1,19 +1,19 @@
 from PyQt5.QtWidgets import QDialog
 from ui import Ui_MainWindow,Ui_addEditAppointment_form,Ui_appointmentInfo_form
-from models import DatabaseManager
-from models import Services,Appointments,MedicalRecords
+from models import Appointments,delete_appointment_add_medical_record_transaction
 from PyQt5.QtCore import pyqtSignal
-from utility import LoadingValues,Dates,Numbers,Messages,SpecialDays,SMS
+from utility import LoadingValues,Dates,Numbers,Messages,SpecialDays,SMS,BaseController,Validators
 from PyQt5.QtWidgets import QListWidgetItem
 import jdatetime
 
-class AppointmentsTabController:
+class AppointmentsTabController(BaseController):
     def __init__(self, ui: Ui_MainWindow):
         self.ui = ui
+        self.active_workers = []
         LoadingValues.load_current_date_spin_box_values(self.ui)
         self.load_today_appointments_list()
         self._connect_buttons()
-        
+
     def _connect_buttons(self):
         self.ui.appointments_lst.itemDoubleClicked.connect(self.open_appointment_info)
         self.ui.AppointmentSearchByDate_btn.clicked.connect(self.search_appointments_by_date)
@@ -28,10 +28,10 @@ class AppointmentsTabController:
 
     def _load_future_date_appointments(self, days_ahead):
         date = Dates.get_future_date(days_ahead)
-        self._load_data_into_appointment_list(date)
+        self._load_appointment_list_by_date(date)
 
     def send_sms_to_searched_list(self):
-
+        # TODO
         selected_day = self.ui.sendToAllSMSByDays_cmbox.currentText().strip()
 
         if selected_day == SpecialDays.TODAY.value:
@@ -48,12 +48,11 @@ class AppointmentsTabController:
         appointments = self._get_appointments_by_jalali_date(selected_date)
 
         for appointment in appointments:
-            #send reminder sms as async
+            # send reminder sms as async
             pass
 
     def search_appointments_by_day_select(self):
         selected_day = self.ui.appointmentSearchDaySelect_cmbox.currentText().strip()
-
         day_to_function = {
             SpecialDays.TODAY.value: self.load_today_appointments_list,
             SpecialDays.TOOMMORROW.value: lambda: self._load_future_date_appointments(1),
@@ -61,7 +60,6 @@ class AppointmentsTabController:
             SpecialDays.THREE_DAYS_LATER.value: lambda: self._load_future_date_appointments(3),
             SpecialDays.FOUR_DAYS_LATER.value: lambda: self._load_future_date_appointments(4),
         }
-        
         selected_function = day_to_function.get(selected_day)
         if selected_function:
             selected_function()
@@ -69,23 +67,23 @@ class AppointmentsTabController:
     def search_appointments_by_date(self):
         year, month, day = self.ui.year_spnbox.value(), self.ui.month_spnbox.value(), self.ui.day_spnbox.value()
         date_str = jdatetime.date(year, month, day).strftime("%Y-%m-%d")
-        self._load_data_into_appointment_list(date_str)
+        self._load_appointment_list_by_date(date_str)
 
     def load_today_appointments_list(self):
         today_date = jdatetime.date.today().strftime("%Y-%m-%d")
-        self._load_data_into_appointment_list(today_date)
+        self._load_appointment_list_by_date(today_date)
 
-    def _get_appointments_by_jalali_date(self,date):
-        with DatabaseManager() as db:
-            try:
-                return Appointments.get_by_jalali_date(db, date)
-            except Exception as e:
-                Messages.show_error_msg(str(e))
-                return
-            
-    def _load_data_into_appointment_list(self,date):
+    def _load_appointment_list_by_date(self,date):
+        self._start_worker(
+            Appointments.get_by_jalali_date,
+            [date],
+            self.display_appointments_list,
+        )
+        LoadingValues.load_date_into_date_spinbox(self.ui, date)
+
+
+    def display_appointments_list(self,appointments):
         self.ui.appointments_lst.clear()
-        appointments = self._get_appointments_by_jalali_date(date)
         for appointment in appointments:  
             date = Dates.convert_to_jalali_format(appointment["jalali_date"])
             time = Numbers.english_to_persian_numbers(appointment["time"])
@@ -96,7 +94,8 @@ class AppointmentsTabController:
             item.setData(1, appointment["id"])
             self.ui.appointments_lst.addItem(item)
 
-class AppointmentInfoController(QDialog):
+
+class AppointmentInfoController(BaseController,QDialog):
     load_today_appointments_list = pyqtSignal()
     load_user_appointment_list = pyqtSignal()
     load_user_medical_records_list = pyqtSignal()
@@ -106,17 +105,12 @@ class AppointmentInfoController(QDialog):
         self.ui = Ui_appointmentInfo_form()
         self.ui.setupUi(self)
         self.setModal(True)
-        self.appointment = self._get_appointment_data(appointment_id)
-        self.load_appointment_data(self.appointment)
+        self.active_workers = []
+        self.appointment_id = appointment_id
+        self.appointment = None
+        self.load_appointment_data()
         self._connect_buttons()
 
-    def _get_appointment_data(self,appointment_id):
-        with DatabaseManager() as db:
-            try:
-                return Appointments.get_appointment_details_by_id(db,appointment_id)
-            except Exception as e:
-                Messages.show_error_msg(str(e))
-                
     def _connect_buttons(self):
         self.ui.deleteAppointment_btn.clicked.connect(self.delete_appointment)
         self.ui.sendReminderSMS_btn.clicked.connect(self.send_reminder_sms)
@@ -125,32 +119,30 @@ class AppointmentInfoController(QDialog):
 
     def add_appointment_to_medical_records(self):
         msg_box, yes_button = Messages.show_confirm_msg()
-        if msg_box.clickedButton() == yes_button:
-            appointment = self.appointment
-            
-            greg_date = appointment["greg_datetime"].split(" ")[0]
-            medical_record_data = {
-                "jalali_date": appointment["jalali_date"],
-                "doctor": appointment["doctor"],
-                "service": appointment["service"],
-                "price":appointment["service_price"],
-                "description": appointment["description"],
-                "patient": appointment["patient"],
-                "greg_date": greg_date,
-            }
-            with DatabaseManager() as db:
-                try:
-                    MedicalRecords.add_medical_record(db,medical_record_data)
-                    Appointments.delete_appointment(db,self.appointment.id)
-                    Messages.show_success_msg("نوبت با موفقیت به پرونده خدمات ارائه شده بیمار اضافه شد.")
-                    self.load_today_appointments_list.emit()
-                    self.load_user_appointment_list.emit()
-                    self.load_user_medical_records_list.emit()
-                except:
-                    Messages.show_error_msg("عملیات با خطا مواجه شد. لطفا مجدد امتحان کنید")
-                self.close()
-        else:
+        if msg_box.clickedButton() != yes_button:
             msg_box.close()
+            return
+
+        appointment = self.appointment
+
+        greg_date = appointment["greg_datetime"].split(" ")[0]
+        medical_record_data = {
+            "jalali_date": appointment["jalali_date"],
+            "doctor": appointment["doctor"],
+            "service": appointment["service"],
+            "price":appointment["service_price"],
+            "description": appointment["description"],
+            "patient": appointment["patient"],
+            "greg_date": greg_date,
+        }
+
+        self._start_worker(
+            delete_appointment_add_medical_record_transaction,
+            [self.appointment_id, medical_record_data],
+            success_callback=lambda: self.operation_successful(
+                "نوبت با موفقیت به پرونده خدمات ارائه شده بیمار اضافه شد.",True
+            ),
+        )
 
     def send_reminder_sms(self):
         # TO-DO
@@ -158,25 +150,22 @@ class AppointmentInfoController(QDialog):
 
     def delete_appointment(self):
         msg_box, yes_button = Messages.show_confirm_delete_msg()
-        if msg_box.clickedButton() == yes_button:
-            with DatabaseManager() as db:
-                try:
-                    Appointments.delete_appointment(db,self.appointment.id)
-                except Exception as e:
-                    Messages.show_error_msg(str(e))
-                    return
-                
-                Messages.show_success_msg("نوبت با موفقیت حذف شد.")
-                self.close()
-                self.load_today_appointments_list.emit()
-                self.load_user_appointment_list.emit()
-        else:
+        if msg_box.clickedButton() != yes_button:
             msg_box.close()
+            return
+
+        self._start_worker(
+            Appointments.delete_appointment,
+            [self.appointment_id],
+            success_callback=lambda: self.operation_successful(
+                "نوبت با موفقیت حذف شد."
+            ),
+        )
 
     def open_edit_appointment(self):
-        self.edit_appointment_controller = AddEditAppointmentController(appointment_id=self.appointment["id"])
+        self.edit_appointment_controller = AddEditAppointmentController(appointment_id=self.appointment_id)
         self.edit_appointment_controller.refresh_appointment_info_data.connect(
-            self._refresh_appointment_info_data
+            self.load_appointment_data
         )
         self.edit_appointment_controller.refresh_user_appointment_list_data.connect(
             self.load_user_appointment_list
@@ -186,7 +175,18 @@ class AppointmentInfoController(QDialog):
         )
         self.edit_appointment_controller.show()
 
-    def load_appointment_data(self,appointment):
+    def load_appointment_data(self):
+        self._start_worker(
+            Appointments.get_appointment_details_by_id,
+            [self.appointment_id],
+            self.handle_appointment_data,
+        )
+
+    def handle_appointment_data(self,appointment):
+        self.appointment = appointment
+        self.display_appointment_info(appointment)
+
+    def display_appointment_info(self,appointment):
         jalali_date = Dates.convert_to_jalali_format(appointment["jalali_date"])
         time = Numbers.english_to_persian_numbers(appointment["time"])
         description = appointment["description"] or "بدون توضیحات"
@@ -202,13 +202,18 @@ class AppointmentInfoController(QDialog):
         self.ui.description_lbl.setText(description)
         self.ui.smsCount_lbl.setText(f"{sms_count} پیامک یادآوری برای بیمار ارسال شده است ")
 
-    def _refresh_appointment_info_data(self,appointment_id):
-       appointment = self._get_appointment_data(appointment_id)
-       self.load_appointment_data(appointment)
+    def operation_successful(self,success_msg,medical_record_refresh=False):
+        Messages.show_success_msg(success_msg)
+        self.load_today_appointments_list.emit()
+        self.load_user_appointment_list.emit()
+        if medical_record_refresh:
+            self.load_user_medical_records_list.emit()
+        self.close()
 
-class AddEditAppointmentController(QDialog):
+
+class AddEditAppointmentController(BaseController,QDialog):
     load_today_appointments_list = pyqtSignal()
-    refresh_appointment_info_data = pyqtSignal(int)
+    refresh_appointment_info_data = pyqtSignal()
     refresh_user_appointment_list_data = pyqtSignal()
 
     def __init__(self, patient_id=None, appointment_id=None):
@@ -216,36 +221,36 @@ class AddEditAppointmentController(QDialog):
         self.ui = Ui_addEditAppointment_form()
         self.ui.setupUi(self)
         self.setModal(True)
-
+        self.active_workers = []
         self.patient_id = patient_id
-
-        self._load_initial_values()
-
+        self.appointment_id = appointment_id
+        self._initialize_ui()
         if appointment_id:
-            self.appointment = self._get_appointment_data(appointment_id)
-            self.patient_id = self.appointment["patient"]
-            self.ui.title_lbl.setText("ویرایش نوبت")
-            self.load_appointment_data_into_txtboxes()
-
+            self.load_appointment_data()
         self._connect_buttons()
 
-    def _load_initial_values(self):
+    def _initialize_ui(self):
+        self._setup_validators()
         LoadingValues.load_doctors_services_combo_boxes(self.ui)
         LoadingValues.load_current_date_spin_box_values(self.ui)
-    
-    def _get_appointment_data(self,appointment_id):
-        with DatabaseManager() as db:
-            try:
-                return Appointments.get_appointment_details_by_id(db,appointment_id)
-            except Exception as e:
-                Messages.show_error_msg(str(e))
+
+    def _setup_validators(self):
+        self.ui.description_txtbox.textChanged.connect(
+            lambda: Validators.limit_text_edit(self.ui.description_txtbox)
+        )
 
     def _connect_buttons(self):
         self.ui.save_btn.clicked.connect(self.save_appointment)
         self.ui.cancel_btn.clicked.connect(self.close)
 
-    def load_appointment_data_into_txtboxes(self):
-        appointment = self.appointment
+    def load_appointment_data(self):
+        self._start_worker(
+            Appointments.get_appointment_details_by_id,
+            [self.appointment_id],
+            result_callback=self.display_appointment_data,
+        )
+
+    def display_appointment_data(self,appointment):
         self.ui.doctor_cmbox.setCurrentText(f"دکتر {appointment["doctor_name"]}")
         self.ui.service_cmbox.setCurrentText(appointment["service_name"])
         self.ui.status_cmbox.setCurrentText(appointment["status"])
@@ -267,35 +272,39 @@ class AddEditAppointmentController(QDialog):
             'doctor': self.ui.doctor_cmbox.currentData(),
             'service': self.ui.service_cmbox.currentData(),
             'description': self.ui.description_txtbox.toPlainText().strip(),
-            'patient': self.patient_id,
         }
 
-        with DatabaseManager() as db:
-            if self.appointment:
-                appointment_data["id"] = self.appointment["id"]
+        if self.appointment_id:
+            appointment_data["id"] = self.appointment_id
+            self.update_appointment(appointment_data)
+        else:
+            appointment_data["patient"] = self.patient_id
+            self.add_appointment(appointment_data)
 
-                try:
-                    Appointments.update_appointment(db, appointment_data)
-                except Exception as e:
-                    Messages.show_error_msg(str(e))
-                    return
-                
-                success_msg = "نوبت با موفقیت ویرایش شد."
-                self.refresh_appointment_info_data.emit(self.appointment["id"])
-            else:
-                
-                try:
-                    Appointments.add_appointment(db, appointment_data)
-                except Exception as e:
-                    Messages.show_error_msg(str(e))
-                    return
-                
-                success_msg = "نوبت با موفقیت اضافه شد."
+    def add_appointment(self,appointment):
+        self._start_worker(
+            Appointments.add_appointment,
+            [appointment],
+            success_callback=lambda: self.operation_successful(
+                "نوبت با موفقیت اضافه شد."
+            ),
+        )
 
-            Messages.show_success_msg(success_msg)
-            self.load_today_appointments_list.emit()
-            self.refresh_user_appointment_list_data.emit()
-            self.close()
+    def update_appointment(self,appointment):
+        self._start_worker(
+            Appointments.update_appointment,
+            [appointment],
+            success_callback=lambda: self.operation_successful(
+                "نوبت با موفقیت ویرایش شد."
+            ),
+        )
+
+    def operation_successful(self,success_msg):
+        Messages.show_success_msg(success_msg)
+        self.load_today_appointments_list.emit()
+        self.refresh_user_appointment_list_data.emit()
+        self.refresh_appointment_info_data.emit()
+        self.close()
 
     def _get_jalali_date(self):
         year = self.ui.year_spnbox.value()
@@ -307,7 +316,7 @@ class AddEditAppointmentController(QDialog):
         hour = self.ui.hour_spnbox.value()
         minute = self.ui.minute_spnbox.value()
 
-        # Pad both hour and minute with zeros 
+        # Pad both hour and minute with zeros
         hour_str = str(hour).zfill(2)
         minute_str = str(minute).zfill(2)
 

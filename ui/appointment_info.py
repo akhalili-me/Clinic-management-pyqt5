@@ -20,8 +20,8 @@ class Ui_appointmentInfo_form(object):
         self.sendReminderSMS_btn = QtWidgets.QPushButton(appointmentInfo_form)
         self.sendReminderSMS_btn.setGeometry(QtCore.QRect(20, 450, 181, 41))
         font = QtGui.QFont()
-        font.setFamily("Vazirmatn,sans-serif")
-        font.setPointSize(-1)
+        font.setFamily("Vazirmatn")
+        font.setPointSize(10)
         font.setBold(True)
         font.setUnderline(False)
         font.setWeight(75)
@@ -32,11 +32,8 @@ class Ui_appointmentInfo_form(object):
 "    color: white; /* White text */\n"
 "    border: none;\n"
 "    border-radius: 5px; /* Rounded corners */\n"
-"    font-size: 15px; /* Font size */\n"
-"    font-weight: bold; /* Bold text */\n"
 "    text-align: center;\n"
 "    text-decoration: none;\n"
-"    font-family: \'Vazirmatn\', sans-serif; /* Font family */\n"
 "}\n"
 "\n"
 "QPushButton:hover {\n"
@@ -51,7 +48,7 @@ class Ui_appointmentInfo_form(object):
         self.addAppointmentToMedicalRecords_btn = QtWidgets.QPushButton(appointmentInfo_form)
         self.addAppointmentToMedicalRecords_btn.setGeometry(QtCore.QRect(210, 450, 221, 41))
         font = QtGui.QFont()
-        font.setFamily("Vazirmatn,sans-serif")
+        font.setFamily("Vazirmatn")
         font.setPointSize(11)
         font.setBold(True)
         font.setUnderline(False)
@@ -63,10 +60,8 @@ class Ui_appointmentInfo_form(object):
 "    color: white; /* White text */\n"
 "    border: none;\n"
 "    border-radius: 5px; /* Rounded corners */\n"
-"    font-weight: bold; /* Bold text */\n"
 "    text-align: center;\n"
 "    text-decoration: none;\n"
-"    font-family: \'Vazirmatn\', sans-serif; /* Font family */\n"
 "}\n"
 "\n"
 "QPushButton:hover {\n"
@@ -81,8 +76,8 @@ class Ui_appointmentInfo_form(object):
         self.editAppointment_btn = QtWidgets.QPushButton(appointmentInfo_form)
         self.editAppointment_btn.setGeometry(QtCore.QRect(440, 450, 101, 41))
         font = QtGui.QFont()
-        font.setFamily("Vazirmatn,sans-serif")
-        font.setPointSize(12)
+        font.setFamily("Vazirmatn")
+        font.setPointSize(13)
         font.setBold(True)
         font.setUnderline(False)
         font.setWeight(75)
@@ -94,10 +89,8 @@ class Ui_appointmentInfo_form(object):
 "    color: #212529; /* Dark text */\n"
 "    border: none;\n"
 "    border-radius: 5px; /* Rounded corners */\n"
-"    font-weight: bold; /* Bold text */\n"
 "    text-align: center;\n"
 "    text-decoration: none;\n"
-"    font-family: \'Vazirmatn\', sans-serif; /* Font family */\n"
 "}\n"
 "\n"
 "QPushButton:hover {\n"
@@ -112,7 +105,7 @@ class Ui_appointmentInfo_form(object):
         self.deleteAppointment_btn = QtWidgets.QPushButton(appointmentInfo_form)
         self.deleteAppointment_btn.setGeometry(QtCore.QRect(550, 450, 81, 41))
         font = QtGui.QFont()
-        font.setFamily("Vazirmatn,sans-serif")
+        font.setFamily("Vazirmatn")
         font.setPointSize(13)
         font.setBold(True)
         font.setUnderline(False)
@@ -125,10 +118,8 @@ class Ui_appointmentInfo_form(object):
 "    color: white; /* White text */\n"
 "    border: none;\n"
 "    border-radius: 5px; /* Rounded corners */\n"
-"    font-weight: bold; /* Bold text */\n"
 "    text-align: center;\n"
 "    text-decoration: none;\n"
-"    font-family: \'Vazirmatn\', sans-serif; /* Font family */\n"
 "}\n"
 "\n"
 "QPushButton:hover {\n"
@@ -144,7 +135,7 @@ class Ui_appointmentInfo_form(object):
         self.smsCount_lbl.setGeometry(QtCore.QRect(20, 390, 611, 41))
         font = QtGui.QFont()
         font.setFamily("Vazirmatn Medium")
-        font.setPointSize(11)
+        font.setPointSize(12)
         self.smsCount_lbl.setFont(font)
         self.smsCount_lbl.setStyleSheet("border: 1px solid;\n"
 "background-color: rgb(233, 236, 239);\n"
@@ -156,7 +147,7 @@ class Ui_appointmentInfo_form(object):
         self.patientFullName_lbl.setGeometry(QtCore.QRect(20, 20, 501, 41))
         font = QtGui.QFont()
         font.setFamily("Vazirmatn Medium")
-        font.setPointSize(11)
+        font.setPointSize(12)
         self.patientFullName_lbl.setFont(font)
         self.patientFullName_lbl.setStyleSheet("border: 1px solid;\n"
 "border-color: rgb(232, 232, 232);\n"
@@ -169,7 +160,7 @@ class Ui_appointmentInfo_form(object):
         self.phoneNumber_lbl.setGeometry(QtCore.QRect(20, 70, 501, 41))
         font = QtGui.QFont()
         font.setFamily("Vazirmatn Medium")
-        font.setPointSize(11)
+        font.setPointSize(12)
         self.phoneNumber_lbl.setFont(font)
         self.phoneNumber_lbl.setStyleSheet("border: 1px solid;\n"
 "border-color: rgb(232, 232, 232);\n"
@@ -199,7 +190,7 @@ class Ui_appointmentInfo_form(object):
         self.datetime_lbl.setGeometry(QtCore.QRect(20, 120, 501, 41))
         font = QtGui.QFont()
         font.setFamily("Vazirmatn Medium")
-        font.setPointSize(11)
+        font.setPointSize(12)
         self.datetime_lbl.setFont(font)
         self.datetime_lbl.setStyleSheet("border: 1px solid;\n"
 "border-color: rgb(232, 232, 232);\n"
@@ -208,24 +199,24 @@ class Ui_appointmentInfo_form(object):
 "border-color: rgb(206, 206, 206); ")
         self.datetime_lbl.setAlignment(QtCore.Qt.AlignCenter)
         self.datetime_lbl.setObjectName("datetime_lbl")
-        self.doctorName = QtWidgets.QLabel(appointmentInfo_form)
-        self.doctorName.setGeometry(QtCore.QRect(20, 170, 501, 41))
+        self.doctorName_lbl = QtWidgets.QLabel(appointmentInfo_form)
+        self.doctorName_lbl.setGeometry(QtCore.QRect(20, 170, 501, 41))
         font = QtGui.QFont()
         font.setFamily("Vazirmatn Medium")
-        font.setPointSize(11)
-        self.doctorName.setFont(font)
-        self.doctorName.setStyleSheet("border: 1px solid;\n"
+        font.setPointSize(12)
+        self.doctorName_lbl.setFont(font)
+        self.doctorName_lbl.setStyleSheet("border: 1px solid;\n"
 "border-color: rgb(232, 232, 232);\n"
 "background-color: rgb(233, 236, 239);\n"
 "border-radius: 10px;\n"
 "border-color: rgb(206, 206, 206); ")
-        self.doctorName.setAlignment(QtCore.Qt.AlignCenter)
-        self.doctorName.setObjectName("doctorName")
+        self.doctorName_lbl.setAlignment(QtCore.Qt.AlignCenter)
+        self.doctorName_lbl.setObjectName("doctorName_lbl")
         self.serviceName_lbl = QtWidgets.QLabel(appointmentInfo_form)
         self.serviceName_lbl.setGeometry(QtCore.QRect(20, 220, 501, 41))
         font = QtGui.QFont()
         font.setFamily("Vazirmatn Medium")
-        font.setPointSize(11)
+        font.setPointSize(12)
         self.serviceName_lbl.setFont(font)
         self.serviceName_lbl.setStyleSheet("border: 1px solid;\n"
 "border-color: rgb(232, 232, 232);\n"
@@ -234,32 +225,19 @@ class Ui_appointmentInfo_form(object):
 "border-color: rgb(206, 206, 206); ")
         self.serviceName_lbl.setAlignment(QtCore.Qt.AlignCenter)
         self.serviceName_lbl.setObjectName("serviceName_lbl")
-        self.status_lbl_2 = QtWidgets.QLabel(appointmentInfo_form)
-        self.status_lbl_2.setGeometry(QtCore.QRect(20, 270, 501, 41))
+        self.status_lbl = QtWidgets.QLabel(appointmentInfo_form)
+        self.status_lbl.setGeometry(QtCore.QRect(20, 270, 501, 41))
         font = QtGui.QFont()
         font.setFamily("Vazirmatn Medium")
-        font.setPointSize(11)
-        self.status_lbl_2.setFont(font)
-        self.status_lbl_2.setStyleSheet("border: 1px solid;\n"
+        font.setPointSize(12)
+        self.status_lbl.setFont(font)
+        self.status_lbl.setStyleSheet("border: 1px solid;\n"
 "border-color: rgb(232, 232, 232);\n"
 "background-color: rgb(233, 236, 239);\n"
 "border-radius: 10px;\n"
 "border-color: rgb(206, 206, 206); ")
-        self.status_lbl_2.setAlignment(QtCore.Qt.AlignCenter)
-        self.status_lbl_2.setObjectName("status_lbl_2")
-        self.description_lbl = QtWidgets.QLabel(appointmentInfo_form)
-        self.description_lbl.setGeometry(QtCore.QRect(20, 320, 501, 61))
-        font = QtGui.QFont()
-        font.setFamily("Vazirmatn Medium")
-        font.setPointSize(11)
-        self.description_lbl.setFont(font)
-        self.description_lbl.setStyleSheet("border: 1px solid;\n"
-"border-color: rgb(232, 232, 232);\n"
-"background-color: rgb(233, 236, 239);\n"
-"border-radius: 10px;\n"
-"border-color: rgb(206, 206, 206); ")
-        self.description_lbl.setAlignment(QtCore.Qt.AlignCenter)
-        self.description_lbl.setObjectName("description_lbl")
+        self.status_lbl.setAlignment(QtCore.Qt.AlignCenter)
+        self.status_lbl.setObjectName("status_lbl")
         self.patientFullName_lbl_3 = QtWidgets.QLabel(appointmentInfo_form)
         self.patientFullName_lbl_3.setGeometry(QtCore.QRect(530, 70, 101, 41))
         font = QtGui.QFont()
@@ -362,6 +340,34 @@ class Ui_appointmentInfo_form(object):
 "")
         self.patientFullName_lbl_8.setAlignment(QtCore.Qt.AlignCenter)
         self.patientFullName_lbl_8.setObjectName("patientFullName_lbl_8")
+        self.description_lbl = QtWidgets.QTextEdit(appointmentInfo_form)
+        self.description_lbl.setGeometry(QtCore.QRect(20, 320, 501, 61))
+        font = QtGui.QFont()
+        font.setFamily("Vazirmatn")
+        font.setPointSize(12)
+        font.setBold(False)
+        font.setWeight(50)
+        self.description_lbl.setFont(font)
+        self.description_lbl.setLayoutDirection(QtCore.Qt.RightToLeft)
+        self.description_lbl.setStyleSheet("/* Basic LineEdit styling */\n"
+"QTextEdit {\n"
+"    background-color: rgb(233, 236, 239);\n"
+"       border: 1px solid;\n"
+"    border-color: rgb(206, 206, 206); \n"
+"    border-radius: 5px; /* Rounded corners */\n"
+"    color: #343a40; /* Dark grey text color */\n"
+"    outline: none; /* Remove default outline */\n"
+"}\n"
+"\n"
+"/* Disabled state */\n"
+"QTextEdit:disabled {\n"
+"    background-color: #e9ecef; /* Light grey background when disabled */\n"
+"    color: #6c757d; /* Grey text color when disabled */\n"
+"}\n"
+"\n"
+"")
+        self.description_lbl.setReadOnly(True)
+        self.description_lbl.setObjectName("description_lbl")
 
         self.retranslateUi(appointmentInfo_form)
         QtCore.QMetaObject.connectSlotsByName(appointmentInfo_form)
@@ -373,20 +379,25 @@ class Ui_appointmentInfo_form(object):
         self.addAppointmentToMedicalRecords_btn.setText(_translate("appointmentInfo_form", "اضافه کردن نوبت به خدمات پرونده"))
         self.editAppointment_btn.setText(_translate("appointmentInfo_form", "ویرایش نوبت"))
         self.deleteAppointment_btn.setText(_translate("appointmentInfo_form", "حذف "))
-        self.smsCount_lbl.setText(_translate("appointmentInfo_form", "۲ پیامک یادآوری برای بیمار ارسال شده است."))
-        self.patientFullName_lbl.setText(_translate("appointmentInfo_form", "امیررضا خلیلی"))
-        self.phoneNumber_lbl.setText(_translate("appointmentInfo_form", "امیررضا خلیلی"))
+        self.smsCount_lbl.setText(_translate("appointmentInfo_form", "-"))
+        self.patientFullName_lbl.setText(_translate("appointmentInfo_form", "-"))
+        self.phoneNumber_lbl.setText(_translate("appointmentInfo_form", "-"))
         self.patientFullName_lbl_2.setText(_translate("appointmentInfo_form", "نام بیمار"))
-        self.datetime_lbl.setText(_translate("appointmentInfo_form", "امیررضا خلیلی"))
-        self.doctorName.setText(_translate("appointmentInfo_form", "امیررضا خلیلی"))
-        self.serviceName_lbl.setText(_translate("appointmentInfo_form", "امیررضا خلیلی"))
-        self.status_lbl_2.setText(_translate("appointmentInfo_form", "امیررضا خلیلی"))
-        self.description_lbl.setText(_translate("appointmentInfo_form", "امیررضا خلیلی"))
+        self.datetime_lbl.setText(_translate("appointmentInfo_form", "-"))
+        self.doctorName_lbl.setText(_translate("appointmentInfo_form", "-"))
+        self.serviceName_lbl.setText(_translate("appointmentInfo_form", "-"))
+        self.status_lbl.setText(_translate("appointmentInfo_form", "-"))
         self.patientFullName_lbl_3.setText(_translate("appointmentInfo_form", "شماره تلفن"))
         self.patientFullName_lbl_4.setText(_translate("appointmentInfo_form", "تاریخ و زمان"))
         self.patientFullName_lbl_5.setText(_translate("appointmentInfo_form", "دکتر"))
         self.patientFullName_lbl_6.setText(_translate("appointmentInfo_form", "سرویس"))
         self.patientFullName_lbl_7.setText(_translate("appointmentInfo_form", "وضعیت"))
         self.patientFullName_lbl_8.setText(_translate("appointmentInfo_form", "توضیحات"))
+        self.description_lbl.setHtml(_translate("appointmentInfo_form", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
+"p, li { white-space: pre-wrap; }\n"
+"</style></head><body style=\" font-family:\'Vazirmatn\'; font-size:12pt; font-weight:400; font-style:normal;\">\n"
+"<p dir=\'rtl\' style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:\'Vazirmatn,sans-serif\'; font-size:16px;\">-</span></p></body></html>"))
+
 
 

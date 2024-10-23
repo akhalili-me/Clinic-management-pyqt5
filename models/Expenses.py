@@ -7,8 +7,11 @@ class Expenses:
         query = f"SELECT * FROM Expense Where id={expense_id}"
         try:
             return db.fetchone(query)
-        except Exception:
-            error_msg = "واکشی هزینه با خطا مواجه شده است."
+        except Exception as e:
+            error_msg = f"""
+                واکشی هزینه با خطا مواجه شده است.
+                {str(e)}
+            """
             raise DatabaseError(error_msg)
         
     @staticmethod
@@ -17,8 +20,11 @@ class Expenses:
         values = (expense["name"],expense["price"],expense["description"],expense["jalali_date"],expense["greg_date"])
         try:
             return db.execute_query(query, values)
-        except Exception:
-            error_msg = "اضافه کردن هزینه با خطا مواجه شده است."
+        except Exception as e:
+            error_msg = f"""
+                اضافه کردن هزینه با خطا مواجه شده است.
+                {str(e)}
+            """
             raise DatabaseError(error_msg)
 
     @staticmethod
@@ -27,8 +33,11 @@ class Expenses:
        
         try:
             return db.fetchall(query)
-        except Exception:
-            error_msg = "واکشی هزینه‌ها با خطا مواجه شده است."
+        except Exception as e:
+            error_msg = f"""
+                واکشی هزینه‌ها با خطا مواجه شده است.
+                {str(e)}
+            """
             raise DatabaseError(error_msg)
         
     @staticmethod
@@ -36,8 +45,11 @@ class Expenses:
         query = f"SELECT * FROM Expense Where name Like '%{name}%'"
         try:
             return db.fetchall(query)
-        except Exception:
-            error_msg = "جستجو هزینه‌ها با خطا مواجه شده است."
+        except Exception as e:
+            error_msg = f"""
+                جستجو هزینه‌ها با خطا مواجه شده است.
+                {str(e)}
+            """
             raise DatabaseError(error_msg)
     
     @staticmethod
@@ -61,8 +73,11 @@ class Expenses:
 
         try:
             return db.execute_query(query, values)
-        except Exception:
-            error_msg = "ثبت تغییرات هزینه با خطا مواجه شده است."
+        except Exception as e:
+            error_msg = f"""
+                ثبت تغییرات هزینه با خطا مواجه شده است.
+                {str(e)}
+            """
             raise DatabaseError(error_msg)
 
     @staticmethod
@@ -70,6 +85,9 @@ class Expenses:
         query = f"DELETE FROM Expense WHERE id = {expense_id};"
         try:
             return db.execute_query(query)
-        except Exception:
-            error_msg = "حذف هزینه با خطا مواجه شده است."
+        except Exception as e:
+            error_msg = f"""
+                حذف هزینه با خطا مواجه شده است.
+                {str(e)}
+            """
             raise DatabaseError(error_msg)
