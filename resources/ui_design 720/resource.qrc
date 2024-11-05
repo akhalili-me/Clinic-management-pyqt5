@@ -1,0 +1,14 @@
+<RCC>
+  <qresource prefix="icons">
+    <file>refresh-arrow.png</file>
+    <file>magnifying-glass.png</file>
+    <file>plus.png</file>
+    <file>logo.png</file>
+    <file>bar-chart.png</file>
+    <file>money-bag.png</file>
+    <file>doctor.png</file>
+    <file>syringe.png</file>
+    <file>medical-appointment (1).png</file>
+    <file>home.png</file>
+  </qresource>
+</RCC>

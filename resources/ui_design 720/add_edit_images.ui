@@ -1,0 +1,330 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>addEditImage_form</class>
+ <widget class="QWidget" name="addEditImage_form">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>424</width>
+    <height>190</height>
+   </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>424</width>
+    <height>190</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>424</width>
+    <height>190</height>
+   </size>
+  </property>
+  <property name="windowTitle">
+   <string>تصویر</string>
+  </property>
+  <widget class="QPushButton" name="save_btn">
+   <property name="geometry">
+    <rect>
+     <x>170</x>
+     <y>150</y>
+     <width>91</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Vazirmatn</family>
+     <pointsize>12</pointsize>
+     <weight>75</weight>
+     <bold>true</bold>
+     <underline>false</underline>
+     <strikeout>false</strikeout>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton {
+    background-color: #28a745; /* Bootstrap success green */
+    color: white; /* White text */
+    border: none;
+    border-radius: 5px; /* Rounded corners */
+    text-align: center;
+    text-decoration: none;
+}
+
+QPushButton:hover {
+    background-color: #218838; /* Darker green on hover */
+}
+
+QPushButton:pressed {
+    background-color: #1e7e34; /* Even darker green on press */
+}
+</string>
+   </property>
+   <property name="text">
+    <string>ثبت</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="cancel_btn">
+   <property name="geometry">
+    <rect>
+     <x>270</x>
+     <y>150</y>
+     <width>75</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Vazirmatn</family>
+     <pointsize>12</pointsize>
+     <weight>75</weight>
+     <bold>true</bold>
+     <underline>false</underline>
+     <strikeout>false</strikeout>
+    </font>
+   </property>
+   <property name="focusPolicy">
+    <enum>Qt::StrongFocus</enum>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton {
+    background-color: #cccccc; /* Light grey */
+    color: #212529; /* Dark text */
+    border: none;
+    border-radius: 5px; /* Rounded corners */
+    text-align: center;
+    text-decoration: none;
+}
+
+QPushButton:hover {
+    background-color: #b3b3b3; /* Darker grey on hover */
+}
+
+QPushButton:pressed {
+    background-color: #999999; /* Even darker grey on press */
+}
+</string>
+   </property>
+   <property name="text">
+    <string>لغو</string>
+   </property>
+   <property name="checkable">
+    <bool>false</bool>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="imageName_txtbox">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>10</y>
+     <width>331</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="minimumSize">
+    <size>
+     <width>0</width>
+     <height>0</height>
+    </size>
+   </property>
+   <property name="maximumSize">
+    <size>
+     <width>7777</width>
+     <height>7777</height>
+    </size>
+   </property>
+   <property name="font">
+    <font>
+     <family>Vazirmatn,sans-serif</family>
+    </font>
+   </property>
+   <property name="layoutDirection">
+    <enum>Qt::RightToLeft</enum>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">/* Basic LineEdit styling */
+QLineEdit {
+    background-color: #ffffff; /* White background */
+    border: 1px solid #dee2e6; /* Light grey border */
+    border-radius: 5px; /* Rounded corners */
+    color: #343a40; /* Dark grey text color */
+    outline: none; /* Remove default outline */
+}
+
+/* Hover effect */
+QLineEdit:hover {
+    border: 1px solid #007bff; /* Blue border on hover */
+}
+
+/* Focus effect */
+QLineEdit:focus {
+    border: 1px solid #007bff; /* Blue border on focus */
+}
+
+/* Disabled state */
+QLineEdit:disabled {
+    background-color: #e9ecef; /* Light grey background when disabled */
+    color: #6c757d; /* Grey text color when disabled */
+}
+
+</string>
+   </property>
+   <property name="locale">
+    <locale language="Persian" country="Iran"/>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_5">
+   <property name="geometry">
+    <rect>
+     <x>330</x>
+     <y>20</y>
+     <width>71</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Vazirmatn Black</family>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>نام تصویر:</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="chooseImage_btn">
+   <property name="geometry">
+    <rect>
+     <x>220</x>
+     <y>100</y>
+     <width>121</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Vazirmatn</family>
+     <pointsize>10</pointsize>
+     <weight>75</weight>
+     <bold>true</bold>
+     <underline>false</underline>
+     <strikeout>false</strikeout>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton {
+    background-color: #0050a5; /* Bootstrap primary blue */
+    color: white; /* White text */
+    border: none;
+    border-radius: 5px; /* Rounded corners */
+    text-align: center;
+    text-decoration: none;
+}
+
+QPushButton:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+}
+
+QPushButton:pressed {
+    background-color: #004085; /* Even darker blue on press */
+}
+</string>
+   </property>
+   <property name="text">
+    <string>انتخاب فایل تصویر</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_6">
+   <property name="geometry">
+    <rect>
+     <x>340</x>
+     <y>60</y>
+     <width>71</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Vazirmatn Black</family>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>مسیر تصویر:</string>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="imagePath_txtbox">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>50</y>
+     <width>331</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="minimumSize">
+    <size>
+     <width>0</width>
+     <height>0</height>
+    </size>
+   </property>
+   <property name="maximumSize">
+    <size>
+     <width>7777</width>
+     <height>7777</height>
+    </size>
+   </property>
+   <property name="font">
+    <font>
+     <family>Vazirmatn Medium</family>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
+   <property name="layoutDirection">
+    <enum>Qt::RightToLeft</enum>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">/* Basic LineEdit styling */
+QLineEdit {
+    background-color: #ffffff; /* White background */
+    border: 1px solid #dee2e6; /* Light grey border */
+    border-radius: 5px; /* Rounded corners */
+    color: #343a40; /* Dark grey text color */
+    outline: none; /* Remove default outline */
+}
+
+/* Hover effect */
+QLineEdit:hover {
+    border: 1px solid #007bff; /* Blue border on hover */
+}
+
+/* Focus effect */
+QLineEdit:focus {
+    border: 1px solid #007bff; /* Blue border on focus */
+}
+
+/* Disabled state */
+QLineEdit:disabled {
+    background-color: #e9ecef; /* Light grey background when disabled */
+    color: #6c757d; /* Grey text color when disabled */
+}
+
+</string>
+   </property>
+   <property name="locale">
+    <locale language="Persian" country="Iran"/>
+   </property>
+   <property name="text">
+    <string>picture path</string>
+   </property>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

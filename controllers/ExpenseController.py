@@ -1,15 +1,15 @@
 # controllers/add_patient_controller.py
 from PyQt5.QtWidgets import QDialog
-from ui import Ui_MainWindow,Ui_addEditDeleteExpense_form
-from models.db import DatabaseWorker
+# from ui import Ui_MainWindow,Ui_addEditDeleteExpense_form
+from ui import get_ui_class
 from PyQt5.QtCore import pyqtSignal
 from models import Expenses
 from PyQt5.QtWidgets import QListWidgetItem
-from utility import Dates,Numbers,LoadingValues,Validators,Messages,BaseController
+from utility import Dates,Numbers,Validators,Messages,BaseController,LoadSpinBox
 import jdatetime
 
 class ExpenseTabController(BaseController):
-    def __init__(self, ui:Ui_MainWindow):
+    def __init__(self, ui):
         self.ui = ui
         self.active_workers = []
         self.load_current_month_expense_list()
@@ -21,6 +21,12 @@ class ExpenseTabController(BaseController):
         self.ui.searchExpenseByDate_btn.clicked.connect(self.search_by_date)
         self.ui.addExpense_btn.clicked.connect(self.open_add_expense)
         self.ui.expense_lst.itemDoubleClicked.connect(self.open_edit_delete_expense)
+        self.ui.refreshExpenseList_btn.clicked.connect(self.handle_expense_refresh)
+
+    def handle_expense_refresh(self):
+        self.ui.expenseName_txtbox.setText("")
+        self.load_current_month_expense_list()
+        self.load_current_date_into_date_spnboxes()
 
     def open_add_expense(self):
         self.add_expense_controller = AddEditDeleteExpenses()
@@ -59,10 +65,9 @@ class ExpenseTabController(BaseController):
     def display_expense_list(self,expenses):
         self.ui.expense_lst.clear()
         for expense in expenses:
-            description = expense["description"] or "بدون توضیحات"
             price = Numbers.int_to_persian_with_separators(expense["price"])
             jalali_date = Dates.convert_to_jalali_format(expense["jalali_date"])
-            item_txt = f"{expense["name"]} | {price} تومان | {jalali_date} | {description}"
+            item_txt = f"{expense["name"]} | {price} تومان | {jalali_date}"
             item = QListWidgetItem(item_txt)
             item.setData(1, expense['id'])
             self.ui.expense_lst.addItem(item)
@@ -82,15 +87,14 @@ class ExpenseTabController(BaseController):
         ]
 
         for date_spnbox in date_spnbox_list:
-            LoadingValues.load_current_date_spin_box_values(self.ui,date_spnbox)
-
+            LoadSpinBox.set_current_date_into_date_spin_boxes(self.ui,date_spnbox)
 
 class AddEditDeleteExpenses(BaseController,QDialog):
     refresh_expense_list = pyqtSignal()
 
     def __init__(self, expense_id=None):
         super(AddEditDeleteExpenses, self).__init__()
-        self.ui = Ui_addEditDeleteExpense_form()
+        self.ui = get_ui_class("aedExpense")()
         self.ui.setupUi(self)
         self.setModal(True)
         self._setup_validators()
@@ -101,7 +105,7 @@ class AddEditDeleteExpenses(BaseController,QDialog):
         else:
             self.ui.delete_btn.hide()
 
-        LoadingValues.load_current_date_spin_box_values(self.ui)
+        LoadSpinBox.set_current_date_into_date_spin_boxes(self.ui)
         self._connect_buttons()
 
     def _connect_buttons(self):
@@ -115,6 +119,16 @@ class AddEditDeleteExpenses(BaseController,QDialog):
             lambda: Validators.limit_text_edit(self.ui.description_txtbox)
         )
     def validate_form(self):
+        try:
+            self._get_jalali_date()
+        except Exception as e:
+            warning_message = f"""
+            تاریخ انتخاب شده وجود ندارد. 
+            {str(e)}
+            """
+            Messages.show_warning_msg(warning_message)
+            return
+
         name_text = self.ui.name_txtbox.text()
         txtboxes = [
             {"text": name_text, "name": "نام هزینه"},
@@ -122,6 +136,8 @@ class AddEditDeleteExpenses(BaseController,QDialog):
 
         if Validators.validate_empty_txt_boxes(txtboxes):
             self.save_expense()
+
+        
 
     def load_expense_data_into_txtboxes(self):
         self._start_worker(
@@ -131,7 +147,7 @@ class AddEditDeleteExpenses(BaseController,QDialog):
     def display_expense_data(self,expense):
         self.ui.name_txtbox.setText(expense["name"])
         self.ui.price_txtbox.setValue(expense["price"])
-        LoadingValues.load_date_into_date_spinbox(self.ui,expense["jalali_date"])
+        LoadSpinBox.load_date_into_date_spinboxes(self.ui,expense["jalali_date"])
         self.ui.description_txtbox.setPlainText(expense["description"])
 
     def save_expense(self):

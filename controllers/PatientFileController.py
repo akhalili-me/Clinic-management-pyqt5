@@ -1,30 +1,49 @@
 # controllers/add_patient_controller.py
-from PyQt5.QtWidgets import QDialog
-from ui import Ui_patientFile_form
+from PyQt5.QtWidgets import QDialog, QFileDialog,QCheckBox
+from ui import get_ui_class
 from models import (
     Patients,
     MedicalRecords,
     Appointments,
-    MedicalRecordImages,
     DatabaseWorker,
 )
+import os
 from PyQt5.QtWidgets import QListWidgetItem
-from utility import Numbers, Dates, Messages, Images, BaseController,delete_patient_directory
+from utility import (
+    Numbers,
+    Dates,
+    Messages,
+    Images,
+    BaseController,
+    delete_patient_directory,
+    get_patient_signature_image_path,
+)
 from PyQt5.QtWidgets import QDialog
 from PyQt5.QtCore import pyqtSignal
+from PyQt5.QtGui import QPixmap
+from utility import (
+    create_patient_file_pdf,
+    PatientTranslations,
+    get_patient_signature_image_path,
+    MEDIA_DIR,
+)
 
 
 class PatientFileController(BaseController, QDialog):
     refresh_patients_list = pyqtSignal()
-    load_today_appointments_list = pyqtSignal()
 
-    def __init__(self, patient_id):
+    def __init__(self, patient_id, dispatcher):
         super(PatientFileController, self).__init__()
-        self.ui = Ui_patientFile_form()
+        self.ui = get_ui_class("patientFile")()
         self.ui.setupUi(self)
         self.setModal(True)
         self.active_workers = []
+        self.dispatcher = dispatcher
+        self.dispatcher.refresh_patient_medical_records_list.connect(
+            self.load_patient_medical_records_list
+        )
         self.patient_id = patient_id
+        self.patient_file_pdf_dir = None
         self._load_initial_data()
         self._connect_buttons()
 
@@ -39,6 +58,46 @@ class PatientFileController(BaseController, QDialog):
         self.ui.userMedicalRecords_lst.itemDoubleClicked.connect(
             self.open_medical_record_info
         )
+        self.ui.printPatientFIle_btn.clicked.connect(self.generate_patient_pdf)
+        self.ui.openPatientFolder_btn.clicked.connect(self.open_patient_folder)
+
+    def open_patient_folder(self):
+        patient_folder_path = f"{MEDIA_DIR}/{self.patient_id}"
+        os.makedirs(patient_folder_path, exist_ok=True)
+        os.startfile(patient_folder_path)
+
+    def generate_patient_pdf(self):
+        options = QFileDialog.Options()
+        directory = QFileDialog.getExistingDirectory(
+            self, "Select Directory", "", options=options
+        )
+
+        if directory:
+            self._start_worker(
+                Patients.get_patient_and_medical_records,
+                [self.patient_id],
+                self.create_pdf_file,
+            )
+            self.patient_file_pdf_dir = directory
+
+    def create_pdf_file(self, patient_medical_data):
+        patient, medical_records = patient_medical_data
+
+        translated_allergies = PatientTranslations.translate_allergies(
+            patient["allergy"]
+        )
+        patient["allergy"] = translated_allergies
+        translated_diseases = PatientTranslations.translate_diseases(patient["disease"])
+        patient["disease"] = translated_diseases
+        translated_medications = PatientTranslations.translate_medications(
+            patient["medication"]
+        )
+        patient["medication"] = translated_medications
+        patient["signature"] = get_patient_signature_image_path(patient["id"])
+
+        create_patient_file_pdf(patient, medical_records, self.patient_file_pdf_dir)
+        Messages.show_success_msg("فایل پرونده بیمار با موفقیت ذخیره شد")
+        self.close()
 
     def _load_initial_data(self):
         self.load_patient_info()
@@ -50,7 +109,7 @@ class PatientFileController(BaseController, QDialog):
         from controllers import MedicalRecordInfoController
 
         self.appointment_info_controller = MedicalRecordInfoController(
-            medical_record_id
+            medical_record_id, self.dispatcher
         )
         self.appointment_info_controller.load_user_medical_records_list.connect(
             self.load_patient_appointments_list
@@ -61,15 +120,14 @@ class PatientFileController(BaseController, QDialog):
         appointment_id = item.data(1)
         from controllers import AppointmentInfoController
 
-        self.appointment_info_controller = AppointmentInfoController(appointment_id)
+        self.appointment_info_controller = AppointmentInfoController(
+            appointment_id, self.dispatcher
+        )
         self.appointment_info_controller.load_user_appointment_list.connect(
             self.load_patient_appointments_list
         )
         self.appointment_info_controller.load_user_medical_records_list.connect(
             self.load_patient_medical_records_list
-        )
-        self.appointment_info_controller.load_today_appointments_list.connect(
-            self.load_today_appointments_list
         )
         self.appointment_info_controller.show()
 
@@ -102,22 +160,21 @@ class PatientFileController(BaseController, QDialog):
         from controllers import AddEditMedicalRecordsController
 
         self.add_medical_record_controller = AddEditMedicalRecordsController(
-            self.patient_id
-        )
-        self.add_medical_record_controller.refresh_user_medical_records_list.connect(
-            self.load_patient_medical_records_list
+            self.dispatcher, self.patient_id
         )
         self.add_medical_record_controller.show()
 
     def open_add_appointment(self):
         from controllers import AddEditAppointmentController
 
-        self.add_appointment_controller = AddEditAppointmentController(self.patient_id)
+        self.add_appointment_controller = AddEditAppointmentController(
+            self.dispatcher, self.patient_id
+        )
         self.add_appointment_controller.refresh_user_appointment_list_data.connect(
             self.load_patient_appointments_list
         )
         self.add_appointment_controller.load_today_appointments_list.connect(
-            self.load_today_appointments_list
+            self.dispatcher.refresh_appointments_list
         )
         self.add_appointment_controller.show()
 
@@ -142,7 +199,9 @@ class PatientFileController(BaseController, QDialog):
         self._set_extraItem_default_text()
         if patient:
             age = Numbers.english_to_persian_numbers(str(patient["age"]))
-            self.ui.fileNumber_lbl.setText(Numbers.english_to_persian_numbers(str(patient["id"])))
+            self.ui.fileNumber_lbl.setText(
+                Numbers.english_to_persian_numbers(str(patient["id"]))
+            )
             self.ui.firstName_lbl.setText(patient["firstName"])
             self.ui.lastName_lbl.setText(patient["lastName"])
             self.ui.age_lbl.setText(age)
@@ -159,9 +218,19 @@ class PatientFileController(BaseController, QDialog):
             self.ui.specialCondition_lbl.setText(patient["specialCondition"])
             self.ui.pregnant_lbl.setText(patient["pregnant"])
 
+            self._uncheck_checkboxes()
             self._set_patient_allergies(patient["allergy"])
             self._set_patient_diseases(patient["disease"])
             self._set_patient_medications(patient["medication"])
+            self._display_patient_signature()
+
+    def _display_patient_signature(self):
+        signature_path = get_patient_signature_image_path(self.patient_id)
+        if os.path.exists(signature_path):
+            signature_pixmap = QPixmap(signature_path)
+            self.ui.signatureImage_lbl.setPixmap(signature_pixmap)
+        else:
+            self.ui.signatureImage_lbl.setText("بدون امضاء")
 
     def load_patient_medical_records_list(self):
         self._start_worker(
@@ -237,3 +306,8 @@ class PatientFileController(BaseController, QDialog):
         self.ui.allergyOtherItems_lbl.setText("-")
         self.ui.diseaseOtherItems_lbl.setText("-")
         self.ui.medicationOtherItems_lbl.setText("-")
+
+    def _uncheck_checkboxes(self):
+        checkboxes = self.findChildren(QCheckBox) 
+        for checkbox in checkboxes:
+            checkbox.setChecked(False)

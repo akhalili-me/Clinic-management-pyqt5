@@ -1,9 +1,9 @@
-from .db import DatabaseManager,DatabaseError
+from .db import DatabaseError
 
 class Services:
     
     @staticmethod
-    def get_all(db: DatabaseManager):
+    def get_all(db):
         query = "SELECT * FROM Service"
         try:
             return db.fetchall(query)
@@ -27,7 +27,7 @@ class Services:
             raise DatabaseError(error_msg)
 
     @staticmethod
-    def get_by_id(db: DatabaseManager,service_id):
+    def get_by_id(db,service_id):
         query = f"SELECT * FROM Service Where id={service_id}"
         try:
             return db.fetchone(query)
@@ -40,7 +40,7 @@ class Services:
    
     
     @staticmethod
-    def add_service(db:DatabaseManager, service):
+    def add_service(db, service):
         query = "INSERT INTO Service(name,price) VALUES (?,?)"
         values = (service["name"], service["price"])
         try:
@@ -53,7 +53,7 @@ class Services:
             raise DatabaseError(error_msg)
 
     @staticmethod
-    def update_service(db: DatabaseManager, service):
+    def update_service(db, service):
         query = """UPDATE Service
                     SET name = ?, 
                         price = ?
@@ -75,7 +75,7 @@ class Services:
             raise DatabaseError(error_msg)
 
     @staticmethod
-    def delete_service(db: DatabaseManager, service_id):
+    def delete_service(db, service_id):
         query = f"DELETE FROM Service WHERE id = {service_id};"
         try:
             return db.execute_query(query)

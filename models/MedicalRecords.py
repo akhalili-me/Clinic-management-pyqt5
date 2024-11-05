@@ -1,8 +1,8 @@
-from .db import DatabaseManager,DatabaseError
+from .db import DatabaseError
 
 class MedicalRecordImages:
     @staticmethod
-    def get_by_id(db:DatabaseManager,id):
+    def get_by_id(db,id):
         query = f"SELECT * FROM MedicalRecordImages Where id={id}"
 
         try:
@@ -15,7 +15,7 @@ class MedicalRecordImages:
             raise DatabaseError(error_msg)
         
     @staticmethod
-    def get_details_by_medical_record_id(db:DatabaseManager ,medical_record_id):
+    def get_details_by_medical_record_id(db ,medical_record_id):
         query = f"""
         SELECT 
             mri.*
@@ -35,7 +35,7 @@ class MedicalRecordImages:
 
     
     @staticmethod
-    def get_all_image_paths_by_medical_record_id(db:DatabaseManager,medical_record_id):
+    def get_all_image_paths_by_medical_record_id(db,medical_record_id):
         query = f"""
         SELECT 
             mri.path
@@ -54,7 +54,7 @@ class MedicalRecordImages:
             raise DatabaseError(error_msg)
 
     @staticmethod
-    def add_medical_record_image(db:DatabaseManager,medical_record_image):
+    def add_medical_record_image(db,medical_record_image):
         query = """INSERT INTO MedicalRecordImages(path,name,medical_record)
                 VALUES (?,?,?)
                 """
@@ -73,7 +73,7 @@ class MedicalRecordImages:
             raise DatabaseError(error_msg)
         
     @staticmethod
-    def delete_medical_record_image(db: DatabaseManager, image_id):
+    def delete_medical_record_image(db, image_id):
         query = f"DELETE FROM MedicalRecordImages WHERE id = {image_id};"
         try:
             return db.execute_query(query)
@@ -107,7 +107,7 @@ class MedicalRecordImages:
         
 class MedicalRecords:
     @staticmethod
-    def get_by_id(db: DatabaseManager, id):
+    def get_by_id(db, id):
         query = f"""
             SELECT 
                 M.id,
@@ -133,7 +133,7 @@ class MedicalRecords:
             raise DatabaseError(error_msg)
         
     @staticmethod
-    def get_details_by_id(db: DatabaseManager, id):
+    def get_details_by_id(db, id):
         query = f"""
         SELECT 
             M.*,
@@ -155,7 +155,7 @@ class MedicalRecords:
             raise DatabaseError(error_msg)
 
     @staticmethod
-    def get_by_patient_id(db: DatabaseManager, patient_id):
+    def get_by_patient_id(db, patient_id):
         # query = f"SELECT * FROM MedicalRecords Where patient={patient_id} ORDER BY greg_date DESC"
 
         query = f"""
@@ -175,6 +175,32 @@ class MedicalRecords:
         except Exception as e:
             error_msg = f"""
                 واکشی خدمات بیمار با خطا مواجه شده است.
+                {str(e)}
+            """
+            raise DatabaseError(error_msg)
+        
+    @staticmethod
+    def get_by_date(db, date):
+        query = f"""
+            SELECT 
+                M.id,
+                M.jalali_date,
+                M.price,
+                D.lastName AS doctor_lastname,
+                P.firstName || ' ' || P.lastName AS patient_name,
+                S.name AS service_name
+            From MedicalRecords M
+            JOIN Doctor D ON M.doctor = D.id
+            JOIN Service S ON M.service = S.id
+            JOIN Patient P ON M.patient = P.id
+            WHERE M.jalali_date = '{date}'
+            ORDER BY greg_date DESC
+        """
+        try:
+            return db.fetchall(query)
+        except Exception as e:
+            error_msg = f"""
+                واکشی خدمات با خطا مواجه شده است.
                 {str(e)}
             """
             raise DatabaseError(error_msg)
@@ -199,7 +225,7 @@ class MedicalRecords:
             raise DatabaseError(error_msg)
 
     @staticmethod
-    def add_medical_record(db:DatabaseManager,record):
+    def add_medical_record(db,record):
         query = """INSERT INTO MedicalRecords(jalali_date,greg_date, doctor, patient, service, description,price)
                 VALUES (?,?,?,?,?,?,?)
                 """
@@ -222,7 +248,7 @@ class MedicalRecords:
             raise DatabaseError(error_msg)
         
     @staticmethod
-    def update_medical_record(db: DatabaseManager, record):
+    def update_medical_record(db, record):
         query = """UPDATE MedicalRecords
                     SET jalali_date = ?, 
                         greg_date = ?,
@@ -257,7 +283,7 @@ class MedicalRecords:
             raise DatabaseError(error_msg)
 
     @staticmethod
-    def delete_medical_record(db: DatabaseManager, record_id):
+    def delete_medical_record(db, record_id):
         query = f"DELETE FROM MedicalRecords WHERE id = {record_id};"
         try:
             return db.execute_query(query)

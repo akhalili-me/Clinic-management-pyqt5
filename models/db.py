@@ -1,6 +1,5 @@
 from PyQt5.QtSql import QSqlDatabase, QSqlQuery
-from PyQt5.QtCore import QThread, pyqtSignal
-from PyQt5.QtCore import QObject, pyqtSignal
+from PyQt5.QtCore import QThread, pyqtSignal,QObject
 import uuid
 
 class DatabaseError(Exception):
@@ -86,25 +85,29 @@ class DatabaseManagerForWorker(QObject):
     def create_connection(self):
         connection_name = str(uuid.uuid4())
         self.db = QSqlDatabase.addDatabase('QSQLITE', connection_name)
-        self.db.setDatabaseName(self.db_path)
 
+        self.db.setDatabaseName(self.db_path)
+        # enable for readonly database.
+        # self.db.setConnectOptions("QSQLITE_OPEN_READONLY")
         if not self.db.open():
             raise DatabaseError(f"Unable to open database: {self.db.lastError().text()}")
-        
+
         self.enable_foreign_keys()
         return self.db
 
     def close(self):
         if self.db and self.db.isOpen():
+            QSqlQuery(self.db).clear()  # Ensures any lingering queries are cleared
             self.db.close()
-            QSqlDatabase.removeDatabase(self.db.connectionName())
-    
+        self.db = None  # Clear the reference to ensure no lingering connection
+
+
     def __enter__(self):
         self.create_connection()
         return self
-     
+
     def __exit__(self, exc_type, exc_value, traceback):
-        self.close
+        self.close()
 
     def execute_query(self, query_str, params=()):
         query = QSqlQuery(self.db)
@@ -113,7 +116,7 @@ class DatabaseManagerForWorker(QObject):
             query.addBindValue(param)
         if not query.exec_():
             raise DatabaseError(f"Error executing query: {query.lastError().text()}")
-        
+
         # Return last inserted row ID if this is an INSERT query
         if query_str.strip().lower().startswith('insert'):
             return query.lastInsertId()
@@ -131,17 +134,19 @@ class DatabaseManagerForWorker(QObject):
             record = query.record()
             row = {record.fieldName(i): query.value(i) for i in range(record.count())}
             results.append(row)
+
+        query.clear()
         return results
 
     def fetchone(self, query_str, params=()):
         results = self.fetchall(query_str, params)
         return results[0] if results else None
-    
+
     def enable_foreign_keys(self):
         query = QSqlQuery(self.db)
         if not query.exec_("PRAGMA foreign_keys = ON;"):
             raise DatabaseError(f"Error enabling foreign keys: {query.lastError().text()}")
-    
+
     def begin_transaction(self):
         if not self.db.transaction():
             raise DatabaseError(f"Failed to start transaction: {self.db.lastError().text()}")

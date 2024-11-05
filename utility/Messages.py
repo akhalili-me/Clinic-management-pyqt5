@@ -18,6 +18,22 @@ class Messages:
         msg_box.exec_()
 
     @staticmethod
+    def show_info_msg(message):
+        msg_box = QMessageBox()
+        msg_box.setIcon(QMessageBox.Information)
+        msg_box.setText(message)
+        msg_box.setWindowTitle("اطلاعات")
+        msg_box.exec_()
+
+    @staticmethod
+    def show_warning_msg(message):
+        msg_box = QMessageBox()
+        msg_box.setIcon(QMessageBox.Warning)
+        msg_box.setText(message)
+        msg_box.setWindowTitle("هشدار")
+        msg_box.exec_()
+
+    @staticmethod
     def show_confirm_delete_msg():
         msg_box = QMessageBox()
         msg_box.setWindowTitle('تایید حذف')

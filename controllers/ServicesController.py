@@ -1,17 +1,18 @@
 # controllers/add_patient_controller.py
 from PyQt5.QtWidgets import QDialog
-from ui import Ui_addEditDeleteService_form, Ui_MainWindow
+from ui import get_ui_class
 from PyQt5.QtWidgets import QMessageBox
 from PyQt5.QtCore import pyqtSignal
-from models import Services, DatabaseWorker, DatabaseManager
+from models import Services
 from PyQt5.QtWidgets import QListWidgetItem
 from utility import Numbers, Messages, BaseController
-
+from models import DatabaseWorker
 
 class ServicesTabController(BaseController):
-    def __init__(self, ui: Ui_MainWindow):
+    def __init__(self, ui, dispatcher):
         self.ui = ui
         self.active_workers = []
+        self.dispatcher = dispatcher
         self.load_services_list()
         self._connect_buttons()
 
@@ -19,6 +20,11 @@ class ServicesTabController(BaseController):
         self.ui.addServices_btn.clicked.connect(self.open_add_service)
         self.ui.services_lst.itemDoubleClicked.connect(self.open_edit_delete_service)
         self.ui.searchServices_btn.clicked.connect(self.search_services)
+        self.ui.refreshServiceList_btn.clicked.connect(self.refresh_service_list)
+
+    def refresh_service_list(self):
+        self.ui.serviceName_txtbox.setText("")
+        self.load_services_list()
 
     def search_services(self):
         searched_name = self.ui.serviceName_txtbox.text().strip()
@@ -29,7 +35,7 @@ class ServicesTabController(BaseController):
     def open_edit_delete_service(self, item):
         service_id = item.data(1)
         self.open_delete_edit_service_controller = AddEditDeleteServiceController(
-            service_id
+            service_id, self.dispatcher
         )
         self.open_delete_edit_service_controller.refresh_services_list.connect(
             self.load_services_list
@@ -37,7 +43,9 @@ class ServicesTabController(BaseController):
         self.open_delete_edit_service_controller.show()
 
     def open_add_service(self):
-        self.add_service_controller = AddEditDeleteServiceController()
+        self.add_service_controller = AddEditDeleteServiceController(
+            dispatcher=self.dispatcher
+        )
         self.add_service_controller.refresh_services_list.connect(
             self.load_services_list
         )
@@ -59,12 +67,13 @@ class ServicesTabController(BaseController):
 class AddEditDeleteServiceController(BaseController, QDialog):
     refresh_services_list = pyqtSignal()
 
-    def __init__(self, service_id=None):
+    def __init__(self, service_id=None, dispatcher=None):
         super(AddEditDeleteServiceController, self).__init__()
-        self.ui = Ui_addEditDeleteService_form()
+        self.ui = get_ui_class("aedService")()
         self.ui.setupUi(self)
         self._setup_validators()
         self.active_workers = []
+        self.dispatcher = dispatcher
         self.setModal(True)
         self.service_id = service_id
         if service_id:
@@ -80,7 +89,7 @@ class AddEditDeleteServiceController(BaseController, QDialog):
 
     def _setup_validators(self):
         self.ui.serviceName_txtbox.setMaxLength(50)
-        
+
     def load_service_data(self):
         self._start_worker(Services.get_by_id,[self.service_id],self.display_service_data)
 
@@ -114,12 +123,15 @@ class AddEditDeleteServiceController(BaseController, QDialog):
             Services.update_service,
             [service],
             success_callback=lambda: self.operation_successful(
-                "سرویس با موفقیت ویرایش شد."
+                "سرویس با موفقیت ویرایش شد.", True
             ),
         )
 
-    def operation_successful(self, success_msg):
+    def operation_successful(self, success_msg, update_delete=False):
         QMessageBox.information(self, "موفقیت", success_msg)
+        if update_delete:
+            self.dispatcher.refresh_appointments_list.emit()
+        self.dispatcher.reload_report_services.emit()
         self.refresh_services_list.emit()
         self.close()
 
@@ -130,7 +142,7 @@ class AddEditDeleteServiceController(BaseController, QDialog):
                 Services.delete_service,
                 [self.service["id"]],
                 success_callback=lambda: self.operation_successful(
-                    "سرویس با موفقیت حذف شد."
+                    "سرویس با موفقیت حذف شد.", True
                 ),
             )
         else:

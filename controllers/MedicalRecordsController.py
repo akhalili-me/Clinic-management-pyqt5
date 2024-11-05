@@ -1,26 +1,104 @@
-from PyQt5.QtWidgets import QDialog, QFileDialog
-from ui import (
-    Ui_addEditMedicalRecords_form,
-    Ui_medicalRecordInfo_form,
-    Ui_medicalRecordImages_form,
-    Ui_addEditImage_form,
-)
-from models import MedicalRecords, Services,Patients,MedicalRecordImages,DatabaseWorker
+from PyQt5.QtWidgets import QDialog, QFileDialog,QListWidgetItem
+from ui import get_ui_class
+from models import MedicalRecords,MedicalRecordImages
 import jdatetime
 from PyQt5.QtCore import pyqtSignal
-from utility import LoadingValues, Messages, Dates, Numbers, Validators, Images,BaseController,create_patient_directory_if_not_exist
-from PyQt5.QtGui import QPixmap
-from PyQt5.QtCore import Qt
+from utility import (
+    Messages,
+    Dates,
+    Numbers,
+    Validators,
+    Images,
+    BaseController,
+    LoadSpinBox,
+    LoadComboBox,
+)
+from PyQt5.QtGui import QPixmap,QDesktopServices
+from PyQt5.QtCore import Qt, QUrl
 import logging
+
+
+class MedicalRecordsTabController(BaseController):
+    def __init__(self, ui, dispatcher):
+        self.ui = ui
+        self.active_workers = []
+        self.dispatcher = dispatcher
+        self.dispatcher.load_today_medical_records_list.connect(
+            self.load_today_medical_records_list
+        )
+        self.load_today_medical_records_list()
+        self._connect_buttons()
+
+    def _connect_buttons(self):
+        self.ui.medicalRecords_list.itemDoubleClicked.connect(
+            self.open_medical_record_info
+        )
+        self.ui.medicalRecordsSearchByDate_btn.clicked.connect(self.search_medical_records)
+        self.ui.refreshMedicalRecordsList_btn.clicked.connect(self.refresh_medical_records_list)
+
+    def refresh_medical_records_list(self):
+        self.load_today_medical_records_list()
+
+    def search_medical_records(self):
+        selected_date = self.get_selected_jalali_date()
+        self.load_medical_records_list_by_date(selected_date)
+
+    def open_medical_record_info(self, item):
+        medical_record_id = item.data(1)
+        self.medical_record_info_controller = MedicalRecordInfoController(
+            medical_record_id, self.dispatcher
+        )
+        self.medical_record_info_controller.load_today_medical_records_list.connect(
+            self.load_today_medical_records_list
+        )
+        self.medical_record_info_controller.show()
+
+    def load_today_medical_records_list(self):
+        self.set_current_date_into_medical_records_spinboxes()
+        today_date = jdatetime.date.today().strftime("%Y-%m-%d")
+        self.load_medical_records_list_by_date(today_date)
+
+    def load_medical_records_list_by_date(self,date):
+        self._start_worker(
+            MedicalRecords.get_by_date, [date], self.display_medical_records_data
+        )
+
+    def set_current_date_into_medical_records_spinboxes(self):
+        medica_record_date_spnbox_names = {
+            "year": "medicalRecordsYear_spnbox",
+            "month": "medicalRecordsMonth_spnbox",
+            "day": "medicalRecordsDay_spnbox",
+        }
+        LoadSpinBox.set_current_date_into_date_spin_boxes(
+            self.ui, medica_record_date_spnbox_names
+        )
+
+    def display_medical_records_data(self, medical_records):
+        self.ui.medicalRecords_list.clear()
+        for medical_record in medical_records:
+            persian_price = Numbers.int_to_persian_with_separators(medical_record["price"])
+            persian_date_format = Dates.convert_to_jalali_format(medical_record["jalali_date"])
+            item_txt = f"{medical_record['patient_name']} | {medical_record["service_name"]} | دکتر {medical_record["doctor_lastname"]} | {persian_date_format} | قیمت: {persian_price} تومان "
+            item = QListWidgetItem(item_txt)
+            item.setData(1, medical_record["id"])
+            self.ui.medicalRecords_list.addItem(item)
+
+    def get_selected_jalali_date(self):
+        selected_year = str(self.ui.medicalRecordsYear_spnbox.value())
+        selected_month = f"{self.ui.medicalRecordsMonth_spnbox.value():02}"
+        selected_day = f"{self.ui.medicalRecordsDay_spnbox.value():02}"
+        return f"{selected_year}-{selected_month}-{selected_day}"
 
 class MedicalRecordInfoController(BaseController,QDialog):
     load_user_medical_records_list = pyqtSignal()
+    load_today_medical_records_list = pyqtSignal()
 
-    def __init__(self, medical_record_id):
+    def __init__(self, medical_record_id, dispatcher):
         super(MedicalRecordInfoController, self).__init__()
-        self.ui = Ui_medicalRecordInfo_form()
+        self.ui = get_ui_class("iMedicalRecord")()
         self.ui.setupUi(self)
         self.active_workers = []
+        self.dispatcher = dispatcher
         self.setModal(True)
         self.medical_record_id = medical_record_id
         self.medical_record_images = None
@@ -35,6 +113,12 @@ class MedicalRecordInfoController(BaseController,QDialog):
         self.ui.addImage_btn.clicked.connect(self.open_add_image)
         self.ui.nextImage_btn.clicked.connect(self.next_image)
         self.ui.deleteImage_btn.clicked.connect(self.open_delete_image)
+        self.ui.viewImage_btn.clicked.connect(self.view_image_full_size)
+
+    def view_image_full_size(self):
+        relative_image_path = self._get_image_path_by_id(self.current_image_id)
+        current_image_abs_path = Images.get_media_directory() / relative_image_path
+        QDesktopServices.openUrl(QUrl.fromLocalFile(str(current_image_abs_path)))
 
     def open_delete_medical_record(self):
         msg_box, yes_button = Messages.show_confirm_delete_msg()
@@ -64,15 +148,13 @@ class MedicalRecordInfoController(BaseController,QDialog):
         Messages.show_success_msg(success_msg)
         self.load_user_medical_records_list.emit()
         self._get_medical_record_images()
+        self.dispatcher.refresh_main_tab_reports.emit()
         if not delete_operation:
             self.close()
 
     def open_edit_medical_record(self):
         self.edit_medical_record_controller = AddEditMedicalRecordsController(
-            medical_record_id=self.medical_record_id
-        )
-        self.edit_medical_record_controller.refresh_user_medical_records_list.connect(
-            self.load_user_medical_records_list
+            self.dispatcher, medical_record_id=self.medical_record_id
         )
         self.edit_medical_record_controller.refresh_medical_record_info.connect(
             self.load_all_medical_record_data
@@ -144,11 +226,17 @@ class MedicalRecordInfoController(BaseController,QDialog):
 
         self.ui.deleteImage_btn.setEnabled(is_image_available)
         self.ui.nextImage_btn.setEnabled(is_multiple_images)
+        self.ui.viewImage_btn.setEnabled(is_image_available)
 
     def set_image_into_label(self, image):
         media_dir = Images.get_media_directory()
-        image_pix_map = QPixmap( str(media_dir / image["path"]) )
-        self.ui.image_lbl.setPixmap(image_pix_map)
+        image_pix_map = QPixmap(str(media_dir / image["path"]))
+        scaled_pix_map = image_pix_map.scaled(
+            self.ui.image_lbl.size(),
+            Qt.KeepAspectRatio,  # Maintain aspect ratio
+            Qt.SmoothTransformation,  # Smooth scaling
+        )
+        self.ui.image_lbl.setPixmap(scaled_pix_map)
         self.ui.imageName_lbl.setText(image["name"])
 
     def open_delete_image(self):
@@ -160,8 +248,8 @@ class MedicalRecordInfoController(BaseController,QDialog):
         self.handle_delete_image()
 
     def handle_delete_image(self):
-        image_path = self._get_image_path_by_id(self.current_image_id)
-        abs_image_dir = Images.get_media_directory() / image_path
+        relative_image_path = self._get_image_path_by_id(self.current_image_id)
+        abs_image_dir = Images.get_media_directory() / relative_image_path
         Images.delete_image(abs_image_dir)
         self.delete_current_medical_record_image()
 
@@ -190,22 +278,27 @@ class MedicalRecordInfoController(BaseController,QDialog):
         self.set_image_into_label(medical_record_images[self.current_image_index])
         self._enable_disable_image_buttons(len(medical_record_images))
 
-
 class AddEditMedicalRecordsController(BaseController,QDialog):
-    refresh_user_medical_records_list = pyqtSignal()
     refresh_medical_record_info = pyqtSignal()
 
-    def __init__(self, patient_id=None, medical_record_id=None):
+    def __init__(self, dispatcher, patient_id=None, medical_record_id=None):
         super(AddEditMedicalRecordsController, self).__init__()
-        self.ui = Ui_addEditMedicalRecords_form()
+        self.ui = get_ui_class("aeMedicalRecord")()
         self.ui.setupUi(self)
         self.setModal(True)
+        self.dispatcher = dispatcher
         self.active_workers = []
         self.patient_id = patient_id
         self.medical_record_id = medical_record_id
         self._initialize_ui()
 
+    def _setup_validators(self):
+        self.ui.description_txtbox.textChanged.connect(
+            lambda: Validators.limit_text_edit(self.ui.description_txtbox)
+        )
+
     def _initialize_ui(self):
+        self._setup_validators()
         self._load_initial_values()
         self._handle_edit_mode()
         self._connect_buttons()
@@ -213,14 +306,16 @@ class AddEditMedicalRecordsController(BaseController,QDialog):
     def _handle_edit_mode(self):
         if self.medical_record_id:
             self.load_medical_record_data()
+            self.ui.save_btn.setText("ویرایش")
 
     def _connect_buttons(self):
-        self.ui.save_btn.clicked.connect(self.save_medical_record)
+        self.ui.save_btn.clicked.connect(self.validate_medical_record)
         self.ui.cancel_btn.clicked.connect(self.close)
 
     def _load_initial_values(self):
-        LoadingValues.load_doctors_services_combo_boxes(self.ui)
-        LoadingValues.load_current_date_spin_box_values(self.ui)
+        self.combo_box_loader = LoadComboBox(self.ui,self._start_worker)
+        self.combo_box_loader.load_doctors_services_combo_boxes()
+        LoadSpinBox.set_current_date_into_date_spin_boxes(self.ui)
 
     def load_medical_record_data(self):
         self._start_worker(
@@ -237,9 +332,22 @@ class AddEditMedicalRecordsController(BaseController,QDialog):
         self.ui.doctor_cmbox.setCurrentText(f"دکتر {medical_record["doctor_name"]}")
         self.ui.service_cmbox.setCurrentText(medical_record["service_name"])
         self.ui.description_txtbox.setText(medical_record["description"])
-        LoadingValues.load_date_into_date_spinbox(
+        LoadSpinBox.load_date_into_date_spinboxes(
             self.ui, medical_record["jalali_date"]
         )
+
+    def validate_medical_record(self):
+        try:
+            self._get_jalali_date()
+        except Exception as e:
+            warning_message = f"""
+            تاریخ انتخاب شده وجود ندارد. 
+            {str(e)}
+            """
+            Messages.show_warning_msg(warning_message)
+            return
+
+        self.save_medical_record()
 
     def save_medical_record(self):
         medical_record = self._collect_medical_record_data()
@@ -274,7 +382,7 @@ class AddEditMedicalRecordsController(BaseController,QDialog):
                 medical_record.pop("price", None)
 
         return medical_record
-    
+
     def add_medical_record(self,medical_record):
         self._start_worker(
             MedicalRecords.add_medical_record,
@@ -295,7 +403,9 @@ class AddEditMedicalRecordsController(BaseController,QDialog):
 
     def operation_successful(self,success_msg):
         Messages.show_success_msg(success_msg)
-        self.refresh_user_medical_records_list.emit()
+        self.dispatcher.load_today_medical_records_list.emit()
+        self.dispatcher.refresh_main_tab_reports.emit()
+        self.dispatcher.refresh_patient_medical_records_list.emit()
         self.refresh_medical_record_info.emit()
         self.close()
 
@@ -318,7 +428,7 @@ class AddMedicalRecordImage(BaseController, QDialog):
 
     def __init__(self, medical_record_id):
         super(AddMedicalRecordImage, self).__init__()
-        self.ui = Ui_addEditImage_form()
+        self.ui = get_ui_class("aeImage")()
         self.ui.setupUi(self)
         self._setup_validators()
         self.setModal(True)
@@ -372,7 +482,9 @@ class AddMedicalRecordImage(BaseController, QDialog):
         self.save_image_into_database(saved_image_path)
 
     def _save_image_file(self, patient_identity_code):
-        return Images.save_image_to_patient_directory(self.selected_image_path,patient_identity_code)
+        return Images.save_image_to_patient_directory(
+            self.selected_image_path, patient_identity_code
+        )
 
     def save_image_into_database(self, saved_image_path):
         image_data = {

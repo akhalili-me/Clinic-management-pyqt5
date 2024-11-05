@@ -4,6 +4,6 @@ from .ServicesController import *
 from .ReportsController import *
 from .AppointmentsController import *
 from .ExpenseController import *
-from .MainController import *
 from .MedicalRecordsController import *
+from .MainController import *
 from .PatientFileController import *

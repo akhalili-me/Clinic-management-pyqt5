@@ -1,9 +1,9 @@
-from .db import DatabaseManager,DatabaseError
+from .db import DatabaseError
 
 class Doctors:
     
     @staticmethod
-    def get_all(db: DatabaseManager):
+    def get_all(db):
         query = "SELECT * FROM Doctor ORDER BY id DESC"
         try:
             return db.fetchall(query)
@@ -15,7 +15,7 @@ class Doctors:
             raise DatabaseError(error_msg)
         
     @staticmethod
-    def get_by_id(db: DatabaseManager, doctor_id):
+    def get_by_id(db, doctor_id):
         query = f"SELECT * FROM Doctor Where id={doctor_id}"
         try:
             return db.fetchone(query)
@@ -27,7 +27,7 @@ class Doctors:
             raise DatabaseError(error_msg)
         
     @staticmethod
-    def add_doctor(db: DatabaseManager, doctor):
+    def add_doctor(db, doctor):
         query = query = "INSERT INTO Doctor(firstName, lastName, specialization) VALUES (?,?,?)"
         values = (doctor["firstName"],doctor["lastName"],doctor["specialization"])
         try:
@@ -51,8 +51,21 @@ class Doctors:
             """
             raise DatabaseError(error_msg)
     
+
     @staticmethod
-    def update_doctor(db: DatabaseManager, doctor):
+    def get_by_last_name(db, lastName):
+        query = f"SELECT * FROM Doctor Where lastName Like '%{lastName}%'"
+        try:
+            return db.fetchall(query)
+        except Exception as e:
+            error_msg = f"""
+                جستجو پزشک با خطا مواجه شده است.
+                {str(e)}
+            """      
+            raise DatabaseError(error_msg)
+        
+    @staticmethod
+    def update_doctor(db, doctor):
         query = """UPDATE Doctor
                     SET firstName = ?, 
                         lastName = ?, 
@@ -76,7 +89,7 @@ class Doctors:
             raise DatabaseError(error_msg)
 
     @staticmethod
-    def delete_doctor(db: DatabaseManager, doctor_id):
+    def delete_doctor(db, doctor_id):
         query = f"DELETE FROM Doctor WHERE id = {doctor_id};"
         try:
             return db.execute_query(query)
